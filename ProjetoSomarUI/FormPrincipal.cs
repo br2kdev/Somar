@@ -22,6 +22,7 @@ namespace ProjetoSomarUI
         public FormPrincipal()
         {
             InitializeComponent();
+            
             /*
             this.Load += new EventHandler(HandleFormLoad);
             this.splashScreen = new SplashScreen();

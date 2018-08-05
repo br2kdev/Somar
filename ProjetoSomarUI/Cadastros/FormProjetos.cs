@@ -5,6 +5,10 @@ using System.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using System.Reflection;
+using Somar.Shared;
+using System.IO;
+using System.Drawing;
 
 namespace ProjetoSomarUI.Cadastros
 {
@@ -14,7 +18,212 @@ namespace ProjetoSomarUI.Cadastros
         {
             InitializeComponent();
 
+            SetGridView();
+            ClearForm();
         }
+
+        #region Events
+
+        private void FormProjetos_Load(object sender, EventArgs e)
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(new ProjetoDTO());
+
+            GridViewDataBind(lista);
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(new ProjetoDTO());
+
+            GridViewDataBind(lista);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            panelEdit.Visible = false;
+            panelConsulta.Visible = true;
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(new ProjetoDTO());
+
+            GridViewDataBind(lista);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            //tabDadosCadastro.Visible = true;
+            panelEdit.Visible = true;
+            panelConsulta.Visible = false;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void ClearForm()
+        {
+            cmbTipoPesquisa.SelectedIndex = 0;
+            txtSearch.Text = string.Empty;
+        }
+
+        #endregion
+
+        #region Controls
+
+        private void InitializeDataGridView()
+        {
+            /*
+            // Add columns to the DataGridView, binding them to the
+            // specified DataGridViewColumn properties.
+            AddReadOnlyColumn("HeaderText", "Column");
+            AddColumn("AutoSizeMode");
+            AddColumn("FillWeight");
+            AddColumn("MinimumWidth");
+            AddColumn("Width");
+
+            // Bind the DataGridView to its own Columns collection.
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.DataSource = dataGridView1.Columns;
+
+            // Configure the DataGridView so that users can manually change 
+            // only the column widths, which are set to fill mode. 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Configure the top left header cell as a reset button.
+            dataGridView1.TopLeftHeaderCell.Value = "reset";
+            dataGridView1.TopLeftHeaderCell.Style.ForeColor = System.Drawing.Color.Blue;
+
+            // Add handlers to DataGridView events.
+            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            dataGridView1.ColumnWidthChanged += new DataGridViewColumnEventHandler(dataGridView1_ColumnWidthChanged);
+            dataGridView1.CurrentCellDirtyStateChanged += new EventHandler(dataGridView1_CurrentCellDirtyStateChanged);
+            dataGridView1.DataError += new DataGridViewDataErrorEventHandler(dataGridView1_DataError);
+            dataGridView1.CellEndEdit += new DataGridViewCellEventHandler(dataGridView1_CellEndEdit);
+            dataGridView1.CellValueChanged += new DataGridViewCellEventHandler(dataGridView1_CellValueChanged);
+            */
+        }
+
+        public void SetGridView()
+        {
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW
+            // ***************************************************************** //
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            /*            
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dataGridView1.AutoSize = true;
+
+            // Configure the DataGridView so that users can manually change 
+            // only the column widths, which are set to fill mode. 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            */
+
+            // ***************************************************************** //
+            //  SET COLUMNS IN GRIDVIEW
+            // ***************************************************************** //
+
+            var fields = new GridViewControl().GetFields(new ProjetoDTO());
+
+            // Edit Image
+            DataGridViewImageColumn img = new DataGridViewImageColumn();
+            img.Name = "Image";
+            img.HeaderText = "";
+            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img.Width = 50;
+            this.dataGridView1.Columns.Add(img);
+            
+            // -------------------------------------------------------------
+
+            // All Fields
+            foreach (var item in fields)
+            {
+                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
+                dt.DataPropertyName = item.Key;
+                dt.HeaderText = item.Value;
+                dataGridView1.Columns.Add(dt);
+            }
+
+            // -------------------------------------------------------------
+
+            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
+            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+
+            // ***************************************************************** //
+        }
+
+        public void GridViewDataBind(List<ProjetoDTO> result)
+        {
+            if (result.Count == 0)
+            {
+                dataGridView1.Visible = false;
+                panelMessage.Visible = true;
+                lblMessage.Text = "Nenhum projeto encontrado";
+            }
+            else
+            {
+                dataGridView1.Visible = true;
+                panelMessage.Visible = false;
+                lblMessage.Text = "";
+                dataGridView1.DataSource = result;
+            }
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
+            {
+                e.Value = ProjetoSomarUI.Properties.Resources.icon_search;
+
+                /*
+                if (this.dataGridView1["c2", e.RowIndex].Value != null)
+                {
+                    string s = this.dataGridView1["c2", e.RowIndex].Value.ToString();
+
+                    switch (s)
+                    {
+                        case "Laptop":
+                            e.Value = Image.FromFile(@"c:\test\Laptop.gif");
+                            break;
+                        case "Desktop":
+                            e.Value = Image.FromFile(@"c:\test\Desktop.gif");
+                            break;
+                    }
+
+                }
+                */
+            }
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                panelEdit.Visible = true;
+                panelConsulta.Visible = false;
+
+                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
+                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
+            }
+        }
+
+        #endregion
 
         public void Consultar()
         {
@@ -32,51 +241,8 @@ namespace ProjetoSomarUI.Cadastros
             {
 
             }
-
-            /*
-            using (IRepositorio<Projeto> context = new Repositorio<Projeto>())
-            {
-
-                var lista = from p in context.GetAll()
-                            select p;
-            }
-            /
-            /*
-            using (var ctxProjetos = new ProjetoDAL())
-            {
-                new List<Projeto>
-                {
-                    new Projeto { Nome="Microsoft", Ativo=true, CNPJ="9394.4343/0001-55", Endereco="1, Microsoft One", Telefone="11574739494"},
-                    new Projeto { Nome="Google", Ativo=true, CNPJ="1234.9494/0001-33", Endereco="12, Santa Clara, CA", Telefone="1185858483"},
-                    new Projeto { Nome="Oracle", Ativo=true, CNPJ="9876.4433/0002-44", Endereco="54, Santa Monica", Telefone="4884848592"}
-                }.ForEach(ctxProjetos.Adicionar);
-
-                ctxProjetos.SalvarTodos();
-
-                System.Console.WriteLine("Clientes adicionadas com sucesso.");
-
-                System.Console.WriteLine("=======  clientes cadastrados ===========");
-                
-
-                System.Console.ReadKey();
-            }
-            */
         }
 
-        private void FormProjetos_Load(object sender, EventArgs e)
-        {
-            //lblDados.Visible = false;
-            tabDadosCadastro.Visible = false;
-
-            cblTipoPesquisa.Items.Add("Codigo");
-            cblTipoPesquisa.Items.Add("Nome");
-            cblTipoPesquisa.SelectedIndex = 0;
-
-            cblTipoPesquisa.SelectedIndex = 0;
-
-        }
-
-       
         private void rdoAluno_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -131,20 +297,8 @@ namespace ProjetoSomarUI.Cadastros
 
                     foreach (var valor in proj)
                     {   
-                    
-                    table.Rows.Add(valor.ProjetoId, 
-                                   valor.Nome, 
-                                   valor.DataInicio,
-                                   valor.DataTermino,
-                                   valor.Duracao,
-                                   valor.Descricao,
-                                   valor.DataCadastro,
-                                   valor.ResponsavelPessoaId);
-                    
-                   
+                        table.Rows.Add(valor.ProjetoId, valor.Nome, valor.DataInicio, valor.DataTermino, valor.Duracao, valor.Descricao, valor.DataCadastro, valor.ResponsavelPessoaId);
                     }     
-
-
 
                     dataGridView1.DataSource = table;
                     dataGridView1.Columns[0].Visible = false;
@@ -180,7 +334,6 @@ namespace ProjetoSomarUI.Cadastros
             }
         }
 
-       
         private void btnGravar_Click_1(object sender, EventArgs e)
         {
             /*
@@ -218,11 +371,6 @@ namespace ProjetoSomarUI.Cadastros
 
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
-        {
-            tabDadosCadastro.Visible = true;
-        }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             /*
@@ -254,7 +402,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void button2_Click(object sender, EventArgs e)
         {
-            tabDadosCadastro.Visible = false;
+            //tabDadosCadastro.Visible = false;
         }
 
         private void Limpar()
@@ -302,10 +450,21 @@ namespace ProjetoSomarUI.Cadastros
             */
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btnPesquisar_Click_1(object sender, EventArgs e)
         {
 
         }
+
+        private void dataGridView1_RowDividerDoubleClick(object sender, DataGridViewRowDividerDoubleClickEventArgs e)
+        {
+            MessageBox.Show(e.RowIndex.ToString() + " 1");
+        }
+
+        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //MessageBox.Show(e.RowIndex.ToString() + " 2");
+        }
+
     }
 }
 
