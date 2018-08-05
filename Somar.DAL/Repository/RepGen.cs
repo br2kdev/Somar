@@ -16,49 +16,32 @@ namespace Somar.DAL.Repository
             con = new SqlConnection(Globals.stringConn);
         }
 
-        public int ExecuteSQLCommand(string query, DynamicParameters param)
+        public int ExecuteSQL(string query, DynamicParameters param)
         {
-            var result = 0;
+            int result = 0;
 
             using (IDbConnection db = new SqlConnection(Globals.stringConn))
             {
-                result = db.Execute(query, param, commandType: CommandType.Text);
-
-                /*
-                IList<T> Tlista = SqlMapper.Query<T>(db, query, null, null, true, null, commandType: CommandType.Text).ToList();
-
-                return Tlista.ToList();
-                */
+                int rowsAffected = db.Execute(query, param, commandType: CommandType.Text);
             }
 
             return result;
-            /*
-            try
-            {
-                GetDBConnection();
-                con.Open();
-                con.Execute(query, param, commandType: CommandType.Text);
-                con.Close();
-                return "0";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
-            */
         }
 
-        /*
-        private void connection()
+        public int ExecuteSQLCommand(string query, DynamicParameters param)
         {
-            //Remenber you must have this file--> c:\conn.xml
-            string path = Utilities.Globals.path;
-            Utilities.Globals.stringConn = ConnectionDB.xml_conn(path);
-            string conn = Utilities.Globals.stringConn;
+            var identity = 0;
 
-            con = new SqlConnection(Globals.stringConn);
+            using (IDbConnection db = new SqlConnection(Globals.stringConn))
+            {
+                var result = db.ExecuteScalar(query, param, commandType: CommandType.Text);
+
+                if (result != null)
+                    identity = (int)result;
+            }
+
+            return identity;
         }
-        */
 
         /*
     public string ExecuteSQLCommand(string query, DynamicParameters param)

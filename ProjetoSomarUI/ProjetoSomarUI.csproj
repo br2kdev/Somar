@@ -100,6 +100,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
     <Content Include="imgs\24x24\icon_search.png" />
+    <Content Include="imgs\48x48\icon_projeto.png" />
     <Content Include="imgs\Logo.png" />
     <Content Include="imgs\LogoSimples.png" />
   </ItemGroup>

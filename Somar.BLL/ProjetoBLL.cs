@@ -34,18 +34,25 @@ namespace Somar.BLL
                 throw new Exception("Erro de Gravação do Projeto");
         }
 
-        public bool SaveNewProject(ProjetoDTO _projeto)
+        public int SaveProject(ProjetoDTO _projeto)
         {
             ProjetoDAL cmd = new ProjetoDAL();
 
-            return cmd.SaveDataInDataBase(_projeto);
+            int result = 0;
+
+            if(_projeto.idProjeto == 0)
+                result = cmd.InsertData(_projeto);
+            else
+                result = cmd.UpdateData(_projeto);
+
+            return result;
         }
 
-        public bool EditProject(ProjetoDTO _projeto)
+        public int RemoveProject(ProjetoDTO _projeto)
         {
             ProjetoDAL cmd = new ProjetoDAL();
 
-            return cmd.SaveDataInDataBase(_projeto);
+            return cmd.UpdateData(_projeto);
         }
     }
 }

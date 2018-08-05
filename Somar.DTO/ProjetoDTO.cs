@@ -26,8 +26,10 @@ namespace Somar.DTO
 
         public DateTime dataCadastro { get; set; }
 
-        [DisplayName("Ativo")]
         public bool flagAtivo { get; set; }
+
+        [DisplayName("Status")]
+        public string descricaoAtivo { get; set; }
 
         public DateTime dataUltAlteracao { get; set; }
 

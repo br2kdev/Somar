@@ -26,9 +26,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void FormProjetos_Load(object sender, EventArgs e)
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
-
-            GridViewDataBind(lista);
+            CarregaGrid();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -58,6 +56,8 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnAll_Click(object sender, EventArgs e)
         {
+            ClearForm1();
+
             List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
 
             GridViewDataBind(lista);
@@ -65,17 +65,27 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnNew_Click(object sender, EventArgs e)
         {
+            btnEditar.Visible = false;
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
             ClearForm2();
+            ControlFormEdit(true);
 
-            lblTitle.Text = "Novo Projeto";
+            btnVoltar.Visible = true;
+            btnVoltar.Text = "Voltar";
         }
 
         #endregion
 
         #region Methods
+
+        public void CarregaGrid()
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
+
+            GridViewDataBind(lista);
+        }
 
         public void DetalhesProjeto(int idProjeto)
         {
@@ -92,10 +102,12 @@ namespace ProjetoSomarUI.Cadastros
             // ************************************************** //
             lblCodigo.Text = param.idProjeto.ToString();
             txtNome.Text = param.nomeProjeto;
+            cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
             txtDataInicio.Text = param.dataInicio.ToShortDateString();
-            txtDataTermino.Text = param.dataTermino.ToShortDateString();
+            txtDataInicio.Text = param.dataTermino.ToShortDateString();
             txtDescricao.Text = param.descricaoProjeto;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
 
             ControlFormEdit(false);
         }
@@ -108,18 +120,15 @@ namespace ProjetoSomarUI.Cadastros
 
         public void ClearForm2()
         {
+            lblCodigo.Text = "";
             txtNome.Text = "";
             txtDataInicio.Text = "";
-            txtDataTermino.Text = "";
+            txtDataInicio.Text = "";
             txtDuracao.Text = "";
             txtDescricao.Text = "";
             txtDataCadastro.Text = "";
             txtResponsavel.Text = "";
-        }
-
-        private void Limpar()
-        {
-
+            cmbStatus.SelectedIndex = 1;
         }
 
         #endregion
@@ -173,6 +182,7 @@ namespace ProjetoSomarUI.Cadastros
             // ***************************************************************** //
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dataGridView1.AutoResizeColumn.
 
             /*            
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -319,24 +329,23 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
-
         #region EditMode
 
         public void ControlFormEdit(bool flagEnable)
         {
             txtEditMode.Text = flagEnable.ToString();
 
-            lblTitle.Text = "DETALHES DO PROJETO";
+            btnVoltar.Text = "Voltar";
 
             txtNome.Enabled = flagEnable;
             txtDataInicio.Enabled = flagEnable;
             txtDataTermino.Enabled = flagEnable;
             txtDescricao.Enabled = flagEnable;
-            txtDataCadastro.Enabled = flagEnable;
             txtDuracao.Enabled = flagEnable;
             txtResponsavel.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
+            txtDataCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
             txtDataInicio.BackColor = Color.WhiteSmoke;
@@ -351,16 +360,12 @@ namespace ProjetoSomarUI.Cadastros
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnVoltar.Visible = false;
-                btnCancelar.Visible = true;
                 btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnVoltar.Visible = true;
-                btnCancelar.Visible = false;
                 btnGravar.Visible = false;
             }
         }
@@ -401,6 +406,9 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            panelEdit.Visible = false;
+            panelConsulta.Visible = true;
+
             ControlFormEdit(false);
         }
 
@@ -420,169 +428,24 @@ namespace ProjetoSomarUI.Cadastros
                 param.idProjeto = Convert.ToInt32(lblCodigo.Text);
 
             param.nomeProjeto = txtNome.Text;
-            param.descricaoProjeto = txtDescricao.Text;
+            param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
             param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
             param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
+            param.descricaoProjeto = txtDescricao.Text;
+            //param.idPessoaResposavel = //txtResponsavel.Text;
 
             ProjetoBLL bus = new ProjetoBLL();
-            var result = bus.EditProject(param);
+            var idProjeto = bus.SaveProject(param);
 
-            //txtDataCadastro.Text = flagEnable;
-            //txtDuracao.Enabled = flagEnable;
-
-            /*
-            txtResponsavel.Text;
-            txtNomeAlteracao.Text = false;
-            txtDataAlteracao.Text = false;
-            */
-        }
-
-        #endregion
-
-        public void Consultar()
-        {
-            try
+            if (idProjeto > 0)
             {
-                /*
-                ProjetoBLL projetoBLL = new ProjetoBLL();
-
-                List<Projetos> proj = projetoBLL.GetProjetos();
-
-                dataGridView1.DataSource = proj.ToList();
-                */
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void rdoAluno_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton10_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton14_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                /*
-                tabDadosCadastro.Visible = false;
-                ProjetoBLL projetoBLL = new ProjetoBLL();
-
-                DataTable table = new DataTable();
-
-                table.Columns.Add("projetoId", typeof(int));
-                table.Columns.Add("Nome", typeof(string));
-                table.Columns.Add("Data Inicio", typeof(DateTime));
-                table.Columns.Add("Data Termino", typeof(DateTime));
-                table.Columns.Add("Duração", typeof(int));
-                table.Columns.Add("Descrição", typeof(string));
-                table.Columns.Add("Data Cadastro", typeof(DateTime));
-                table.Columns.Add("Responsavel", typeof(int));
-
-                if (string.IsNullOrEmpty(txtTermoPesquisa.Text))
-                {                   
-
-                    List<Projetos> proj = projetoBLL.GetProjetos();
-                    
-
-                   
-
-                    foreach (var valor in proj)
-                    {   
-                        table.Rows.Add(valor.ProjetoId, valor.Nome, valor.DataInicio, valor.DataTermino, valor.Duracao, valor.Descricao, valor.DataCadastro, valor.ResponsavelPessoaId);
-                    }     
-
-                    dataGridView1.DataSource = table;
-                    dataGridView1.Columns[0].Visible = false;
-                }
-                else {
-
-                    List <Projetos> proj = projetoBLL.GetProjetosPorID(Convert.ToInt32(txtTermoPesquisa.Text)).ToList();
-                    foreach (var valor in proj)
-                    {
-
-                        table.Rows.Add(valor.ProjetoId,
-                                       valor.Nome,
-                                       valor.DataInicio,
-                                       valor.DataTermino,
-                                       valor.Duracao,
-                                       valor.Descricao,
-                                       valor.DataCadastro,
-                                       valor.ResponsavelPessoaId);
-
-
-                    }
-
-
-                    dataGridView1.DataSource = table;
-                    dataGridView1.Columns[0].Visible = false;
-
-                }
-                */
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private void btnGravar_Click_1(object sender, EventArgs e)
-        {
-            /*
-            Projetos projetos = new Projetos();
-
-            projetos.Nome = txtNome.Text;
-            projetos.DataInicio = Convert.ToDateTime(txtDataInicio.Text);
-            projetos.DataTermino = Convert.ToDateTime(txtDataTermino.Text);
-            projetos.Duracao = Convert.ToInt32(txtDuracao.Text);
-            projetos.Descricao = txtDescricao.Text;
-            projetos.DataCadastro = Convert.ToDateTime(txtDataCadastro.Text);
-            projetos.ResponsavelPessoaId = Convert.ToInt32(txtResponsavel.Text);
-
-            ProjetoBLL projetoBLL = new ProjetoBLL();
-            var retorno = projetoBLL.AdicionarProjeto(projetos);
-            if (retorno == null)
-            {
-                throw new Exception("Erro de Gravação do Projeto");
-
+                lblCodigo.Text = idProjeto.ToString();
+                MessageBox.Show("Projeto gravado com sucesso!");
+                CarregaGrid();
             }
             else
-            {
-                ProjetoBLL projetoRecarga = new ProjetoBLL();
+                throw new Exception("Erro de Gravação do Projeto");
 
-                List<Projetos> proj = projetoRecarga.GetProjetos();
-
-                dataGridView1.DataSource = proj.ToList();
-                Limpar();
-            }
-            */
-        }
-
-        private void Descrição_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //tabDadosCadastro.Visible = false;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -619,19 +482,6 @@ namespace ProjetoSomarUI.Cadastros
             */
         }
 
-        private void btnPesquisar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_RowDividerDoubleClick(object sender, DataGridViewRowDividerDoubleClickEventArgs e)
-        {
-            MessageBox.Show(e.RowIndex.ToString() + " 1");
-        }
-
-        private void dataGridView1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            //MessageBox.Show(e.RowIndex.ToString() + " 2");
-        }
+        #endregion
     }
 }

@@ -22,7 +22,8 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT * ";
+            query += "SELECT *, ";
+            query += " descricaoAtivo = CASE WHEN flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += "FROM TB_Projetos";
 
             if (objectDTO.idProjeto != 0)
@@ -36,27 +37,66 @@ namespace Somar.DAL
             return listProjeto.GetDataInDatabase(query);
         }
 
-        public bool SaveDataInDataBase(ProjetoDTO objectDTO)
+        public int InsertData(ProjetoDTO objectDTO)
         {
             RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
             RepGen<ProjetoDTO> sqlCommand = new RepGen<ProjetoDTO>();
 
-            string query = string.Empty;
-            string whereClause = " WHERE 1 = 1 ";
+            string query = "INSERT INTO TB_Projetos VALUES (";
+            var param = new DynamicParameters();
 
-            query += "insert into TB_Projetos values ('PROJETO 1', 'DESCRICAO DO PROJETO', GETDATE(), GETDATE(), 1, GETDATE(), 1, GETDATE(), 1)";
-            /*
-            if (objectDTO.idProjeto != 0)
-                whereClause += " AND idProjeto = " + objectDTO.idProjeto.ToString();
+            param.Add("@nomeProjeto", objectDTO.nomeProjeto, DbType.String);
+            param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
+            param.Add("@dataInicio", objectDTO.dataInicio, DbType.DateTime);
+            param.Add("@dataTermino", objectDTO.dataTermino, DbType.DateTime);
+            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
+            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
-            if (objectDTO.nomeProjeto != string.Empty)
-                whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
-            */
-            //query += whereClause;
+            foreach (var item in param.ParameterNames)
+                query += "@" +item + ",";
 
-            sqlCommand.ExecuteSQLCommand(query, new DynamicParameters());
+            query = query.Remove(query.Length - 1) + ")";
 
-            return true;
+            query += "; SELECT CAST(scope_identity() AS int)";
+
+            var result = sqlCommand.ExecuteSQLCommand(query, param);
+
+            return result;
+        }
+
+        public int UpdateData(ProjetoDTO objectDTO)
+        {
+            RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
+            RepGen<ProjetoDTO> sqlCommand = new RepGen<ProjetoDTO>();
+
+            string query = "UPDATE TB_Projetos SET ";
+            string where = string.Empty;
+
+            var param = new DynamicParameters();
+
+            param.Add("@nomeProjeto", objectDTO.nomeProjeto, DbType.String);
+            param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
+            param.Add("@dataInicio", objectDTO.dataInicio, DbType.DateTime);
+            param.Add("@dataTermino", objectDTO.dataTermino, DbType.DateTime);
+            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
+            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
+
+            foreach (var item in param.ParameterNames)
+                query += " " + item + " = @" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            where += " WHERE idProjeto = " + objectDTO.idProjeto.ToString();
+            query += where;
+
+            var result = sqlCommand.ExecuteSQL(query, param);
+
+            return 1;
         }
 
         /*
@@ -122,7 +162,7 @@ namespace Somar.DAL
                     ds.Tables.Add("Employees");
                 }
 
-                
+
                 /*
                 ds.EnforceConstraints = false;
 
