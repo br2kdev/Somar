@@ -17,7 +17,7 @@ namespace Somar.DAL.Repository
             con = new SqlConnection(Globals.stringConn);
         }
 
-        public List<T> GetAllData(string query)
+        public List<T> GetDataInDatabase(string query)
         {
             using (IDbConnection db = new SqlConnection(Globals.stringConn))
             {
@@ -31,7 +31,6 @@ namespace Somar.DAL.Repository
         {
             using (IDbConnection db = new SqlConnection(Globals.stringConn))
             {
-                //return db.Query<ProjetoDTO>("Select * From Author " + "WHERE Id = " @Id, new { id }).SingleOrDefault();
                 IList<T> Tlista = SqlMapper.Query<T>(db, query, param, null, true, null, commandType: CommandType.Text).ToList();
 
                 return Tlista.ToList();

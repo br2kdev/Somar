@@ -10,22 +10,42 @@ namespace Somar.BLL
 {
     public class ProjetoBLL
     {
-        public List<ProjetoDTO> GetAllData(ProjetoDTO _projeto)
+        public List<ProjetoDTO> GetAllData()
         {
             ProjetoDAL cmd = new ProjetoDAL();
-            return cmd.GetAllData();
+            return cmd.GetDataInDataBase(new ProjetoDTO());
         }
 
         public List<ProjetoDTO> GetDataWithParam(ProjetoDTO _projeto)
         {
             ProjetoDAL cmd = new ProjetoDAL();
-            return cmd.GetDataWithParam(_projeto);
+            return cmd.GetDataInDataBase(_projeto);
         }
 
-        public List<ProjetoDTO> GetByID(ProjetoDTO _projeto)
+        public ProjetoDTO GetByID(ProjetoDTO _projeto)
         {
             ProjetoDAL cmd = new ProjetoDAL();
-            return cmd.GetAllData();
+
+            var result = cmd.GetDataInDataBase(_projeto);
+
+            if (result.Count == 1)
+                return result.SingleOrDefault();
+            else
+                throw new Exception("Erro de Gravação do Projeto");
+        }
+
+        public bool SaveNewProject(ProjetoDTO _projeto)
+        {
+            ProjetoDAL cmd = new ProjetoDAL();
+
+            return cmd.SaveDataInDataBase(_projeto);
+        }
+
+        public bool EditProject(ProjetoDTO _projeto)
+        {
+            ProjetoDAL cmd = new ProjetoDAL();
+
+            return cmd.SaveDataInDataBase(_projeto);
         }
     }
 }

@@ -15,24 +15,49 @@ namespace Somar.DAL
     public class ProjetoDAL : BaseDAL
     {
 
-        public List<ProjetoDTO> GetAllData()
+        public List<ProjetoDTO> GetDataInDataBase(ProjetoDTO objectDTO)
         {
             RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
 
-            return listProjeto.GetAllData("SELECT * FROM TB_Projetos");
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += "SELECT * ";
+            query += "FROM TB_Projetos";
+
+            if (objectDTO.idProjeto != 0)
+                whereClause += " AND idProjeto = " + objectDTO.idProjeto.ToString();
+
+            if (objectDTO.nomeProjeto != string.Empty)
+                whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
+
+            query += whereClause;
+
+            return listProjeto.GetDataInDatabase(query);
         }
 
-        public List<ProjetoDTO> GetDataWithParam(ProjetoDTO objectDTO)
+        public bool SaveDataInDataBase(ProjetoDTO objectDTO)
         {
             RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
+            RepGen<ProjetoDTO> sqlCommand = new RepGen<ProjetoDTO>();
 
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@idProjeto", objectDTO.idProjeto);
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
 
-            return listProjeto.GetDataWithParam("SELECT * FROM TB_Projetos where idProjeto = @idProjeto", param);
+            query += "insert into TB_Projetos values ('PROJETO 1', 'DESCRICAO DO PROJETO', GETDATE(), GETDATE(), 1, GETDATE(), 1, GETDATE(), 1)";
+            /*
+            if (objectDTO.idProjeto != 0)
+                whereClause += " AND idProjeto = " + objectDTO.idProjeto.ToString();
+
+            if (objectDTO.nomeProjeto != string.Empty)
+                whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
+            */
+            //query += whereClause;
+
+            sqlCommand.ExecuteSQLCommand(query, new DynamicParameters());
+
+            return true;
         }
-
-        
 
         /*
         public List<ProjetoDTO> ReadAll()

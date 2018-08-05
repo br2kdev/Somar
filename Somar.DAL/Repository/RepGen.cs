@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Dapper;
@@ -6,9 +7,46 @@ using Somar.DAL.Utilities;
 
 namespace Somar.DAL.Repository
 {
-    class RepGen : BaseDAL
+    class RepGen<T> where T : class
     {
         public SqlConnection con;
+
+        private void GetDBConnection()
+        {
+            con = new SqlConnection(Globals.stringConn);
+        }
+
+        public int ExecuteSQLCommand(string query, DynamicParameters param)
+        {
+            var result = 0;
+
+            using (IDbConnection db = new SqlConnection(Globals.stringConn))
+            {
+                result = db.Execute(query, param, commandType: CommandType.Text);
+
+                /*
+                IList<T> Tlista = SqlMapper.Query<T>(db, query, null, null, true, null, commandType: CommandType.Text).ToList();
+
+                return Tlista.ToList();
+                */
+            }
+
+            return result;
+            /*
+            try
+            {
+                GetDBConnection();
+                con.Open();
+                con.Execute(query, param, commandType: CommandType.Text);
+                con.Close();
+                return "0";
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+            */
+        }
 
         /*
         private void connection()
@@ -22,39 +60,39 @@ namespace Somar.DAL.Repository
         }
         */
 
-            /*
-        public string ExecuteSQLCommand(string query, DynamicParameters param)
+        /*
+    public string ExecuteSQLCommand(string query, DynamicParameters param)
+    {
+        try
         {
-            try
-            {
-                GetDBConnection();
-                con.Open();
-                con.Execute(query, param, commandType: CommandType.Text);
-                con.Close();
-                return "0";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            GetDBConnection();
+            con.Open();
+            con.Execute(query, param, commandType: CommandType.Text);
+            con.Close();
+            return "0";
         }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
 
-        public string executeNonQuery(string query, DynamicParameters param)
+    public string executeNonQuery(string query, DynamicParameters param)
+    {
+        try
         {
-            try
-            {
-                GetDBConnection();
-                con.Open();
-                con.Execute(query, param, commandType: CommandType.StoredProcedure);
-                con.Close();
-                return "0";
-            }
-            catch (Exception ex)
-            {
-                return ex.Message;
-            }
+            GetDBConnection();
+            con.Open();
+            con.Execute(query, param, commandType: CommandType.StoredProcedure);
+            con.Close();
+            return "0";
         }
-        */
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+    */
 
         /*
         public string returnScalar(string query, DynamicParameters param)

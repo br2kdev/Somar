@@ -33,5 +33,17 @@ namespace ProjetoSomarUI.Properties {
                 return ((string)(this["SomarDatabase"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 13.25pt")]
+        public global::System.Drawing.Font default1 {
+            get {
+                return ((global::System.Drawing.Font)(this["default1"]));
+            }
+            set {
+                this["default1"] = value;
+            }
+        }
     }
 }

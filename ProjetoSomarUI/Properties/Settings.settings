@@ -10,5 +10,8 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=Br2k-PC;Initial Catalog=SomarDatabase;Persist Security Info=True;User ID=usrapp;Password=usrapp@2017</Value>
     </Setting>
+    <Setting Name="default1" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Microsoft Sans Serif, 13.25pt</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

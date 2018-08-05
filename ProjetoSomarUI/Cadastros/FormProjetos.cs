@@ -19,21 +19,33 @@ namespace ProjetoSomarUI.Cadastros
             InitializeComponent();
 
             SetGridView();
-            ClearForm();
+            ClearForm1();
         }
 
         #region Events
 
         private void FormProjetos_Load(object sender, EventArgs e)
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(new ProjetoDTO());
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
 
             GridViewDataBind(lista);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(new ProjetoDTO());
+            var param = new ProjetoDTO();
+
+            if (cmbSearchType.SelectedItem.ToString() == "Nome do Projeto")
+            {
+                param.nomeProjeto = txtSearch.Text;
+            }
+            else if (cmbSearchType.SelectedItem.ToString() == "Código do Projeto")
+            {
+                if (txtSearch.Text != string.Empty)
+                    param.idProjeto = Convert.ToInt32(txtSearch.Text);
+            }
+
+            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(param);
 
             GridViewDataBind(lista);
         }
@@ -46,31 +58,75 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnAll_Click(object sender, EventArgs e)
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(new ProjetoDTO());
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
 
             GridViewDataBind(lista);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            //tabDadosCadastro.Visible = true;
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+
+            ClearForm2();
+
+            lblTitle.Text = "Novo Projeto";
         }
 
         #endregion
 
         #region Methods
 
-        public void ClearForm()
+        public void DetalhesProjeto(int idProjeto)
         {
-            cmbTipoPesquisa.SelectedIndex = 0;
+            panelEdit.Visible = true;
+            panelConsulta.Visible = false;
+
+            ProjetoDTO param = new ProjetoDTO();
+            param.idProjeto = idProjeto;
+
+            param = new ProjetoBLL().GetByID(param);
+
+            // ************************************************** //
+            // Preenche Tela de Detalhes
+            // ************************************************** //
+            lblCodigo.Text = param.idProjeto.ToString();
+            txtNome.Text = param.nomeProjeto;
+            txtDataInicio.Text = param.dataInicio.ToShortDateString();
+            txtDataTermino.Text = param.dataTermino.ToShortDateString();
+            txtDescricao.Text = param.descricaoProjeto;
+            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
+
+            ControlFormEdit(false);
+        }
+
+        public void ClearForm1()
+        {
+            cmbSearchType.SelectedIndex = 0;
             txtSearch.Text = string.Empty;
+        }
+
+        public void ClearForm2()
+        {
+            txtNome.Text = "";
+            txtDataInicio.Text = "";
+            txtDataTermino.Text = "";
+            txtDuracao.Text = "";
+            txtDescricao.Text = "";
+            txtDataCadastro.Text = "";
+            txtResponsavel.Text = "";
+        }
+
+        private void Limpar()
+        {
+
         }
 
         #endregion
 
         #region Controls
+
+        #region Gridview Controls
 
         private void InitializeDataGridView()
         {
@@ -147,7 +203,7 @@ namespace ProjetoSomarUI.Cadastros
             img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             img.Width = 50;
             this.dataGridView1.Columns.Add(img);
-            
+
             // -------------------------------------------------------------
 
             // All Fields
@@ -163,6 +219,8 @@ namespace ProjetoSomarUI.Cadastros
 
             this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
             this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
+            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
 
             // ***************************************************************** //
         }
@@ -215,12 +273,168 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (e.ColumnIndex == 0)
             {
-                panelEdit.Visible = true;
-                panelConsulta.Visible = false;
+                int idProjeto = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
+
+                DetalhesProjeto(idProjeto);
 
                 // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
                 // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
             }
+        }
+
+        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView1.Cursor = Cursors.Hand;
+        }
+
+        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView1.Cursor = Cursors.Default;
+        }
+
+        #endregion
+
+        #region Combobox Controls
+
+        private void cmbSearchType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtSearch.Text = string.Empty;
+        }
+
+        #endregion
+
+        private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cmbSearchType.SelectedItem.ToString() == "Código do Projeto")
+            {
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+                {
+                    e.Handled = true;
+                    MessageBox.Show("A consulta por código permite apenas a digitação de números.");
+                }
+            }
+        }
+
+        #endregion
+
+
+        #region EditMode
+
+        public void ControlFormEdit(bool flagEnable)
+        {
+            txtEditMode.Text = flagEnable.ToString();
+
+            lblTitle.Text = "DETALHES DO PROJETO";
+
+            txtNome.Enabled = flagEnable;
+            txtDataInicio.Enabled = flagEnable;
+            txtDataTermino.Enabled = flagEnable;
+            txtDescricao.Enabled = flagEnable;
+            txtDataCadastro.Enabled = flagEnable;
+            txtDuracao.Enabled = flagEnable;
+            txtResponsavel.Enabled = flagEnable;
+            txtNomeAlteracao.Enabled = false;
+            txtDataAlteracao.Enabled = false;
+
+            txtNome.BackColor = Color.WhiteSmoke;
+            txtDataInicio.BackColor = Color.WhiteSmoke;
+            txtDataTermino.BackColor = Color.WhiteSmoke;
+            txtDescricao.BackColor = Color.WhiteSmoke;
+            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtDuracao.BackColor = Color.WhiteSmoke;
+            txtResponsavel.BackColor = Color.WhiteSmoke;
+            txtNomeAlteracao.BackColor = Color.WhiteSmoke;
+            txtDataAlteracao.BackColor = Color.WhiteSmoke;
+
+            if (flagEnable)
+            {
+                btnEditar.Visible = false;
+                btnVoltar.Visible = false;
+                btnCancelar.Visible = true;
+                btnGravar.Visible = true;
+                txtNome.Focus();
+            }
+            else
+            {
+                btnEditar.Visible = true;
+                btnVoltar.Visible = true;
+                btnCancelar.Visible = false;
+                btnGravar.Visible = false;
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(txtEditMode.Text))
+                ControlFormEdit(false);
+            else
+                ControlFormEdit(true);
+
+            /*
+            lblDados.Visible = true;
+            tabDadosCadastro.Visible = true;
+
+            DataGridViewRow linhaAtual = dataGridView1.CurrentRow;
+            var linha = dataGridView1.Rows[linhaAtual.Index];       
+            var celula = linha.Cells[0].Value;
+
+            ProjetoBLL projetoBLL = new ProjetoBLL();
+
+            Projetos projetos = new Projetos();
+            projetos.ProjetoId = Convert.ToInt32(celula);
+
+
+            Projetos retorno = projetoBLL.Localizar(projetos.ProjetoId);
+            
+             txtNome.Text = retorno.Nome;
+            
+             txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
+             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
+             txtDuracao.Text = Convert.ToString(retorno.Duracao);
+             txtDescricao.Text = retorno.Descricao;
+             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
+             txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
+             */
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            ControlFormEdit(false);
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            panelEdit.Visible = false;
+            panelConsulta.Visible = true;
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            ProjetoDTO param = new ProjetoDTO();
+
+            if (lblCodigo.Text == string.Empty)
+                param.idProjeto = 0;
+            else
+                param.idProjeto = Convert.ToInt32(lblCodigo.Text);
+
+            param.nomeProjeto = txtNome.Text;
+            param.descricaoProjeto = txtDescricao.Text;
+            param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
+            param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
+
+            ProjetoBLL bus = new ProjetoBLL();
+            var result = bus.EditProject(param);
+
+            //txtDataCadastro.Text = flagEnable;
+            //txtDuracao.Enabled = flagEnable;
+
+            /*
+            txtResponsavel.Text;
+            txtNomeAlteracao.Text = false;
+            txtDataAlteracao.Text = false;
+            */
         }
 
         #endregion
@@ -259,11 +473,6 @@ namespace ProjetoSomarUI.Cadastros
         }
 
         private void label25_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGravar_Click(object sender, EventArgs e)
         {
 
         }
@@ -371,49 +580,9 @@ namespace ProjetoSomarUI.Cadastros
 
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            /*
-            lblDados.Visible = true;
-            tabDadosCadastro.Visible = true;
-
-            DataGridViewRow linhaAtual = dataGridView1.CurrentRow;
-            var linha = dataGridView1.Rows[linhaAtual.Index];       
-            var celula = linha.Cells[0].Value;
-
-            ProjetoBLL projetoBLL = new ProjetoBLL();
-
-            Projetos projetos = new Projetos();
-            projetos.ProjetoId = Convert.ToInt32(celula);
-
-
-            Projetos retorno = projetoBLL.Localizar(projetos.ProjetoId);
-            
-             txtNome.Text = retorno.Nome;
-            
-             txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
-             txtDuracao.Text = Convert.ToString(retorno.Duracao);
-             txtDescricao.Text = retorno.Descricao;
-             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
-             txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
-             */
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             //tabDadosCadastro.Visible = false;
-        }
-
-        private void Limpar()
-        {
-            txtNome.Text = "";
-            txtDataInicio.Text = "";
-            txtDataTermino.Text = "";
-            txtDuracao.Text = "";
-            txtDescricao.Text = "";
-            txtDataCadastro.Text = "";
-            txtResponsavel.Text = "";
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -464,12 +633,5 @@ namespace ProjetoSomarUI.Cadastros
         {
             //MessageBox.Show(e.RowIndex.ToString() + " 2");
         }
-
     }
 }
-
-    
-
-
-
-

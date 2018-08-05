@@ -30,5 +30,13 @@ namespace Somar.Shared
 
             return fieldList;
         }
+
+        public static bool IsValidCellAddress(int rowIndex, int columnIndex)
+        {
+            if (columnIndex == 0)
+                return true;
+            else
+                return false;
+        }
     }
 }
