@@ -18,16 +18,16 @@ namespace ProjetoSomarUI.Cadastros
         {
             InitializeComponent();
 
-            SetGridView();
+            InitializeGridView();
             ClearForm1();
         }
-
-        #region Events
 
         private void FormProjetos_Load(object sender, EventArgs e)
         {
             CarregaGrid();
         }
+
+        #region Events
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -72,8 +72,8 @@ namespace ProjetoSomarUI.Cadastros
             ClearForm2();
             ControlFormEdit(true);
 
-            btnVoltar.Visible = true;
-            btnVoltar.Text = "Voltar";
+            btnVoltar1.Visible = true;
+            btnVoltar1.Text = "Voltar";
         }
 
         #endregion
@@ -87,7 +87,7 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
-        public void DetalhesProjeto(int idProjeto)
+        public void CarregaDetalhes(int idProjeto)
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
@@ -104,7 +104,7 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = param.nomeProjeto;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
             txtDataInicio.Text = param.dataInicio.ToShortDateString();
-            txtDataInicio.Text = param.dataTermino.ToShortDateString();
+            txtDataTermino.Text = param.dataTermino.ToShortDateString();
             txtDescricao.Text = param.descricaoProjeto;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
@@ -123,7 +123,7 @@ namespace ProjetoSomarUI.Cadastros
             lblCodigo.Text = "";
             txtNome.Text = "";
             txtDataInicio.Text = "";
-            txtDataInicio.Text = "";
+            txtDataTermino.Text = "";
             txtDuracao.Text = "";
             txtDescricao.Text = "";
             txtDataCadastro.Text = "";
@@ -137,58 +137,32 @@ namespace ProjetoSomarUI.Cadastros
 
         #region Gridview Controls
 
-        private void InitializeDataGridView()
+        public void InitializeGridView()
         {
-            /*
-            // Add columns to the DataGridView, binding them to the
-            // specified DataGridViewColumn properties.
-            AddReadOnlyColumn("HeaderText", "Column");
-            AddColumn("AutoSizeMode");
-            AddColumn("FillWeight");
-            AddColumn("MinimumWidth");
-            AddColumn("Width");
 
-            // Bind the DataGridView to its own Columns collection.
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.DataSource = dataGridView1.Columns;
-
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            // Configure the top left header cell as a reset button.
-            dataGridView1.TopLeftHeaderCell.Value = "reset";
-            dataGridView1.TopLeftHeaderCell.Style.ForeColor = System.Drawing.Color.Blue;
-
-            // Add handlers to DataGridView events.
-            dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            dataGridView1.ColumnWidthChanged += new DataGridViewColumnEventHandler(dataGridView1_ColumnWidthChanged);
-            dataGridView1.CurrentCellDirtyStateChanged += new EventHandler(dataGridView1_CurrentCellDirtyStateChanged);
-            dataGridView1.DataError += new DataGridViewDataErrorEventHandler(dataGridView1_DataError);
-            dataGridView1.CellEndEdit += new DataGridViewCellEventHandler(dataGridView1_CellEndEdit);
-            dataGridView1.CellValueChanged += new DataGridViewCellEventHandler(dataGridView1_CellValueChanged);
-            */
-        }
-
-        public void SetGridView()
-        {
             // ***************************************************************** //
             //  SET CUSTOM STYLE IN GRIDVIEW
             // ***************************************************************** //
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dataGridView1.AutoResizeColumn.
+            this.dataGridView1.AutoSize = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+
+            // ***************************************************************** //
+            /*
+            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
+            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            */
 
             /*            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            dataGridView1.AutoSize = true;
+
 
             // Configure the DataGridView so that users can manually change 
             // only the column widths, which are set to fill mode. 
@@ -196,7 +170,7 @@ namespace ProjetoSomarUI.Cadastros
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             */
 
@@ -222,7 +196,14 @@ namespace ProjetoSomarUI.Cadastros
                 DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
                 dt.DataPropertyName = item.Key;
                 dt.HeaderText = item.Value;
-                dataGridView1.Columns.Add(dt);
+
+                if (item.Key == "nomeProjeto")
+                {
+                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
+                }
+
+                this.dataGridView1.Columns.Add(dt);
             }
 
             // -------------------------------------------------------------
@@ -256,7 +237,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
             {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search;
+                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
 
                 /*
                 if (this.dataGridView1["c2", e.RowIndex].Value != null)
@@ -285,7 +266,7 @@ namespace ProjetoSomarUI.Cadastros
             {
                 int idProjeto = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
-                DetalhesProjeto(idProjeto);
+                CarregaDetalhes(idProjeto);
 
                 // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
                 // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
@@ -335,7 +316,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             txtEditMode.Text = flagEnable.ToString();
 
-            btnVoltar.Text = "Voltar";
+            btnVoltar1.Text = "Voltar";
 
             txtNome.Enabled = flagEnable;
             txtDataInicio.Enabled = flagEnable;
@@ -343,6 +324,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDescricao.Enabled = flagEnable;
             txtDuracao.Enabled = flagEnable;
             txtResponsavel.Enabled = flagEnable;
+            cmbStatus.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
             txtDataCadastro.Enabled = false;
@@ -404,6 +386,7 @@ namespace ProjetoSomarUI.Cadastros
              */
         }
 
+        /*
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelEdit.Visible = false;
@@ -411,11 +394,12 @@ namespace ProjetoSomarUI.Cadastros
 
             ControlFormEdit(false);
         }
+        */
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            panelEdit.Visible = false;
             panelConsulta.Visible = true;
+            panelEdit.Visible = false;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -483,5 +467,23 @@ namespace ProjetoSomarUI.Cadastros
         }
 
         #endregion
+        /*
+        protected override void WndProc(ref Message message)
+        {
+            const int WM_SYSCOMMAND = 0x0112;
+            const int SC_MOVE = 0xF010;
+
+            switch (message.Msg)
+            {
+                case WM_SYSCOMMAND:
+                    int command = message.WParam.ToInt32() & 0xfff0;
+                    if (command == SC_MOVE)
+                        return;
+                    break;
+            }
+
+            base.WndProc(ref message);
+        }
+        */
     }
 }

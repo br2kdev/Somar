@@ -18,14 +18,14 @@ namespace Somar.DAL.Repository
 
         public int ExecuteSQL(string query, DynamicParameters param)
         {
-            int result = 0;
+            int rowsAffected = 0;
 
             using (IDbConnection db = new SqlConnection(Globals.stringConn))
             {
-                int rowsAffected = db.Execute(query, param, commandType: CommandType.Text);
+                rowsAffected = db.Execute(query, param, commandType: CommandType.Text);
             }
 
-            return result;
+            return rowsAffected;
         }
 
         public int ExecuteSQLCommand(string query, DynamicParameters param)

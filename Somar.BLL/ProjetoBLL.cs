@@ -43,7 +43,14 @@ namespace Somar.BLL
             if(_projeto.idProjeto == 0)
                 result = cmd.InsertData(_projeto);
             else
+            { 
                 result = cmd.UpdateData(_projeto);
+
+                if(result != 0)
+                {
+                    return _projeto.idProjeto;
+                }
+            }
 
             return result;
         }

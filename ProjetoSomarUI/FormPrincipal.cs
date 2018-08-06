@@ -70,9 +70,8 @@ namespace ProjetoSomarUI
         private void projetosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormProjetos frm = new FormProjetos();
-            frm.MdiParent = this;
 
-            frm.Show();
+            frm.ShowDialog();
         }
 
         private void testeToolStripMenuItem_Click(object sender, EventArgs e)

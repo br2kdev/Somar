@@ -96,7 +96,7 @@ namespace Somar.DAL
 
             var result = sqlCommand.ExecuteSQL(query, param);
 
-            return 1;
+            return result;
         }
 
         /*

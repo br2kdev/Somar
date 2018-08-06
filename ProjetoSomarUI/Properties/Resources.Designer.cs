@@ -63,9 +63,9 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_projeto {
+        internal static System.Drawing.Bitmap icon_projeto32x32 {
             get {
-                object obj = ResourceManager.GetObject("icon_projeto", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_projeto32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,19 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icon_search {
+        internal static System.Drawing.Bitmap icon_projeto48x48 {
             get {
-                object obj = ResourceManager.GetObject("icon_search", resourceCulture);
+                object obj = ResourceManager.GetObject("icon_projeto48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_search24x24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_search24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
