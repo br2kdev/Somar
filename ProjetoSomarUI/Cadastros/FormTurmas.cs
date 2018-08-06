@@ -1,61 +1,65 @@
 ﻿using Somar.BLL;
 using Somar.DTO;
-using System;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Forms;
-using System.Reflection;
 using Somar.Shared;
-using System.IO;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormProjetos : Form
+    public partial class FormTurmas : Form
     {
-        public FormProjetos()
+        public FormTurmas()
         {
             InitializeComponent();
-
-            InitializeGridView();
-            ClearForm1();
+            InitializeForm();
         }
 
-        private void FormProjetos_Load(object sender, EventArgs e)
+        private void FormTurmas_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+            CarregaComboProjeto();
+        }
+
+        private void InitializeForm()
+        {
+            #region ComboLists
+
+            cmbSearchType.Items.Add("Nome do Turma");
+            cmbSearchType.Items.Add("Código do Turma");
+
+            cmbStatus.Items.Add("Desativado");
+            cmbStatus.Items.Add("Ativo");
+
+            
+
+            #endregion
+
+            #region Button Events
+
+            btnNovo.Click += new EventHandler(btnNew_Click);
+            btnSearch.Click += new EventHandler(btnSearch_Click);
+            btnAll.Click += new EventHandler(btnAll_Click);
+
+            btnEditar.Click += new EventHandler(btnEditar_Click);
+            btnVoltar1.Click += new EventHandler(btnVoltar_Click);
+            btnGravar.Click += new EventHandler(btnGravar_Click);
+
+            #endregion
+
+            Load += new EventHandler(FormTurmas_Load);
+
+            txtDataInicio.CustomFormat = txtDataTermino.CustomFormat = "HH:mm";
+            txtDataInicio.ShowUpDown = txtDataTermino.ShowUpDown = true;
+
+            InitializeGridView();
+
+            ClearForm1();
         }
 
         #region Events
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var param = new ProjetoDTO();
-
-            if (cmbSearchType.SelectedItem.ToString() == "Nome do Projeto")
-            {
-                param.nomeProjeto = txtSearch.Text;
-            }
-            else if (cmbSearchType.SelectedItem.ToString() == "Código do Projeto")
-            {
-                if (txtSearch.Text != string.Empty)
-                    param.idProjeto = Convert.ToInt32(txtSearch.Text);
-            }
-
-            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(param);
-
-            GridViewDataBind(lista);
-        }
-
-        private void btnAll_Click(object sender, EventArgs e)
-        {
-            ClearForm1();
-
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
-
-            GridViewDataBind(lista);
-        }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -70,36 +74,74 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Text = "Voltar";
         }
 
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var param = new TurmaDTO();
+
+            if (cmbSearchType.SelectedItem.ToString() == "Nome do Turma")
+            {
+                param.nomeTurma = txtSearch.Text;
+            }
+            else if (cmbSearchType.SelectedItem.ToString() == "Código do Turma")
+            {
+                if (txtSearch.Text != string.Empty)
+                    param.idTurma = Convert.ToInt32(txtSearch.Text);
+            }
+
+            List<TurmaDTO> lista = new TurmaBLL().GetDataWithParam(param);
+
+            GridViewDataBind(lista);
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            ClearForm1();
+
+            List<TurmaDTO> lista = new TurmaBLL().GetAllData();
+
+            GridViewDataBind(lista);
+        }
+
         #endregion
 
         #region Methods
 
         public void CarregaGrid()
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
+            List<TurmaDTO> lista = new TurmaBLL().GetAllData();
 
             GridViewDataBind(lista);
         }
 
-        public void CarregaDetalhes(int idProjeto)
+        public void CarregaComboProjeto()
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(new ProjetoDTO());
+
+            cmbProjeto.DisplayMember = "nomeProjeto";
+            cmbProjeto.ValueMember = "idProjeto";
+            cmbProjeto.DataSource = lista;
+        }
+
+        public void CarregaDetalhes(int idTurma)
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
-            ProjetoDTO param = new ProjetoDTO();
-            param.idProjeto = idProjeto;
+            TurmaDTO param = new TurmaDTO();
+            param.idTurma = idTurma;
 
-            param = new ProjetoBLL().GetByID(param);
+            param = new TurmaBLL().GetByID(param);
 
             // ************************************************** //
             // Preenche Tela de Detalhes
             // ************************************************** //
-            lblCodigo.Text = param.idProjeto.ToString();
-            txtNome.Text = param.nomeProjeto;
+            lblCodigo.Text = param.idTurma.ToString();
+            cmbProjeto.SelectedValue = param.idProjeto;
+            txtNome.Text = param.nomeTurma;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
-            txtDataInicio.Text = param.dataInicio.ToShortDateString();
-            txtDataTermino.Text = param.dataTermino.ToShortDateString();
-            txtDescricao.Text = param.descricaoProjeto;
+            txtDataInicio.Text = param.horaInicio.ToShortTimeString();
+            txtDataTermino.Text = param.horaTermino.ToShortTimeString();
+            txtDescricao.Text = param.descricaoTurma;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
 
@@ -172,7 +214,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new ProjetoDTO());
+            var fields = new GridViewControl().GetFields(new TurmaDTO());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -191,7 +233,7 @@ namespace ProjetoSomarUI.Cadastros
                 dt.DataPropertyName = item.Key;
                 dt.HeaderText = item.Value;
 
-                if (item.Key == "nomeProjeto")
+                if (item.Key == "nomeTurma")
                 {
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
@@ -210,13 +252,13 @@ namespace ProjetoSomarUI.Cadastros
             // ***************************************************************** //
         }
 
-        public void GridViewDataBind(List<ProjetoDTO> result)
+        public void GridViewDataBind(List<TurmaDTO> result)
         {
             if (result.Count == 0)
             {
                 dataGridView1.Visible = false;
                 panelMessage.Visible = true;
-                lblMessage.Text = "Nenhum projeto encontrado";
+                lblMessage.Text = "Nenhum Turma encontrado";
             }
             else
             {
@@ -258,9 +300,9 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (e.ColumnIndex == 0)
             {
-                int idProjeto = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
+                int idTurma = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
-                CarregaDetalhes(idProjeto);
+                CarregaDetalhes(idTurma);
 
                 // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
                 // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
@@ -292,7 +334,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cmbSearchType.SelectedItem.ToString() == "Código do Projeto")
+            if (cmbSearchType.SelectedItem.ToString() == "Código do Turma")
             {
                 if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
                 {
@@ -313,6 +355,7 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Text = "Voltar";
 
             txtNome.Enabled = flagEnable;
+            cmbProjeto.Enabled = flagEnable;
             txtDataInicio.Enabled = flagEnable;
             txtDataTermino.Enabled = flagEnable;
             txtDescricao.Enabled = flagEnable;
@@ -361,13 +404,13 @@ namespace ProjetoSomarUI.Cadastros
             var linha = dataGridView1.Rows[linhaAtual.Index];       
             var celula = linha.Cells[0].Value;
 
-            ProjetoBLL projetoBLL = new ProjetoBLL();
+            TurmaBLL TurmaBLL = new TurmaBLL();
 
-            Projetos projetos = new Projetos();
-            projetos.ProjetoId = Convert.ToInt32(celula);
+            Turmas Turmas = new Turmas();
+            Turmas.TurmaId = Convert.ToInt32(celula);
 
 
-            Projetos retorno = projetoBLL.Localizar(projetos.ProjetoId);
+            Turmas retorno = TurmaBLL.Localizar(Turmas.TurmaId);
             
              txtNome.Text = retorno.Nome;
             
@@ -398,31 +441,32 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            ProjetoDTO param = new ProjetoDTO();
+            TurmaDTO param = new TurmaDTO();
 
             if (lblCodigo.Text == string.Empty)
-                param.idProjeto = 0;
+                param.idTurma = 0;
             else
-                param.idProjeto = Convert.ToInt32(lblCodigo.Text);
+                param.idTurma = Convert.ToInt32(lblCodigo.Text);
 
-            param.nomeProjeto = txtNome.Text;
+            param.nomeTurma = txtNome.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-            param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
-            param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
-            param.descricaoProjeto = txtDescricao.Text;
+            param.horaInicio = Convert.ToDateTime(txtDataInicio.Text);
+            param.horaTermino = Convert.ToDateTime(txtDataTermino.Text);
+            param.descricaoTurma = txtDescricao.Text;
+            param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             //param.idPessoaResposavel = //txtResponsavel.Text;
 
-            ProjetoBLL bus = new ProjetoBLL();
-            var idProjeto = bus.SaveProject(param);
+            TurmaBLL bus = new TurmaBLL();
+            var idTurma = bus.SaveProject(param);
 
-            if (idProjeto > 0)
+            if (idTurma > 0)
             {
-                lblCodigo.Text = idProjeto.ToString();
-                MessageBox.Show("Projeto gravado com sucesso!");
+                lblCodigo.Text = idTurma.ToString();
+                MessageBox.Show("Turma gravado com sucesso!");
                 CarregaGrid();
             }
             else
-                throw new Exception("Erro de Gravação do Projeto");
+                throw new Exception("Erro de Gravação do Turma");
 
         }
 
@@ -436,23 +480,23 @@ namespace ProjetoSomarUI.Cadastros
             var linha = dataGridView1.Rows[linhaAtual.Index];       //i é o número  da linha seleccionada
             var celula = linha.Cells[0].Value;
 
-            ProjetoBLL projetoBLL = new ProjetoBLL();
+            TurmaBLL TurmaBLL = new TurmaBLL();
 
-            Projetos projetos = new Projetos();
-            projetos.ProjetoId = Convert.ToInt32(celula);
+            Turmas Turmas = new Turmas();
+            Turmas.TurmaId = Convert.ToInt32(celula);
 
 
-            var retorno = projetoBLL.Excluir(projetos);
+            var retorno = TurmaBLL.Excluir(Turmas);
             if (retorno == null)
             {
-                throw new Exception("Erro de Gravação do Projeto");
+                throw new Exception("Erro de Gravação do Turma");
 
             }
             else
             {
-                ProjetoBLL projetoRecarga = new ProjetoBLL();
+                TurmaBLL TurmaRecarga = new TurmaBLL();
 
-                List<Projetos> proj = projetoRecarga.GetProjetos();
+                List<Turmas> proj = TurmaRecarga.GetTurmas();
 
                 dataGridView1.DataSource = proj.ToList();
                 Limpar();
@@ -478,6 +522,5 @@ namespace ProjetoSomarUI.Cadastros
 
             base.WndProc(ref message);
         }
-
     }
 }

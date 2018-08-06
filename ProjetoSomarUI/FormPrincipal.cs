@@ -74,6 +74,13 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void turmasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTurmas frm = new FormTurmas();
+
+            frm.ShowDialog();
+        }
+
         private void testeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             /*
@@ -84,5 +91,7 @@ namespace ProjetoSomarUI
             frm.Show();
             */
         }
+
+
     }
 }

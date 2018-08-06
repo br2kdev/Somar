@@ -14,7 +14,6 @@ namespace Somar.DAL
 {
     public class ProjetoDAL : BaseDAL
     {
-
         public List<ProjetoDTO> GetDataInDataBase(ProjetoDTO objectDTO)
         {
             RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
@@ -31,6 +30,9 @@ namespace Somar.DAL
 
             if (objectDTO.nomeProjeto != string.Empty)
                 whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
+
+            //if (objectDTO.flagAtivo != null)
+            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
 
             query += whereClause;
 
@@ -99,52 +101,6 @@ namespace Somar.DAL
             return result;
         }
 
-        /*
-        public List<ProjetoDTO> ReadAll()
-        {
-            RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
-
-            return listProjeto.GetAllData("SELECT * FROM TB_Projetos");
-
-            using (IDbConnection db = new SqlConnection(Globals.stringConn))
-            {
-                try
-                {
-                    listProjeto = db.Query<ProjetoDTO>("SELECT * FROM Projetos").ToList();
-                }
-                finally
-                {
-
-                }
-            }
-
-            return listProjeto;
-        }
-        */
-
-        /*
-        public List<ProjetoDTO> GetAll(ProjetoDTO _projeto)
-        {
-            RepList<ProjetoDTO> lista = new RepList<ProjetoDTO>();
-
-            param.Add(pair.Key, pair.Value);
-            param.Add()
-
-            return lista.returnListClass2("USP_Projeto", param);
-        }
-        */
-
-        /*
-        public List<ProjetoDTO> GetAll(ProjetoDTO _projeto)
-        {
-            RepList<ProjetoDTO> lista = new RepList<ProjetoDTO>();
-
-            DynamicParameters param = new DynamicParameters();
-
-            return lista.returnListClass("USP_Projeto", param);
-        }
-        */
-
         public DataSet Consultar(string Sql)
         {
             DataTable _datatable = new DataTable();
@@ -209,61 +165,5 @@ namespace Somar.DAL
 
         }
 
-        /*
-        public string insertUpdate(ProjetoDTO _projeto)
-        {
-            RepGen reposGen = new Repository.RepGen();
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@idProjeto", _projeto.idProjeto);
-            param.Add("@nomeProjeto", _projeto.nomeProjeto);
-            param.Add("@descricaoProjeto", _projeto.descricaoProjeto);
-            param.Add("@dataInicio", _projeto.dataInicio);
-            param.Add("@dataTermino", _projeto.dataTermino);
-            param.Add("@idPessoaResposavel", _projeto.idPessoaResposavel);
-            param.Add("@dataCadastro", _projeto.dataCadastro);
-            param.Add("@flagAtivo", _projeto.flagAtivo);
-            param.Add("@dataUltAlteracao", _projeto.dataUltAlteracao);
-            param.Add("@idPessoaUltAlteracao", _projeto.idPessoaUltAlteracao);
-
-            return reposGen.executeNonQuery("users_Insert_Update", param);
-        }
-        */
-
-        /*
-        public string delete(ProjetoDTO _projeto)
-        {
-            RepGen reposGen = new Repository.RepGen();
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id", _projeto.id);
-            return reposGen.executeNonQuery("users_DeleteRow_By_id", param);
-        }
-        */
-
-        /*
-        public List<ProjetoDTO> AllRecordsById(string id)
-        {
-            RepList<ProjetoDTO> lista = new RepList<ProjetoDTO>();
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@id", id);
-            return lista.returnListClass("users_SelectRow_By_id", param);
-        }
-
-        public ProjetoDTO findById(string id)
-        {
-            RepList<ProjetoDTO> class_usu = new RepList<ProjetoDTO>();
-            DynamicParameters param = new DynamicParameters();
-            param.Add("@Id", id);
-            return class_usu.returnClass("users_SelectRow_By_id", param);
-        }
-
-        public List<dynamic> dynamicsList()
-        {
-            Funciones FG = new Funciones();
-            DynamicParameters param = new DynamicParameters();
-            Repository.RepList<dynamic> repo = new Repository.RepList<dynamic>();
-            var items = repo.returnListClass("users_SelectwithDate", param);
-            return items;
-        }
-        */
     }
 }

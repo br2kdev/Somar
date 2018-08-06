@@ -77,6 +77,7 @@
             this.turmasToolStripMenuItem.Name = "turmasToolStripMenuItem";
             this.turmasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.turmasToolStripMenuItem.Text = "Turmas";
+            this.turmasToolStripMenuItem.Click += new System.EventHandler(this.turmasToolStripMenuItem_Click);
             // 
             // pessoasToolStripMenuItem
             // 
@@ -116,7 +117,7 @@
             // testeToolStripMenuItem
             // 
             this.testeToolStripMenuItem.Name = "testeToolStripMenuItem";
-            this.testeToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.testeToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.testeToolStripMenuItem.Text = "Teste";
             this.testeToolStripMenuItem.Click += new System.EventHandler(this.testeToolStripMenuItem_Click);
             // 

@@ -56,6 +56,7 @@
     <Compile Include="Repository\RepGen.cs" />
     <Compile Include="Repository\RepList.cs" />
     <Compile Include="ProjetoDAL.cs" />
+    <Compile Include="TurmaDAL.cs" />
     <Compile Include="Utilities\ConnectionDB.cs" />
     <Compile Include="Utilities\Funciones.cs" />
     <Compile Include="Utilities\Globals.cs" />
