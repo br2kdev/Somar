@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cadastros\FormPessoas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\FormPessoas.Designer.cs">
+      <DependentUpon>FormPessoas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\FormProjetos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Cadastros\FormPessoas.resx">
+      <DependentUpon>FormPessoas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormProjetos.resx">
       <DependentUpon>FormProjetos.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +120,7 @@
     <Content Include="imgs\icon_projeto32x32.png" />
     <Content Include="imgs\icon_projeto48x48.png" />
     <Content Include="imgs\icon_search24x24.png" />
+    <Content Include="imgs\icon_user32x32.png" />
     <Content Include="imgs\Logo.png" />
     <Content Include="imgs\LogoSimples.png" />
   </ItemGroup>

@@ -6,32 +6,27 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormTurmas : Form
+    public partial class FormPessoas : Form
     {
-        public FormTurmas()
+        public FormPessoas()
         {
             InitializeComponent();
             InitializeForm();
-        }
-
-        private void FormTurmas_Load(object sender, EventArgs e)
-        {
-            CarregaGrid();
-            CarregaComboProjeto();
         }
 
         private void InitializeForm()
         {
             #region ComboLists
 
-            cmbSearchType.Items.Add("Nome do Turma");
-            cmbSearchType.Items.Add("Código do Turma");
+            cmbSearchType.Items.Add("Nome da Pessoa");
+            cmbSearchType.Items.Add("Código da Pessoa");
 
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
+
+
 
             #endregion
 
@@ -45,16 +40,24 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
 
+            //txtCEP.LostFocus += new EventHandler(txtCEP_LostFocus);
+
             #endregion
 
-            Load += new EventHandler(FormTurmas_Load);
+            Load += new EventHandler(FormPessoas_Load);
 
-            txtDataInicio.CustomFormat = txtDataTermino.CustomFormat = "HH:mm";
-            txtDataInicio.ShowUpDown = txtDataTermino.ShowUpDown = true;
+            //txtDataInicio.CustomFormat = txtDataNascimento.CustomFormat = "HH:mm";
+            //txtDataInicio.ShowUpDown = txtDataNascimento.ShowUpDown = true;
 
             InitializeGridView();
 
             ClearForm1();
+        }
+
+        private void FormPessoas_Load(object sender, EventArgs e)
+        {
+            CarregaGrid();
+            CarregaComboGenero();
         }
 
         #region Events
@@ -74,19 +77,19 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var param = new TurmaDTO();
+            var param = new PessoaDTO();
 
-            if (cmbSearchType.SelectedItem.ToString() == "Nome do Turma")
+            if (cmbSearchType.SelectedItem.ToString() == "Nome da Pessoa")
             {
-                param.nomeTurma = txtSearch.Text;
+                param.nomePessoa = txtSearch.Text;
             }
-            else if (cmbSearchType.SelectedItem.ToString() == "Código do Turma")
+            else if (cmbSearchType.SelectedItem.ToString() == "Código da Pessoa")
             {
                 if (txtSearch.Text != string.Empty)
-                    param.idTurma = Convert.ToInt32(txtSearch.Text);
+                    param.idPessoa = Convert.ToInt32(txtSearch.Text);
             }
 
-            List<TurmaDTO> lista = new TurmaBLL().GetDataWithParam(param);
+            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(param);
 
             GridViewDataBind(lista);
         }
@@ -95,7 +98,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             ClearForm1();
 
-            List<TurmaDTO> lista = new TurmaBLL().GetAllData();
+            List<PessoaDTO> lista = new PessoaBLL().GetAllData();
 
             GridViewDataBind(lista);
         }
@@ -106,42 +109,56 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaGrid()
         {
-            List<TurmaDTO> lista = new TurmaBLL().GetAllData();
+            List<PessoaDTO> lista = new PessoaBLL().GetAllData();
 
             GridViewDataBind(lista);
         }
 
-        public void CarregaComboProjeto()
+        public void CarregaComboGenero()
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(new ProjetoDTO());
+            List<GeneroDTO> lista = new GeneroBLL().GetAllData();
 
-            cmbProjeto.DisplayMember = "nomeProjeto";
-            cmbProjeto.ValueMember = "idProjeto";
-            cmbProjeto.DataSource = lista;
+            cmbGenero.DisplayMember = "nomeGenero";
+            cmbGenero.ValueMember = "idGenero";
+            cmbGenero.DataSource = lista;
         }
 
-        public void CarregaDetalhes(int idTurma)
+        public void CarregaDetalhes(int idPessoa)
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
-            TurmaDTO param = new TurmaDTO();
-            param.idTurma = idTurma;
+            PessoaDTO param = new PessoaDTO();
+            param.idPessoa = idPessoa;
 
-            param = new TurmaBLL().GetByID(param);
+            param = new PessoaBLL().GetByID(param);
 
             // ************************************************** //
             // Preenche Tela de Detalhes
             // ************************************************** //
-            lblCodigo.Text = param.idTurma.ToString();
-            cmbProjeto.SelectedValue = param.idProjeto;
-            txtNome.Text = param.nomeTurma;
+            lblCodigo.Text = param.idPessoa.ToString();
+            txtNome.Text = param.nomePessoa;
+            txtRG.Text = param.numeroRG;
+            txtCPF.Text = param.numeroCPF;
+            txtDataAtivacao.Text = param.dataAtivacao.ToShortDateString();
+            txtDataNascimento.Text = param.dataNascimento.ToShortDateString();
+
+            if (param.dataNascimento != null)
+               txtIdade.Text = new Functions().CalcularIdade(param.dataNascimento).ToString();
+
+            cmbGenero.SelectedValue = param.idGenero;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
+
+            /*
+            txtNome.Text = param.nomeTurma;
             txtDataInicio.Text = param.horaInicio.ToShortTimeString();
-            txtDataTermino.Text = param.horaTermino.ToShortTimeString();
+            txtDataNascimento.Text = param.horaTermino.ToShortTimeString();
             txtDescricao.Text = param.descricaoTurma;
+            */
+            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            
 
             ControlFormEdit(false);
         }
@@ -154,15 +171,19 @@ namespace ProjetoSomarUI.Cadastros
 
         public void ClearForm2()
         {
-            lblCodigo.Text = "";
-            txtNome.Text = "";
-            txtDataInicio.Text = "";
-            txtDataTermino.Text = "";
-            txtDuracao.Text = "";
-            txtDescricao.Text = "";
-            txtDataCadastro.Text = "";
-            txtResponsavel.Text = "";
+            lblCodigo.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtRG.Text = string.Empty;
+            txtCPF.Text = string.Empty;
+            txtDataAtivacao.Text = string.Empty;
+            txtDataNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
+
+            /*
+            txtDataNascimento.Enabled = false;
+            txtDataNascimento.Format = DateTimePickerFormat.Custom;
+            txtDataNascimento.CustomFormat = " ";
+            */
         }
 
         #endregion
@@ -212,7 +233,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new TurmaDTO());
+            var fields = new GridViewControl().GetFields(new PessoaDTO());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -231,7 +252,7 @@ namespace ProjetoSomarUI.Cadastros
                 dt.DataPropertyName = item.Key;
                 dt.HeaderText = item.Value;
 
-                if (item.Key == "nomeTurma")
+                if (item.Key == "nomePessoa")
                 {
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
@@ -250,13 +271,13 @@ namespace ProjetoSomarUI.Cadastros
             // ***************************************************************** //
         }
 
-        public void GridViewDataBind(List<TurmaDTO> result)
+        public void GridViewDataBind(List<PessoaDTO> result)
         {
             if (result.Count == 0)
             {
                 dataGridView1.Visible = false;
                 panelMessage.Visible = true;
-                lblMessage.Text = "Nenhum Turma encontrado";
+                lblMessage.Text = "Nenhuma pessoa encontrada";
             }
             else
             {
@@ -298,9 +319,9 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (e.ColumnIndex == 0)
             {
-                int idTurma = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
+                int idPessoa = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
-                CarregaDetalhes(idTurma);
+                CarregaDetalhes(idPessoa);
 
                 // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
                 // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
@@ -332,7 +353,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void txtSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cmbSearchType.SelectedItem.ToString() == "Código do Turma")
+            if (cmbSearchType.SelectedItem.ToString() == "Código da Pessoa")
             {
                 if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
                 {
@@ -353,24 +374,43 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Text = "Voltar";
 
             txtNome.Enabled = flagEnable;
-            cmbProjeto.Enabled = flagEnable;
-            txtDataInicio.Enabled = flagEnable;
-            txtDataTermino.Enabled = flagEnable;
-            txtDescricao.Enabled = flagEnable;
-            txtDuracao.Enabled = flagEnable;
-            txtResponsavel.Enabled = flagEnable;
+            txtRG.Enabled = flagEnable;
+            txtCPF.Enabled = flagEnable;
+            txtDataNascimento.Enabled = flagEnable;
+            txtIdade.Enabled = false;
+            cmbGenero.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
+            txtDataAtivacao.Enabled = flagEnable;
+
+
+            //Endereço
+            txtCEP.Enabled = flagEnable;
+
+            /*
+            txtLogradouro.Enabled = flagEnable;
+            txtNumero.Enabled = flagEnable;
+            txtBairro.Enabled = flagEnable;
+            txtCidade.Enabled = flagEnable;
+            txtComplemento.Enabled = flagEnable;
+            txtUF.Enabled = flagEnable;
+            */
+
+            //Contatos
+
+            //Observações
+            txtDescricao.Enabled = flagEnable;
+
+
+            //Footer
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
             txtDataCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataInicio.BackColor = Color.WhiteSmoke;
-            txtDataTermino.BackColor = Color.WhiteSmoke;
+            txtDataNascimento.BackColor = Color.WhiteSmoke;
             txtDescricao.BackColor = Color.WhiteSmoke;
             txtDataCadastro.BackColor = Color.WhiteSmoke;
-            txtDuracao.BackColor = Color.WhiteSmoke;
-            txtResponsavel.BackColor = Color.WhiteSmoke;
+            txtIdade.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -439,32 +479,70 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            TurmaDTO param = new TurmaDTO();
+
+            // *********************************************
+            // PESSOA
+            // *********************************************
+            PessoaDTO param = new PessoaDTO();
 
             if (lblCodigo.Text == string.Empty)
-                param.idTurma = 0;
+                param.idPessoa = 0;
             else
-                param.idTurma = Convert.ToInt32(lblCodigo.Text);
+                param.idPessoa = Convert.ToInt32(lblCodigo.Text);
 
-            param.nomeTurma = txtNome.Text;
+            param.nomePessoa = txtNome.Text;
+            param.numeroRG = txtRG.Text;
+            param.numeroCPF = txtCPF.Text;
+            param.dataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
+            param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
+            param.dataAtivacao = Convert.ToDateTime(txtDataAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
+
+            // *********************************************
+            // ENDEREÇO
+            // *********************************************
+            /*
+            param.endereco = new EnderecoDTO();
+            param.endereco.CEP = txtCEP.Text;
+            param.endereco.logradouro = txtLogradouro.Text;
+            param.endereco.numero = txtNumero.Text;
+            param.endereco.complemento = txtComplemento.Text;
+            param.endereco.nomeBairro = txtBairro.Text;
+            param.endereco.nomeCidade = txtCidade.Text;
+            param.endereco.siglaUF = txtUF.Text;
+            */
+            // *********************************************
+            // CONTATO
+            // *********************************************
+            /*
+            param.contato = new EnderecoDTO();
+            param.contato.CEP = txtCEP.Text;
+            param.contato.logradouro = txtLogradouro.Text;
+            param.contato.numero = txtNumero.Text;
+            param.contato.complemento = txtComplemento.Text;
+            param.contato.nomeBairro = txtBairro.Text;
+            param.contato.nomeCidade = txtCidade.Text;
+            param.contato.siglaUF = txtUF.Text;
+            */
+            /*
             param.horaInicio = Convert.ToDateTime(txtDataInicio.Text);
-            param.horaTermino = Convert.ToDateTime(txtDataTermino.Text);
+            param.horaTermino = Convert.ToDateTime(txtDataNascimento.Text);
             param.descricaoTurma = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
+            */
             //param.idPessoaResposavel = //txtResponsavel.Text;
 
-            TurmaBLL bus = new TurmaBLL();
-            var idTurma = bus.SaveProject(param);
+            PessoaBLL bus = new PessoaBLL();
+            var idPessoa = bus.SaveProject(param);
 
-            if (idTurma > 0)
+            if (idPessoa > 0)
             {
-                lblCodigo.Text = idTurma.ToString();
-                MessageBox.Show("Turma gravado com sucesso!");
+                lblCodigo.Text = idPessoa.ToString();
+                MessageBox.Show("Pessoa cadastrada com sucesso!");
                 CarregaGrid();
             }
             else
-                throw new Exception("Erro de Gravação do Turma");
+                throw new Exception("Erro de Gravação!");
 
         }
 
@@ -504,21 +582,5 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
-        protected override void WndProc(ref Message message)
-        {
-            const int WM_SYSCOMMAND = 0x0112;
-            const int SC_MOVE = 0xF010;
-
-            switch (message.Msg)
-            {
-                case WM_SYSCOMMAND:
-                    int command = message.WParam.ToInt32() & 0xfff0;
-                    if (command == SC_MOVE)
-                        return;
-                    break;
-            }
-
-            base.WndProc(ref message);
-        }
     }
 }

@@ -12,42 +12,44 @@ using System.Threading.Tasks;
 
 namespace Somar.DAL
 {
-    public class ProjetoDAL
+    public class PessoaDAL
     {
-        public List<ProjetoDTO> GetDataInDataBase(ProjetoDTO objectDTO)
+        public List<PessoaDTO> GetDataInDataBase(PessoaDTO objectDTO)
         {
-            RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
+            RepList<PessoaDTO> listPessoa = new RepList<PessoaDTO>();
 
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
             query += "SELECT *, ";
             query += " descricaoAtivo = CASE WHEN flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
-            query += "FROM TB_Projetos";
+            query += "FROM TB_Pessoas A ";
+            query += "LEFT JOIN TB_Genero B ON A.idGenero = B.idGenero";
 
-            if (objectDTO.idProjeto != 0)
-                whereClause += " AND idProjeto = " + objectDTO.idProjeto.ToString();
+            if (objectDTO.idPessoa != 0)
+                whereClause += " AND idPessoa = " + objectDTO.idPessoa.ToString();
 
-            if (objectDTO.nomeProjeto != string.Empty)
-                whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
+            if (objectDTO.nomePessoa != string.Empty)
+                whereClause += " AND nomePessoa like '%" + objectDTO.nomePessoa + "%'";
 
             //if (objectDTO.flagAtivo != null)
             //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
 
             query += whereClause;
 
-            return listProjeto.GetDataInDatabase(query);
+            return listPessoa.GetDataInDatabase(query);
         }
 
-        public int InsertData(ProjetoDTO objectDTO)
+        public int InsertData(PessoaDTO objectDTO)
         {
-            RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
-            RepGen<ProjetoDTO> sqlCommand = new RepGen<ProjetoDTO>();
+            
+            RepList<PessoaDTO> listProjeto = new RepList<PessoaDTO>();
+            RepGen<PessoaDTO> sqlCommand = new RepGen<PessoaDTO>();
 
-            string query = "INSERT INTO TB_Projetos VALUES (";
+            string query = "INSERT INTO TB_Pessoas VALUES (";
             var param = new DynamicParameters();
-
-            param.Add("@nomeProjeto", objectDTO.nomeProjeto, DbType.String);
+            /*
+            param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
             param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
             param.Add("@dataInicio", objectDTO.dataInicio, DbType.DateTime);
             param.Add("@dataTermino", objectDTO.dataTermino, DbType.DateTime);
@@ -58,32 +60,53 @@ namespace Somar.DAL
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
-                query += "@" +item + ",";
+                query += "@" + item + ",";
 
             query = query.Remove(query.Length - 1) + ")";
 
             query += "; SELECT CAST(scope_identity() AS int)";
-
+            */
             var result = sqlCommand.ExecuteSQLCommand(query, param);
 
             return result;
         }
 
-        public int UpdateData(ProjetoDTO objectDTO)
+        public int UpdateData(PessoaDTO objectDTO)
         {
-            RepList<ProjetoDTO> listProjeto = new RepList<ProjetoDTO>();
-            RepGen<ProjetoDTO> sqlCommand = new RepGen<ProjetoDTO>();
+            RepList<PessoaDTO> listProjeto = new RepList<PessoaDTO>();
+            RepGen<PessoaDTO> sqlCommand = new RepGen<PessoaDTO>();
 
-            string query = "UPDATE TB_Projetos SET ";
+            string query = "UPDATE TB_Pessoas SET ";
             string where = string.Empty;
 
             var param = new DynamicParameters();
+            /*
+             	idPessoa				INT IDENTITY(1,1),
+	            nomePessoa				NVARCHAR(100),
+	            dataNascimento			SMALLDATETIME,
+	            idGenero				INT,		
+	            dataAtivacao			SMALLDATETIME,
+	            numeroRG				VARCHAR(20),
+	            numeroCPF				VARCHAR(20),
+	            observacoes				VARCHAR(400),
+	            idEndereco				INT,
+	            idContato				INT,
+	            dataCadastro			SMALLDATETIME,
+	            flagAtivo				BIT,
+	            dataUltAlteracao		SMALLDATETIME,
+	            idPessoaUltAlteracao	INT 
+            */
+            param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
+            param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
+            param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
+            param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
+            param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
+            param.Add("@numeroCPF", objectDTO.numeroCPF, DbType.String);
+            param.Add("@observacoes", objectDTO.observacoes, DbType.String);
+            param.Add("@idEndereco", objectDTO.idEndereco, DbType.Int32);
+            param.Add("@idContato", objectDTO.idContato, DbType.Int32);
 
-            param.Add("@nomeProjeto", objectDTO.nomeProjeto, DbType.String);
-            param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
-            param.Add("@dataInicio", objectDTO.dataInicio, DbType.DateTime);
-            param.Add("@dataTermino", objectDTO.dataTermino, DbType.DateTime);
-            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
@@ -93,7 +116,7 @@ namespace Somar.DAL
 
             query = query.Remove(query.Length - 1);
 
-            where += " WHERE idProjeto = " + objectDTO.idProjeto.ToString();
+            where += " WHERE idPessoa = " + objectDTO.idPessoa.ToString();
             query += where;
 
             var result = sqlCommand.ExecuteSQL(query, param);
@@ -110,7 +133,7 @@ namespace Somar.DAL
             {
                 con.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT * FROM TB_Projeto", con))
+                using (SqlCommand command = new SqlCommand("SELECT * FROM TB_Pessoa", con))
                 {
                     SqlDataAdapter da = new SqlDataAdapter(command);
 

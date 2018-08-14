@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Somar.DAL.Utilities
 {
-    public class Funciones
+    public class Functions
     {
 
         public DataTable ConvertToDataTable(IEnumerable<dynamic> items)

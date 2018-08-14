@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Somar.DAL
 {
-    public class TurmaDAL : BaseDAL
+    public class TurmaDAL
     {
         public List<TurmaDTO> GetDataInDataBase(TurmaDTO _turmaDTO)
         {

@@ -51,18 +51,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseDAL.cs" />
+    <Compile Include="EnderecoDAL.cs" />
+    <Compile Include="Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entities.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="GeneroDAL.cs" />
+    <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepGen.cs" />
     <Compile Include="Repository\RepList.cs" />
     <Compile Include="ProjetoDAL.cs" />
     <Compile Include="TurmaDAL.cs" />
     <Compile Include="Utilities\ConnectionDB.cs" />
-    <Compile Include="Utilities\Funciones.cs" />
+    <Compile Include="Utilities\Functions.cs" />
     <Compile Include="Utilities\Globals.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Entities.xsc">
+      <DependentUpon>Entities.xsd</DependentUpon>
+    </None>
+    <None Include="Entities.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Entities.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Entities.xss">
+      <DependentUpon>Entities.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

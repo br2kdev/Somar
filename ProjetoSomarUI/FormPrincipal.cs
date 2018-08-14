@@ -64,7 +64,9 @@ namespace ProjetoSomarUI
 
         private void pessoasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FormPessoas frm = new FormPessoas();
 
+            frm.ShowDialog();
         }
 
         private void projetosToolStripMenuItem_Click(object sender, EventArgs e)

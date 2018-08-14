@@ -37,8 +37,6 @@ namespace Somar.DAL.Repository
             }
         }
 
-
-
         /*
         public List<T> returnListClass(string query, DynamicParameters param)
         {

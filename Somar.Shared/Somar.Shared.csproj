@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions.cs" />
     <Compile Include="GridViewControl.cs" />
     <Compile Include="Hardworker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
