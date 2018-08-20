@@ -10,10 +10,10 @@ namespace Somar.BLL
 {
     public class ProjetoBLL
     {
-        public List<ProjetoDTO> GetAllData()
+        public List<ProjetoDTO> GetAllData(bool onlyActive)
         {
             ProjetoDAL cmd = new ProjetoDAL();
-            return cmd.GetDataInDataBase(new ProjetoDTO());
+            return cmd.GetDataInDataBase(new ProjetoDTO() { flagAtivo = onlyActive });
         }
 
         public List<ProjetoDTO> GetDataWithParam(ProjetoDTO _projeto)

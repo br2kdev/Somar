@@ -24,12 +24,12 @@ namespace Somar.DAL
             query += "SELECT *, ";
             query += " descricaoAtivo = CASE WHEN flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += "FROM TB_Pessoas A ";
-            query += "LEFT JOIN TB_Genero B ON A.idGenero = B.idGenero";
+            query += "LEFT JOIN TB_Genero    B ON A.idGenero = B.idGenero";
 
             if (objectDTO.idPessoa != 0)
                 whereClause += " AND idPessoa = " + objectDTO.idPessoa.ToString();
 
-            if (objectDTO.nomePessoa != string.Empty)
+            if (!string.IsNullOrEmpty(objectDTO.nomePessoa))
                 whereClause += " AND nomePessoa like '%" + objectDTO.nomePessoa + "%'";
 
             //if (objectDTO.flagAtivo != null)
@@ -42,18 +42,21 @@ namespace Somar.DAL
 
         public int InsertData(PessoaDTO objectDTO)
         {
-            
             RepList<PessoaDTO> listProjeto = new RepList<PessoaDTO>();
             RepGen<PessoaDTO> sqlCommand = new RepGen<PessoaDTO>();
 
             string query = "INSERT INTO TB_Pessoas VALUES (";
             var param = new DynamicParameters();
-            /*
+
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
-            param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
-            param.Add("@dataInicio", objectDTO.dataInicio, DbType.DateTime);
-            param.Add("@dataTermino", objectDTO.dataTermino, DbType.DateTime);
-            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
+            param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
+            param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
+            param.Add("@numeroCPF", objectDTO.numeroCPF, DbType.String);
+            param.Add("@observacoes", objectDTO.observacoes, DbType.String);
+            param.Add("@idEndereco", objectDTO.idEndereco, DbType.Int32);
+            param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
@@ -65,7 +68,7 @@ namespace Somar.DAL
             query = query.Remove(query.Length - 1) + ")";
 
             query += "; SELECT CAST(scope_identity() AS int)";
-            */
+            
             var result = sqlCommand.ExecuteSQLCommand(query, param);
 
             return result;
@@ -80,23 +83,7 @@ namespace Somar.DAL
             string where = string.Empty;
 
             var param = new DynamicParameters();
-            /*
-             	idPessoa				INT IDENTITY(1,1),
-	            nomePessoa				NVARCHAR(100),
-	            dataNascimento			SMALLDATETIME,
-	            idGenero				INT,		
-	            dataAtivacao			SMALLDATETIME,
-	            numeroRG				VARCHAR(20),
-	            numeroCPF				VARCHAR(20),
-	            observacoes				VARCHAR(400),
-	            idEndereco				INT,
-	            idContato				INT,
-	            dataCadastro			SMALLDATETIME,
-	            flagAtivo				BIT,
-	            dataUltAlteracao		SMALLDATETIME,
-	            idPessoaUltAlteracao	INT 
-            */
-            param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
+
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
             param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
             param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);

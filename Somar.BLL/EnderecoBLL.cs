@@ -22,10 +22,18 @@ namespace Somar.BLL
             return cmd.GetDataInDataBase(_endereco);
         }
 
+        /*
         public List<EnderecoDTO> GetEndereco(EnderecoDTO _endereco)
         {
             EnderecoDAL cmd = new EnderecoDAL();
             return cmd.GetEndereco(_endereco);
+        }
+        */
+
+        public EnderecoDTO GetCEP(EnderecoDTO _endereco)
+        {
+            EnderecoDAL cmd = new EnderecoDAL();
+            return cmd.GetCEP(_endereco);
         }
 
         public EnderecoDTO GetByID(EnderecoDTO _endereco)

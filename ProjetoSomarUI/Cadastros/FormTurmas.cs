@@ -113,7 +113,7 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaComboProjeto()
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(new ProjetoDTO());
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
 
             cmbProjeto.DisplayMember = "nomeProjeto";
             cmbProjeto.ValueMember = "idProjeto";
@@ -135,6 +135,15 @@ namespace ProjetoSomarUI.Cadastros
             // ************************************************** //
             lblCodigo.Text = param.idTurma.ToString();
             cmbProjeto.SelectedValue = param.idProjeto;
+
+            if (cmbProjeto.SelectedValue == null)
+            {
+                List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
+
+                lista.Add(new ProjetoDTO() { idProjeto = param.idProjeto, nomeProjeto = param.nomeProjeto });
+                cmbProjeto.DataSource = lista;
+            }
+
             txtNome.Text = param.nomeTurma;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
             txtDataInicio.Text = param.horaInicio.ToShortTimeString();

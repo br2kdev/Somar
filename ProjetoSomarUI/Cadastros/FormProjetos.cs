@@ -52,7 +52,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             ClearForm1();
 
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(false);
 
             GridViewDataBind(lista);
         }
@@ -76,7 +76,7 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaGrid()
         {
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData();
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(false);
 
             GridViewDataBind(lista);
         }

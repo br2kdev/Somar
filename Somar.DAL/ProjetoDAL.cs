@@ -31,8 +31,8 @@ namespace Somar.DAL
             if (objectDTO.nomeProjeto != string.Empty)
                 whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
 
-            //if (objectDTO.flagAtivo != null)
-            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
+            if (objectDTO.flagAtivo == true)
+                whereClause += " AND flagAtivo = 1";
 
             query += whereClause;
 

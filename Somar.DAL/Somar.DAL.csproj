@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContatoDAL.cs" />
     <Compile Include="EnderecoDAL.cs" />
     <Compile Include="Entities.Designer.cs">
       <AutoGen>True</AutoGen>

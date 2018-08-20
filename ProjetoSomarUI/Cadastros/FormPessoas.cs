@@ -26,8 +26,6 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
 
-
-
             #endregion
 
             #region Button Events
@@ -40,7 +38,11 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
 
+            btnSearchCEP.Click += new EventHandler(btnSearchCEP_Click);
+
             //txtCEP.LostFocus += new EventHandler(txtCEP_LostFocus);
+            txtCEP.Enter += new EventHandler(txtCEP_Focus);
+            txtCEP.Click += new EventHandler(txtCEP_Focus);
 
             #endregion
 
@@ -52,6 +54,21 @@ namespace ProjetoSomarUI.Cadastros
             InitializeGridView();
 
             ClearForm1();
+        }
+
+        private void txtCEP_Focus(object sender, EventArgs e)
+        {
+            var cep = txtCEP.Text.Replace("-", "").Trim();
+
+            if (cep == string.Empty)
+                txtCEP.Select(0, 0);
+            else
+                txtCEP.SelectionStart = cep.Length + 1;
+        }
+
+        private void txtCEP_LostFocus(object sender, EventArgs e)
+        {
+            txtCEP.SelectionStart = txtCEP.Text.Length + 1;
         }
 
         private void FormPessoas_Load(object sender, EventArgs e)
@@ -103,9 +120,48 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
+        private void btnSearchCEP_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtCEP.Text))
+            {
+                LimpaEndereco();
+
+                var param = new EnderecoDTO();
+                param.CEP = txtCEP.Text.Replace("-", "");
+
+                EnderecoDTO itemCEP = new EnderecoBLL().GetCEP(param);
+
+                CarregaEndereco(itemCEP, true);
+            }
+        }
+
         #endregion
 
         #region Methods
+
+        public void LimpaEndereco()
+        {
+            txtLogradouro.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            txtIdBairro.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            txtIdCidade.Text = string.Empty;
+            txtUF.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtNumero.Text = string.Empty;
+        }
+
+        public void LimpaContatos()
+        {
+            txtNomePai.Text = string.Empty;
+            txtNomeMae.Text = string.Empty;
+            txtTelefone1.Text = string.Empty;
+            txtTelefone2.Text = string.Empty;
+            txtTelefone3.Text = string.Empty;
+            txtNomeContato1.Text = string.Empty;
+            txtNomeContato2.Text = string.Empty;
+            txtNomeContato3.Text = string.Empty;
+        }
 
         public void CarregaGrid()
         {
@@ -142,25 +198,79 @@ namespace ProjetoSomarUI.Cadastros
             txtCPF.Text = param.numeroCPF;
             txtDataAtivacao.Text = param.dataAtivacao.ToShortDateString();
             txtDataNascimento.Text = param.dataNascimento.ToShortDateString();
+            txtIdEndereco.Text = param.idEndereco.ToString();
 
             if (param.dataNascimento != null)
-               txtIdade.Text = new Functions().CalcularIdade(param.dataNascimento).ToString();
+                txtIdade.Text = new Functions().CalcularIdade(param.dataNascimento).ToString();
 
             cmbGenero.SelectedValue = param.idGenero;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
-            /*
-            txtNome.Text = param.nomeTurma;
-            txtDataInicio.Text = param.horaInicio.ToShortTimeString();
-            txtDataNascimento.Text = param.horaTermino.ToShortTimeString();
-            txtDescricao.Text = param.descricaoTurma;
-            */
+            // ************************************************** //
+            // Preenche Tela de Detalhes
+            // ************************************************** //
+            CarregaEndereco(param.endereco, false);
+            CarregaContatos(param.contatos);
+
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
-            
 
             ControlFormEdit(false);
+        }
+
+        public void CarregaEndereco(EnderecoDTO item, bool enableFields)
+        {
+            if (enableFields)
+            {
+                txtLogradouro.Enabled = true;
+                txtBairro.Enabled = true;
+                txtCidade.Enabled = true;
+                txtUF.Enabled = true;
+                txtNumero.Enabled = true;
+                txtComplemento.Enabled = true;
+            }
+
+            if (item != null)
+            {
+                txtCEP.Text = item.CEP;
+                txtBairro.Text = item.nomeBairro;
+                txtIdBairro.Text = item.idBairro.ToString();
+                txtCidade.Text = item.nomeCidade;
+                txtIdCidade.Text = item.idCidade.ToString();
+                txtLogradouro.Text = item.logradouro;
+                txtUF.Text = item.siglaUF;
+                txtComplemento.Text = item.complemento;
+                txtNumero.Text = item.numero;
+
+                txtNumero.Focus();
+            }
+            else
+            {
+                txtIdContato.Text = string.Empty;
+                LimpaEndereco();
+                txtLogradouro.Focus();
+            }
+        }
+
+        public void CarregaContatos(ContatoDTO item)
+        {
+            if (item != null)
+            {
+                txtNomePai.Text = item.nomePai;
+                txtNomeMae.Text = item.nomeMae;
+                txtTelefone1.Text = item.telefone1;
+                txtTelefone2.Text = item.telefone2;
+                txtTelefone3.Text = item.telefone3;
+                txtNomeContato1.Text = item.contato1;
+                txtNomeContato2.Text = item.contato2;
+                txtNomeContato3.Text = item.contato3;
+            }
+            else
+            {
+                txtIdContato.Text = string.Empty;
+                LimpaContatos();
+            }
         }
 
         public void ClearForm1()
@@ -178,6 +288,13 @@ namespace ProjetoSomarUI.Cadastros
             txtDataAtivacao.Text = string.Empty;
             txtDataNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
+
+            txtCEP.Text = string.Empty;
+            txtIdEndereco.Text = string.Empty;
+            txtIdContato.Text = string.Empty;
+
+            LimpaEndereco();
+            LimpaContatos();
 
             /*
             txtDataNascimento.Enabled = false;
@@ -382,20 +499,24 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Enabled = flagEnable;
             txtDataAtivacao.Enabled = flagEnable;
 
-
             //Endereço
             txtCEP.Enabled = flagEnable;
-
-            /*
-            txtLogradouro.Enabled = flagEnable;
-            txtNumero.Enabled = flagEnable;
-            txtBairro.Enabled = flagEnable;
-            txtCidade.Enabled = flagEnable;
-            txtComplemento.Enabled = flagEnable;
-            txtUF.Enabled = flagEnable;
-            */
+            txtLogradouro.Enabled = false;
+            txtNumero.Enabled = false;
+            txtBairro.Enabled = false;
+            txtCidade.Enabled = false;
+            txtComplemento.Enabled = false;
+            txtUF.Enabled = false;
 
             //Contatos
+            txtNomePai.Enabled = flagEnable;
+            txtNomeMae.Enabled = flagEnable;
+            txtTelefone1.Enabled = flagEnable;
+            txtTelefone2.Enabled = flagEnable;
+            txtTelefone3.Enabled = flagEnable;
+            txtNomeContato1.Enabled = flagEnable;
+            txtNomeContato2.Enabled = flagEnable;
+            txtNomeContato3.Enabled = flagEnable;
 
             //Observações
             txtDescricao.Enabled = flagEnable;
@@ -479,7 +600,6 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-
             // *********************************************
             // PESSOA
             // *********************************************
@@ -498,32 +618,36 @@ namespace ProjetoSomarUI.Cadastros
             param.dataAtivacao = Convert.ToDateTime(txtDataAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
 
+            param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);
+            param.idContato = string.IsNullOrEmpty(txtIdContato.Text) ? 0 : Convert.ToInt32(txtIdContato.Text);
+
             // *********************************************
             // ENDEREÇO
             // *********************************************
-            /*
             param.endereco = new EnderecoDTO();
             param.endereco.CEP = txtCEP.Text;
+            param.endereco.idBairro = string.IsNullOrEmpty(txtIdBairro.Text) ? 0 : Convert.ToInt32(txtIdBairro.Text);
+            param.endereco.idCidade = string.IsNullOrEmpty(txtIdCidade.Text) ? 0 : Convert.ToInt32(txtIdCidade.Text);
             param.endereco.logradouro = txtLogradouro.Text;
             param.endereco.numero = txtNumero.Text;
             param.endereco.complemento = txtComplemento.Text;
             param.endereco.nomeBairro = txtBairro.Text;
             param.endereco.nomeCidade = txtCidade.Text;
             param.endereco.siglaUF = txtUF.Text;
-            */
+
             // *********************************************
             // CONTATO
             // *********************************************
-            /*
-            param.contato = new EnderecoDTO();
-            param.contato.CEP = txtCEP.Text;
-            param.contato.logradouro = txtLogradouro.Text;
-            param.contato.numero = txtNumero.Text;
-            param.contato.complemento = txtComplemento.Text;
-            param.contato.nomeBairro = txtBairro.Text;
-            param.contato.nomeCidade = txtCidade.Text;
-            param.contato.siglaUF = txtUF.Text;
-            */
+            param.contatos = new ContatoDTO();
+            param.contatos.nomePai = txtNomePai.Text;
+            param.contatos.nomeMae = txtNomeMae.Text;
+            param.contatos.telefone1 = txtTelefone1.Text;
+            param.contatos.telefone2 = txtTelefone2.Text;
+            param.contatos.telefone3 = txtTelefone3.Text;
+            param.contatos.contato1 = txtNomeContato1.Text;
+            param.contatos.contato2 = txtNomeContato2.Text;
+            param.contatos.contato3 = txtNomeContato3.Text;
+
             /*
             param.horaInicio = Convert.ToDateTime(txtDataInicio.Text);
             param.horaTermino = Convert.ToDateTime(txtDataNascimento.Text);
