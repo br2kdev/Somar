@@ -63,6 +63,16 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_key_128x128 {
+            get {
+                object obj = ResourceManager.GetObject("icon_key_128x128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_projeto32x32 {
             get {
                 object obj = ResourceManager.GetObject("icon_projeto32x32", resourceCulture);
@@ -93,6 +103,26 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_security64x64 {
+            get {
+                object obj = ResourceManager.GetObject("icon_security64x64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_user_128x128 {
+            get {
+                object obj = ResourceManager.GetObject("icon_user_128x128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_user32x32 {
             get {
                 object obj = ResourceManager.GetObject("icon_user32x32", resourceCulture);
@@ -103,9 +133,29 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_user32x321 {
+            get {
+                object obj = ResourceManager.GetObject("icon_user32x321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo {
             get {
                 object obj = ResourceManager.GetObject("Logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoSimples {
+            get {
+                object obj = ResourceManager.GetObject("LogoSimples", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

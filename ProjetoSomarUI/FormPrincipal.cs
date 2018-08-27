@@ -23,10 +23,8 @@ namespace ProjetoSomarUI
         {
             InitializeComponent();
             
-            /*
             this.Load += new EventHandler(HandleFormLoad);
             this.splashScreen = new SplashScreen();
-            */
         }
 
         private void HandleFormLoad(object sender, EventArgs e)
@@ -65,21 +63,21 @@ namespace ProjetoSomarUI
         private void pessoasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPessoas frm = new FormPessoas();
-
+            frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
 
         private void projetosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormProjetos frm = new FormProjetos();
-
+            frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
 
         private void turmasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTurmas frm = new FormTurmas();
-
+            frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
 
@@ -94,6 +92,11 @@ namespace ProjetoSomarUI
             */
         }
 
-
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Administracao.FormUsuarios frm = new Administracao.FormUsuarios();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }

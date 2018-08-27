@@ -16,7 +16,12 @@ namespace ProjetoSomarUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormPrincipal()); 
+            //Application.Run(new FormPrincipal());
+
+            FormLogin f = new FormLogin();
+
+            if (f.ShowDialog() == DialogResult.OK)
+                Application.Run(new FormPrincipal());
         }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelConsulta = new System.Windows.Forms.Panel();
             this.panelMessage = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -59,6 +59,7 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
@@ -66,6 +67,9 @@
             this.txtDataAtivacao = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtIdEndereco = new System.Windows.Forms.TextBox();
+            this.txtIdCidade = new System.Windows.Forms.TextBox();
+            this.txtIdBairro = new System.Windows.Forms.TextBox();
             this.btnSearchCEP = new System.Windows.Forms.PictureBox();
             this.txtCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtUF = new System.Windows.Forms.TextBox();
@@ -82,6 +86,14 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtIdContato = new System.Windows.Forms.TextBox();
+            this.txtNomeContato3 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtTelefone3 = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone2 = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone1 = new System.Windows.Forms.MaskedTextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtNomeMae = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtNomePai = new System.Windows.Forms.TextBox();
             this.txtNomeContato2 = new System.Windows.Forms.TextBox();
@@ -105,18 +117,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtIdBairro = new System.Windows.Forms.TextBox();
-            this.txtIdCidade = new System.Windows.Forms.TextBox();
-            this.txtIdEndereco = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.txtNomeMae = new System.Windows.Forms.TextBox();
-            this.txtTelefone1 = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefone2 = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefone3 = new System.Windows.Forms.MaskedTextBox();
-            this.txtNomeContato3 = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.txtIdContato = new System.Windows.Forms.TextBox();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -169,23 +169,23 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(14, 97);
             this.dataGridView1.MultiSelect = false;
@@ -496,6 +496,15 @@
             this.panel3.Size = new System.Drawing.Size(984, 536);
             this.panel3.TabIndex = 66;
             // 
+            // txtCPF
+            // 
+            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtCPF.Location = new System.Drawing.Point(361, 55);
+            this.txtCPF.Mask = "999,999,999-99";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(147, 27);
+            this.txtCPF.TabIndex = 107;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -589,6 +598,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereço";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // txtIdEndereco
+            // 
+            this.txtIdEndereco.Location = new System.Drawing.Point(331, 21);
+            this.txtIdEndereco.Name = "txtIdEndereco";
+            this.txtIdEndereco.Size = new System.Drawing.Size(20, 23);
+            this.txtIdEndereco.TabIndex = 126;
+            this.txtIdEndereco.Visible = false;
+            // 
+            // txtIdCidade
+            // 
+            this.txtIdCidade.Location = new System.Drawing.Point(605, 166);
+            this.txtIdCidade.Name = "txtIdCidade";
+            this.txtIdCidade.Size = new System.Drawing.Size(20, 23);
+            this.txtIdCidade.TabIndex = 125;
+            this.txtIdCidade.Visible = false;
+            // 
+            // txtIdBairro
+            // 
+            this.txtIdBairro.Location = new System.Drawing.Point(118, 166);
+            this.txtIdBairro.Name = "txtIdBairro";
+            this.txtIdBairro.Size = new System.Drawing.Size(20, 23);
+            this.txtIdBairro.TabIndex = 124;
+            this.txtIdBairro.Visible = false;
             // 
             // btnSearchCEP
             // 
@@ -771,6 +804,81 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contatos";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtIdContato
+            // 
+            this.txtIdContato.Location = new System.Drawing.Point(629, 17);
+            this.txtIdContato.Name = "txtIdContato";
+            this.txtIdContato.Size = new System.Drawing.Size(20, 23);
+            this.txtIdContato.TabIndex = 127;
+            this.txtIdContato.Visible = false;
+            // 
+            // txtNomeContato3
+            // 
+            this.txtNomeContato3.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNomeContato3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtNomeContato3.Location = new System.Drawing.Point(446, 184);
+            this.txtNomeContato3.MaxLength = 100;
+            this.txtNomeContato3.Name = "txtNomeContato3";
+            this.txtNomeContato3.Size = new System.Drawing.Size(407, 27);
+            this.txtNomeContato3.TabIndex = 123;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label28.Location = new System.Drawing.Point(321, 189);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(122, 17);
+            this.label28.TabIndex = 124;
+            this.label28.Text = "Nome do Contato:";
+            // 
+            // txtTelefone3
+            // 
+            this.txtTelefone3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtTelefone3.Location = new System.Drawing.Point(145, 184);
+            this.txtTelefone3.Mask = "(99) 90000-0000";
+            this.txtTelefone3.Name = "txtTelefone3";
+            this.txtTelefone3.Size = new System.Drawing.Size(147, 27);
+            this.txtTelefone3.TabIndex = 122;
+            // 
+            // txtTelefone2
+            // 
+            this.txtTelefone2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtTelefone2.Location = new System.Drawing.Point(145, 143);
+            this.txtTelefone2.Mask = "(99) 90000-0000";
+            this.txtTelefone2.Name = "txtTelefone2";
+            this.txtTelefone2.Size = new System.Drawing.Size(147, 27);
+            this.txtTelefone2.TabIndex = 121;
+            // 
+            // txtTelefone1
+            // 
+            this.txtTelefone1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtTelefone1.Location = new System.Drawing.Point(145, 103);
+            this.txtTelefone1.Mask = "(99) 90000-0000";
+            this.txtTelefone1.Name = "txtTelefone1";
+            this.txtTelefone1.Size = new System.Drawing.Size(147, 27);
+            this.txtTelefone1.TabIndex = 120;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label15.Location = new System.Drawing.Point(20, 64);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 17);
+            this.label15.TabIndex = 119;
+            this.label15.Text = "Nome do Mãe:";
+            // 
+            // txtNomeMae
+            // 
+            this.txtNomeMae.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNomeMae.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtNomeMae.Location = new System.Drawing.Point(145, 59);
+            this.txtNomeMae.MaxLength = 100;
+            this.txtNomeMae.Name = "txtNomeMae";
+            this.txtNomeMae.Size = new System.Drawing.Size(407, 27);
+            this.txtNomeMae.TabIndex = 118;
             // 
             // label26
             // 
@@ -1013,114 +1121,6 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Nome:";
             // 
-            // txtIdBairro
-            // 
-            this.txtIdBairro.Location = new System.Drawing.Point(118, 166);
-            this.txtIdBairro.Name = "txtIdBairro";
-            this.txtIdBairro.Size = new System.Drawing.Size(20, 23);
-            this.txtIdBairro.TabIndex = 124;
-            this.txtIdBairro.Visible = false;
-            // 
-            // txtIdCidade
-            // 
-            this.txtIdCidade.Location = new System.Drawing.Point(605, 166);
-            this.txtIdCidade.Name = "txtIdCidade";
-            this.txtIdCidade.Size = new System.Drawing.Size(20, 23);
-            this.txtIdCidade.TabIndex = 125;
-            this.txtIdCidade.Visible = false;
-            // 
-            // txtIdEndereco
-            // 
-            this.txtIdEndereco.Location = new System.Drawing.Point(331, 21);
-            this.txtIdEndereco.Name = "txtIdEndereco";
-            this.txtIdEndereco.Size = new System.Drawing.Size(20, 23);
-            this.txtIdEndereco.TabIndex = 126;
-            this.txtIdEndereco.Visible = false;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtCPF.Location = new System.Drawing.Point(361, 55);
-            this.txtCPF.Mask = "999,999,999-99";
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(147, 27);
-            this.txtCPF.TabIndex = 107;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label15.Location = new System.Drawing.Point(20, 64);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(100, 17);
-            this.label15.TabIndex = 119;
-            this.label15.Text = "Nome do Mãe:";
-            // 
-            // txtNomeMae
-            // 
-            this.txtNomeMae.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNomeMae.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtNomeMae.Location = new System.Drawing.Point(145, 59);
-            this.txtNomeMae.MaxLength = 100;
-            this.txtNomeMae.Name = "txtNomeMae";
-            this.txtNomeMae.Size = new System.Drawing.Size(407, 27);
-            this.txtNomeMae.TabIndex = 118;
-            // 
-            // txtTelefone1
-            // 
-            this.txtTelefone1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtTelefone1.Location = new System.Drawing.Point(145, 103);
-            this.txtTelefone1.Mask = "(99) 90000-0000";
-            this.txtTelefone1.Name = "txtTelefone1";
-            this.txtTelefone1.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone1.TabIndex = 120;
-            // 
-            // txtTelefone2
-            // 
-            this.txtTelefone2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtTelefone2.Location = new System.Drawing.Point(145, 143);
-            this.txtTelefone2.Mask = "(99) 90000-0000";
-            this.txtTelefone2.Name = "txtTelefone2";
-            this.txtTelefone2.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone2.TabIndex = 121;
-            // 
-            // txtTelefone3
-            // 
-            this.txtTelefone3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtTelefone3.Location = new System.Drawing.Point(145, 184);
-            this.txtTelefone3.Mask = "(99) 90000-0000";
-            this.txtTelefone3.Name = "txtTelefone3";
-            this.txtTelefone3.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone3.TabIndex = 122;
-            // 
-            // txtNomeContato3
-            // 
-            this.txtNomeContato3.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNomeContato3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtNomeContato3.Location = new System.Drawing.Point(446, 184);
-            this.txtNomeContato3.MaxLength = 100;
-            this.txtNomeContato3.Name = "txtNomeContato3";
-            this.txtNomeContato3.Size = new System.Drawing.Size(407, 27);
-            this.txtNomeContato3.TabIndex = 123;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label28.Location = new System.Drawing.Point(321, 189);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(122, 17);
-            this.label28.TabIndex = 124;
-            this.label28.Text = "Nome do Contato:";
-            // 
-            // txtIdContato
-            // 
-            this.txtIdContato.Location = new System.Drawing.Point(629, 17);
-            this.txtIdContato.Name = "txtIdContato";
-            this.txtIdContato.Size = new System.Drawing.Size(20, 23);
-            this.txtIdContato.TabIndex = 127;
-            this.txtIdContato.Visible = false;
-            // 
             // FormPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1128,7 +1128,11 @@
             this.ClientSize = new System.Drawing.Size(1012, 641);
             this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormPessoas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormPessoas";
             this.panelConsulta.ResumeLayout(false);
             this.panelMessage.ResumeLayout(false);

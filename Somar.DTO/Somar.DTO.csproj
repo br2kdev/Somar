@@ -43,10 +43,12 @@
     <Compile Include="ContatoDTO.cs" />
     <Compile Include="EnderecoDTO.cs" />
     <Compile Include="GeneroDTO.cs" />
+    <Compile Include="PerfilDTO.cs" />
     <Compile Include="PessoaDTO.cs" />
     <Compile Include="TurmaDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProjetoDTO.cs" />
+    <Compile Include="UsuarioDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administracao\FormUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracao\FormUsuarios.Designer.cs">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\FormPessoas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -63,12 +69,23 @@
     <Compile Include="Cadastros\FormTurmas.Designer.cs">
       <DependentUpon>FormTurmas.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Login.cs" />
+    <Compile Include="Modules\Sessao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -82,6 +99,9 @@
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administracao\FormUsuarios.resx">
+      <DependentUpon>FormUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormPessoas.resx">
       <DependentUpon>FormPessoas.cs</DependentUpon>
     </EmbeddedResource>
@@ -90,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormTurmas.resx">
       <DependentUpon>FormTurmas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
@@ -117,12 +140,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="imgs\icon_key_128x128.png" />
     <Content Include="imgs\icon_projeto32x32.png" />
     <Content Include="imgs\icon_projeto48x48.png" />
     <Content Include="imgs\icon_search24x24.png" />
+    <Content Include="imgs\icon_security64x64.png" />
     <Content Include="imgs\icon_user32x32.png" />
+    <Content Include="imgs\icon_user_128x128.png" />
     <Content Include="imgs\Logo.png" />
     <Content Include="imgs\LogoSimples.png" />
+    <None Include="Resources\LogoSimples.png" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

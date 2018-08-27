@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormPessoas : Form
+    public partial class FormPessoas : FormBase
     {
         public FormPessoas()
         {

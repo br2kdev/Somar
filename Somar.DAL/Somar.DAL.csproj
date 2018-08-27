@@ -59,12 +59,14 @@
       <DependentUpon>Entities.xsd</DependentUpon>
     </Compile>
     <Compile Include="GeneroDAL.cs" />
+    <Compile Include="PerfilDAL.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepGen.cs" />
     <Compile Include="Repository\RepList.cs" />
     <Compile Include="ProjetoDAL.cs" />
     <Compile Include="TurmaDAL.cs" />
+    <Compile Include="UsuarioDAL.cs" />
     <Compile Include="Utilities\ConnectionDB.cs" />
     <Compile Include="Utilities\Functions.cs" />
     <Compile Include="Utilities\Globals.cs" />
