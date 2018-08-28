@@ -33,6 +33,12 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
 
+            cmbPeriodo.Items.Add("Selecione...");
+            cmbPeriodo.Items.Add("Manhã");
+            cmbPeriodo.Items.Add("Tarde");
+            cmbPeriodo.Items.Add("Noite");
+            cmbPeriodo.Items.Add("Integral");
+
             #endregion
 
             #region Button Events
@@ -49,8 +55,8 @@ namespace ProjetoSomarUI.Cadastros
 
             Load += new EventHandler(FormTurmas_Load);
 
-            txtDataInicio.CustomFormat = txtDataTermino.CustomFormat = "HH:mm";
-            txtDataInicio.ShowUpDown = txtDataTermino.ShowUpDown = true;
+            //txtDataInicio.CustomFormat = txtDataTermino.CustomFormat = "HH:mm";
+            //txtDataInicio.ShowUpDown = txtDataTermino.ShowUpDown = true;
 
             InitializeGridView();
 
@@ -146,11 +152,18 @@ namespace ProjetoSomarUI.Cadastros
 
             txtNome.Text = param.nomeTurma;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
-            txtDataInicio.Text = param.horaInicio.ToShortTimeString();
-            txtDataTermino.Text = param.horaTermino.ToShortTimeString();
+
+            cmbPeriodo.Text = param.descricaoPeriodo;
+
+            cmbHoraInicio.Text = param.horaInicio.Split(':')[0];
+            cmbMinutoInicio.Text = param.horaInicio.Split(':')[1];
+            cmbHoraFim.Text = param.horaTermino.Split(':')[0];
+            cmbMinutoFim.Text = param.horaTermino.Split(':')[1];
+
             txtDescricao.Text = param.descricaoTurma;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
 
             ControlFormEdit(false);
         }
@@ -163,14 +176,20 @@ namespace ProjetoSomarUI.Cadastros
 
         public void ClearForm2()
         {
-            lblCodigo.Text = "";
-            txtNome.Text = "";
-            txtDataInicio.Text = "";
-            txtDataTermino.Text = "";
-            txtDuracao.Text = "";
-            txtDescricao.Text = "";
-            txtDataCadastro.Text = "";
-            txtResponsavel.Text = "";
+            lblCodigo.Text = string.Empty;
+            txtNome.Text = string.Empty;
+
+            cmbPeriodo.Text = string.Empty;
+            cmbHoraInicio.Text = string.Empty;
+            cmbHoraFim.Text = string.Empty;
+            cmbMinutoInicio.Text = string.Empty;
+            cmbMinutoFim.Text = string.Empty;
+
+            txtDuracao.Text = string.Empty;
+            txtDescricao.Text = string.Empty;
+            txtNomeAlteracao.Text = string.Empty;
+            txtDataCadastro.Text = string.Empty;
+            txtResponsavel.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
         }
 
@@ -205,8 +224,6 @@ namespace ProjetoSomarUI.Cadastros
             */
 
             /*            
-
-
             // Configure the DataGridView so that users can manually change 
             // only the column widths, which are set to fill mode. 
             dataGridView1.AllowUserToAddRows = false;
@@ -363,8 +380,11 @@ namespace ProjetoSomarUI.Cadastros
 
             txtNome.Enabled = flagEnable;
             cmbProjeto.Enabled = flagEnable;
-            txtDataInicio.Enabled = flagEnable;
-            txtDataTermino.Enabled = flagEnable;
+            cmbPeriodo.Enabled = flagEnable;
+            cmbHoraInicio.Enabled = flagEnable;
+            cmbHoraFim.Enabled = flagEnable;
+            cmbMinutoInicio.Enabled = flagEnable;
+            cmbMinutoFim.Enabled = flagEnable;
             txtDescricao.Enabled = flagEnable;
             txtDuracao.Enabled = flagEnable;
             txtResponsavel.Enabled = flagEnable;
@@ -374,8 +394,11 @@ namespace ProjetoSomarUI.Cadastros
             txtDataCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataInicio.BackColor = Color.WhiteSmoke;
-            txtDataTermino.BackColor = Color.WhiteSmoke;
+            cmbPeriodo.BackColor = Color.WhiteSmoke;
+            cmbHoraInicio.BackColor = Color.WhiteSmoke;
+            cmbHoraFim.BackColor = Color.WhiteSmoke;
+            cmbMinutoInicio.BackColor = Color.WhiteSmoke;
+            cmbMinutoFim.BackColor = Color.WhiteSmoke;
             txtDescricao.BackColor = Color.WhiteSmoke;
             txtDataCadastro.BackColor = Color.WhiteSmoke;
             txtDuracao.BackColor = Color.WhiteSmoke;
@@ -457,11 +480,14 @@ namespace ProjetoSomarUI.Cadastros
 
             param.nomeTurma = txtNome.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-            param.horaInicio = Convert.ToDateTime(txtDataInicio.Text);
-            param.horaTermino = Convert.ToDateTime(txtDataTermino.Text);
+
+            param.descricaoPeriodo = cmbPeriodo.SelectedItem.ToString();
+
+            param.horaInicio = cmbHoraInicio.SelectedItem + ":" + cmbMinutoInicio.SelectedItem;
+            param.horaTermino = cmbHoraFim.SelectedItem + ":" + cmbMinutoFim.SelectedItem;
             param.descricaoTurma = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
-            //param.idPessoaResposavel = //txtResponsavel.Text;
+            param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
 
             TurmaBLL bus = new TurmaBLL();
             var idTurma = bus.SaveProject(param);

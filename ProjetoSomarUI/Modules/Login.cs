@@ -2,20 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Somar.BLL;
+using Somar.DTO;
 
 namespace ProjetoSomarUI
 {
-
     public class Login
     {
-        //decalre properties 
         public string Username { get; set; }
         public string Userpassword { get; set; }
 
@@ -27,12 +22,17 @@ namespace ProjetoSomarUI
         internal bool SignIn(string user, string pass)
         {
             UsuarioBLL usuario = new UsuarioBLL();
-            var result = usuario.GetUserByLogin(user, pass);
 
-            if(result != null)
+            UsuarioDTO result = usuario.GetUserByLogin(user, pass);
+
+            if (result != null)
+            {
+                Sessao.Usuario = result;
                 return true;
-            else
-                return false;
+            }
+
+            Sessao.Usuario = null;
+            return false;
         }
 
         internal bool IsLoggedIn(string user, string pass)

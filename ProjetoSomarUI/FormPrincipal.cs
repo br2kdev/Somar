@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProjetoSomarUI.Cadastros;
 using Somar.Shared;
@@ -22,13 +15,17 @@ namespace ProjetoSomarUI
         public FormPrincipal()
         {
             InitializeComponent();
-            
+
+            lblNome.Text = Sessao.Usuario.nomeUsuario;
+            lblPerfil.Text = Sessao.Usuario.nomePerfil;
+
             this.Load += new EventHandler(HandleFormLoad);
             this.splashScreen = new SplashScreen();
         }
 
         private void HandleFormLoad(object sender, EventArgs e)
         {
+            /*
             this.Hide();
             Thread thread = new Thread(new ThreadStart(this.ShowSplashScreen));
             thread.Start();
@@ -37,6 +34,7 @@ namespace ProjetoSomarUI
             worker.ProgressChanged += (o, ex) => { this.splashScreen.UpdateProgress(ex.Progress); };
             worker.HardWorkDone += (o, ex) => { done = true; this.Show(); };
             worker.DoHardWork();
+            */
         }
 
         private void ShowSplashScreen()

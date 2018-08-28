@@ -34,5 +34,7 @@ namespace Somar.DTO
         public DateTime dataUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
+
+        public string nomePessoaUltAlteracao { get; set; }
     }
 }

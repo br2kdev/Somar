@@ -102,6 +102,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDescricao.Text = param.descricaoProjeto;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
 
             ControlFormEdit(false);
         }
@@ -114,14 +115,16 @@ namespace ProjetoSomarUI.Cadastros
 
         public void ClearForm2()
         {
-            lblCodigo.Text = "";
-            txtNome.Text = "";
-            txtDataInicio.Text = "";
-            txtDataTermino.Text = "";
-            txtDuracao.Text = "";
-            txtDescricao.Text = "";
-            txtDataCadastro.Text = "";
-            txtResponsavel.Text = "";
+            lblCodigo.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtDataInicio.Text = string.Empty;
+            txtDataTermino.Text = string.Empty;
+            txtDuracao.Text = string.Empty;
+            txtDescricao.Text = string.Empty;
+            txtDataCadastro.Text = string.Empty;
+            txtResponsavel.Text = string.Empty;
+            txtNomeAlteracao.Text = string.Empty;
+            txtDataAlteracao.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
         }
 
@@ -410,6 +413,7 @@ namespace ProjetoSomarUI.Cadastros
             param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
             param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
             param.descricaoProjeto = txtDescricao.Text;
+            param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
             //param.idPessoaResposavel = //txtResponsavel.Text;
 
             ProjetoBLL bus = new ProjetoBLL();

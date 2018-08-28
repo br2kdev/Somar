@@ -19,10 +19,11 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT A.*, B.nomeProjeto, ";
+            query += " SELECT A.*, A.HoraInicio + ' às ' + A.HoraTermino as horario, B.nomeProjeto, C.nomeUsuario as nomePessoaUltAlteracao, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
-            query += "FROM TB_Turmas A ";
-            query += "LEFT JOIN TB_Projetos B ON A.idProjeto = B.idProjeto";
+            query += " FROM TB_Turmas A ";
+            query += " LEFT JOIN TB_Projetos B ON A.idProjeto = B.idProjeto";
+            query += " LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario";
 
             if (_turmaDTO.idTurma != 0)
                 whereClause += " AND A.idTurma = " + _turmaDTO.idTurma.ToString();
@@ -45,6 +46,7 @@ namespace Somar.DAL
 
             param.Add("@nomeTurma", _turmaDTO.nomeTurma, DbType.String);
             param.Add("@descricaoTurma", _turmaDTO.descricaoTurma, DbType.String);
+            param.Add("@descricaoPeriodo", _turmaDTO.descricaoPeriodo, DbType.String);
             param.Add("@horaInicio", _turmaDTO.horaInicio, DbType.String);
             param.Add("@horaTermino", _turmaDTO.horaTermino, DbType.String);
             param.Add("@idPessoaEducador", _turmaDTO.idPessoaEducador, DbType.Int32);
@@ -78,6 +80,7 @@ namespace Somar.DAL
 
             param.Add("@nomeTurma", _turmaDTO.nomeTurma, DbType.String);
             param.Add("@descricaoTurma", _turmaDTO.descricaoTurma, DbType.String);
+            param.Add("@descricaoPeriodo", _turmaDTO.descricaoPeriodo, DbType.String);
             param.Add("@horaInicio", _turmaDTO.horaInicio, DbType.String);
             param.Add("@horaTermino", _turmaDTO.horaTermino, DbType.String);
             param.Add("@idPessoaEducador", _turmaDTO.idPessoaEducador, DbType.Int32);

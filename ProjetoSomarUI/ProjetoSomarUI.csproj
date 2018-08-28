@@ -51,6 +51,12 @@
     <Compile Include="Administracao\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\FormEscolas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\FormEscolas.Designer.cs">
+      <DependentUpon>FormEscolas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\FormPessoas.cs">
       <SubType>Form</SubType>
     </Compile>

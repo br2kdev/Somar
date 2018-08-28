@@ -1,37 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Somar.DTO;
 
-namespace ProjetoSomarUI.Modules
+namespace ProjetoSomarUI
 {
     public static class Sessao
     {
-        //usuario
+        private static UsuarioDTO _usuario;
 
-        private static Int32 _usuarioId;
-        private static String _nomeUsuario;
-        private static String _emailUsuario;
-
-        //get e set
-        public static Int32 UsuarioId
+        public static UsuarioDTO Usuario
         {
-            get { return Sessao._usuarioId; }
-            set { Sessao._usuarioId = value; }
-        }
-
-        public static String NomeUsuario
-        {
-            get { return Sessao._nomeUsuario; }
-            set { Sessao._nomeUsuario = value; }
-        }
-
-
-        public static String EmailUsuario
-        {
-            get { return Sessao._emailUsuario; }
-            set { Sessao._emailUsuario = value; }
+            get { return Sessao._usuario; }
+            set { Sessao._usuario = value; }
         }
     }
 }

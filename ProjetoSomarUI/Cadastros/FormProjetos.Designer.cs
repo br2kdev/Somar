@@ -53,8 +53,6 @@
             this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
@@ -74,6 +72,8 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.txtDataCadastro = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -325,8 +325,6 @@
             this.panel3.Controls.Add(this.txtDataInicio);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
-            this.panel3.Controls.Add(this.txtDataCadastro);
-            this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Controls.Add(this.txtResponsavel);
@@ -395,28 +393,6 @@
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
             this.cmbStatus.TabIndex = 92;
             // 
-            // txtDataCadastro
-            // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(831, 264);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 6;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(725, 269);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
-            this.label6.TabIndex = 91;
-            this.label6.Text = "Data Cadastro:";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -462,7 +438,9 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
+            this.groupBox3.Controls.Add(this.txtDataCadastro);
             this.groupBox3.Controls.Add(this.txtDataAlteracao);
+            this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtNomeAlteracao);
@@ -475,17 +453,17 @@
             // txtDataAlteracao
             // 
             this.txtDataAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataAlteracao.Location = new System.Drawing.Point(831, 15);
+            this.txtDataAlteracao.Location = new System.Drawing.Point(837, 18);
             this.txtDataAlteracao.MaxLength = 100;
             this.txtDataAlteracao.Name = "txtDataAlteracao";
-            this.txtDataAlteracao.Size = new System.Drawing.Size(124, 27);
+            this.txtDataAlteracao.Size = new System.Drawing.Size(118, 27);
             this.txtDataAlteracao.TabIndex = 80;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label11.Location = new System.Drawing.Point(23, 22);
+            this.label11.Location = new System.Drawing.Point(271, 23);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(115, 17);
             this.label11.TabIndex = 77;
@@ -495,7 +473,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label9.Location = new System.Drawing.Point(722, 22);
+            this.label9.Location = new System.Drawing.Point(729, 23);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(106, 17);
             this.label9.TabIndex = 79;
@@ -504,10 +482,10 @@
             // txtNomeAlteracao
             // 
             this.txtNomeAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtNomeAlteracao.Location = new System.Drawing.Point(140, 17);
+            this.txtNomeAlteracao.Location = new System.Drawing.Point(386, 18);
             this.txtNomeAlteracao.MaxLength = 100;
             this.txtNomeAlteracao.Name = "txtNomeAlteracao";
-            this.txtNomeAlteracao.Size = new System.Drawing.Size(483, 27);
+            this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
             this.txtNomeAlteracao.TabIndex = 78;
             // 
             // txtResponsavel
@@ -609,14 +587,36 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Projeto:";
             // 
+            // txtDataCadastro
+            // 
+            this.txtDataCadastro.Enabled = false;
+            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtDataCadastro.Location = new System.Drawing.Point(118, 18);
+            this.txtDataCadastro.MaxLength = 10;
+            this.txtDataCadastro.Name = "txtDataCadastro";
+            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtDataCadastro.TabIndex = 94;
+            this.txtDataCadastro.TabStop = false;
+            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label6.Location = new System.Drawing.Point(12, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.TabIndex = 95;
+            this.label6.Text = "Data Cadastro:";
+            // 
             // FormProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1005, 637);
-            this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -684,13 +684,13 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNomeAlteracao;
-        private System.Windows.Forms.TextBox txtDataCadastro;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.DateTimePicker txtDataInicio;
         private System.Windows.Forms.DateTimePicker txtDataTermino;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txtDataCadastro;
+        private System.Windows.Forms.Label label6;
     }
 }

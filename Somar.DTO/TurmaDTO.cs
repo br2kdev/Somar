@@ -13,11 +13,15 @@ namespace Somar.DTO
 
         public string descricaoTurma { get; set; }
 
-        [DisplayName("Hora de Início")]
-        public DateTime horaInicio { get; set; }
+        [DisplayName("Período")]
+        public string descricaoPeriodo { get; set; }
 
-        [DisplayName("Hora de Término")]
-        public DateTime horaTermino { get; set; }
+        [DisplayName("Horário")]
+        public string horario { get; set; }
+
+        public string horaInicio { get; set; }
+
+        public string horaTermino { get; set; }
 
         public int idPessoaEducador { get; set; }
 
@@ -34,6 +38,8 @@ namespace Somar.DTO
         public DateTime dataUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
+
+        public string nomePessoaUltAlteracao { get; set; }
 
         public int idProjeto { get; set; }
 

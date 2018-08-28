@@ -21,18 +21,19 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT *, ";
-            query += " descricaoAtivo = CASE WHEN flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
-            query += "FROM TB_Projetos";
+            query += " SELECT A.*, B.nomeUsuario as nomePessoaUltAlteracao, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " FROM TB_Projetos      A ";
+            query += " LEFT JOIN TB_Usuarios B ON A.idPessoaUltAlteracao = B.idUsuario";
 
             if (objectDTO.idProjeto != 0)
-                whereClause += " AND idProjeto = " + objectDTO.idProjeto.ToString();
+                whereClause += " AND A.idProjeto = " + objectDTO.idProjeto.ToString();
 
             if (objectDTO.nomeProjeto != string.Empty)
-                whereClause += " AND nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
+                whereClause += " AND A.nomeProjeto like '%" + objectDTO.nomeProjeto + "%'";
 
             if (objectDTO.flagAtivo == true)
-                whereClause += " AND flagAtivo = 1";
+                whereClause += " AND A.flagAtivo = 1";
 
             query += whereClause;
 
