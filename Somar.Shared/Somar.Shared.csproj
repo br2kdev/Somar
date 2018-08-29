@@ -46,11 +46,5 @@
     <Compile Include="Hardworker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Others\ScriptsBD\1CriacaoTabelas.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Others\BackLog Somar.xlsx" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
