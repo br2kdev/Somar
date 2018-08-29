@@ -21,11 +21,12 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.nomeGenero, C.nomeUsuario as nomePessoaUltAlteracao, ";
+            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
-            query += " FROM TB_Pessoas        A ";
-            query += " LEFT JOIN TB_Genero    B ON A.idGenero = B.idGenero";
-            query += " LEFT JOIN TB_Usuarios  C ON A.idPessoaUltAlteracao = C.idUsuario";
+            query += " FROM TB_Pessoas          A ";
+            query += " LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero";
+            query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
+            query += " LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa";
 
 
             if (objectDTO.idPessoa != 0)
@@ -52,6 +53,7 @@ namespace Somar.DAL
 
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
             param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@idTipoPessoa", objectDTO.idTipoPessoa, DbType.Int32);
             param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
             param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
             param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
@@ -88,6 +90,7 @@ namespace Somar.DAL
 
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
             param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@idTipoPessoa", objectDTO.idTipoPessoa, DbType.Int32);
             param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
             param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
             param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
@@ -111,70 +114,6 @@ namespace Somar.DAL
             var result = sqlCommand.ExecuteSQL(query, param);
 
             return result;
-        }
-
-        public DataSet Consultar(string Sql)
-        {
-            DataTable _datatable = new DataTable();
-            DataSet ds = new DataSet();
-
-            using (SqlConnection con = new SqlConnection(Globals.stringConn))
-            {
-                con.Open();
-
-                using (SqlCommand command = new SqlCommand("SELECT * FROM TB_Pessoa", con))
-                {
-                    SqlDataAdapter da = new SqlDataAdapter(command);
-
-                    ds.Tables.Add("Customers");
-                    ds.Tables.Add("Employees");
-                }
-
-
-                /*
-                ds.EnforceConstraints = false;
-
-                ds.Tables["Customers"].BeginLoadData();
-                da.Fill(ds.Tables["Customers"]);
-                ds.Tables["Customers"].EndLoadData();
-                ds.Tables["Employees"].BeginLoadData();
-                da.Fill(ds.Tables["Employees"]);
-                ds.Tables["Employees"].EndLoadData();
-
-                dataGrid1.DataSource = ds.Tables["Customers"];
-                dataGrid2.DataSource = ds.Tables["Employees"];
-                */
-                /*
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0} {1} {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
-                    }
-                }
-                */
-                con.Close();
-
-            }
-
-            return ds;
-
-            /*
-            
-
-            cmd = new SqlCommand(Sql, conn);
-            conn.Open();
-
-            //Diz que o comando é uma query(Texto) e não uma StoredProcedure
-            cmd.CommandType = CommandType.Text;
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-            da.Fill(cliente);
-            dgv.DataSource = cliente;
-            conn.Close();
-            */
-
         }
     }
 }

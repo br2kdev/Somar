@@ -75,6 +75,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             CarregaGrid();
             CarregaComboGenero();
+            CarregaComboTipoPessoa();
         }
 
         #region Events
@@ -170,13 +171,24 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
+        
+
         public void CarregaComboGenero()
         {
-            List<GeneroDTO> lista = new GeneroBLL().GetAllData();
+            List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.Genero });
 
-            cmbGenero.DisplayMember = "nomeGenero";
-            cmbGenero.ValueMember = "idGenero";
+            cmbGenero.DisplayMember = "descGeneric";
+            cmbGenero.ValueMember = "idGeneric";
             cmbGenero.DataSource = lista;
+        }
+
+        public void CarregaComboTipoPessoa()
+        {
+            List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.TipoPessoa });
+
+            cmbTipoPessoa.DisplayMember = "descGeneric";
+            cmbTipoPessoa.ValueMember = "idGeneric";
+            cmbTipoPessoa.DataSource = lista;
         }
 
         public void CarregaDetalhes(int idPessoa)
@@ -204,6 +216,7 @@ namespace ProjetoSomarUI.Cadastros
                 txtIdade.Text = new Functions().CalcularIdade(param.dataNascimento).ToString();
 
             cmbGenero.SelectedValue = param.idGenero;
+            cmbTipoPessoa.SelectedValue = param.idTipoPessoa;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
             // ************************************************** //
@@ -357,11 +370,10 @@ namespace ProjetoSomarUI.Cadastros
             img.Name = "Image";
             img.HeaderText = "";
             img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 50;
+            img.Width = 40;
             this.dataGridView1.Columns.Add(img);
 
             // -------------------------------------------------------------
-
             // All Fields
             foreach (var item in fields)
             {
@@ -374,6 +386,8 @@ namespace ProjetoSomarUI.Cadastros
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
                 }
+                else if(item.Key == "descTipoPessoa" || item.Key == "descGenero")
+                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 this.dataGridView1.Columns.Add(dt);
             }
@@ -496,6 +510,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDataNascimento.Enabled = flagEnable;
             txtIdade.Enabled = false;
             cmbGenero.Enabled = flagEnable;
+            cmbTipoPessoa.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
             txtDataAtivacao.Enabled = flagEnable;
 
@@ -614,9 +629,11 @@ namespace ProjetoSomarUI.Cadastros
             param.numeroRG = txtRG.Text;
             param.numeroCPF = txtCPF.Text;
             param.dataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
+            param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
             param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
             param.dataAtivacao = Convert.ToDateTime(txtDataAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
+            param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
 
             param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);
             param.idContato = string.IsNullOrEmpty(txtIdContato.Text) ? 0 : Convert.ToInt32(txtIdContato.Text);

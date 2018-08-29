@@ -21,7 +21,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT A.*, b.nomePerfil, ";
+            query += "SELECT A.*, b.descPerfil, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += "FROM TB_Usuarios A ";
             query += "LEFT JOIN TB_Perfis  B ON A.idPerfil = B.idPerfil ";
@@ -48,7 +48,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT A.*, b.nomePerfil, ";
+            query += "SELECT A.*, b.descPerfil, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += "FROM TB_Usuarios A ";
             query += "LEFT JOIN TB_Perfis  B ON A.idPerfil = B.idPerfil ";

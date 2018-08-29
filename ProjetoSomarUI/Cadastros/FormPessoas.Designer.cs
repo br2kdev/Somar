@@ -59,8 +59,7 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbTipoPessoa = new System.Windows.Forms.ComboBox();
             this.label29 = new System.Windows.Forms.Label();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -107,6 +106,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -120,7 +120,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -224,9 +223,6 @@
             this.cmbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSearchType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.15F);
             this.cmbSearchType.FormattingEnabled = true;
-            this.cmbSearchType.Items.AddRange(new object[] {
-            "Nome",
-            "Código"});
             this.cmbSearchType.Location = new System.Drawing.Point(97, 30);
             this.cmbSearchType.Name = "cmbSearchType";
             this.cmbSearchType.Size = new System.Drawing.Size(157, 26);
@@ -290,7 +286,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblStatus.Location = new System.Drawing.Point(790, 61);
+            this.lblStatus.Location = new System.Drawing.Point(777, 61);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(52, 17);
             this.lblStatus.TabIndex = 93;
@@ -302,7 +298,7 @@
             this.cmbStatus.Enabled = false;
             this.cmbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(845, 55);
+            this.cmbStatus.Location = new System.Drawing.Point(832, 55);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
             this.cmbStatus.TabIndex = 92;
@@ -386,7 +382,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(776, 97);
+            this.label7.Location = new System.Drawing.Point(763, 97);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 17);
             this.label7.TabIndex = 89;
@@ -473,8 +469,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.checkedListBox1);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cmbTipoPessoa);
             this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.txtCPF);
             this.panel3.Controls.Add(this.panel2);
@@ -502,47 +497,34 @@
             this.panel3.Size = new System.Drawing.Size(984, 536);
             this.panel3.TabIndex = 66;
             // 
-            // checkedListBox1
+            // cmbTipoPessoa
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Teste 1",
-            "Teste 2"});
-            this.checkedListBox1.Location = new System.Drawing.Point(361, 92);
-            this.checkedListBox1.MultiColumn = true;
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(147, 34);
-            this.checkedListBox1.TabIndex = 110;
-            this.checkedListBox1.ThreeDCheckBoxes = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Enabled = false;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(120, 92);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(147, 28);
-            this.comboBox1.TabIndex = 109;
+            this.cmbTipoPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoPessoa.Enabled = false;
+            this.cmbTipoPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTipoPessoa.FormattingEnabled = true;
+            this.cmbTipoPessoa.Location = new System.Drawing.Point(91, 92);
+            this.cmbTipoPessoa.Name = "cmbTipoPessoa";
+            this.cmbTipoPessoa.Size = new System.Drawing.Size(147, 28);
+            this.cmbTipoPessoa.TabIndex = 109;
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label29.Location = new System.Drawing.Point(19, 97);
+            this.label29.Location = new System.Drawing.Point(48, 98);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(86, 17);
+            this.label29.Size = new System.Drawing.Size(40, 17);
             this.label29.TabIndex = 108;
-            this.label29.Text = "Funcionário:";
+            this.label29.Text = "Tipo:";
             // 
             // txtCPF
             // 
             this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtCPF.Location = new System.Drawing.Point(361, 55);
+            this.txtCPF.Location = new System.Drawing.Point(346, 55);
             this.txtCPF.Mask = "999,999,999-99";
             this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(147, 27);
+            this.txtCPF.Size = new System.Drawing.Size(133, 27);
             this.txtCPF.TabIndex = 107;
             // 
             // panel2
@@ -590,7 +572,7 @@
             this.txtDataAtivacao.AllowDrop = true;
             this.txtDataAtivacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtDataAtivacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataAtivacao.Location = new System.Drawing.Point(845, 92);
+            this.txtDataAtivacao.Location = new System.Drawing.Point(832, 92);
             this.txtDataAtivacao.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtDataAtivacao.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.txtDataAtivacao.Name = "txtDataAtivacao";
@@ -605,10 +587,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 138);
+            this.tabControl1.Location = new System.Drawing.Point(3, 145);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(976, 262);
+            this.tabControl1.Size = new System.Drawing.Size(987, 262);
             this.tabControl1.TabIndex = 104;
             // 
             // tabPage2
@@ -634,7 +616,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(968, 232);
+            this.tabPage2.Size = new System.Drawing.Size(979, 232);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereço";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -685,6 +667,7 @@
             // txtUF
             // 
             this.txtUF.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUF.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUF.Enabled = false;
             this.txtUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtUF.Location = new System.Drawing.Point(854, 133);
@@ -706,6 +689,7 @@
             // txtCidade
             // 
             this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCidade.Enabled = false;
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtCidade.Location = new System.Drawing.Point(605, 133);
@@ -717,6 +701,7 @@
             // txtBairro
             // 
             this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
+            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairro.Enabled = false;
             this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtBairro.Location = new System.Drawing.Point(118, 133);
@@ -728,6 +713,7 @@
             // txtComplemento
             // 
             this.txtComplemento.BackColor = System.Drawing.SystemColors.Window;
+            this.txtComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtComplemento.Enabled = false;
             this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtComplemento.Location = new System.Drawing.Point(118, 94);
@@ -739,6 +725,7 @@
             // txtNumero
             // 
             this.txtNumero.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNumero.Enabled = false;
             this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtNumero.Location = new System.Drawing.Point(605, 56);
@@ -750,6 +737,7 @@
             // txtLogradouro
             // 
             this.txtLogradouro.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLogradouro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtLogradouro.Enabled = false;
             this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
             this.txtLogradouro.Location = new System.Drawing.Point(118, 56);
@@ -840,7 +828,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(968, 232);
+            this.tabPage1.Size = new System.Drawing.Size(979, 232);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contatos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1017,10 +1005,17 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(968, 232);
+            this.tabPage3.Size = new System.Drawing.Size(979, 232);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(341, 55);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 111);
+            this.flowLayoutPanel1.TabIndex = 89;
             // 
             // txtDescricao
             // 
@@ -1036,7 +1031,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label14.Location = new System.Drawing.Point(926, 25);
+            this.label14.Location = new System.Drawing.Point(913, 25);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 17);
             this.label14.TabIndex = 103;
@@ -1046,7 +1041,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label13.Location = new System.Drawing.Point(566, 61);
+            this.label13.Location = new System.Drawing.Point(540, 61);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 17);
             this.label13.TabIndex = 102;
@@ -1058,7 +1053,7 @@
             this.cmbGenero.Enabled = false;
             this.cmbGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cmbGenero.FormattingEnabled = true;
-            this.cmbGenero.Location = new System.Drawing.Point(629, 55);
+            this.cmbGenero.Location = new System.Drawing.Point(603, 55);
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(128, 28);
             this.cmbGenero.TabIndex = 101;
@@ -1067,7 +1062,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label12.Location = new System.Drawing.Point(322, 60);
+            this.label12.Location = new System.Drawing.Point(305, 61);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(38, 17);
             this.label12.TabIndex = 100;
@@ -1078,7 +1073,7 @@
             this.txtRG.BackColor = System.Drawing.SystemColors.Window;
             this.txtRG.Enabled = false;
             this.txtRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtRG.Location = new System.Drawing.Point(120, 55);
+            this.txtRG.Location = new System.Drawing.Point(91, 55);
             this.txtRG.MaxLength = 100;
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(147, 27);
@@ -1088,11 +1083,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(19, 60);
+            this.label3.Location = new System.Drawing.Point(55, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 17);
+            this.label3.Size = new System.Drawing.Size(33, 17);
             this.label3.TabIndex = 98;
-            this.label3.Text = "Nº RG:";
+            this.label3.Text = "RG:";
             // 
             // txtDataNascimento
             // 
@@ -1100,7 +1095,7 @@
             this.txtDataNascimento.Enabled = false;
             this.txtDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataNascimento.Location = new System.Drawing.Point(629, 20);
+            this.txtDataNascimento.Location = new System.Drawing.Point(603, 20);
             this.txtDataNascimento.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtDataNascimento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.txtDataNascimento.Name = "txtDataNascimento";
@@ -1113,7 +1108,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(540, 26);
+            this.label2.Location = new System.Drawing.Point(514, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 96;
@@ -1123,7 +1118,7 @@
             // 
             this.txtIdade.Enabled = false;
             this.txtIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtIdade.Location = new System.Drawing.Point(845, 20);
+            this.txtIdade.Location = new System.Drawing.Point(832, 20);
             this.txtIdade.MaxLength = 10;
             this.txtIdade.Name = "txtIdade";
             this.txtIdade.ReadOnly = true;
@@ -1135,7 +1130,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(795, 24);
+            this.label4.Location = new System.Drawing.Point(782, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 17);
             this.label4.TabIndex = 83;
@@ -1144,9 +1139,10 @@
             // txtNome
             // 
             this.txtNome.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Enabled = false;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtNome.Location = new System.Drawing.Point(120, 19);
+            this.txtNome.Location = new System.Drawing.Point(91, 19);
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(388, 27);
@@ -1156,26 +1152,19 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label10.Location = new System.Drawing.Point(17, 24);
+            this.label10.Location = new System.Drawing.Point(39, 24);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 17);
             this.label10.TabIndex = 77;
             this.label10.Text = "Nome:";
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(341, 55);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(363, 111);
-            this.flowLayoutPanel1.TabIndex = 89;
             // 
             // FormPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 641);
-            this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1299,9 +1288,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNomeAlteracao;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbTipoPessoa;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

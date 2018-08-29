@@ -8,34 +8,11 @@ namespace ProjetoSomarUI
 {
     public partial class FormPrincipal : Form
     {
+        #region SplashScreen
+
         private SplashScreen splashScreen;
 
         private bool done = false;
-
-        public FormPrincipal()
-        {
-            InitializeComponent();
-
-            lblNome.Text = Sessao.Usuario.nomeUsuario;
-            lblPerfil.Text = Sessao.Usuario.nomePerfil;
-
-            this.Load += new EventHandler(HandleFormLoad);
-            this.splashScreen = new SplashScreen();
-        }
-
-        private void HandleFormLoad(object sender, EventArgs e)
-        {
-            /*
-            this.Hide();
-            Thread thread = new Thread(new ThreadStart(this.ShowSplashScreen));
-            thread.Start();
-
-            Hardworker worker = new Hardworker();
-            worker.ProgressChanged += (o, ex) => { this.splashScreen.UpdateProgress(ex.Progress); };
-            worker.HardWorkDone += (o, ex) => { done = true; this.Show(); };
-            worker.DoHardWork();
-            */
-        }
 
         private void ShowSplashScreen()
         {
@@ -49,6 +26,42 @@ namespace ProjetoSomarUI
             splashScreen.Close();
             this.splashScreen.Dispose();
         }
+
+        private void HandleFormLoad(object sender, EventArgs e)
+        {
+            this.Hide();
+            Thread thread = new Thread(new ThreadStart(this.ShowSplashScreen));
+            thread.Start();
+
+            Hardworker worker = new Hardworker();
+            worker.ProgressChanged += (o, ex) => { this.splashScreen.UpdateProgress(ex.Progress); };
+            worker.HardWorkDone += (o, ex) => { done = true; this.Show(); };
+            worker.DoHardWork();
+        }
+
+        #endregion
+
+        public FormPrincipal()
+        {
+            InitializeComponent();
+
+            lblNome.Text = Sessao.Usuario.nomeUsuario;
+            lblPerfil.Text = Sessao.Usuario.descPerfil;
+
+            //this.Load += new EventHandler(HandleFormLoad);
+            //this.splashScreen = new SplashScreen();
+
+            this.timer1.Enabled = true;
+
+            CarregarAniversariantes();
+        }
+
+        public void CarregarAniversariantes()
+        {
+
+        }
+
+        #region MenuItem Click
 
         private void sairMenuItem_Click(object sender, EventArgs e)
         {
@@ -95,6 +108,13 @@ namespace ProjetoSomarUI
             Administracao.FormUsuarios frm = new Administracao.FormUsuarios();
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
+        }
+
+        #endregion
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDataAtual.Text = String.Format("{0:F}", DateTime.Now);
         }
     }
 }

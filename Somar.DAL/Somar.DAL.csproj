@@ -58,8 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entities.xsd</DependentUpon>
     </Compile>
-    <Compile Include="GeneroDAL.cs" />
-    <Compile Include="PerfilDAL.cs" />
+    <Compile Include="GenericDAL.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepGen.cs" />
@@ -90,6 +89,10 @@
     <ProjectReference Include="..\Somar.DTO\Somar.DTO.csproj">
       <Project>{9e18dec3-9bea-4701-ad20-3f59304c4d86}</Project>
       <Name>Somar.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Somar.Shared\Somar.Shared.csproj">
+      <Project>{c2119b43-6a1d-415e-8ac0-b5a03bde3822}</Project>
+      <Name>Somar.Shared</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

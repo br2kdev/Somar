@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <Content Include="imgs\others\imgSomar.jpg" />
+    <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />
     <Content Include="imgs\icon_projeto32x32.png" />
     <Content Include="imgs\icon_projeto48x48.png" />

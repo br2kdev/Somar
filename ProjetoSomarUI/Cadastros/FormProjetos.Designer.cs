@@ -49,8 +49,12 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlTempoProjeto = new System.Windows.Forms.Panel();
             this.txtDataTermino = new System.Windows.Forms.DateTimePicker();
-            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTempoProjeto = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtDuracao = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -58,7 +62,9 @@
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtDataCadastro = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
@@ -66,14 +72,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtDuracao = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,6 +84,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.pnlTempoProjeto.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -321,8 +324,12 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtDataTermino);
             this.panel3.Controls.Add(this.txtDataInicio);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Controls.Add(this.pnlTempoProjeto);
+            this.panel3.Controls.Add(this.cmbTempoProjeto);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.txtDuracao);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
             this.panel3.Controls.Add(this.panel2);
@@ -331,11 +338,7 @@
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txtDescricao);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Controls.Add(this.txtDuracao);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.txtNome);
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.panel3.Location = new System.Drawing.Point(14, 70);
@@ -343,31 +346,71 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
+            // pnlTempoProjeto
+            // 
+            this.pnlTempoProjeto.Controls.Add(this.txtDataTermino);
+            this.pnlTempoProjeto.Controls.Add(this.label2);
+            this.pnlTempoProjeto.Location = new System.Drawing.Point(274, 274);
+            this.pnlTempoProjeto.Name = "pnlTempoProjeto";
+            this.pnlTempoProjeto.Size = new System.Drawing.Size(274, 49);
+            this.pnlTempoProjeto.TabIndex = 97;
+            // 
             // txtDataTermino
             // 
             this.txtDataTermino.AllowDrop = true;
             this.txtDataTermino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtDataTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataTermino.Location = new System.Drawing.Point(417, 57);
+            this.txtDataTermino.Location = new System.Drawing.Point(130, 8);
             this.txtDataTermino.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtDataTermino.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.txtDataTermino.Name = "txtDataTermino";
             this.txtDataTermino.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtDataTermino.Size = new System.Drawing.Size(128, 26);
-            this.txtDataTermino.TabIndex = 3;
+            this.txtDataTermino.TabIndex = 83;
             // 
-            // txtDataInicio
+            // label2
             // 
-            this.txtDataInicio.AllowDrop = true;
-            this.txtDataInicio.Enabled = false;
-            this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicio.Location = new System.Drawing.Point(134, 57);
-            this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataInicio.Name = "txtDataInicio";
-            this.txtDataInicio.Size = new System.Drawing.Size(128, 26);
-            this.txtDataInicio.TabIndex = 2;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label2.Location = new System.Drawing.Point(8, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 17);
+            this.label2.TabIndex = 85;
+            this.label2.Text = "Data de Termino:";
+            // 
+            // cmbTempoProjeto
+            // 
+            this.cmbTempoProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTempoProjeto.Enabled = false;
+            this.cmbTempoProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTempoProjeto.FormattingEnabled = true;
+            this.cmbTempoProjeto.Items.AddRange(new object[] {
+            "Definido",
+            "Indeterminado"});
+            this.cmbTempoProjeto.Location = new System.Drawing.Point(134, 244);
+            this.cmbTempoProjeto.Name = "cmbTempoProjeto";
+            this.cmbTempoProjeto.Size = new System.Drawing.Size(128, 28);
+            this.cmbTempoProjeto.TabIndex = 96;
+            this.cmbTempoProjeto.SelectedIndexChanged += new System.EventHandler(this.cmbTempoProjeto_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label4.Location = new System.Drawing.Point(5, 250);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(125, 17);
+            this.label4.TabIndex = 95;
+            this.label4.Text = "Tempo de Projeto:";
+            // 
+            // txtDuracao
+            // 
+            this.txtDuracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtDuracao.Location = new System.Drawing.Point(696, 280);
+            this.txtDuracao.MaxLength = 100;
+            this.txtDuracao.Name = "txtDuracao";
+            this.txtDuracao.Size = new System.Drawing.Size(259, 27);
+            this.txtDuracao.TabIndex = 94;
             // 
             // lblStatus
             // 
@@ -400,7 +443,7 @@
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
-            this.panel2.Location = new System.Drawing.Point(0, 313);
+            this.panel2.Location = new System.Drawing.Point(0, 327);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
@@ -450,6 +493,18 @@
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             // 
+            // txtDataCadastro
+            // 
+            this.txtDataCadastro.Enabled = false;
+            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtDataCadastro.Location = new System.Drawing.Point(118, 18);
+            this.txtDataCadastro.MaxLength = 10;
+            this.txtDataCadastro.Name = "txtDataCadastro";
+            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtDataCadastro.TabIndex = 94;
+            this.txtDataCadastro.TabStop = false;
+            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // txtDataAlteracao
             // 
             this.txtDataAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
@@ -458,6 +513,16 @@
             this.txtDataAlteracao.Name = "txtDataAlteracao";
             this.txtDataAlteracao.Size = new System.Drawing.Size(118, 27);
             this.txtDataAlteracao.TabIndex = 80;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label6.Location = new System.Drawing.Point(12, 23);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 17);
+            this.label6.TabIndex = 95;
+            this.label6.Text = "Data Cadastro:";
             // 
             // label11
             // 
@@ -491,17 +556,17 @@
             // txtResponsavel
             // 
             this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtResponsavel.Location = new System.Drawing.Point(134, 264);
+            this.txtResponsavel.Location = new System.Drawing.Point(696, 247);
             this.txtResponsavel.MaxLength = 100;
             this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(483, 27);
+            this.txtResponsavel.Size = new System.Drawing.Size(259, 27);
             this.txtResponsavel.TabIndex = 5;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(17, 271);
+            this.label7.Location = new System.Drawing.Point(596, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 89;
@@ -510,52 +575,22 @@
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDescricao.Location = new System.Drawing.Point(134, 97);
-            this.txtDescricao.MaxLength = 300;
+            this.txtDescricao.Location = new System.Drawing.Point(134, 58);
+            this.txtDescricao.MaxLength = 400;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(821, 153);
+            this.txtDescricao.Size = new System.Drawing.Size(821, 180);
             this.txtDescricao.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(17, 102);
+            this.label5.Location = new System.Drawing.Point(17, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 85;
             this.label5.Text = "Descrição:";
-            // 
-            // txtDuracao
-            // 
-            this.txtDuracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDuracao.Location = new System.Drawing.Point(831, 57);
-            this.txtDuracao.MaxLength = 10;
-            this.txtDuracao.Name = "txtDuracao";
-            this.txtDuracao.Size = new System.Drawing.Size(124, 27);
-            this.txtDuracao.TabIndex = 84;
-            this.txtDuracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(762, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 17);
-            this.label4.TabIndex = 83;
-            this.label4.Text = "Duração:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(293, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
-            this.label2.TabIndex = 81;
-            this.label2.Text = "Data de Termino:";
             // 
             // txtNome
             // 
@@ -567,16 +602,6 @@
             this.txtNome.Size = new System.Drawing.Size(571, 27);
             this.txtNome.TabIndex = 1;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(17, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 17);
-            this.label3.TabIndex = 79;
-            this.label3.Text = "Data de Inicio:";
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -587,27 +612,28 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Projeto:";
             // 
-            // txtDataCadastro
+            // txtDataInicio
             // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(118, 18);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 94;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDataInicio.AllowDrop = true;
+            this.txtDataInicio.Enabled = false;
+            this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataInicio.Location = new System.Drawing.Point(133, 282);
+            this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.txtDataInicio.Name = "txtDataInicio";
+            this.txtDataInicio.Size = new System.Drawing.Size(128, 26);
+            this.txtDataInicio.TabIndex = 100;
             // 
-            // label6
+            // label3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(12, 23);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
-            this.label6.TabIndex = 95;
-            this.label6.Text = "Data Cadastro:";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label3.Location = new System.Drawing.Point(32, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 17);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "Data de Inicio:";
             // 
             // FormProjetos
             // 
@@ -638,6 +664,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.pnlTempoProjeto.ResumeLayout(false);
+            this.pnlTempoProjeto.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -674,11 +702,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtDuracao;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtDataAlteracao;
         private System.Windows.Forms.Label label11;
@@ -686,11 +710,17 @@
         private System.Windows.Forms.TextBox txtNomeAlteracao;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.DateTimePicker txtDataInicio;
-        private System.Windows.Forms.DateTimePicker txtDataTermino;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txtDataCadastro;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtDuracao;
+        private System.Windows.Forms.Panel pnlTempoProjeto;
+        private System.Windows.Forms.DateTimePicker txtDataTermino;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTempoProjeto;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker txtDataInicio;
+        private System.Windows.Forms.Label label3;
     }
 }

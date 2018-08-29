@@ -63,6 +63,10 @@ namespace ProjetoSomarUI.Cadastros
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
+            cmbTempoProjeto.SelectedItem = "Definido";
+            pnlTempoProjeto.Visible = true;
+            txtDataTermino.Format = DateTimePickerFormat.Short;
+
             ClearForm2();
             ControlFormEdit(true);
 
@@ -97,8 +101,22 @@ namespace ProjetoSomarUI.Cadastros
             lblCodigo.Text = param.idProjeto.ToString();
             txtNome.Text = param.nomeProjeto;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
-            txtDataInicio.Text = param.dataInicio.ToShortDateString();
-            txtDataTermino.Text = param.dataTermino.ToShortDateString();
+
+            txtDataInicio.Text = Convert.ToDateTime(param.dataInicio).ToShortDateString();
+
+            if (param.dataTermino != null)
+            {
+                pnlTempoProjeto.Visible = true;
+                cmbTempoProjeto.SelectedItem = "Definido";
+                txtDataTermino.Text = Convert.ToDateTime(param.dataTermino).ToShortDateString();
+            }
+            else
+            {
+                pnlTempoProjeto.Visible = false;
+                cmbTempoProjeto.SelectedItem = "Indeterminado";
+                txtDataTermino.Text = string.Empty;
+            }
+            
             txtDescricao.Text = param.descricaoProjeto;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
@@ -119,6 +137,7 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = string.Empty;
             txtDataInicio.Text = string.Empty;
             txtDataTermino.Text = string.Empty;
+            
             txtDuracao.Text = string.Empty;
             txtDescricao.Text = string.Empty;
             txtDataCadastro.Text = string.Empty;
@@ -322,6 +341,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDuracao.Enabled = flagEnable;
             txtResponsavel.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
+            cmbTempoProjeto.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
             txtDataCadastro.Enabled = false;
@@ -410,8 +430,13 @@ namespace ProjetoSomarUI.Cadastros
 
             param.nomeProjeto = txtNome.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-            param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
-            param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
+
+            if (!string.IsNullOrWhiteSpace(txtDataInicio.Text))
+                param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
+
+            if (!string.IsNullOrWhiteSpace(txtDataTermino.Text))
+                param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
+
             param.descricaoProjeto = txtDescricao.Text;
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
             //param.idPessoaResposavel = //txtResponsavel.Text;
@@ -466,5 +491,22 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        private void cmbTempoProjeto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTempoProjeto.SelectedItem.ToString() == "Indeterminado")
+            {
+                pnlTempoProjeto.Visible = false;
+
+                txtDataTermino.Format = DateTimePickerFormat.Custom;
+                txtDataTermino.CustomFormat = " ";
+
+                txtDataTermino.Text = string.Empty;
+            }
+            else
+            {
+                pnlTempoProjeto.Visible = true;
+                txtDataTermino.Format = DateTimePickerFormat.Short;
+            }
+        }
     }
 }

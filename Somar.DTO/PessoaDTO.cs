@@ -15,13 +15,18 @@ namespace Somar.DTO
         [DisplayName("Nome da Pessoa")]
         public string nomePessoa { get; set; }
 
+        public int idTipoPessoa { get; set; }
+
+        [DisplayName("Tipo")]
+        public string descTipoPessoa { get; set; }
+
         [DisplayName("Data de Nascimento")]
         public DateTime dataNascimento { get; set; }
 
         public int idGenero { get; set; }
 
         [DisplayName("Gênero")]
-        public string nomeGenero { get; set; }
+        public string descGenero { get; set; }
 
         public string observacoes { get; set; }
 

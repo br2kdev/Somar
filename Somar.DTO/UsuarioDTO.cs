@@ -23,7 +23,7 @@ namespace Somar.DTO
         public int idPerfil { get; set; }
 
         [DisplayName("Perfil")]
-        public string nomePerfil { get; set; }
+        public string descPerfil { get; set; }
 
         [DisplayName("Data do Cadastro")]
         public DateTime dataCadastro { get; set; }

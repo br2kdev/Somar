@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Somar.DAL", "Somar.DAL\Soma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Somar.Shared", "Somar.Shared\Somar.Shared.csproj", "{C2119B43-6A1D-415E-8AC0-B5A03BDE3822}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{25D0C858-7605-44A5-AD5C-E115E103E7ED}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Desktop\Dev Projeto Somar\ScriptsBD\1CriacaoTabelas.sql = ..\..\..\Desktop\Dev Projeto Somar\ScriptsBD\1CriacaoTabelas.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

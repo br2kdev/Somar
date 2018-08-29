@@ -41,8 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnderecoBLL.cs" />
-    <Compile Include="GeneroBLL.cs" />
-    <Compile Include="PerfilBLL.cs" />
+    <Compile Include="GenericBLL.cs" />
     <Compile Include="PessoaBLL.cs" />
     <Compile Include="TurmaBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

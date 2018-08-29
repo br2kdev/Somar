@@ -134,9 +134,9 @@ namespace ProjetoSomarUI.Administracao
 
             if (cmbPerfil.SelectedValue == null)
             {
-                List<PerfilDTO> lista = new PerfilBLL().GetAllData();
+                List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.Perfil });
 
-                lista.Add(new PerfilDTO() { idPerfil = param.idPerfil, nomePerfil = param.nomePerfil });
+                lista.Add(new GenericDTO() { idGeneric = param.idPerfil, descGeneric = param.descPerfil });
                 cmbPerfil.DataSource = lista;
             }
 
@@ -165,10 +165,10 @@ namespace ProjetoSomarUI.Administracao
 
         public void CarregaComboPerfil()
         {
-            List<PerfilDTO> lista = new PerfilBLL().GetAllData();
+            List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.Perfil });
 
-            cmbPerfil.DisplayMember = "nomePerfil";
-            cmbPerfil.ValueMember = "idPerfil";
+            cmbPerfil.DisplayMember = "descGeneric";
+            cmbPerfil.ValueMember = "idGeneric";
             cmbPerfil.DataSource = lista;
         }
 

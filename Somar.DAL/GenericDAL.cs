@@ -1,64 +1,47 @@
-﻿using System;
+﻿using Somar.DAL.Repository;
+using Somar.DTO;
+using Somar.Shared;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Somar.DAL
 {
-    public class GenericDAL<T> : IGenericDAL<T> where T : class
+    public class GenericDAL
     {
-        public virtual IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties)
+        public List<GenericDTO> GetAllGeneric(GenericDTO generic)
         {
-            List<T> list;
-            using (var context = new Entities())
+            RepList<GenericDTO> listGenero = new RepList<GenericDTO>();
+
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += "SELECT ";
+
+            switch (generic.dominio)
             {
-                IQueryable<T> dbQuery = context.Set<T>();
-
-                //Apply eager loading
-                foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
-                    dbQuery = dbQuery.Include<T, object>(navigationProperty);
-
-                list = dbQuery.AsNoTracking().ToList<T>();
+                case domains.Perfil:
+                    query += " idGeneric = idPerfil, descGeneric = descPerfil ";
+                    query += " FROM TB_Perfis A ";
+                    break;
+                case domains.Genero:
+                    query += " idGeneric = idGenero, descGeneric = descGenero ";
+                    query += " FROM TB_Generos A ";
+                    break;
+                case domains.TipoPessoa:
+                    query += " idGeneric = idTipoPessoa, descGeneric = descTipoPessoa ";
+                    query += " FROM TB_TipoPessoas A ";
+                    break;
+                default:
+                    break;
             }
-            return list;
-        }
 
-        public virtual IList<T> GetList(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties)
-        {
-            List<T> list;
-            using (var context = new Entities())
-            {
-                IQueryable<T> dbQuery = context.Set<T>();
+            if (generic.flagAtivo == true)
+                whereClause += " and A.flagAtivo = 1";
+            else if (generic.flagAtivo == false)
+                whereClause += " and A.flagAtivo = 0";
 
-                //Apply eager loading
-                foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
-                    dbQuery = dbQuery.Include<T, object>(navigationProperty);
+            query += whereClause;
 
-                list = dbQuery
-                    .AsNoTracking()
-                    .Where(where)
-                    .ToList<T>();
-            }
-            return list;
-        }
-
-        public virtual T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties)
-        {
-            T item = null;
-            using (var context = new Entities())
-            {
-                IQueryable<T> dbQuery = context.Set<T>();
-
-                //Apply eager loading
-                foreach (Expression<Func<T, object>> navigationProperty in navigationProperties)
-                    dbQuery = dbQuery.Include<T, object>(navigationProperty);
-
-                item = dbQuery
-                    .AsNoTracking() //Don't track any changes for the selected item
-                    .FirstOrDefault(where); //Apply where clause
-            }
-            return item;
+            return listGenero.GetDataInDatabase(query);
         }
     }
 }
