@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
 using ProjetoSomarUI.Cadastros;
+using Somar.BLL;
+using Somar.DTO;
 using Somar.Shared;
 
 namespace ProjetoSomarUI
@@ -58,7 +61,19 @@ namespace ProjetoSomarUI
 
         public void CarregarAniversariantes()
         {
+            List<PessoaDTO> lista = new PessoaBLL().GetAllData();
 
+            int iCount = 0;
+
+            foreach (var item in lista)
+            {
+                Label lblName = new Label();
+                lblName.AutoSize = true;
+                lblName.Tag = iCount++;
+
+                lblName.Text = item.nomePessoa + " - " + item.dataNascimento.ToShortDateString();
+                flowLayoutPanel1.Controls.Add(lblName);
+            }
         }
 
         #region MenuItem Click

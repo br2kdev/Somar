@@ -22,7 +22,7 @@ CREATE TABLE TB_Projetos
 	descricaoProjeto		NVARCHAR(400),
 	dataInicio				SMALLDATETIME,
 	dataTermino				SMALLDATETIME,
-	idPessoaResposavel		INT,
+	idPessoaResposavel		INT, 
 	dataCadastro			SMALLDATETIME,
 	flagAtivo				BIT,
 	dataUltAlteracao		SMALLDATETIME,

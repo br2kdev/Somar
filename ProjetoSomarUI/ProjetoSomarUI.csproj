@@ -146,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="imgs\birthday_icon.png" />
     <Content Include="imgs\others\imgSomar.jpg" />
     <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />

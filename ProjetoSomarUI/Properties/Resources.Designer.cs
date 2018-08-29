@@ -63,6 +63,16 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap birthday_icon {
+            get {
+                object obj = ResourceManager.GetObject("birthday_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_icon32x32 {
             get {
                 object obj = ResourceManager.GetObject("calendar_icon32x32", resourceCulture);
