@@ -1,5 +1,6 @@
 ﻿using Somar.DAL;
 using Somar.DTO;
+using Somar.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -111,6 +112,12 @@ namespace Somar.BLL
             PessoaDAL cmd = new PessoaDAL();
 
             return cmd.UpdateData(_projeto);
+        }
+
+        public List<PessoaDTO> GetPessoasPorTipo(TipoPessoa idTipoPessoa)
+        {
+            PessoaDAL cmd = new PessoaDAL();
+            return cmd.GetPessoasPorTipo(idTipoPessoa);
         }
 
         public List<PessoaDTO> GetAniversariantes()

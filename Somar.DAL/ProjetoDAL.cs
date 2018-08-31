@@ -51,13 +51,11 @@ namespace Somar.DAL
             param.Add("@nomeProjeto", objectDTO.nomeProjeto, DbType.String);
             param.Add("@descricaoProjeto", objectDTO.descricaoProjeto, DbType.String);
 
-            if(objectDTO.dataInicio != null)
-                param.Add("@dataInicio", objectDTO.dataInicio, DbType.Date);
+            param.Add("@dataInicio", objectDTO.dataInicio, DbType.Date);
+            param.Add("@dataTermino", objectDTO.dataTermino, DbType.Date);
 
-            if (objectDTO.dataTermino != null)
-                param.Add("@dataTermino", objectDTO.dataTermino, DbType.Date);
-
-            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            //param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            param.Add("@nomeResposavel", objectDTO.nomeResposavel, DbType.String);
             param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
@@ -91,7 +89,8 @@ namespace Somar.DAL
             param.Add("@dataInicio", objectDTO.dataInicio, DbType.Date);
             param.Add("@dataTermino", objectDTO.dataTermino, DbType.Date);
 
-            param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            //param.Add("@idPessoaResposavel", objectDTO.idPessoaResposavel, DbType.Int32);
+            param.Add("@nomeResposavel", objectDTO.nomeResposavel, DbType.String);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);

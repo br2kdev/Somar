@@ -22,7 +22,7 @@ namespace Somar.DTO
         public int idPessoaResposavel { get; set; }
 
         [DisplayName("Responsável")]
-        public int nomeResposavel { get; set; }
+        public string nomeResposavel { get; set; }
 
         public DateTime dataCadastro { get; set; }
 

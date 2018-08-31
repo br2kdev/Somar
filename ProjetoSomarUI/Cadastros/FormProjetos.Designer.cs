@@ -49,6 +49,9 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtResponsavel = new System.Windows.Forms.TextBox();
+            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlTempoProjeto = new System.Windows.Forms.Panel();
             this.txtDataTermino = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,14 +71,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
-            this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -324,6 +324,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txtResponsavel);
             this.panel3.Controls.Add(this.txtDataInicio);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.pnlTempoProjeto);
@@ -334,7 +335,6 @@
             this.panel3.Controls.Add(this.cmbStatus);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.txtResponsavel);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txtDescricao);
             this.panel3.Controls.Add(this.label5);
@@ -346,11 +346,43 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
+            // txtResponsavel
+            // 
+            this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtResponsavel.Location = new System.Drawing.Point(644, 245);
+            this.txtResponsavel.MaxLength = 100;
+            this.txtResponsavel.Name = "txtResponsavel";
+            this.txtResponsavel.Size = new System.Drawing.Size(311, 27);
+            this.txtResponsavel.TabIndex = 102;
+            // 
+            // txtDataInicio
+            // 
+            this.txtDataInicio.AllowDrop = true;
+            this.txtDataInicio.Enabled = false;
+            this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataInicio.Location = new System.Drawing.Point(133, 282);
+            this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.txtDataInicio.Name = "txtDataInicio";
+            this.txtDataInicio.Size = new System.Drawing.Size(128, 26);
+            this.txtDataInicio.TabIndex = 100;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label3.Location = new System.Drawing.Point(32, 287);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 17);
+            this.label3.TabIndex = 101;
+            this.label3.Text = "Data de Inicio:";
+            // 
             // pnlTempoProjeto
             // 
             this.pnlTempoProjeto.Controls.Add(this.txtDataTermino);
             this.pnlTempoProjeto.Controls.Add(this.label2);
-            this.pnlTempoProjeto.Location = new System.Drawing.Point(274, 274);
+            this.pnlTempoProjeto.Location = new System.Drawing.Point(263, 274);
             this.pnlTempoProjeto.Name = "pnlTempoProjeto";
             this.pnlTempoProjeto.Size = new System.Drawing.Size(274, 49);
             this.pnlTempoProjeto.TabIndex = 97;
@@ -406,11 +438,12 @@
             // txtDuracao
             // 
             this.txtDuracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDuracao.Location = new System.Drawing.Point(696, 280);
+            this.txtDuracao.Location = new System.Drawing.Point(696, 413);
             this.txtDuracao.MaxLength = 100;
             this.txtDuracao.Name = "txtDuracao";
             this.txtDuracao.Size = new System.Drawing.Size(259, 27);
             this.txtDuracao.TabIndex = 94;
+            this.txtDuracao.Visible = false;
             // 
             // lblStatus
             // 
@@ -553,20 +586,11 @@
             this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
             this.txtNomeAlteracao.TabIndex = 78;
             // 
-            // txtResponsavel
-            // 
-            this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtResponsavel.Location = new System.Drawing.Point(696, 247);
-            this.txtResponsavel.MaxLength = 100;
-            this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(259, 27);
-            this.txtResponsavel.TabIndex = 5;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(596, 252);
+            this.label7.Location = new System.Drawing.Point(546, 251);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 89;
@@ -611,29 +635,6 @@
             this.label10.Size = new System.Drawing.Size(57, 17);
             this.label10.TabIndex = 77;
             this.label10.Text = "Projeto:";
-            // 
-            // txtDataInicio
-            // 
-            this.txtDataInicio.AllowDrop = true;
-            this.txtDataInicio.Enabled = false;
-            this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicio.Location = new System.Drawing.Point(133, 282);
-            this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataInicio.Name = "txtDataInicio";
-            this.txtDataInicio.Size = new System.Drawing.Size(128, 26);
-            this.txtDataInicio.TabIndex = 100;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(32, 287);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 17);
-            this.label3.TabIndex = 101;
-            this.label3.Text = "Data de Inicio:";
             // 
             // FormProjetos
             // 
@@ -698,7 +699,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.TextBox txtEditMode;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label5;
@@ -722,5 +722,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker txtDataInicio;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtResponsavel;
     }
 }

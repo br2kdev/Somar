@@ -25,6 +25,7 @@ namespace ProjetoSomarUI.Cadastros
         private void FormProjetos_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+            //CarregaComboResponsavel();
         }
 
         #region Events
@@ -76,13 +77,6 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
-        /*
-        Batizado
-        Eucaristia
-        Crisma
-        */
-
-
         #region Methods
 
         public void CarregaGrid()
@@ -91,6 +85,18 @@ namespace ProjetoSomarUI.Cadastros
 
             GridViewDataBind(lista);
         }
+
+        /*
+        public void CarregaComboResponsavel()
+        {
+            
+            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipo(TipoPessoa.);
+
+            cmbResponsavel.DisplayMember = "nomePessoa";
+            cmbResponsavel.ValueMember = "idPessoa";
+            cmbResponsavel.DataSource = lista;
+        }
+        */
 
         public void CarregaDetalhes(int idProjeto)
         {
@@ -123,7 +129,8 @@ namespace ProjetoSomarUI.Cadastros
                 cmbTempoProjeto.SelectedItem = "Indeterminado";
                 txtDataTermino.Text = string.Empty;
             }
-            
+
+            txtResponsavel.Text = param.nomeResposavel;
             txtDescricao.Text = param.descricaoProjeto;
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
@@ -144,7 +151,7 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = string.Empty;
             txtDataInicio.Text = string.Empty;
             txtDataTermino.Text = string.Empty;
-            
+
             txtDuracao.Text = string.Empty;
             txtDescricao.Text = string.Empty;
             txtDataCadastro.Text = string.Empty;
@@ -208,7 +215,7 @@ namespace ProjetoSomarUI.Cadastros
             img.Name = "Image";
             img.HeaderText = "";
             img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 50;
+            img.Width = 45;
             this.dataGridView1.Columns.Add(img);
 
             // -------------------------------------------------------------
@@ -221,6 +228,11 @@ namespace ProjetoSomarUI.Cadastros
                 dt.HeaderText = item.Value;
 
                 if (item.Key == "nomeProjeto")
+                {
+                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
+                }
+                else if (item.Key == "nomeResponsavel")
                 {
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
@@ -446,6 +458,7 @@ namespace ProjetoSomarUI.Cadastros
 
             param.descricaoProjeto = txtDescricao.Text;
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
+            param.nomeResposavel = txtResponsavel.Text;
             //param.idPessoaResposavel = //txtResponsavel.Text;
 
             ProjetoBLL bus = new ProjetoBLL();

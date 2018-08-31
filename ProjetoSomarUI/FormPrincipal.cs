@@ -97,7 +97,7 @@ namespace ProjetoSomarUI
             if (iCount > 0)
                 panelAniversario.Visible = true;
             else
-                panelAniversario.Visible = true;
+                panelAniversario.Visible = false;
         }
 
         #region MenuItem Click
@@ -157,6 +157,14 @@ namespace ProjetoSomarUI
 
             if (DateTime.Now.Second == 0)
                 CarregarAniversariantes();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Relatorios.FormVisualizador frm = new Relatorios.FormVisualizador();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+            
         }
     }
 }

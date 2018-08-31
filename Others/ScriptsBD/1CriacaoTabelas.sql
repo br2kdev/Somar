@@ -18,12 +18,15 @@ CREATE TABLE TB_Projetos
 	descricaoProjeto		NVARCHAR(400),
 	dataInicio				SMALLDATETIME,
 	dataTermino				SMALLDATETIME,
-	idPessoaResposavel		INT, 
+	nomeResposavel			VARCHAR(100),
+	--idPessoaResposavel	INT,				-- Alterar para nome
 	dataCadastro			SMALLDATETIME,
 	flagAtivo				BIT,
 	dataUltAlteracao		SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
+
+--alter table TB_Projetos alter Column idPessoaResposavel VARCHAR(100)
 
 CREATE TABLE TB_Turmas
 (
@@ -78,7 +81,6 @@ CREATE TABLE TB_TipoPessoas
 	flagAtivo		BIT,
 )
 
-
 -- ******************************************************* 
 -- FINAL - TABELAS DE DOMÍNIO
 -- ******************************************************* 
@@ -113,8 +115,7 @@ CREATE TABLE TB_Enderecos
 	nomeBairro				NVARCHAR(100),
 	idCidade				INT,
 	nomeCidade				NVARCHAR(100),
-	siglaUF					VARCHAR(2),
-	idPessoa				INT
+	siglaUF					VARCHAR(2)
 )
 
 CREATE TABLE TB_Contatos
@@ -161,6 +162,12 @@ select * from TB_Usuarios
 select * from TB_Perfis
 select * from TB_Pessoas
 
+select * from TB_Pessoas
+
+SELECT * 
+FROM TB_Pessoas A
+WHERE  month(dataNascimento) = month(getdate())
+
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
@@ -180,6 +187,39 @@ INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
 INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
 
 
+INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
+INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
+INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
+
+
+CREATE INDEX IX#01_LOGRADOURO ON TB_CEP_Logradouro(CEP)
+CREATE INDEX IX#02_LOGRADOURO ON TB_CEP_Logradouro(loc_nu_sequencial)
+CREATE INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
+CREATE INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
+
+
+TB_Enderecos
+
+@CEP,
+@logradouro,
+@complemento,
+@numero,
+@idBairro,
+@nomeBairro,
+@idCidade,
+@nomeCidade,
+@siglaUF
+
+CEP
+logradouro
+complemento
+numero
+idBairro
+nomeBairro
+idCidade
+nomeCidade
+siglaUF
+
 /*
 USE CorreiroDatabase2014
 GO
@@ -197,10 +237,7 @@ INNER JOIN TB_CEP_Localidade B ON A.loc_nu_sequencial = B.loc_nu_sequencial
 INNER JOIN TB_CEP_Bairro     C ON A.bai_nu_sequencial_ini = C.bai_nu_sequencial
 WHERE A.cep = '07195120'
 
-CREATE INDEX IX#01_LOGRADOURO ON TB_CEP_Logradouro(CEP)
-CREATE INDEX IX#02_LOGRADOURO ON TB_CEP_Logradouro(loc_nu_sequencial)
-CREATE INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
-CREATE INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
+
 
 SELECT 
 	Log_logradouro.LOG_NOME	AS LOGRADOURO, 

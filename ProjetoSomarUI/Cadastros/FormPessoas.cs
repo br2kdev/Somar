@@ -721,6 +721,20 @@ namespace ProjetoSomarUI.Cadastros
             */
         }
 
+        private void cmdBrowser_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fileOpen = new OpenFileDialog();
+
+            fileOpen.Title = "Open Image file";
+            fileOpen.Filter = "JPG Files (*.jpg)| *.jpg";
+
+            if (fileOpen.ShowDialog() == DialogResult.OK)
+            {
+                picImage.Image = Image.FromFile(fileOpen.FileName);
+            }
+            fileOpen.Dispose();
+        }
+
         #endregion
 
     }
