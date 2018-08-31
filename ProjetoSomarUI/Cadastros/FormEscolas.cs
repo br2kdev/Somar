@@ -14,7 +14,7 @@ namespace ProjetoSomarUI.Cadastros
     {
         public FormEscolas()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

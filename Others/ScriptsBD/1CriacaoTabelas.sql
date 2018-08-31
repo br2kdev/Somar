@@ -139,21 +139,33 @@ CREATE TABLE TB_DadosVariaveis
 
 CREATE TABLE TB_PessoaDV
 (
-	identificador	INT IDENTITY(1,1)
+	identificador	INT IDENTITY(1,1),
 	idPessoa		INT,
 	idDadoVariavel	INT,
 	flagMarcador	BIT
+)
+
+CREATE TABLE TB_Escolas
+(
+	idEscola				INT IDENTITY,
+	nomeEscola				INT,
+	observacoes				varchar(400),
+	idEndereco				INT,
+	dataCadastro			SMALLDATETIME,
+	flagAtivo				BIT,
+	dataUltAlteracao		SMALLDATETIME,
+	idPessoaUltAlteracao	INT
 )
 
 select * from TB_Usuarios
 select * from TB_Perfis
 select * from TB_Pessoas
 
-
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
 INSERT INTO TB_Usuarios VALUES ('Felipe F. Brichucka','admin', '', 1, getdate(), 1, getdate(), 1)
+INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','vist', '', 1, getdate(), 1, getdate(), 1)
 INSERT INTO TB_Perfis   VALUES ('Administrador', 1)
 
 INSERT INTO TB_Generos VALUES ('Feminino', 1)
