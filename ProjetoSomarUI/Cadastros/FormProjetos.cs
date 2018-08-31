@@ -76,6 +76,13 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        /*
+        Batizado
+        Eucaristia
+        Crisma
+        */
+
+
         #region Methods
 
         public void CarregaGrid()

@@ -1,8 +1,6 @@
 USE SomarDatabase
 GO
 
-use master
-
 -- ******************************************************************* --
 -- BASE CEP - FONTE http://www.cepaberto.com/
 -- ******************************************************************* --
@@ -12,8 +10,6 @@ SELECT * FROM TB_Cidades
 SELECT * FROM TB_CEPs
 */
 -- ******************************************************************* --
-
---> SELECT * FROM tb_turmas
 
 CREATE TABLE TB_Projetos
 (
@@ -28,7 +24,6 @@ CREATE TABLE TB_Projetos
 	dataUltAlteracao		SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
-
 
 CREATE TABLE TB_Turmas
 (
@@ -59,7 +54,6 @@ CREATE TABLE TB_Usuarios
 	idPessoaUltAlteracao	INT
 )
 
-
 -- ******************************************************* 
 -- INÍCIO - TABELAS DE DOMÍNIO
 -- ******************************************************* 
@@ -84,20 +78,6 @@ CREATE TABLE TB_TipoPessoas
 	flagAtivo		BIT,
 )
 
-select * from TB_Perfis
-select * from TB_Generos
-select * from TB_TipoPessoas
-
--- INSERT INTO TB_Perfis VALUES ('Administrador', 1)
-
--- INSERT INTO TB_Generos VALUES ('Feminino', 1)
--- INSERT INTO TB_Generos VALUES ('Masculino', 1)
-
--- INSERT INTO TB_TipoPessoas VALUES ('Beneficiário', 1)
--- INSERT INTO TB_TipoPessoas VALUES ('Educador', 1)
--- INSERT INTO TB_TipoPessoas VALUES ('Funcionário', 1)
--- INSERT INTO TB_TipoPessoas VALUES ('Professor', 1)
--- INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
 
 -- ******************************************************* 
 -- FINAL - TABELAS DE DOMÍNIO
@@ -150,16 +130,40 @@ CREATE TABLE TB_Contatos
    contato3	 VARCHAR(100)
 )
 
--- select * from TB_Pessoas
-INSERT INTO TB_Usuarios VALUES ('Administrador do Sistema','admin', '', 1, getdate(), 1, getdate(), 1)
-INSERT INTO TB_Perfis   VALUES ('Administrador')
+CREATE TABLE TB_PessoaDV
+(
+	identificador	INT IDENTITY(1,1)
+	idPessoa		INT,
+	idDadoVariavel	INT
+
+)
+
+select * from TB_Usuarios
+select * from TB_Perfis
+select * from TB_Pessoas
+-- ******************************************************* 
+-- INÍCIO - INSERTS
+-- ******************************************************* 
+INSERT INTO TB_Usuarios VALUES ('Felipe F. Brichucka','admin', '', 1, getdate(), 1, getdate(), 1)
+INSERT INTO TB_Perfis   VALUES ('Administrador', 1)
+
+INSERT INTO TB_Generos VALUES ('Feminino', 1)
+INSERT INTO TB_Generos VALUES ('Masculino', 1)
+
+INSERT INTO TB_TipoPessoas VALUES ('Beneficiário', 1)
+INSERT INTO TB_TipoPessoas VALUES ('Educador', 1)
+INSERT INTO TB_TipoPessoas VALUES ('Funcionário', 1)
+INSERT INTO TB_TipoPessoas VALUES ('Professor', 1)
+INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
+
 INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
 
-/*
-use CorreiroDatabase2014
-go
 
-select top 50 * from CorreiroDatabase2014..log_logradouro
+/*
+USE CorreiroDatabase2014
+GO
+
+SELECT TOP 50 * FROM CorreiroDatabase2014..log_logradouro
 
 SELECT 
   A.LOG_NOME	AS Logradouro,
