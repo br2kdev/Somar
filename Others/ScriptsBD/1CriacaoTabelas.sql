@@ -130,17 +130,26 @@ CREATE TABLE TB_Contatos
    contato3	 VARCHAR(100)
 )
 
+CREATE TABLE TB_DadosVariaveis
+(
+	idDadoVariavel		INT IDENTITY(1,1),
+	nomeDadoVariavel	VARCHAR(100),
+	flagAtivo			BIT
+)
+
 CREATE TABLE TB_PessoaDV
 (
 	identificador	INT IDENTITY(1,1)
 	idPessoa		INT,
-	idDadoVariavel	INT
-
+	idDadoVariavel	INT,
+	flagMarcador	BIT
 )
 
 select * from TB_Usuarios
 select * from TB_Perfis
 select * from TB_Pessoas
+
+
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
@@ -156,7 +165,7 @@ INSERT INTO TB_TipoPessoas VALUES ('Funcionário', 1)
 INSERT INTO TB_TipoPessoas VALUES ('Professor', 1)
 INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
 
-INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
+INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
 
 
 /*
