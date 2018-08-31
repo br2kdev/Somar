@@ -112,5 +112,11 @@ namespace Somar.BLL
 
             return cmd.UpdateData(_projeto);
         }
+
+        public List<PessoaDTO> GetAniversariantes()
+        {
+            PessoaDAL cmd = new PessoaDAL();
+            return cmd.GetAniversariantes(new PessoaDTO());
+        }
     }
 }

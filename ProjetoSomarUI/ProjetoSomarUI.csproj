@@ -108,6 +108,9 @@
     <EmbeddedResource Include="Administracao\FormUsuarios.resx">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\FormEscolas.resx">
+      <DependentUpon>FormEscolas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormPessoas.resx">
       <DependentUpon>FormPessoas.cs</DependentUpon>
     </EmbeddedResource>

@@ -74,6 +74,9 @@ namespace ProjetoSomarUI
                 lblName.Text = item.nomePessoa + " - " + item.dataNascimento.ToShortDateString();
                 flowLayoutPanel1.Controls.Add(lblName);
             }
+
+            if (iCount > 0)
+                panelAniversario.Visible = true;
         }
 
         #region MenuItem Click

@@ -55,7 +55,7 @@
             this.lblDataAtual = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.panelAniversario = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,7 +66,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel5.SuspendLayout();
+            this.panelAniversario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -299,19 +299,20 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // panel5
+            // panelAniversario
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panelAniversario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel5.Controls.Add(this.flowLayoutPanel1);
-            this.panel5.Controls.Add(this.pictureBox4);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(0, 157);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(341, 414);
-            this.panel5.TabIndex = 9;
+            this.panelAniversario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelAniversario.Controls.Add(this.flowLayoutPanel1);
+            this.panelAniversario.Controls.Add(this.pictureBox4);
+            this.panelAniversario.Controls.Add(this.label6);
+            this.panelAniversario.Controls.Add(this.label7);
+            this.panelAniversario.Location = new System.Drawing.Point(0, 157);
+            this.panelAniversario.Name = "panelAniversario";
+            this.panelAniversario.Size = new System.Drawing.Size(341, 414);
+            this.panelAniversario.TabIndex = 9;
+            this.panelAniversario.Visible = false;
             // 
             // flowLayoutPanel1
             // 
@@ -359,7 +360,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1072, 580);
-            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panelAniversario);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -380,8 +381,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panelAniversario.ResumeLayout(false);
+            this.panelAniversario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -415,7 +416,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panelAniversario;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label6;

@@ -115,5 +115,33 @@ namespace Somar.DAL
 
             return result;
         }
+
+
+
+        public List<PessoaDTO> GetAniversariantes(PessoaDTO objectDTO)
+        {
+            RepList<PessoaDTO> listPessoa = new RepList<PessoaDTO>();
+
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " FROM TB_Pessoas          A ";
+            query += " LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero";
+            query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
+            query += " LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa";
+
+            whereClause += " AND A.nomePessoa like '%" + objectDTO.nomePessoa + "%'";
+
+            //if (objectDTO.flagAtivo != null)
+            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
+
+            query += whereClause;
+
+            return listPessoa.GetDataInDatabase(query);
+        }
+        
+
     }
 }
