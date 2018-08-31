@@ -61,21 +61,42 @@ namespace ProjetoSomarUI
 
         public void CarregarAniversariantes()
         {
-            List<PessoaDTO> lista = new PessoaBLL().GetAllData();
+            List<PessoaDTO> lista = new PessoaBLL().GetAniversariantes();
 
             int iCount = 0;
 
+            ListViewAniversariantes.Clear();
+
+            ListViewAniversariantes.Columns.Add("Nome", 220);
+            ListViewAniversariantes.Columns.Add("Dt.Nascimento", 85, HorizontalAlignment.Center);
+            ListViewAniversariantes.Columns.Add("Idade", 56, HorizontalAlignment.Center);
+
+            ListViewAniversariantes.HideSelection = true;
+            ListViewAniversariantes.View = View.Details;
+            ListViewAniversariantes.GridLines = true;
+            ListViewAniversariantes.FullRowSelect = false;
+            ListViewAniversariantes.Width = 365;
+
             foreach (var item in lista)
             {
-                Label lblName = new Label();
-                lblName.AutoSize = true;
-                lblName.Tag = iCount++;
+                iCount++;
 
-                lblName.Text = item.nomePessoa + " - " + item.dataNascimento.ToShortDateString();
-                flowLayoutPanel1.Controls.Add(lblName);
+                ListViewItem itemBirth;
+
+                string[] arr = new string[3];
+
+                arr[0] = item.nomePessoa;
+                arr[1] = item.dataNascimento.ToShortDateString();
+                arr[2] = new Functions().CalcularIdade(item.dataNascimento).ToString();
+
+                itemBirth = new ListViewItem(arr);
+
+                ListViewAniversariantes.Items.Add(itemBirth);
             }
 
             if (iCount > 0)
+                panelAniversario.Visible = true;
+            else
                 panelAniversario.Visible = true;
         }
 
@@ -133,6 +154,9 @@ namespace ProjetoSomarUI
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblDataAtual.Text = String.Format("{0:F}", DateTime.Now);
+
+            if (DateTime.Now.Second == 0)
+                CarregarAniversariantes();
         }
     }
 }

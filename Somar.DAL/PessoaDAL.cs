@@ -116,7 +116,6 @@ namespace Somar.DAL
             return result;
         }
 
-
         public List<PessoaDTO> GetAniversariantes(PessoaDTO objectDTO)
         {
             RepList<PessoaDTO> listPessoa = new RepList<PessoaDTO>();
@@ -124,16 +123,12 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.descGenero, ";
-            query += " C.nomeUsuario as nomePessoaUltAlteracao,";
-            query += " D.descTipoPessoa, ";
+            query += " SELECT A.*, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Pessoas          A ";
-            query += " LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero";
-            query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
-            query += " LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa";
 
-            whereClause += " AND A.nomePessoa like '%" + objectDTO.nomePessoa + "%'";
+            whereClause += " AND month(dataNascimento) = month(getdate())";
+            whereClause += " AND flagAtivo = 1";
 
             //if (objectDTO.flagAtivo != null)
             //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";

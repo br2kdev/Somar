@@ -41,7 +41,6 @@
             this.frequenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblPerfil = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,23 +50,27 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnAlunos = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblDataAtual = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelAniversario = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ListViewAniversariantes = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelAniversario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuPrincipal
@@ -160,18 +163,8 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 94);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(341, 63);
+            this.panel1.Size = new System.Drawing.Size(392, 63);
             this.panel1.TabIndex = 3;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(31, 35);
-            this.pictureBox1.TabIndex = 79;
-            this.pictureBox1.TabStop = false;
             // 
             // lblPerfil
             // 
@@ -261,18 +254,8 @@
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(0, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(341, 63);
+            this.panel3.Size = new System.Drawing.Size(392, 63);
             this.panel3.TabIndex = 8;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ProjetoSomarUI.Properties.Resources.calendar_icon32x32;
-            this.pictureBox2.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 13);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 35);
-            this.pictureBox2.TabIndex = 80;
-            this.pictureBox2.TabStop = false;
             // 
             // lblDataAtual
             // 
@@ -304,33 +287,15 @@
             this.panelAniversario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelAniversario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelAniversario.Controls.Add(this.flowLayoutPanel1);
+            this.panelAniversario.Controls.Add(this.ListViewAniversariantes);
             this.panelAniversario.Controls.Add(this.pictureBox4);
             this.panelAniversario.Controls.Add(this.label6);
             this.panelAniversario.Controls.Add(this.label7);
             this.panelAniversario.Location = new System.Drawing.Point(0, 157);
             this.panelAniversario.Name = "panelAniversario";
-            this.panelAniversario.Size = new System.Drawing.Size(341, 414);
+            this.panelAniversario.Size = new System.Drawing.Size(392, 414);
             this.panelAniversario.TabIndex = 9;
             this.panelAniversario.Visible = false;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(14, 53);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(310, 482);
-            this.flowLayoutPanel1.TabIndex = 82;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::ProjetoSomarUI.Properties.Resources.birthday_icon;
-            this.pictureBox4.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox4.Location = new System.Drawing.Point(14, 7);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(31, 35);
-            this.pictureBox4.TabIndex = 80;
-            this.pictureBox4.TabStop = false;
             // 
             // label6
             // 
@@ -351,6 +316,64 @@
             this.label7.Size = new System.Drawing.Size(197, 16);
             this.label7.TabIndex = 3;
             this.label7.Text = "Aniversariantes da semana";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::ProjetoSomarUI.Properties.Resources.birthday_icon;
+            this.pictureBox4.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
+            this.pictureBox4.Location = new System.Drawing.Point(14, 7);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(31, 35);
+            this.pictureBox4.TabIndex = 80;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProjetoSomarUI.Properties.Resources.calendar_icon32x32;
+            this.pictureBox2.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
+            this.pictureBox2.Location = new System.Drawing.Point(14, 13);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 35);
+            this.pictureBox2.TabIndex = 80;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
+            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 35);
+            this.pictureBox1.TabIndex = 79;
+            this.pictureBox1.TabStop = false;
+            // 
+            // ListViewAniversariantes
+            // 
+            this.ListViewAniversariantes.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ListViewAniversariantes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.ListViewAniversariantes.Enabled = false;
+            this.ListViewAniversariantes.GridLines = true;
+            this.ListViewAniversariantes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.ListViewAniversariantes.Location = new System.Drawing.Point(14, 49);
+            this.ListViewAniversariantes.Name = "ListViewAniversariantes";
+            this.ListViewAniversariantes.Size = new System.Drawing.Size(365, 358);
+            this.ListViewAniversariantes.TabIndex = 81;
+            this.ListViewAniversariantes.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "";
             // 
             // FormPrincipal
             // 
@@ -376,14 +399,14 @@
             this.menuPrincipal.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelAniversario.ResumeLayout(false);
             this.panelAniversario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,10 +440,13 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panelAniversario;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ListView ListViewAniversariantes;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
 
