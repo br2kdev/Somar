@@ -44,6 +44,14 @@ CREATE TABLE TB_Turmas
 	idProjeto				INT
 )
 
+CREATE TABLE TB_Matricula
+(
+	idMatricula		INT IDENTITY(1,1)
+	idPessoa		INT,
+	idTurma			INT,
+	dtMatricula		INT,
+)
+
 CREATE TABLE TB_Usuarios
 (
 	idUsuario				INT IDENTITY(1,1),

@@ -59,47 +59,6 @@ namespace ProjetoSomarUI
             CarregarAniversariantes();
         }
 
-        public void CarregarAniversariantes()
-        {
-            List<PessoaDTO> lista = new PessoaBLL().GetAniversariantes();
-
-            int iCount = 0;
-
-            ListViewAniversariantes.Clear();
-
-            ListViewAniversariantes.Columns.Add("Nome", 220);
-            ListViewAniversariantes.Columns.Add("Dt.Nascimento", 85, HorizontalAlignment.Center);
-            ListViewAniversariantes.Columns.Add("Idade", 56, HorizontalAlignment.Center);
-
-            ListViewAniversariantes.HideSelection = true;
-            ListViewAniversariantes.View = View.Details;
-            ListViewAniversariantes.GridLines = true;
-            ListViewAniversariantes.FullRowSelect = false;
-            ListViewAniversariantes.Width = 365;
-
-            foreach (var item in lista)
-            {
-                iCount++;
-
-                ListViewItem itemBirth;
-
-                string[] arr = new string[3];
-
-                arr[0] = item.nomePessoa;
-                arr[1] = item.dataNascimento.ToShortDateString();
-                arr[2] = Functions.CalcularIdade(item.dataNascimento).ToString();
-
-                itemBirth = new ListViewItem(arr);
-
-                ListViewAniversariantes.Items.Add(itemBirth);
-            }
-
-            if (iCount > 0)
-                panelAniversario.Visible = true;
-            else
-                panelAniversario.Visible = false;
-        }
-
         #region MenuItem Click
 
         private void sairMenuItem_Click(object sender, EventArgs e)
@@ -149,7 +108,57 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void alunoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMatricula frm = new FormMatricula();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
         #endregion
+
+        #region Load Widgets
+
+        public void CarregarAniversariantes()
+        {
+            List<PessoaDTO> lista = new PessoaBLL().GetAniversariantes();
+
+            int iCount = 0;
+
+            ListViewAniversariantes.Clear();
+
+            ListViewAniversariantes.Columns.Add("Nome", 220);
+            ListViewAniversariantes.Columns.Add("Dt.Nascimento", 85, HorizontalAlignment.Center);
+            ListViewAniversariantes.Columns.Add("Idade", 56, HorizontalAlignment.Center);
+
+            ListViewAniversariantes.HideSelection = true;
+            ListViewAniversariantes.View = View.Details;
+            ListViewAniversariantes.GridLines = true;
+            ListViewAniversariantes.FullRowSelect = false;
+            ListViewAniversariantes.Width = 365;
+
+            foreach (var item in lista)
+            {
+                iCount++;
+
+                ListViewItem itemBirth;
+
+                string[] arr = new string[3];
+
+                arr[0] = item.nomePessoa;
+                arr[1] = item.dataNascimento.ToShortDateString();
+                arr[2] = Functions.CalcularIdade(item.dataNascimento).ToString();
+
+                itemBirth = new ListViewItem(arr);
+
+                ListViewAniversariantes.Items.Add(itemBirth);
+            }
+
+            if (iCount > 0)
+                panelAniversario.Visible = true;
+            else
+                panelAniversario.Visible = false;
+        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -165,7 +174,8 @@ namespace ProjetoSomarUI
             Relatorios.FormVisualizador frm = new Relatorios.FormVisualizador();
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
-            
         }
+
+        #endregion
     }
 }
