@@ -15,12 +15,11 @@ namespace Somar.Shared
 
     public enum TipoPessoa
     {
+        Todos = 0,
         Beneficiário = 1,
         Educador = 2,
         Funcionário = 3,
         Professor = 4,
-        Voluntário = 5,
-
-        Todos = 9
+        Voluntário = 5
     };
 }

@@ -25,11 +25,8 @@ namespace ProjetoSomarUI.Cadastros
         {
             #region ComboLists
 
-            cmbSearchType.Items.Add("Nome do Turma");
-            cmbSearchType.Items.Add("Código do Turma");
-
-            cmbStatus.Items.Add("Desativado");
-            cmbStatus.Items.Add("Ativo");
+            //cmbSearchType.Items.Add("Nome do Pessoa");
+            //cmbSearchType.Items.Add("Código do Pessoa");
 
             /*
             cmbPeriodo.Items.Add("Selecione...");
@@ -43,6 +40,7 @@ namespace ProjetoSomarUI.Cadastros
 
             #region Button Events
 
+            cmbTipoPessoa.SelectedIndexChanged += new EventHandler(cmbTipoPessoa_SelectedIndexChanged);
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);
@@ -56,14 +54,14 @@ namespace ProjetoSomarUI.Cadastros
             Load += new EventHandler(FormMatricula_Load);
 
             InitializeGridView();
-
-            ClearForm1();
         }
 
         private void FormMatricula_Load(object sender, EventArgs e)
         {
             CarregaGrid();
-            CarregaComboProjeto();
+            CarregaComboTipoPessoa();
+
+            ClearForm1();
         }
 
         #region Events
@@ -85,7 +83,11 @@ namespace ProjetoSomarUI.Cadastros
         {
             var param = new PessoaDTO();
 
-            if (cmbSearchType.SelectedItem.ToString() == "Nome do Aluno")
+            param.nomePessoa = txtSearch.Text;
+            param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
+
+            /*
+            if (cmbTipoPessoa.SelectedItem.ToString() == "Nome do Aluno")
             {
                 param.nomePessoa = txtSearch.Text;
             }
@@ -94,6 +96,7 @@ namespace ProjetoSomarUI.Cadastros
                 if (txtSearch.Text != string.Empty)
                     param.idPessoa = Convert.ToInt32(txtSearch.Text);
             }
+            */
 
             List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(param);
 
@@ -115,37 +118,40 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaGrid()
         {
-            List<PessoaDTO> lista = new PessoaBLL().GetAllData();
+            var idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
+
+            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipoId(idTipoPessoa);
 
             GridViewDataBind(lista);
         }
 
-        public void CarregaComboProjeto()
+        public void CarregaComboTipoPessoa()
         {
-            /*
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
+            List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.TipoPessoa });
 
-            cmbProjeto.DisplayMember = "nomeProjeto";
-            cmbProjeto.ValueMember = "idProjeto";
-            cmbProjeto.DataSource = lista;
-            */
+            lista.Add(new GenericDTO() { idGeneric = 0, descGeneric = "Todos..." });
+            cmbTipoPessoa.DisplayMember = "descGeneric";
+            cmbTipoPessoa.ValueMember = "idGeneric";
+            cmbTipoPessoa.DataSource = lista;
         }
 
-        public void CarregaDetalhes(int idTurma)
+        public void CarregaDetalhes(int idPessoa)
         {
-            /*
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
-            TurmaDTO param = new TurmaDTO();
-            param.idTurma = idTurma;
+            PessoaDTO param = new PessoaDTO();
+            param.idPessoa = idPessoa;
 
-            param = new TurmaBLL().GetByID(param);
+            param = new PessoaBLL().GetByID(param);
 
             // ************************************************** //
             // Preenche Tela de Detalhes
             // ************************************************** //
-            lblCodigo.Text = param.idTurma.ToString();
+            lblCodigo.Text = param.idPessoa.ToString();
+            txtNome.Text = param.nomePessoa;
+
+            /*
             cmbProjeto.SelectedValue = param.idProjeto;
 
             if (cmbProjeto.SelectedValue == null)
@@ -156,7 +162,7 @@ namespace ProjetoSomarUI.Cadastros
                 cmbProjeto.DataSource = lista;
             }
 
-            txtNome.Text = param.nomeTurma;
+            txtNome.Text = param.nomePessoa;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
             cmbPeriodo.Text = param.descricaoPeriodo;
@@ -165,19 +171,19 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoInicio.Text = param.horaInicio.Split(':')[1];
             cmbHoraFim.Text = param.horaTermino.Split(':')[0];
             cmbMinutoFim.Text = param.horaTermino.Split(':')[1];
+            */
 
-            txtDescricao.Text = param.descricaoTurma;
+
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
-            */
 
             ControlFormEdit(false);
         }
 
         public void ClearForm1()
         {
-            cmbSearchType.SelectedIndex = 0;
+            cmbTipoPessoa.SelectedValue = 0;
             txtSearch.Text = string.Empty;
         }
 
@@ -193,16 +199,16 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoInicio.Text = string.Empty;
             cmbMinutoFim.Text = string.Empty;
             */
-
-            txtDuracao.Text = string.Empty;
-            txtDescricao.Text = string.Empty;
             txtNomeAlteracao.Text = string.Empty;
             txtDataCadastro.Text = string.Empty;
-            txtResponsavel.Text = string.Empty;
-            cmbStatus.SelectedIndex = 1;
         }
 
         #endregion
+
+        private void cmbTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregaGrid();
+        }
 
         #region Controls
 
@@ -363,38 +369,27 @@ namespace ProjetoSomarUI.Cadastros
 
         #region EditMode
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(txtEditMode.Text))
+                ControlFormEdit(false);
+            else
+                ControlFormEdit(true);
+        }
+
         public void ControlFormEdit(bool flagEnable)
         {
-            /*
             txtEditMode.Text = flagEnable.ToString();
 
             btnVoltar1.Text = "Voltar";
 
             txtNome.Enabled = flagEnable;
-            cmbProjeto.Enabled = flagEnable;
-            cmbPeriodo.Enabled = flagEnable;
-            cmbHoraInicio.Enabled = flagEnable;
-            cmbHoraFim.Enabled = flagEnable;
-            cmbMinutoInicio.Enabled = flagEnable;
-            cmbMinutoFim.Enabled = flagEnable;
-            txtDescricao.Enabled = flagEnable;
-            txtDuracao.Enabled = flagEnable;
-            txtResponsavel.Enabled = flagEnable;
-            cmbStatus.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
             txtDataCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            cmbPeriodo.BackColor = Color.WhiteSmoke;
-            cmbHoraInicio.BackColor = Color.WhiteSmoke;
-            cmbHoraFim.BackColor = Color.WhiteSmoke;
-            cmbMinutoInicio.BackColor = Color.WhiteSmoke;
-            cmbMinutoFim.BackColor = Color.WhiteSmoke;
-            txtDescricao.BackColor = Color.WhiteSmoke;
             txtDataCadastro.BackColor = Color.WhiteSmoke;
-            txtDuracao.BackColor = Color.WhiteSmoke;
-            txtResponsavel.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -409,18 +404,8 @@ namespace ProjetoSomarUI.Cadastros
                 btnEditar.Visible = true;
                 btnGravar.Visible = false;
             }
-            */
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToBoolean(txtEditMode.Text))
-                ControlFormEdit(false);
-            else
-                ControlFormEdit(true);
-        }
-
-        
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelEdit.Visible = false;
@@ -438,35 +423,35 @@ namespace ProjetoSomarUI.Cadastros
         private void btnGravar_Click(object sender, EventArgs e)
         {
             /*
-            TurmaDTO param = new TurmaDTO();
+            PessoaDTO param = new PessoaDTO();
 
             if (lblCodigo.Text == string.Empty)
-                param.idTurma = 0;
+                param.idPessoa = 0;
             else
-                param.idTurma = Convert.ToInt32(lblCodigo.Text);
+                param.idPessoa = Convert.ToInt32(lblCodigo.Text);
 
-            param.nomeTurma = txtNome.Text;
+            param.nomePessoa = txtNome.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
 
             param.descricaoPeriodo = cmbPeriodo.SelectedItem.ToString();
 
             param.horaInicio = cmbHoraInicio.SelectedItem + ":" + cmbMinutoInicio.SelectedItem;
             param.horaTermino = cmbHoraFim.SelectedItem + ":" + cmbMinutoFim.SelectedItem;
-            param.descricaoTurma = txtDescricao.Text;
+            param.descricaoPessoa = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
 
-            TurmaBLL bus = new TurmaBLL();
-            var idTurma = bus.SaveProject(param);
+            PessoaBLL bus = new PessoaBLL();
+            var idPessoa = bus.SaveProject(param);
 
-            if (idTurma > 0)
+            if (idPessoa > 0)
             {
-                lblCodigo.Text = idTurma.ToString();
-                MessageBox.Show("Turma gravado com sucesso!");
+                lblCodigo.Text = idPessoa.ToString();
+                MessageBox.Show("Pessoa gravado com sucesso!");
                 CarregaGrid();
             }
             else
-                throw new Exception("Erro de Gravação do Turma");
+                throw new Exception("Erro de Gravação do Pessoa");
             */
         }
 
@@ -480,23 +465,23 @@ namespace ProjetoSomarUI.Cadastros
             var linha = dataGridView1.Rows[linhaAtual.Index];       //i é o número  da linha seleccionada
             var celula = linha.Cells[0].Value;
 
-            TurmaBLL TurmaBLL = new TurmaBLL();
+            PessoaBLL PessoaBLL = new PessoaBLL();
 
-            Turmas Turmas = new Turmas();
-            Turmas.TurmaId = Convert.ToInt32(celula);
+            Pessoas Pessoas = new Pessoas();
+            Pessoas.PessoaId = Convert.ToInt32(celula);
 
 
-            var retorno = TurmaBLL.Excluir(Turmas);
+            var retorno = PessoaBLL.Excluir(Pessoas);
             if (retorno == null)
             {
-                throw new Exception("Erro de Gravação do Turma");
+                throw new Exception("Erro de Gravação do Pessoa");
 
             }
             else
             {
-                TurmaBLL TurmaRecarga = new TurmaBLL();
+                PessoaBLL PessoaRecarga = new PessoaBLL();
 
-                List<Turmas> proj = TurmaRecarga.GetTurmas();
+                List<Pessoas> proj = PessoaRecarga.GetPessoas();
 
                 dataGridView1.DataSource = proj.ToList();
                 Limpar();

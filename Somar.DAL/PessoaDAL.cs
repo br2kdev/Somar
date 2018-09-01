@@ -150,7 +150,31 @@ namespace Somar.DAL
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Pessoas          A ";
 
-            whereClause += " AND idTipoPessoa = " + enumTipoPessoa;
+            whereClause += " AND idTipoPessoa = " + Convert.ToInt32(enumTipoPessoa);
+            whereClause += " AND flagAtivo = 1";
+
+            //if (objectDTO.flagAtivo != null)
+            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
+
+            query += whereClause;
+
+            return listPessoa.GetDataInDatabase(query);
+        }
+
+        public List<PessoaDTO> GetPessoasPorTipoID(int idTipoPessoa)
+        {
+            RepList<PessoaDTO> listPessoa = new RepList<PessoaDTO>();
+
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += " SELECT A.*, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " FROM TB_Pessoas          A ";
+
+            if(idTipoPessoa != 0)
+                whereClause += " AND idTipoPessoa = " + idTipoPessoa;
+
             whereClause += " AND flagAtivo = 1";
 
             //if (objectDTO.flagAtivo != null)
