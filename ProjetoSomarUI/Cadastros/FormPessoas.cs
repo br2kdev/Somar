@@ -213,7 +213,7 @@ namespace ProjetoSomarUI.Cadastros
             txtIdEndereco.Text = param.idEndereco.ToString();
 
             if (param.dataNascimento != null)
-                txtIdade.Text = new Functions().CalcularIdade(param.dataNascimento).ToString();
+                txtIdade.Text = Functions.CalcularIdade(param.dataNascimento).ToString();
 
             cmbGenero.SelectedValue = param.idGenero;
             cmbTipoPessoa.SelectedValue = param.idTipoPessoa;

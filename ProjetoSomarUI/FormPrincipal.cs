@@ -87,7 +87,7 @@ namespace ProjetoSomarUI
 
                 arr[0] = item.nomePessoa;
                 arr[1] = item.dataNascimento.ToShortDateString();
-                arr[2] = new Functions().CalcularIdade(item.dataNascimento).ToString();
+                arr[2] = Functions.CalcularIdade(item.dataNascimento).ToString();
 
                 itemBirth = new ListViewItem(arr);
 
@@ -153,7 +153,8 @@ namespace ProjetoSomarUI
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblDataAtual.Text = String.Format("{0:F}", DateTime.Now);
+            lblDataAtual.Text = Functions.FirstCharToUpper(String.Format("{0:D}", DateTime.Now));
+            lblHora.Text = String.Format("{0:T}", DateTime.Now);
 
             if (DateTime.Now.Second == 0)
                 CarregarAniversariantes();
