@@ -20,6 +20,12 @@ namespace Somar.BLL
             return cmd.GetDataInDataBase(_projeto);
         }
 
+        public List<TurmaDTO> GetTurmasPorProjeto(int _idProjeto)
+        {
+            TurmaDAL cmd = new TurmaDAL();
+            return cmd.GetTurmasPorProjeto(_idProjeto);
+        }
+
         public TurmaDTO GetByID(TurmaDTO _projeto)
         {
             TurmaDAL cmd = new TurmaDAL();

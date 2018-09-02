@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtDataCadastro = new System.Windows.Forms.TextBox();
@@ -47,6 +48,8 @@
             this.lblMessage = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbTipoPessoa = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -54,19 +57,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.cmbTipoPessoa = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.btnVoltar1 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnGravar = new System.Windows.Forms.Button();
+            this.cmbTurma = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbProjeto = new System.Windows.Forms.ComboBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panelConsulta.SuspendLayout();
@@ -75,9 +75,9 @@
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -86,10 +86,19 @@
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
-            this.panel2.Location = new System.Drawing.Point(0, 382);
+            this.panel2.Location = new System.Drawing.Point(0, 405);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
+            // 
+            // btnVoltar1
+            // 
+            this.btnVoltar1.Location = new System.Drawing.Point(428, 16);
+            this.btnVoltar1.Name = "btnVoltar1";
+            this.btnVoltar1.Size = new System.Drawing.Size(110, 34);
+            this.btnVoltar1.TabIndex = 69;
+            this.btnVoltar1.Text = "Voltar";
+            this.btnVoltar1.UseVisualStyleBackColor = true;
             // 
             // txtEditMode
             // 
@@ -287,6 +296,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(178, 23);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 16);
+            this.label12.TabIndex = 111;
+            this.label12.Text = "Nome:";
+            // 
+            // cmbTipoPessoa
+            // 
+            this.cmbTipoPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTipoPessoa.FormattingEnabled = true;
+            this.cmbTipoPessoa.Location = new System.Drawing.Point(10, 42);
+            this.cmbTipoPessoa.Name = "cmbTipoPessoa";
+            this.cmbTipoPessoa.Size = new System.Drawing.Size(165, 28);
+            this.cmbTipoPessoa.TabIndex = 110;
+            // 
             // btnNovo
             // 
             this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -370,6 +399,16 @@
             this.panel1.Size = new System.Drawing.Size(972, 51);
             this.panel1.TabIndex = 64;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
+            this.pictureBox1.TabIndex = 78;
+            this.pictureBox1.TabStop = false;
+            // 
             // btnEditar
             // 
             this.btnEditar.Location = new System.Drawing.Point(641, 3);
@@ -403,11 +442,11 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.btnGravar);
             this.panel3.Controls.Add(this.dataGridView2);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.btnGravar);
+            this.panel3.Controls.Add(this.cmbTurma);
             this.panel3.Controls.Add(this.label13);
-            this.panel3.Controls.Add(this.comboBox2);
+            this.panel3.Controls.Add(this.cmbProjeto);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Controls.Add(this.label5);
@@ -417,35 +456,25 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
-            // cmbTipoPessoa
+            // btnGravar
             // 
-            this.cmbTipoPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoPessoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbTipoPessoa.FormattingEnabled = true;
-            this.cmbTipoPessoa.Location = new System.Drawing.Point(10, 42);
-            this.cmbTipoPessoa.Name = "cmbTipoPessoa";
-            this.cmbTipoPessoa.Size = new System.Drawing.Size(165, 28);
-            this.cmbTipoPessoa.TabIndex = 110;
+            this.btnGravar.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add32x32;
+            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGravar.Location = new System.Drawing.Point(732, 9);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(33, 33);
+            this.btnGravar.TabIndex = 116;
+            this.btnGravar.UseVisualStyleBackColor = true;
             // 
-            // label12
+            // cmbTurma
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(178, 23);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(48, 16);
-            this.label12.TabIndex = 111;
-            this.label12.Text = "Nome:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(74, 12);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(286, 28);
-            this.comboBox2.TabIndex = 112;
+            this.cmbTurma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTurma.FormattingEnabled = true;
+            this.cmbTurma.Location = new System.Drawing.Point(438, 12);
+            this.cmbTurma.Name = "cmbTurma";
+            this.cmbTurma.Size = new System.Drawing.Size(286, 28);
+            this.cmbTurma.TabIndex = 114;
             // 
             // label13
             // 
@@ -457,53 +486,35 @@
             this.label13.TabIndex = 113;
             this.label13.Text = "Projeto:";
             // 
-            // comboBox1
+            // cmbProjeto
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(438, 12);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(286, 28);
-            this.comboBox1.TabIndex = 114;
+            this.cmbProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbProjeto.FormattingEnabled = true;
+            this.cmbProjeto.Location = new System.Drawing.Point(74, 12);
+            this.cmbProjeto.Name = "cmbProjeto";
+            this.cmbProjeto.Size = new System.Drawing.Size(286, 28);
+            this.cmbProjeto.TabIndex = 112;
             // 
             // dataGridView2
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(4, 63);
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToOrderColumns = true;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dataGridView2.ColumnHeadersHeight = 30;
+            this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 52);
+            this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(963, 300);
-            this.dataGridView2.TabIndex = 115;
-            // 
-            // btnVoltar1
-            // 
-            this.btnVoltar1.Location = new System.Drawing.Point(365, 16);
-            this.btnVoltar1.Name = "btnVoltar1";
-            this.btnVoltar1.Size = new System.Drawing.Size(110, 34);
-            this.btnVoltar1.TabIndex = 69;
-            this.btnVoltar1.Text = "Voltar";
-            this.btnVoltar1.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.TabIndex = 78;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add32x32;
-            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGravar.Location = new System.Drawing.Point(730, 9);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(44, 35);
-            this.btnGravar.TabIndex = 116;
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Visible = false;
+            this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView2.RowTemplate.Height = 30;
+            this.dataGridView2.RowTemplate.ReadOnly = true;
+            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.Size = new System.Drawing.Size(966, 347);
+            this.dataGridView2.TabIndex = 117;
             // 
             // FormMatricula
             // 
@@ -527,10 +538,10 @@
             this.panelEdit.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -567,11 +578,11 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbTipoPessoa;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbTurma;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.ComboBox cmbProjeto;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

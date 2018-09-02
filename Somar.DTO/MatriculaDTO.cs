@@ -14,7 +14,6 @@ namespace Somar.DTO
 
         public int idPessoa { get; set; }
 
-        [DisplayName("Nome do Aluno")]
         public string nomePessoa { get; set; }
 
         public int idProjeto { get; set; }
@@ -32,5 +31,11 @@ namespace Somar.DTO
 
         [DisplayName("Data de Cancelamento")]
         public DateTime? dataCancelamento { get; set; }
+
+        public DateTime dataUltAlteracao { get; set; }
+
+        public int idPessoaUltAlteracao { get; set; }
+
+        public string nomePessoaUltAlteracao { get; set; }
     }
 }

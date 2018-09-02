@@ -49,11 +49,13 @@ CREATE TABLE TB_Turmas
 
 CREATE TABLE TB_Matricula
 (
-	idMatricula		INT IDENTITY(1,1),
-	idPessoa		INT,
-	idTurma			INT,
-	dtMatricula		SMALLDATETIME,
-	dtCancelamento	SMALLDATETIME,
+	idMatricula				INT IDENTITY(1,1),
+	idPessoa				INT,
+	idTurma					INT,
+	dtMatricula				SMALLDATETIME,
+	dtCancelamento			SMALLDATETIME,
+	dataUltAlteracao		SMALLDATETIME,
+	idPessoaUltAlteracao	INT
 )
 
 CREATE TABLE TB_Frequencia
@@ -218,7 +220,6 @@ CREATE INDEX IX#01_LOGRADOURO ON TB_CEP_Logradouro(CEP)
 CREATE INDEX IX#02_LOGRADOURO ON TB_CEP_Logradouro(loc_nu_sequencial)
 CREATE INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
 CREATE INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
-
 
 TB_Enderecos
 

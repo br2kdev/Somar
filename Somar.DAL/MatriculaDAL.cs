@@ -1,7 +1,9 @@
-﻿using Somar.DAL.Repository;
+﻿using Dapper;
+using Somar.DAL.Repository;
 using Somar.DTO;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +19,8 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.nomePessoa, C.nomeTurma, D.nomeProjeto, ";
-            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " SELECT A.*, B.nomePessoa, C.nomeTurma, D.nomeProjeto ";
+            //query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Matricula        A ";
             query += " LEFT JOIN TB_Pessoas     B ON A.idPessoa   = B.idPessoa";
             query += " LEFT JOIN TB_Turmas      C ON A.idTurma    = C.idTurma";
@@ -34,5 +36,61 @@ namespace Somar.DAL
 
             return listPessoa.GetDataInDatabase(query);
         }
+
+        public int InsertData(MatriculaDTO _item)
+        {
+            RepGen<MatriculaDTO> sqlCommand = new RepGen<MatriculaDTO>();
+
+            string query = "INSERT INTO TB_Matricula VALUES (";
+            var param = new DynamicParameters();
+
+            param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
+            param.Add("@idTurma", _item.idTurma, DbType.Int32);
+            param.Add("@dataMatricula", _item.dataMatricula, DbType.DateTime);
+            param.Add("@dataCancelamento", _item.dataCancelamento, DbType.DateTime);
+            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
+
+            foreach (var item in param.ParameterNames)
+                query += "@" + item + ",";
+
+            query = query.Remove(query.Length - 1) + ")";
+
+            query += "; SELECT CAST(scope_identity() AS int)";
+
+            var result = sqlCommand.ExecuteSQLCommand(query, param);
+
+            return result;
+        }
+
+        public int UpdateData(MatriculaDTO _item)
+        {
+            RepGen<MatriculaDTO> sqlCommand = new RepGen<MatriculaDTO>();
+
+            string query = "UPDATE TB_Matricula SET ";
+            string where = string.Empty;
+
+            var param = new DynamicParameters();
+
+            param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
+            param.Add("@idTurma", _item.idTurma, DbType.Int32);
+            param.Add("@dataMatricula", _item.dataMatricula, DbType.DateTime);
+            param.Add("@dataCancelamento", _item.dataCancelamento, DbType.DateTime);
+            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
+            
+            foreach (var item in param.ParameterNames)
+                query += " " + item + " = @" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            where += " WHERE idMatricula = " + _item.idTurma.ToString();
+            query += where;
+
+            var result = sqlCommand.ExecuteSQL(query, param);
+
+            return result;
+        }
+
     }
 }

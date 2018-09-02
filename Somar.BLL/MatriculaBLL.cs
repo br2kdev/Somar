@@ -17,5 +17,33 @@ namespace Somar.BLL
             MatriculaDAL cmd = new MatriculaDAL();
             return cmd.GetDataInDataBase(_projeto);
         }
+
+        public int SaveMatricula(MatriculaDTO _item)
+        {
+            MatriculaDAL cmd = new MatriculaDAL();
+
+            int result = 0;
+
+            if (_item.idMatricula == 0)
+                result = cmd.InsertData(_item);
+            else
+            {
+                result = cmd.UpdateData(_item);
+
+                if (result != 0)
+                {
+                    return _item.idMatricula;
+                }
+            }
+
+            return result;
+        }
+
+        public int RemoveMatricula(MatriculaDTO _projeto)
+        {
+            MatriculaDAL cmd = new MatriculaDAL();
+
+            return cmd.UpdateData(_projeto);
+        }
     }
 }

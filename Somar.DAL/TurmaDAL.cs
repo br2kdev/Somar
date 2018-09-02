@@ -36,6 +36,26 @@ namespace Somar.DAL
             return listTurma.GetDataInDatabase(query);
         }
 
+        public List<TurmaDTO> GetTurmasPorProjeto(int _idProjeto)
+        {
+            RepList<TurmaDTO> listTurma = new RepList<TurmaDTO>();
+
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += " SELECT A.*, A.HoraInicio + ' às ' + A.HoraTermino as horario, B.nomeProjeto, C.nomeUsuario as nomePessoaUltAlteracao, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " FROM TB_Turmas A ";
+            query += " LEFT JOIN TB_Projetos B ON A.idProjeto = B.idProjeto";
+            query += " LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario";
+
+            whereClause += " AND A.idProjeto = " + _idProjeto;
+
+            query += whereClause;
+
+            return listTurma.GetDataInDatabase(query);
+        }
+
         public int InsertData(TurmaDTO _turmaDTO)
         {
             RepList<TurmaDTO> listProjeto = new RepList<TurmaDTO>();

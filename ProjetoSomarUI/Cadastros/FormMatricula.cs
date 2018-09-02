@@ -25,22 +25,13 @@ namespace ProjetoSomarUI.Cadastros
         {
             #region ComboLists
 
-            //cmbSearchType.Items.Add("Nome do Pessoa");
-            //cmbSearchType.Items.Add("Código do Pessoa");
-
-            /*
-            cmbPeriodo.Items.Add("Selecione...");
-            cmbPeriodo.Items.Add("Manhã");
-            cmbPeriodo.Items.Add("Tarde");
-            cmbPeriodo.Items.Add("Noite");
-            cmbPeriodo.Items.Add("Integral");
-            */
+            cmbTipoPessoa.SelectedIndexChanged += new EventHandler(cmbTipoPessoa_SelectedIndexChanged);
+            cmbProjeto.SelectedIndexChanged += new EventHandler(cmbProjeto_SelectedIndexChanged);
 
             #endregion
 
             #region Button Events
 
-            cmbTipoPessoa.SelectedIndexChanged += new EventHandler(cmbTipoPessoa_SelectedIndexChanged);
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);
@@ -65,19 +56,6 @@ namespace ProjetoSomarUI.Cadastros
         }
 
         #region Events
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            btnEditar.Visible = false;
-            panelEdit.Visible = true;
-            panelConsulta.Visible = false;
-
-            ClearForm2();
-            ControlFormEdit(true);
-
-            btnVoltar1.Visible = true;
-            btnVoltar1.Text = "Voltar";
-        }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -112,6 +90,19 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            btnEditar.Visible = false;
+            panelEdit.Visible = true;
+            panelConsulta.Visible = false;
+
+            ClearForm2();
+            ControlFormEdit(true);
+
+            btnVoltar1.Visible = true;
+            btnVoltar1.Text = "Voltar";
+        }
+
         #endregion
 
         #region Methods
@@ -135,23 +126,65 @@ namespace ProjetoSomarUI.Cadastros
             cmbTipoPessoa.DataSource = lista;
         }
 
-        public void CarregaDetalhes(int idPessoa)
+        public void CarregaComboProjeto()
         {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
+
+            lista.Insert(0, new ProjetoDTO() { idProjeto = 0, nomeProjeto = "Selecione..." });
+
+            this.cmbProjeto.DataSource = null;
+            this.cmbProjeto.Items.Clear();
+
+            this.cmbProjeto.DisplayMember = "nomeProjeto";
+            this.cmbProjeto.ValueMember = "idProjeto";
+            this.cmbProjeto.DataSource = lista;
+
+            this.cmbProjeto.SelectedValue = 0;
+        }
+
+        public void CarregaComboTurma(int idProjeto)
+        {
+            List<TurmaDTO> lista = new TurmaBLL().GetTurmasPorProjeto(idProjeto);
+
+            lista.Insert(0, new TurmaDTO() { idTurma = 0, nomeTurma = "Selecione..." });
+
+            this.cmbTurma.DataSource = null;
+            this.cmbTurma.Items.Clear();
+
+            this.cmbTurma.DisplayMember = "nomeTurma";
+            this.cmbTurma.ValueMember = "idTurma";
+            this.cmbTurma.DataSource = lista;
+
+            this.cmbTurma.SelectedValue = 0;
+        }
+
+        public void CarregaDetalhes(int _idPessoa)
+        {
+            CarregaComboProjeto();
+
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
-
-            MatriculaDTO param = new MatriculaDTO();
-            param.idPessoa = idPessoa;
-
-            var listMatr = new MatriculaBLL().GetDataWithParam(param);
 
             // ************************************************** //
             // Preenche Tela de Detalhes
             // ************************************************** //
-            lblCodigo.Text = param.idPessoa.ToString();
-            txtNome.Text = param.nomePessoa;
+            
+            var itemAluno = new PessoaBLL().GetByID(new PessoaDTO() { idPessoa = _idPessoa });
 
-            dataGridView2.DataSource = listMatr;
+            lblCodigo.Text = _idPessoa.ToString();
+            txtNome.Text = itemAluno.nomePessoa;
+
+            // ************************************************** //
+            // Preenche Matricula
+            // ************************************************** //
+
+            MatriculaDTO param = new MatriculaDTO();
+            param.idPessoa = _idPessoa;
+
+            var listMatr = new MatriculaBLL().GetDataWithParam(param);
+
+            GridViewDataBind2(listMatr);
+
             
             /*
             cmbProjeto.SelectedValue = param.idProjeto;
@@ -212,6 +245,17 @@ namespace ProjetoSomarUI.Cadastros
             CarregaGrid();
         }
 
+        private void cmbProjeto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idProjeto = 0; 
+
+            if (cmbProjeto.SelectedValue != null)
+                idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue.ToString());
+
+            CarregaComboTurma(idProjeto);
+
+        }
+
         #region Controls
 
         #region Gridview Controls
@@ -229,28 +273,16 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
 
             // ***************************************************************** //
-            /*
-            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            */
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW 2
+            // ***************************************************************** //
+            this.dataGridView2.AutoSize = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
-            /*            
-
-
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            */
+            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
 
             // ***************************************************************** //
             //  SET COLUMNS IN GRIDVIEW
@@ -293,6 +325,45 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
 
             // ***************************************************************** //
+
+            // -------------------------------------------------------------
+
+            // ***************************************************************** //
+            //  SET COLUMNS IN GRIDVIEW
+            // ***************************************************************** //
+
+            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
+
+            // Edit Image
+            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
+            img2.Name = "Image";
+            img2.HeaderText = "";
+            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img2.Width = 40;
+            this.dataGridView2.Columns.Add(img2);
+
+            // -------------------------------------------------------------
+            // All Fields
+            foreach (var item in fields2)
+            {
+                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
+                dt2.DataPropertyName = item.Key;
+                dt2.HeaderText = item.Value;
+
+                if (item.Key == "nomeProjeto")
+                {
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                else if (item.Key == "nomeTurma")
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                this.dataGridView2.Columns.Add(dt2);
+            }
+
+            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
+            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
+            this.dataGridView2.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
+            this.dataGridView2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
         }
 
         public void GridViewDataBind(List<PessoaDTO> result)
@@ -366,6 +437,61 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        #region Gridview2
+
+        public void GridViewDataBind2(List<MatriculaDTO> result)
+        {
+            if (result.Count == 0)
+            {
+                dataGridView2.Visible = false;
+                //panelMessage.Visible = true;
+                //lblMessage.Text = "Aluno ainda não possuí matricula";
+            }
+            else
+            {
+                dataGridView2.Visible = true;
+                //panelMessage.Visible = false;
+                //lblMessage.Text = "";
+                dataGridView2.DataSource = result;
+            }
+        }
+
+        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["Image"].Index)
+            {
+                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
+            }
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                int idPessoa = Convert.ToInt32(this.dataGridView2[1, e.RowIndex].Value);
+
+                // CarregaDetalhes(idPessoa);
+
+                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
+                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
+            }
+        }
+
+        private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView2.Cursor = Cursors.Hand;
+        }
+
+        private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView2.Cursor = Cursors.Default;
+        }
+
+        #endregion
+
         #endregion
 
         #region EditMode
@@ -380,6 +506,7 @@ namespace ProjetoSomarUI.Cadastros
 
         public void ControlFormEdit(bool flagEnable)
         {
+            /*
             txtEditMode.Text = flagEnable.ToString();
 
             btnVoltar1.Text = "Voltar";
@@ -405,6 +532,7 @@ namespace ProjetoSomarUI.Cadastros
                 btnEditar.Visible = true;
                 btnGravar.Visible = false;
             }
+            */
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -423,6 +551,17 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            int _idPessoa = Convert.ToInt32(lblCodigo.Text);
+            int _idProjeto = Convert.ToInt32(this.cmbProjeto.SelectedValue);
+            int _idTurma = Convert.ToInt32(this.cmbTurma.SelectedValue);
+
+            MatriculaDTO param = new MatriculaDTO(){ idProjeto = _idProjeto, idTurma = _idTurma, idPessoa = _idPessoa };
+
+            MatriculaBLL cmd = new MatriculaBLL();
+            var idMatricula = cmd.SaveMatricula(param);
+
+            CarregaDetalhes(_idPessoa);
+
             /*
             PessoaDTO param = new PessoaDTO();
 
@@ -442,8 +581,7 @@ namespace ProjetoSomarUI.Cadastros
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
 
-            PessoaBLL bus = new PessoaBLL();
-            var idPessoa = bus.SaveProject(param);
+
 
             if (idPessoa > 0)
             {
