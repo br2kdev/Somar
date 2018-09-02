@@ -122,6 +122,13 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void frequenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFrequencia frm = new FormFrequencia();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
         #endregion
 
         #region Load Widgets
@@ -183,8 +190,8 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+
         #endregion
 
-    
     }
 }

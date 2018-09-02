@@ -43,6 +43,7 @@
     <Compile Include="ContatoDTO.cs" />
     <Compile Include="EnderecoDTO.cs" />
     <Compile Include="EscolaDTO.cs" />
+    <Compile Include="FrequenciaDTO.cs" />
     <Compile Include="MatriculaDTO.cs" />
     <Compile Include="PessoaDTO.cs" />
     <Compile Include="GenericDTO.cs" />
@@ -56,6 +57,9 @@
       <Project>{c2119b43-6a1d-415e-8ac0-b5a03bde3822}</Project>
       <Name>Somar.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -60,11 +60,12 @@ CREATE TABLE TB_Matricula
 
 CREATE TABLE TB_Frequencia
 (
-	idFrequencia	INT IDENTITY(1,1)
-	idPessoa		INT,
-	idTurma			INT,
-	idDisciplina	INT,
-	dtFrequencia	SMALLDATETIME,
+	idFrequencia			INT IDENTITY(1,1),
+	dtFrequencia			SMALLDATETIME,
+	idTurma					INT,
+	idDisciplina			INT,
+	dataUltAlteracao		SMALLDATETIME,
+	idPessoaUltAlteracao	INT
 )
 
 CREATE TABLE TB_Usuarios

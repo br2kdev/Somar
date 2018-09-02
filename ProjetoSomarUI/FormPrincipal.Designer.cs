@@ -36,6 +36,7 @@
             this.projetosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turmasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pessoasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.escolasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alunoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,7 +65,6 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.escolasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -103,30 +103,37 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // projetosToolStripMenuItem
             // 
             this.projetosToolStripMenuItem.Name = "projetosToolStripMenuItem";
-            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.projetosToolStripMenuItem.Text = "Projetos";
             this.projetosToolStripMenuItem.Click += new System.EventHandler(this.projetosToolStripMenuItem_Click);
             // 
             // turmasToolStripMenuItem
             // 
             this.turmasToolStripMenuItem.Name = "turmasToolStripMenuItem";
-            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.turmasToolStripMenuItem.Text = "Turmas";
             this.turmasToolStripMenuItem.Click += new System.EventHandler(this.turmasToolStripMenuItem_Click);
             // 
             // pessoasToolStripMenuItem
             // 
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
             this.pessoasToolStripMenuItem.Text = "Pessoas";
             this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
+            // 
+            // escolasToolStripMenuItem
+            // 
+            this.escolasToolStripMenuItem.Name = "escolasToolStripMenuItem";
+            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.escolasToolStripMenuItem.Text = "Escolas";
+            this.escolasToolStripMenuItem.Click += new System.EventHandler(this.escolasToolStripMenuItem_Click);
             // 
             // diarioToolStripMenuItem
             // 
@@ -149,6 +156,7 @@
             this.frequenciaToolStripMenuItem.Name = "frequenciaToolStripMenuItem";
             this.frequenciaToolStripMenuItem.Size = new System.Drawing.Size(183, 24);
             this.frequenciaToolStripMenuItem.Text = "Frequencia";
+            this.frequenciaToolStripMenuItem.Click += new System.EventHandler(this.frequenciaToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -394,13 +402,6 @@
             this.label7.Size = new System.Drawing.Size(171, 16);
             this.label7.TabIndex = 3;
             this.label7.Text = "Aniversariantes da Mês";
-            // 
-            // escolasToolStripMenuItem
-            // 
-            this.escolasToolStripMenuItem.Name = "escolasToolStripMenuItem";
-            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.escolasToolStripMenuItem.Text = "Escolas";
-            this.escolasToolStripMenuItem.Click += new System.EventHandler(this.escolasToolStripMenuItem_Click);
             // 
             // FormPrincipal
             // 

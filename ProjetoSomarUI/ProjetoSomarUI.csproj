@@ -112,6 +112,12 @@
     <Compile Include="Administracao\FormUsuarios.Designer.cs">
       <DependentUpon>FormUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\FormFrequencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\FormFrequencia.Designer.cs">
+      <DependentUpon>FormFrequencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\FormEscolas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormEscolas.resx">
       <DependentUpon>FormEscolas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\FormFrequencia.resx">
+      <DependentUpon>FormFrequencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormMatricula.resx">
       <DependentUpon>FormMatricula.cs</DependentUpon>
