@@ -59,6 +59,7 @@
       <DependentUpon>Entities.xsd</DependentUpon>
     </Compile>
     <Compile Include="GenericDAL.cs" />
+    <Compile Include="MatriculaDAL.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\RepGen.cs" />

@@ -56,7 +56,7 @@ namespace Somar.DAL
 
             string query = string.Empty;
             
-            query += "SELECT A.CEP,";
+            query += "SELECT TOP 1 A.CEP,";
             query += "       A.LOG_NOME          AS Logradouro,";
             query += "       B.bai_nu_sequencial AS idBairro,";
             query += "       B.bai_no            AS nomeBairro,";
