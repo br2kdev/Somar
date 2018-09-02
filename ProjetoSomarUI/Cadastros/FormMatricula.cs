@@ -140,10 +140,10 @@ namespace ProjetoSomarUI.Cadastros
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
-            PessoaDTO param = new PessoaDTO();
+            MatriculaDTO param = new MatriculaDTO();
             param.idPessoa = idPessoa;
 
-            param = new PessoaBLL().GetByID(param);
+            var listMatr = new MatriculaBLL().GetDataWithParam(param);
 
             // ************************************************** //
             // Preenche Tela de Detalhes
@@ -151,6 +151,8 @@ namespace ProjetoSomarUI.Cadastros
             lblCodigo.Text = param.idPessoa.ToString();
             txtNome.Text = param.nomePessoa;
 
+            dataGridView2.DataSource = listMatr;
+            
             /*
             cmbProjeto.SelectedValue = param.idProjeto;
 
@@ -172,12 +174,12 @@ namespace ProjetoSomarUI.Cadastros
             cmbHoraFim.Text = param.horaTermino.Split(':')[0];
             cmbMinutoFim.Text = param.horaTermino.Split(':')[1];
             */
-
+            /*
 
             txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
-
+            */
             ControlFormEdit(false);
         }
 
@@ -216,7 +218,6 @@ namespace ProjetoSomarUI.Cadastros
 
         public void InitializeGridView()
         {
-
             // ***************************************************************** //
             //  SET CUSTOM STYLE IN GRIDVIEW
             // ***************************************************************** //

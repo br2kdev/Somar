@@ -9,7 +9,10 @@ SELECT * FROM TB_Estados
 SELECT * FROM TB_Cidades
 SELECT * FROM TB_CEPs
 */
+
 -- ******************************************************************* --
+-- (projetos contínuos de cada centro solidário) 
+-- campanhas solidárias (Festa da Páscoa, Dia das Crianças e Campanha "Natal é Jesus"). 
 
 CREATE TABLE TB_Projetos
 (
@@ -46,10 +49,20 @@ CREATE TABLE TB_Turmas
 
 CREATE TABLE TB_Matricula
 (
-	idMatricula		INT IDENTITY(1,1)
+	idMatricula		INT IDENTITY(1,1),
 	idPessoa		INT,
 	idTurma			INT,
-	dtMatricula		INT,
+	dtMatricula		SMALLDATETIME,
+	dtCancelamento	SMALLDATETIME,
+)
+
+CREATE TABLE TB_Frequencia
+(
+	idFrequencia	INT IDENTITY(1,1)
+	idPessoa		INT,
+	idTurma			INT,
+	idDisciplina	INT,
+	dtFrequencia	SMALLDATETIME,
 )
 
 CREATE TABLE TB_Usuarios
@@ -103,9 +116,10 @@ CREATE TABLE TB_Pessoas
 	dataAtivacao			SMALLDATETIME,
 	numeroRG				VARCHAR(20),
 	numeroCPF				VARCHAR(20),
-	observacoes				VARCHAR(400),
+	observacoes				VARCHAR(400),	
 	idEndereco				INT,
 	idContato				INT,
+	idEscola				INT,
 	dataCadastro			SMALLDATETIME,
 	flagAtivo				BIT,
 	dataUltAlteracao		SMALLDATETIME,
