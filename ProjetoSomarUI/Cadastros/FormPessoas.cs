@@ -76,6 +76,7 @@ namespace ProjetoSomarUI.Cadastros
             CarregaGrid();
             CarregaComboGenero();
             CarregaComboTipoPessoa();
+            CarregaComboEscola();
         }
 
         #region Events
@@ -189,6 +190,15 @@ namespace ProjetoSomarUI.Cadastros
             cmbTipoPessoa.DisplayMember = "descGeneric";
             cmbTipoPessoa.ValueMember = "idGeneric";
             cmbTipoPessoa.DataSource = lista;
+        }
+
+        public void CarregaComboEscola()
+        {
+            List<EscolaDTO> lista = new EscolaBLL().GetAllData();
+
+            cmbEscola.DisplayMember = "nomeEscola";
+            cmbEscola.ValueMember = "idEscola";
+            cmbEscola.DataSource = lista;
         }
 
         public void CarregaDetalhes(int idPessoa)
@@ -512,6 +522,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbGenero.Enabled = flagEnable;
             cmbTipoPessoa.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
+            cmbEscola.Enabled = flagEnable;
             txtDataAtivacao.Enabled = flagEnable;
 
             //Endereço
@@ -637,7 +648,7 @@ namespace ProjetoSomarUI.Cadastros
 
             param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);
             param.idContato = string.IsNullOrEmpty(txtIdContato.Text) ? 0 : Convert.ToInt32(txtIdContato.Text);
-
+            param.idEscola = Convert.ToInt32(cmbEscola.SelectedValue);
             // *********************************************
             // ENDEREÇO
             // *********************************************

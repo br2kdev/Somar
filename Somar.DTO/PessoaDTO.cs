@@ -53,6 +53,8 @@ namespace Somar.DTO
 
         public int idContato { get; set; }
 
+        public int idEscola { get; set; }
+
         public EnderecoDTO endereco { get; set; }
 
         public ContatoDTO contatos { get; set; }

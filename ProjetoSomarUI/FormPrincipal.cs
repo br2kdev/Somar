@@ -115,6 +115,13 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void escolasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEscolas frm = new FormEscolas();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
         #endregion
 
         #region Load Widgets
@@ -177,5 +184,7 @@ namespace ProjetoSomarUI
         }
 
         #endregion
+
+    
     }
 }
