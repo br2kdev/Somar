@@ -30,8 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDuracao = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -46,13 +44,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
-            this.cmbTempoProjeto = new System.Windows.Forms.ComboBox();
-            this.txtResponsavel = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtDataTermino = new System.Windows.Forms.DateTimePicker();
             this.panelConsulta = new System.Windows.Forms.Panel();
             this.panelMessage = new System.Windows.Forms.Panel();
             this.lblMessage = new System.Windows.Forms.Label();
@@ -64,8 +58,6 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlTempoProjeto = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEditar = new System.Windows.Forms.Button();
@@ -73,40 +65,38 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
+            this.txtIdEndereco = new System.Windows.Forms.TextBox();
+            this.txtIdCidade = new System.Windows.Forms.TextBox();
+            this.txtIdBairro = new System.Windows.Forms.TextBox();
+            this.btnSearchCEP = new System.Windows.Forms.PictureBox();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.txtUF = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtLogradouro = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
+            this.hdnIdEndereco = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panelConsulta.SuspendLayout();
             this.panelMessage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.pnlTempoProjeto.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCEP)).BeginInit();
             this.panelEdit.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(5, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 17);
-            this.label4.TabIndex = 95;
-            this.label4.Text = "Tempo de Projeto:";
-            // 
-            // txtDuracao
-            // 
-            this.txtDuracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDuracao.Location = new System.Drawing.Point(696, 280);
-            this.txtDuracao.MaxLength = 100;
-            this.txtDuracao.Name = "txtDuracao";
-            this.txtDuracao.Size = new System.Drawing.Size(259, 27);
-            this.txtDuracao.TabIndex = 94;
             // 
             // lblStatus
             // 
@@ -136,6 +126,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Controls.Add(this.hdnIdEndereco);
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
@@ -152,6 +143,7 @@
             this.btnVoltar1.TabIndex = 69;
             this.btnVoltar1.Text = "Voltar";
             this.btnVoltar1.UseVisualStyleBackColor = true;
+            this.btnVoltar1.Click += new System.EventHandler(this.btnVoltar1_Click);
             // 
             // txtEditMode
             // 
@@ -171,6 +163,7 @@
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Visible = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // txtNome
             // 
@@ -257,48 +250,15 @@
             this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
             this.txtNomeAlteracao.TabIndex = 78;
             // 
-            // cmbTempoProjeto
+            // txtObservacoes
             // 
-            this.cmbTempoProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTempoProjeto.Enabled = false;
-            this.cmbTempoProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbTempoProjeto.FormattingEnabled = true;
-            this.cmbTempoProjeto.Items.AddRange(new object[] {
-            "Definido",
-            "Indeterminado"});
-            this.cmbTempoProjeto.Location = new System.Drawing.Point(134, 244);
-            this.cmbTempoProjeto.Name = "cmbTempoProjeto";
-            this.cmbTempoProjeto.Size = new System.Drawing.Size(128, 28);
-            this.cmbTempoProjeto.TabIndex = 96;
-            // 
-            // txtResponsavel
-            // 
-            this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtResponsavel.Location = new System.Drawing.Point(696, 247);
-            this.txtResponsavel.MaxLength = 100;
-            this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(259, 27);
-            this.txtResponsavel.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(596, 252);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 17);
-            this.label7.TabIndex = 89;
-            this.label7.Text = "Responsável:";
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDescricao.Location = new System.Drawing.Point(134, 58);
-            this.txtDescricao.MaxLength = 400;
-            this.txtDescricao.Multiline = true;
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(821, 180);
-            this.txtDescricao.TabIndex = 4;
+            this.txtObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtObservacoes.Location = new System.Drawing.Point(134, 58);
+            this.txtObservacoes.MaxLength = 400;
+            this.txtObservacoes.Multiline = true;
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(821, 81);
+            this.txtObservacoes.TabIndex = 4;
             // 
             // label5
             // 
@@ -306,9 +266,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.label5.Location = new System.Drawing.Point(17, 63);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 17);
+            this.label5.Size = new System.Drawing.Size(89, 17);
             this.label5.TabIndex = 85;
-            this.label5.Text = "Descrição:";
+            this.label5.Text = "Observação:";
             // 
             // label10
             // 
@@ -316,22 +276,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.label10.Location = new System.Drawing.Point(17, 24);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(57, 17);
+            this.label10.Size = new System.Drawing.Size(54, 17);
             this.label10.TabIndex = 77;
-            this.label10.Text = "Projeto:";
-            // 
-            // txtDataTermino
-            // 
-            this.txtDataTermino.AllowDrop = true;
-            this.txtDataTermino.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataTermino.Location = new System.Drawing.Point(130, 8);
-            this.txtDataTermino.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataTermino.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataTermino.Name = "txtDataTermino";
-            this.txtDataTermino.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDataTermino.Size = new System.Drawing.Size(128, 26);
-            this.txtDataTermino.TabIndex = 83;
+            this.label10.Text = "Escola:";
             // 
             // panelConsulta
             // 
@@ -420,8 +367,8 @@
             this.cmbSearchType.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.15F);
             this.cmbSearchType.FormattingEnabled = true;
             this.cmbSearchType.Items.AddRange(new object[] {
-            "Nome do Projeto",
-            "Código do Projeto"});
+            "Nome da Escola",
+            "Código da Escola"});
             this.cmbSearchType.Location = new System.Drawing.Point(97, 30);
             this.cmbSearchType.Name = "cmbSearchType";
             this.cmbSearchType.Size = new System.Drawing.Size(157, 26);
@@ -439,8 +386,9 @@
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(97, 48);
             this.btnNovo.TabIndex = 28;
-            this.btnNovo.Text = "Novo Projeto";
+            this.btnNovo.Text = "Nova Escola";
             this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnAll
             // 
@@ -449,8 +397,9 @@
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(97, 48);
             this.btnAll.TabIndex = 34;
-            this.btnAll.Text = "Ver Todos";
+            this.btnAll.Text = "Ver Todas";
             this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
             // btnSearch
             // 
@@ -461,6 +410,7 @@
             this.btnSearch.TabIndex = 33;
             this.btnSearch.Text = "Pesquisar";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -480,25 +430,6 @@
             this.label1.Size = new System.Drawing.Size(90, 16);
             this.label1.TabIndex = 31;
             this.label1.Text = "Consultar por:";
-            // 
-            // pnlTempoProjeto
-            // 
-            this.pnlTempoProjeto.Controls.Add(this.txtDataTermino);
-            this.pnlTempoProjeto.Controls.Add(this.label2);
-            this.pnlTempoProjeto.Location = new System.Drawing.Point(274, 274);
-            this.pnlTempoProjeto.Name = "pnlTempoProjeto";
-            this.pnlTempoProjeto.Size = new System.Drawing.Size(274, 49);
-            this.pnlTempoProjeto.TabIndex = 97;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(8, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 17);
-            this.label2.TabIndex = 85;
-            this.label2.Text = "Data de Termino:";
             // 
             // panel1
             // 
@@ -532,6 +463,7 @@
             this.btnEditar.TabIndex = 68;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // label8
             // 
@@ -559,27 +491,37 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.lblTitle.Location = new System.Drawing.Point(64, 13);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(276, 26);
+            this.lblTitle.Size = new System.Drawing.Size(261, 26);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "DETALHES DO PROJETO";
+            this.lblTitle.Text = "DETALHES DA ESCOLA";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtDataInicio);
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.pnlTempoProjeto);
-            this.panel3.Controls.Add(this.cmbTempoProjeto);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.txtDuracao);
+            this.panel3.Controls.Add(this.txtIdEndereco);
+            this.panel3.Controls.Add(this.txtIdCidade);
+            this.panel3.Controls.Add(this.txtIdBairro);
+            this.panel3.Controls.Add(this.btnSearchCEP);
+            this.panel3.Controls.Add(this.txtCEP);
+            this.panel3.Controls.Add(this.txtUF);
+            this.panel3.Controls.Add(this.label27);
+            this.panel3.Controls.Add(this.txtCidade);
+            this.panel3.Controls.Add(this.txtBairro);
+            this.panel3.Controls.Add(this.txtComplemento);
+            this.panel3.Controls.Add(this.txtNumero);
+            this.panel3.Controls.Add(this.txtLogradouro);
+            this.panel3.Controls.Add(this.label21);
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.label16);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.txtResponsavel);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.txtDescricao);
+            this.panel3.Controls.Add(this.txtObservacoes);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.txtNome);
             this.panel3.Controls.Add(this.label10);
@@ -589,28 +531,191 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
-            // txtDataInicio
+            // txtIdEndereco
             // 
-            this.txtDataInicio.AllowDrop = true;
-            this.txtDataInicio.Enabled = false;
-            this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicio.Location = new System.Drawing.Point(133, 282);
-            this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataInicio.Name = "txtDataInicio";
-            this.txtDataInicio.Size = new System.Drawing.Size(128, 26);
-            this.txtDataInicio.TabIndex = 100;
+            this.txtIdEndereco.Location = new System.Drawing.Point(347, 153);
+            this.txtIdEndereco.Name = "txtIdEndereco";
+            this.txtIdEndereco.Size = new System.Drawing.Size(20, 20);
+            this.txtIdEndereco.TabIndex = 144;
+            this.txtIdEndereco.Visible = false;
             // 
-            // label3
+            // txtIdCidade
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(32, 287);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 17);
-            this.label3.TabIndex = 101;
-            this.label3.Text = "Data de Inicio:";
+            this.txtIdCidade.Location = new System.Drawing.Point(621, 298);
+            this.txtIdCidade.Name = "txtIdCidade";
+            this.txtIdCidade.Size = new System.Drawing.Size(20, 20);
+            this.txtIdCidade.TabIndex = 143;
+            this.txtIdCidade.Visible = false;
+            // 
+            // txtIdBairro
+            // 
+            this.txtIdBairro.Location = new System.Drawing.Point(134, 298);
+            this.txtIdBairro.Name = "txtIdBairro";
+            this.txtIdBairro.Size = new System.Drawing.Size(20, 20);
+            this.txtIdBairro.TabIndex = 142;
+            this.txtIdBairro.Visible = false;
+            // 
+            // btnSearchCEP
+            // 
+            this.btnSearchCEP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchCEP.Image = global::ProjetoSomarUI.Properties.Resources.icon_search24x24;
+            this.btnSearchCEP.Location = new System.Drawing.Point(240, 151);
+            this.btnSearchCEP.Name = "btnSearchCEP";
+            this.btnSearchCEP.Size = new System.Drawing.Size(40, 26);
+            this.btnSearchCEP.TabIndex = 141;
+            this.btnSearchCEP.TabStop = false;
+            this.btnSearchCEP.Click += new System.EventHandler(this.btnSearchCEP_Click);
+            // 
+            // txtCEP
+            // 
+            this.txtCEP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtCEP.Location = new System.Drawing.Point(134, 150);
+            this.txtCEP.Mask = "00000-999";
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(100, 27);
+            this.txtCEP.TabIndex = 140;
+            // 
+            // txtUF
+            // 
+            this.txtUF.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUF.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtUF.Enabled = false;
+            this.txtUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtUF.Location = new System.Drawing.Point(870, 265);
+            this.txtUF.MaxLength = 100;
+            this.txtUF.Name = "txtUF";
+            this.txtUF.Size = new System.Drawing.Size(30, 27);
+            this.txtUF.TabIndex = 139;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label27.Location = new System.Drawing.Point(859, 270);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(13, 17);
+            this.label27.TabIndex = 138;
+            this.label27.Text = "-";
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCidade.Enabled = false;
+            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtCidade.Location = new System.Drawing.Point(621, 265);
+            this.txtCidade.MaxLength = 100;
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(238, 27);
+            this.txtCidade.TabIndex = 136;
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
+            this.txtBairro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtBairro.Enabled = false;
+            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtBairro.Location = new System.Drawing.Point(134, 265);
+            this.txtBairro.MaxLength = 100;
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(366, 27);
+            this.txtBairro.TabIndex = 134;
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.BackColor = System.Drawing.SystemColors.Window;
+            this.txtComplemento.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtComplemento.Enabled = false;
+            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtComplemento.Location = new System.Drawing.Point(134, 226);
+            this.txtComplemento.MaxLength = 100;
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(366, 27);
+            this.txtComplemento.TabIndex = 132;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNumero.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNumero.Enabled = false;
+            this.txtNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtNumero.Location = new System.Drawing.Point(621, 188);
+            this.txtNumero.MaxLength = 100;
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(83, 27);
+            this.txtNumero.TabIndex = 130;
+            // 
+            // txtLogradouro
+            // 
+            this.txtLogradouro.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLogradouro.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtLogradouro.Enabled = false;
+            this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtLogradouro.Location = new System.Drawing.Point(134, 188);
+            this.txtLogradouro.MaxLength = 100;
+            this.txtLogradouro.Name = "txtLogradouro";
+            this.txtLogradouro.Size = new System.Drawing.Size(366, 27);
+            this.txtLogradouro.TabIndex = 128;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label21.Location = new System.Drawing.Point(562, 270);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(56, 17);
+            this.label21.TabIndex = 137;
+            this.label21.Text = "Cidade:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label20.Location = new System.Drawing.Point(17, 272);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(50, 17);
+            this.label20.TabIndex = 135;
+            this.label20.Text = "Bairro:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label19.Location = new System.Drawing.Point(17, 233);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(98, 17);
+            this.label19.TabIndex = 133;
+            this.label19.Text = "Complemento:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label18.Location = new System.Drawing.Point(590, 193);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(27, 17);
+            this.label18.TabIndex = 131;
+            this.label18.Text = "Nº:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label17.Location = new System.Drawing.Point(17, 195);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(86, 17);
+            this.label17.TabIndex = 129;
+            this.label17.Text = "Logradouro:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label16.Location = new System.Drawing.Point(17, 158);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(39, 17);
+            this.label16.TabIndex = 127;
+            this.label16.Text = "CEP:";
             // 
             // panelEdit
             // 
@@ -625,6 +730,15 @@
             this.panelEdit.Size = new System.Drawing.Size(1009, 641);
             this.panelEdit.TabIndex = 42;
             this.panelEdit.Visible = false;
+            // 
+            // hdnIdEndereco
+            // 
+            this.hdnIdEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.hdnIdEndereco.Location = new System.Drawing.Point(749, 17);
+            this.hdnIdEndereco.Name = "hdnIdEndereco";
+            this.hdnIdEndereco.Size = new System.Drawing.Size(100, 26);
+            this.hdnIdEndereco.TabIndex = 70;
+            this.hdnIdEndereco.Visible = false;
             // 
             // FormEscolas
             // 
@@ -645,22 +759,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pnlTempoProjeto.ResumeLayout(false);
-            this.pnlTempoProjeto.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSearchCEP)).EndInit();
             this.panelEdit.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtDuracao;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Panel panel2;
@@ -675,13 +785,9 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtNomeAlteracao;
-        private System.Windows.Forms.ComboBox cmbTempoProjeto;
-        private System.Windows.Forms.TextBox txtResponsavel;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtDescricao;
+        private System.Windows.Forms.TextBox txtObservacoes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker txtDataTermino;
         private System.Windows.Forms.Panel panelConsulta;
         private System.Windows.Forms.Panel panelMessage;
         private System.Windows.Forms.Label lblMessage;
@@ -693,8 +799,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlTempoProjeto;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEditar;
@@ -702,8 +806,25 @@
         private System.Windows.Forms.TextBox lblCodigo;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DateTimePicker txtDataInicio;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panelEdit;
+        private System.Windows.Forms.TextBox txtIdEndereco;
+        private System.Windows.Forms.TextBox txtIdCidade;
+        private System.Windows.Forms.TextBox txtIdBairro;
+        private System.Windows.Forms.PictureBox btnSearchCEP;
+        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.TextBox txtUF;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox txtBairro;
+        private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.TextBox txtLogradouro;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox hdnIdEndereco;
     }
 }

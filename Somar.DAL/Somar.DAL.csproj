@@ -58,6 +58,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entities.xsd</DependentUpon>
     </Compile>
+    <Compile Include="EscolaDAL.cs" />
     <Compile Include="GenericDAL.cs" />
     <Compile Include="PessoaDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
