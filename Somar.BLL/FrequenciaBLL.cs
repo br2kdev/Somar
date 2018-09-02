@@ -1,6 +1,8 @@
 ﻿using Somar.DAL;
 using Somar.DTO;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Somar.BLL
 {
@@ -10,6 +12,18 @@ namespace Somar.BLL
         {
             FrequenciaDAL cmd = new FrequenciaDAL();
             return cmd.GetDataInDataBase(item);
+        }
+
+        public FrequenciaDTO GetByID(FrequenciaDTO item)
+        {
+            FrequenciaDAL cmd = new FrequenciaDAL();
+
+            var result = cmd.GetDataInDataBase(item);
+
+            if (result.Count == 1)
+                return result.SingleOrDefault();
+            else
+                throw new Exception("Erro de Gravação do Projeto");
         }
 
         public int SalvarFrequencia(FrequenciaDTO _item)

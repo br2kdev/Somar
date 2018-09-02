@@ -214,6 +214,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             */
+
             ControlFormEdit(false);
         }
 

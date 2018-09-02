@@ -58,6 +58,8 @@ CREATE TABLE TB_Matricula
 	idPessoaUltAlteracao	INT
 )
 
+-- select * from TB_Frequencia
+
 CREATE TABLE TB_Frequencia
 (
 	idFrequencia			INT IDENTITY(1,1),

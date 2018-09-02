@@ -1,6 +1,7 @@
 ﻿using ProjetoSomarUI.Properties;
 using Somar.BLL;
 using Somar.DTO;
+using Somar.DTO.Models;
 using Somar.Shared;
 using System;
 using System.Collections.Generic;
@@ -29,18 +30,21 @@ namespace ProjetoSomarUI.Cadastros
             cmbProjeto.SelectedIndexChanged += new EventHandler(cmbProjeto_SelectedIndexChanged);
             cmbTurma.SelectedIndexChanged += new EventHandler(cmbTurma_SelectedIndexChanged);
 
+            cmbProjetoEdit.SelectedIndexChanged += new EventHandler(cmbProjetoEdit_SelectedIndexChanged);
+            cmbTurmaEdit.SelectedIndexChanged += new EventHandler(cmbTurmaEdit_SelectedIndexChanged);
+
             #endregion
 
             #region Button Events
 
             btnNovo.Click += new EventHandler(btnNew_Click);
+            btnGravar.Click += new EventHandler(btnGravar_Click);
+            btnVoltar1.Click += new EventHandler(btnVoltar_Click);
+            btnEditar.Click += new EventHandler(btnEditar_Click);
+
             /*
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);
-
-            btnEditar.Click += new EventHandler(btnEditar_Click);
-            btnVoltar1.Click += new EventHandler(btnVoltar_Click);
-            btnGravar.Click += new EventHandler(btnGravar_Click);
             */
 
             #endregion
@@ -75,10 +79,9 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
-        /*
-        public void CarregaDetalhes(int _idPessoa)
+        public void CarregaDetalhes(int _idFrequencia)
         {
-            CarregaComboProjeto();
+            CarregaComboProjetoEdit();
 
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
@@ -87,26 +90,32 @@ namespace ProjetoSomarUI.Cadastros
             // Preenche Tela de Detalhes
             // ************************************************** //
 
-            var itemAluno = new PessoaBLL().GetByID(new PessoaDTO() { idPessoa = _idPessoa });
+            var itemFreq = new FrequenciaBLL().GetByID(new FrequenciaDTO() { idFrequencia = _idFrequencia });
 
-            lblCodigo.Text = _idPessoa.ToString();
-            txtNome.Text = itemAluno.nomePessoa;
+            lblCodigo.Text = _idFrequencia.ToString();
+            cmbProjetoEdit.SelectedValue = itemFreq.idProjeto;
+            cmbTurmaEdit.SelectedValue = itemFreq.idTurma;
+            txtDataFrequencia.Text = itemFreq.dataFrequencia.ToShortDateString();
 
+            txtDataCadastro.Text = itemFreq.dataCadastro.ToShortDateString();
+            txtDataAlteracao.Text = itemFreq.dataUltAlteracao.ToShortDateString();
+            txtNomeAlteracao.Text = itemFreq.nomePessoaUltAlteracao;
+            
             // ************************************************** //
             // Preenche Matricula
             // ************************************************** //
-
+            /*
             MatriculaDTO param = new MatriculaDTO();
             param.idPessoa = _idPessoa;
 
             var listMatr = new MatriculaBLL().GetDataWithParam(param);
 
             GridViewDataBind2(listMatr);
+            */
 
             ControlFormEdit(false);
         }
-        */
-
+        
         public void ClearForm1()
         {
             cmbProjeto.SelectedValue = 0;
@@ -117,8 +126,8 @@ namespace ProjetoSomarUI.Cadastros
         {
             lblCodigo.Text = string.Empty;
 
-            cmbProjetoEdit.SelectedIndex = 1;
-            cmbTurmaEdit.SelectedIndex = 1;
+            cmbProjetoEdit.SelectedIndex = -1;
+            cmbTurmaEdit.SelectedIndex = -1;
 
             /*
             cmbPeriodo.Text = string.Empty;
@@ -168,6 +177,38 @@ namespace ProjetoSomarUI.Cadastros
             this.cmbTurma.SelectedValue = 0;
         }
 
+        public void CarregaComboProjetoEdit()
+        {
+            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
+
+            lista.Insert(0, new ProjetoDTO() { idProjeto = 0, nomeProjeto = "Selecione..." });
+
+            this.cmbProjetoEdit.DataSource = null;
+            this.cmbProjetoEdit.Items.Clear();
+
+            this.cmbProjetoEdit.DisplayMember = "nomeProjeto";
+            this.cmbProjetoEdit.ValueMember = "idProjeto";
+            this.cmbProjetoEdit.DataSource = lista;
+
+            this.cmbProjetoEdit.SelectedValue = 0;
+        }
+
+        public void CarregaComboTurmaEdit(int idProjeto)
+        {
+            List<TurmaDTO> lista = new TurmaBLL().GetTurmasPorProjeto(idProjeto);
+
+            lista.Insert(0, new TurmaDTO() { idTurma = 0, nomeTurma = "Selecione..." });
+
+            this.cmbTurmaEdit.DataSource = null;
+            this.cmbTurmaEdit.Items.Clear();
+
+            this.cmbTurmaEdit.DisplayMember = "nomeTurma";
+            this.cmbTurmaEdit.ValueMember = "idTurma";
+            this.cmbTurmaEdit.DataSource = lista;
+
+            this.cmbTurmaEdit.SelectedValue = 0;
+        }
+
         private void cmbProjeto_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idProjeto = 0;
@@ -184,6 +225,22 @@ namespace ProjetoSomarUI.Cadastros
             CarregaGrid();
         }
 
+        private void cmbProjetoEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idProjeto = 0;
+
+            if (cmbProjetoEdit.SelectedValue != null)
+                idProjeto = Convert.ToInt32(cmbProjetoEdit.SelectedValue.ToString());
+
+            CarregaComboTurmaEdit(idProjeto);
+
+        }
+
+        private void cmbTurmaEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //CarregaGrid();
+        }
+
         #region Events
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -192,8 +249,11 @@ namespace ProjetoSomarUI.Cadastros
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
-            ClearForm2();
             ControlFormEdit(true);
+
+            CarregaComboProjetoEdit();
+
+            ClearForm2();
 
             btnVoltar1.Visible = true;
             btnVoltar1.Text = "Voltar";
@@ -219,7 +279,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new FrequenciaDTO());
+            var fields = new GridViewControl().GetFields(new ModelFrequencia());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -237,10 +297,10 @@ namespace ProjetoSomarUI.Cadastros
                 dt.DataPropertyName = item.Key;
                 dt.HeaderText = item.Value;
 
-                if (item.Key == "nomeProjeto")
+                if (item.Key == "nomeProjeto" || item.Key == "nomeTurma")
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                else if (item.Key == "nomeTurma")
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                //else if (item.Key == "nomeTurma")
+                //    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 this.dataGridView1.Columns.Add(dt);
             }
@@ -285,7 +345,7 @@ namespace ProjetoSomarUI.Cadastros
             {
                 int idFrequencia = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
-                // CarregaDetalhes(idPessoa);
+                CarregaDetalhes(idFrequencia);
 
                 // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
                 // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
@@ -400,15 +460,11 @@ namespace ProjetoSomarUI.Cadastros
             else
                 param.idFrequencia = Convert.ToInt32(lblCodigo.Text);
 
-            DateTime dataFrequencia = Convert.ToDateTime(txtDataFrequencia.Text);
-
-            int idProjeto = Convert.ToInt32(cmbProjetoEdit.SelectedValue);
-            int idTurma = Convert.ToInt32(cmbTurmaEdit.SelectedValue);
+            param.idProjeto = Convert.ToInt32(cmbProjetoEdit.SelectedValue);
+            param.idTurma = Convert.ToInt32(cmbTurmaEdit.SelectedValue);
+            param.dataFrequencia = Convert.ToDateTime(txtDataFrequencia.Text);
 
             //param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-
-            //param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
-            //param.idTurma = Convert.ToInt32(cmbProjeto.SelectedValue);
 
             param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
 

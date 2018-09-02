@@ -28,21 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label12 = new System.Windows.Forms.Label();
-            this.panelMessage = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.lblProjeto = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEditar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtDataFrequencia = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbTurmaEdit = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbProjetoEdit = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
@@ -54,22 +60,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panelEdit = new System.Windows.Forms.Panel();
-            this.panelConsulta = new System.Windows.Forms.Panel();
             this.cmbTurma = new System.Windows.Forms.ComboBox();
             this.cmbProjeto = new System.Windows.Forms.ComboBox();
-            this.cmbTurmaEdit = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbProjetoEdit = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnGravar = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDataFrequencia = new System.Windows.Forms.DateTimePicker();
-            this.panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelEdit = new System.Windows.Forms.Panel();
+            this.panelConsulta = new System.Windows.Forms.Panel();
+            this.panelMessage = new System.Windows.Forms.Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -77,7 +76,8 @@
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
             this.panelConsulta.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelMessage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label12
@@ -89,23 +89,6 @@
             this.label12.Size = new System.Drawing.Size(50, 16);
             this.label12.TabIndex = 111;
             this.label12.Text = "Turma:";
-            // 
-            // panelMessage
-            // 
-            this.panelMessage.Controls.Add(this.lblMessage);
-            this.panelMessage.Location = new System.Drawing.Point(14, 112);
-            this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(979, 63);
-            this.panelMessage.TabIndex = 45;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(9, 27);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(28, 13);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Text";
             // 
             // btnNovo
             // 
@@ -142,42 +125,6 @@
             this.lblProjeto.TabIndex = 31;
             this.lblProjeto.Text = "Projeto:";
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 97);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.RowTemplate.ReadOnly = true;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
-            this.dataGridView1.TabIndex = 43;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -191,6 +138,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(972, 51);
             this.panel1.TabIndex = 64;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
+            this.lblTitle.Location = new System.Drawing.Point(59, 14);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(385, 26);
+            this.lblTitle.TabIndex = 79;
+            this.lblTitle.Text = "FREQUENCIA (Lançamento de faltas)";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
+            this.pictureBox1.TabIndex = 78;
+            this.pictureBox1.TabStop = false;
             // 
             // btnEditar
             // 
@@ -241,6 +208,69 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
+            // txtDataFrequencia
+            // 
+            this.txtDataFrequencia.AllowDrop = true;
+            this.txtDataFrequencia.Enabled = false;
+            this.txtDataFrequencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtDataFrequencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataFrequencia.Location = new System.Drawing.Point(55, 13);
+            this.txtDataFrequencia.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtDataFrequencia.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.txtDataFrequencia.Name = "txtDataFrequencia";
+            this.txtDataFrequencia.Size = new System.Drawing.Size(128, 26);
+            this.txtDataFrequencia.TabIndex = 123;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label1.Location = new System.Drawing.Point(10, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 17);
+            this.label1.TabIndex = 122;
+            this.label1.Text = "Data:";
+            // 
+            // cmbTurmaEdit
+            // 
+            this.cmbTurmaEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurmaEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTurmaEdit.FormattingEnabled = true;
+            this.cmbTurmaEdit.Location = new System.Drawing.Point(622, 12);
+            this.cmbTurmaEdit.Name = "cmbTurmaEdit";
+            this.cmbTurmaEdit.Size = new System.Drawing.Size(286, 28);
+            this.cmbTurmaEdit.TabIndex = 121;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label13.Location = new System.Drawing.Point(204, 18);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(57, 17);
+            this.label13.TabIndex = 120;
+            this.label13.Text = "Projeto:";
+            // 
+            // cmbProjetoEdit
+            // 
+            this.cmbProjetoEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProjetoEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbProjetoEdit.FormattingEnabled = true;
+            this.cmbProjetoEdit.Location = new System.Drawing.Point(264, 12);
+            this.cmbProjetoEdit.Name = "cmbProjetoEdit";
+            this.cmbProjetoEdit.Size = new System.Drawing.Size(286, 28);
+            this.cmbProjetoEdit.TabIndex = 119;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label5.Location = new System.Drawing.Point(566, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 17);
+            this.label5.TabIndex = 118;
+            this.label5.Text = "Turma:";
+            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -260,6 +290,16 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(966, 347);
             this.dataGridView2.TabIndex = 117;
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add32x32;
+            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGravar.Location = new System.Drawing.Point(918, 9);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(33, 33);
+            this.btnGravar.TabIndex = 116;
+            this.btnGravar.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -382,6 +422,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar";
             // 
+            // cmbTurma
+            // 
+            this.cmbTurma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTurma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbTurma.FormattingEnabled = true;
+            this.cmbTurma.Location = new System.Drawing.Point(315, 42);
+            this.cmbTurma.Name = "cmbTurma";
+            this.cmbTurma.Size = new System.Drawing.Size(286, 28);
+            this.cmbTurma.TabIndex = 118;
+            // 
+            // cmbProjeto
+            // 
+            this.cmbProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbProjeto.FormattingEnabled = true;
+            this.cmbProjeto.Location = new System.Drawing.Point(12, 42);
+            this.cmbProjeto.Name = "cmbProjeto";
+            this.cmbProjeto.Size = new System.Drawing.Size(286, 28);
+            this.cmbProjeto.TabIndex = 116;
+            // 
             // panelEdit
             // 
             this.panelEdit.BackColor = System.Drawing.SystemColors.Control;
@@ -407,118 +467,58 @@
             this.panelConsulta.Size = new System.Drawing.Size(1009, 641);
             this.panelConsulta.TabIndex = 43;
             // 
-            // cmbTurma
+            // panelMessage
             // 
-            this.cmbTurma.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTurma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbTurma.FormattingEnabled = true;
-            this.cmbTurma.Location = new System.Drawing.Point(315, 42);
-            this.cmbTurma.Name = "cmbTurma";
-            this.cmbTurma.Size = new System.Drawing.Size(286, 28);
-            this.cmbTurma.TabIndex = 118;
+            this.panelMessage.Controls.Add(this.lblMessage);
+            this.panelMessage.Location = new System.Drawing.Point(14, 111);
+            this.panelMessage.Name = "panelMessage";
+            this.panelMessage.Size = new System.Drawing.Size(979, 63);
+            this.panelMessage.TabIndex = 47;
             // 
-            // cmbProjeto
+            // lblMessage
             // 
-            this.cmbProjeto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProjeto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbProjeto.FormattingEnabled = true;
-            this.cmbProjeto.Location = new System.Drawing.Point(12, 42);
-            this.cmbProjeto.Name = "cmbProjeto";
-            this.cmbProjeto.Size = new System.Drawing.Size(286, 28);
-            this.cmbProjeto.TabIndex = 116;
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(9, 27);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(28, 13);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Text";
             // 
-            // cmbTurmaEdit
+            // dataGridView1
             // 
-            this.cmbTurmaEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTurmaEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbTurmaEdit.FormattingEnabled = true;
-            this.cmbTurmaEdit.Location = new System.Drawing.Point(622, 12);
-            this.cmbTurmaEdit.Name = "cmbTurmaEdit";
-            this.cmbTurmaEdit.Size = new System.Drawing.Size(286, 28);
-            this.cmbTurmaEdit.TabIndex = 121;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label13.Location = new System.Drawing.Point(204, 18);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(57, 17);
-            this.label13.TabIndex = 120;
-            this.label13.Text = "Projeto:";
-            // 
-            // cmbProjetoEdit
-            // 
-            this.cmbProjetoEdit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProjetoEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbProjetoEdit.FormattingEnabled = true;
-            this.cmbProjetoEdit.Location = new System.Drawing.Point(264, 12);
-            this.cmbProjetoEdit.Name = "cmbProjetoEdit";
-            this.cmbProjetoEdit.Size = new System.Drawing.Size(286, 28);
-            this.cmbProjetoEdit.TabIndex = 119;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(566, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 17);
-            this.label5.TabIndex = 118;
-            this.label5.Text = "Turma:";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.TabIndex = 78;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add32x32;
-            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGravar.Location = new System.Drawing.Point(918, 9);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(33, 33);
-            this.btnGravar.TabIndex = 116;
-            this.btnGravar.UseVisualStyleBackColor = true;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.lblTitle.Location = new System.Drawing.Point(59, 14);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(385, 26);
-            this.lblTitle.TabIndex = 79;
-            this.lblTitle.Text = "FREQUENCIA (Lançamento de faltas)";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label1.Location = new System.Drawing.Point(10, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 17);
-            this.label1.TabIndex = 122;
-            this.label1.Text = "Data:";
-            // 
-            // txtDataFrequencia
-            // 
-            this.txtDataFrequencia.AllowDrop = true;
-            this.txtDataFrequencia.Enabled = false;
-            this.txtDataFrequencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataFrequencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataFrequencia.Location = new System.Drawing.Point(55, 13);
-            this.txtDataFrequencia.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataFrequencia.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataFrequencia.Name = "txtDataFrequencia";
-            this.txtDataFrequencia.Size = new System.Drawing.Size(128, 26);
-            this.txtDataFrequencia.TabIndex = 123;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(14, 105);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
+            this.dataGridView1.TabIndex = 46;
             // 
             // FormFrequencia
             // 
@@ -529,11 +529,9 @@
             this.Controls.Add(this.panelConsulta);
             this.Name = "FormFrequencia";
             this.Text = "CadFrequencia";
-            this.panelMessage.ResumeLayout(false);
-            this.panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -545,7 +543,9 @@
             this.groupBox1.PerformLayout();
             this.panelEdit.ResumeLayout(false);
             this.panelConsulta.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelMessage.ResumeLayout(false);
+            this.panelMessage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -553,12 +553,9 @@
         #endregion
 
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Label lblProjeto;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEditar;
@@ -589,5 +586,8 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker txtDataFrequencia;
+        private System.Windows.Forms.Panel panelMessage;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

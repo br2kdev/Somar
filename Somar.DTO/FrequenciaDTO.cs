@@ -18,6 +18,8 @@ namespace Somar.DTO
 
         public string nomeResponsavel { get; set; }
 
+        public DateTime dataCadastro { get; set; }
+
         public DateTime dataFrequencia { get; set; }
 
         public DateTime dataUltAlteracao { get; set; }

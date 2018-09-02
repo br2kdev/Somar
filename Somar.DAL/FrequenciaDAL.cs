@@ -19,13 +19,17 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.nomeTurma, C.nomeProjeto ";
+            query += " SELECT A.*, B.idTurma, B.nomeTurma, C.idProjeto, C.nomeProjeto ";
             query += " FROM TB_Frequencia    A ";
             query += " INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma";
             query += " INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto";
+            query += " LEFT  JOIN TB_Usuarios D ON A.idPessoaUltAlteracao = D.idUsuario";
+
+            if (objectDTO.idFrequencia != 0)
+                whereClause += " AND A.idFrequencia = " + objectDTO.idFrequencia.ToString();
 
             if (objectDTO.idProjeto != 0)
-                whereClause += " AND A.idProjeto = " + objectDTO.idProjeto.ToString();
+                whereClause += " AND C.idProjeto = " + objectDTO.idProjeto.ToString();
 
             if (objectDTO.idTurma != 0)
                 whereClause += " AND A.idTurma = " + objectDTO.idTurma.ToString();
@@ -45,6 +49,7 @@ namespace Somar.DAL
             param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
             param.Add("@idDisciplina", _item.idDisciplina, DbType.Int32);
+            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
 
