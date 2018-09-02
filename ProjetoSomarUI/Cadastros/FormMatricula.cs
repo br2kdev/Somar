@@ -1,4 +1,5 @@
-﻿using Somar.BLL;
+﻿using ProjetoSomarUI.Properties;
+using Somar.BLL;
 using Somar.DTO;
 using Somar.Shared;
 using System;
@@ -360,10 +361,18 @@ namespace ProjetoSomarUI.Cadastros
                 this.dataGridView2.Columns.Add(dt2);
             }
 
+            // Cancel Image
+            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
+            img3.Name = "ImageCancel";
+            img3.HeaderText = "";
+            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img3.Width = 40;
+            this.dataGridView2.Columns.Add(img3);
+
             this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
             this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
-            this.dataGridView2.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
-            this.dataGridView2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
+            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
+            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
         }
 
         public void GridViewDataBind(List<PessoaDTO> result)
@@ -459,10 +468,9 @@ namespace ProjetoSomarUI.Cadastros
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["Image"].Index)
-            {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-            }
-
+                e.Value = Resources.icon_search24x24;
+            else if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageCancel"].Index)
+                e.Value = Resources.icon_cancel24x24;
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -555,43 +563,17 @@ namespace ProjetoSomarUI.Cadastros
             int _idProjeto = Convert.ToInt32(this.cmbProjeto.SelectedValue);
             int _idTurma = Convert.ToInt32(this.cmbTurma.SelectedValue);
 
-            MatriculaDTO param = new MatriculaDTO(){ idProjeto = _idProjeto, idTurma = _idTurma, idPessoa = _idPessoa };
+            MatriculaDTO param = new MatriculaDTO();
+            param.idProjeto = _idProjeto;
+            param.idTurma = _idTurma;
+            param.idPessoa = _idPessoa;
+            param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
+            param.dataUltAlteracao = DateTime.Now;
 
             MatriculaBLL cmd = new MatriculaBLL();
             var idMatricula = cmd.SaveMatricula(param);
 
             CarregaDetalhes(_idPessoa);
-
-            /*
-            PessoaDTO param = new PessoaDTO();
-
-            if (lblCodigo.Text == string.Empty)
-                param.idPessoa = 0;
-            else
-                param.idPessoa = Convert.ToInt32(lblCodigo.Text);
-
-            param.nomePessoa = txtNome.Text;
-            param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-
-            param.descricaoPeriodo = cmbPeriodo.SelectedItem.ToString();
-
-            param.horaInicio = cmbHoraInicio.SelectedItem + ":" + cmbMinutoInicio.SelectedItem;
-            param.horaTermino = cmbHoraFim.SelectedItem + ":" + cmbMinutoFim.SelectedItem;
-            param.descricaoPessoa = txtDescricao.Text;
-            param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
-            param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
-
-
-
-            if (idPessoa > 0)
-            {
-                lblCodigo.Text = idPessoa.ToString();
-                MessageBox.Show("Pessoa gravado com sucesso!");
-                CarregaGrid();
-            }
-            else
-                throw new Exception("Erro de Gravação do Pessoa");
-            */
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

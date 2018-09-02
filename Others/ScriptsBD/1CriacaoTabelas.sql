@@ -210,16 +210,13 @@ INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
 
 INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
 
-
 INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
 
-
-CREATE INDEX IX#01_LOGRADOURO ON TB_CEP_Logradouro(CEP)
-CREATE INDEX IX#02_LOGRADOURO ON TB_CEP_Logradouro(loc_nu_sequencial)
-CREATE INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
-CREATE INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
+CREATE CLUSTERED INDEX IX#01_Logradouro ON TB_CEP_Logradouro (CEP ASC)
+CREATE CLUSTERED INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
+CREATE CLUSTERED INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
 
 TB_Enderecos
 
