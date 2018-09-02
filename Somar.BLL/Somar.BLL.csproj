@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="MatriculaBLL.cs" />
     <Compile Include="EnderecoBLL.cs" />
+    <Compile Include="EscolaBLL.cs" />
     <Compile Include="GenericBLL.cs" />
     <Compile Include="PessoaBLL.cs" />
     <Compile Include="TurmaBLL.cs" />

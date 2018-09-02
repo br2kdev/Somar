@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="ContatoDTO.cs" />
     <Compile Include="EnderecoDTO.cs" />
-    <Compile Include="MatriculaDTO.cs" />
+    <Compile Include="EscolaDTO.cs" />
     <Compile Include="PessoaDTO.cs" />
     <Compile Include="GenericDTO.cs" />
     <Compile Include="TurmaDTO.cs" />
