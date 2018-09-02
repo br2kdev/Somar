@@ -126,6 +126,32 @@ namespace Somar.DAL
             return result;
         }
 
+        public int UpdatePassword(UsuarioDTO objectDTO)
+        {
+            RepList<UsuarioDTO> listProjeto = new RepList<UsuarioDTO>();
+            RepGen<UsuarioDTO> sqlCommand = new RepGen<UsuarioDTO>();
+
+            string query = "UPDATE TB_Usuarios SET ";
+            string where = string.Empty;
+
+            var param = new DynamicParameters();
+
+            param.Add("@senha", objectDTO.senha, DbType.String);
+            
+
+            foreach (var item in param.ParameterNames)
+                query += " " + item + " = @" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            where += " WHERE idUsuario = " + objectDTO.idUsuario.ToString();
+            query += where;
+
+            var result = sqlCommand.ExecuteSQL(query, param);
+
+            return result;
+        }
+
         public DataSet Consultar(string Sql)
         {
             DataTable _datatable = new DataTable();

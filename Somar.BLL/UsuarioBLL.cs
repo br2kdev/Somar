@@ -75,5 +75,12 @@ namespace Somar.BLL
 
             return cmd.UpdateData(_projeto);
         }
+
+        public int UpdatePassword(UsuarioDTO _usuario)
+        {
+            UsuarioDAL cmd = new UsuarioDAL();
+
+            return cmd.UpdatePassword(_usuario);
+        }
     }
 }

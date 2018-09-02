@@ -122,6 +122,13 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void alterarSenhaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAlterarSenha frm = new FormAlterarSenha();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
         private void frequenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormFrequencia frm = new FormFrequencia();
@@ -193,5 +200,6 @@ namespace ProjetoSomarUI
 
         #endregion
 
+    
     }
 }
