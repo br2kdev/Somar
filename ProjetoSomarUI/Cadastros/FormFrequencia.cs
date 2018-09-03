@@ -266,6 +266,8 @@ namespace ProjetoSomarUI.Cadastros
 
         #region Gridview Controls
 
+        #region GridView 1
+
         public void InitializeGridView()
         {
             // ***************************************************************** //
@@ -282,7 +284,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new FrequenciaDTO());
+            var fields = new GridViewControl().GetFields(new ModelFrequencia());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -316,64 +318,6 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
 
             // ***************************************************************** //
-        }
-
-        public void InitializeGridView2()
-        {
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW 2
-            // ***************************************************************** //
-            this.dataGridView2.AutoSize = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields2 = new GridViewControl().GetFields(new ModelFrequencia());
-
-            // Edit Image
-            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
-            img2.Name = "Image";
-            img2.HeaderText = "";
-            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img2.Width = 40;
-            this.dataGridView2.Columns.Add(img2);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields2)
-            {
-                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
-                dt2.DataPropertyName = item.Key;
-                dt2.HeaderText = item.Value;
-
-                if (item.Key == "nomePessoa")
-                {
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                else if (item.Key == "nomeTurma")
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView2.Columns.Add(dt2);
-            }
-
-            // Cancel Image
-            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
-            img3.Name = "ImageCancel";
-            img3.HeaderText = "";
-            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img3.Width = 40;
-            this.dataGridView2.Columns.Add(img3);
-
-            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
-            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
-            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
-            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
         }
 
         public void GridViewDataBind(List<FrequenciaDTO> result)
@@ -429,6 +373,64 @@ namespace ProjetoSomarUI.Cadastros
 
         #region Gridview2
 
+        public void InitializeGridView2()
+        {
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW 2
+            // ***************************************************************** //
+            this.dataGridView2.AutoSize = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+
+            // ***************************************************************** //
+            //  SET COLUMNS IN GRIDVIEW
+            // ***************************************************************** //
+
+            var fields2 = new GridViewControl().GetFields(new ModelListaPresenca());
+
+            // Edit Image
+            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
+            img2.Name = "Image";
+            img2.HeaderText = "";
+            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img2.Width = 40;
+            this.dataGridView2.Columns.Add(img2);
+
+            // -------------------------------------------------------------
+            // All Fields
+            foreach (var item in fields2)
+            {
+                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
+                dt2.DataPropertyName = item.Key;
+                dt2.HeaderText = item.Value;
+
+                if (item.Key == "nomePessoa")
+                {
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                else if (item.Key == "nomeTurma")
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                this.dataGridView2.Columns.Add(dt2);
+            }
+
+            // Cancel Image
+            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
+            img3.Name = "ImageCancel";
+            img3.HeaderText = "";
+            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img3.Width = 40;
+            this.dataGridView2.Columns.Add(img3);
+
+            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
+            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
+            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
+            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
+        }
+
         public void GridViewDataBind2(List<FrequenciaDTO> result)
         {
             if (result.Count == 0)
@@ -478,6 +480,8 @@ namespace ProjetoSomarUI.Cadastros
             if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView2.Cursor = Cursors.Default;
         }
+
+        #endregion
 
         #endregion
 

@@ -6,12 +6,16 @@ namespace Somar.DTO
     {
         public int idFrequencia { get; set; }
 
+        public int idFrequenciaAluno { get; set; }
+
         public int idProjeto { get; set; }
 
         public int idTurma { get; set; }
 
         public int idDisciplina { get; set; }
-        
+
+        public string nomePessoa { get; set; }
+
         public string nomeProjeto { get; set; }
 
         public string nomeTurma { get; set; }

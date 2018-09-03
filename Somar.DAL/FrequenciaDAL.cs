@@ -46,7 +46,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, E.nomePessoa, C.idTurma, C.nomeTurma, D.idProjeto, D.nomeProjeto ";
+            query += " SELECT A.*, B.dataFrequencia, E.nomePessoa, C.idTurma, C.nomeTurma, D.idProjeto, D.nomeProjeto ";
             query += " FROM TB_FrequenciaAluno  A ";
             query += " INNER JOIN TB_Frequencia B ON A.idFrequencia   = B.idFrequencia";
             query += " INNER JOIN TB_Turmas     C ON B.idTurma        = C.idTurma";
