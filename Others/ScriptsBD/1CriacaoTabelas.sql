@@ -80,6 +80,13 @@ CREATE TABLE TB_FrequenciaAluno
 	justificativa			VARCHAR(100)
 )
 
+SELECT iCount = (SELECT COUNT(1) 
+				 FROM TB_Matricula B 
+				 WHERE B.idPessoa = A.idPessoa
+				 AND dtCancelamento is null), *
+FROM TB_Pessoas	A
+
+select * from TB_Matricula
 
 -- select * from TB_Frequencia
 -- select * from TB_FrequenciaAluno
