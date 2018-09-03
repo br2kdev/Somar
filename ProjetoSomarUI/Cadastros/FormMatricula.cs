@@ -47,6 +47,7 @@ namespace ProjetoSomarUI.Cadastros
             Load += new EventHandler(FormMatricula_Load);
 
             InitializeGridView();
+            InitializeGridView2();
         }
 
         private void FormMatricula_Load(object sender, EventArgs e)
@@ -278,16 +279,6 @@ namespace ProjetoSomarUI.Cadastros
             // ***************************************************************** //
 
             // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW 2
-            // ***************************************************************** //
-            this.dataGridView2.AutoSize = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
@@ -328,14 +319,25 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
 
             // ***************************************************************** //
+        }
 
-            // -------------------------------------------------------------
+        public void InitializeGridView2()
+        {
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW 2
+            // ***************************************************************** //
+            this.dataGridView2.AutoSize = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
 
             // ***************************************************************** //
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields2 = new GridViewControl().GetFields(new ModelListaPresenca());
+            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
 
             // Edit Image
             DataGridViewImageColumn img2 = new DataGridViewImageColumn();
