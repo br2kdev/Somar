@@ -1,6 +1,7 @@
 ﻿using ProjetoSomarUI.Properties;
 using Somar.BLL;
 using Somar.DTO;
+using Somar.DTO.Models;
 using Somar.Shared;
 using System;
 using System.Collections.Generic;
@@ -334,7 +335,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
+            var fields2 = new GridViewControl().GetFields(new ModelListaPresenca());
 
             // Edit Image
             DataGridViewImageColumn img2 = new DataGridViewImageColumn();
@@ -352,7 +353,7 @@ namespace ProjetoSomarUI.Cadastros
                 dt2.DataPropertyName = item.Key;
                 dt2.HeaderText = item.Value;
 
-                if (item.Key == "nomeProjeto")
+                if (item.Key == "nomePessoa")
                 {
                     dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }

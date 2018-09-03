@@ -46,6 +46,7 @@
     <Compile Include="FrequenciaDTO.cs" />
     <Compile Include="MatriculaDTO.cs" />
     <Compile Include="Models\ModelFrequencia.cs" />
+    <Compile Include="Models\ModelListaPresenca.cs" />
     <Compile Include="PessoaDTO.cs" />
     <Compile Include="GenericDTO.cs" />
     <Compile Include="TurmaDTO.cs" />

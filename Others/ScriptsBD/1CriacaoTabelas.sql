@@ -63,12 +63,53 @@ CREATE TABLE TB_Matricula
 CREATE TABLE TB_Frequencia
 (
 	idFrequencia			INT IDENTITY(1,1),
-	dtFrequencia			SMALLDATETIME,
+	dataFrequencia			SMALLDATETIME,
 	idTurma					INT,
 	idDisciplina			INT,
+	dataCadastro			SMALLDATETIME,
 	dataUltAlteracao		SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
+
+CREATE TABLE TB_FrequenciaAluno
+(
+	idFrequenciaAluno		INT IDENTITY(1,1),
+	idFrequencia			INT,
+	idPessoa				INT,
+	flagPresenca			BIT,
+	justificativa			VARCHAR(100)
+)
+
+
+-- select * from TB_Frequencia
+-- select * from TB_FrequenciaAluno
+-- DROP PROCEDURE SPR_GerarFrequencia
+-- EXEC SPR_GerarFrequencia 1, '2018-09-03'
+-- SELECT * FROM TB_Matricula WHERE idTurma = 1
+
+ALTER PROCEDURE SPR_GerarFrequencia
+(
+	@idFrequencia			INT,
+	@dataFrequencia			SMALLDATETIME
+)
+AS
+BEGIN
+	
+	DECLARE @idTurma INT
+	
+	SELECT TOP 1 @idTurma = idTurma from TB_Frequencia WHERE idFrequencia = @idFrequencia
+
+	INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa)
+	SELECT @idFrequencia, idPessoa
+	FROM TB_Matricula 
+	WHERE 1 = 1 
+	AND  idTurma = @idTurma
+	AND  dtCancelamento is NULL
+	AND  dtMatricula < @dataFrequencia
+
+END
+
+
 
 CREATE TABLE TB_Usuarios
 (

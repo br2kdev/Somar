@@ -14,6 +14,12 @@ namespace Somar.BLL
             return cmd.GetDataInDataBase(item);
         }
 
+        public List<FrequenciaDTO> GetDetalhesFrequencia(FrequenciaDTO item)
+        {
+            FrequenciaDAL cmd = new FrequenciaDAL();
+            return cmd.GetDetalhesFrequencia(item);
+        }
+
         public FrequenciaDTO GetByID(FrequenciaDTO item)
         {
             FrequenciaDAL cmd = new FrequenciaDAL();
@@ -33,7 +39,14 @@ namespace Somar.BLL
             int result = 0;
 
             if (_item.idFrequencia == 0)
+            { 
                 result = cmd.InsertData(_item);
+
+                if(result != 0)
+                {
+                    cmd.GerarFrequencia(new FrequenciaDTO() { idFrequencia = result, dataFrequencia = _item.dataFrequencia });
+                }
+            }
             else
             {
                 result = cmd.UpdateData(_item);

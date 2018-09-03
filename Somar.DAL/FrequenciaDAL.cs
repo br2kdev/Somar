@@ -19,7 +19,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.idTurma, B.nomeTurma, C.idProjeto, C.nomeProjeto ";
+            query += " SELECT A.*, B.idTurma, B.nomeTurma, C.idProjeto, C.nomeProjeto, D.nomeUsuario as nomePessoaUltAlteracao ";
             query += " FROM TB_Frequencia    A ";
             query += " INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma";
             query += " INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto";
@@ -33,6 +33,28 @@ namespace Somar.DAL
 
             if (objectDTO.idTurma != 0)
                 whereClause += " AND A.idTurma = " + objectDTO.idTurma.ToString();
+
+            query += whereClause;
+
+            return listProjeto.GetDataInDatabase(query);
+        }
+
+        public List<FrequenciaDTO> GetDetalhesFrequencia(FrequenciaDTO objectDTO)
+        {
+            RepList<FrequenciaDTO> listProjeto = new RepList<FrequenciaDTO>();
+
+            string query = string.Empty;
+            string whereClause = " WHERE 1 = 1 ";
+
+            query += " SELECT A.*, E.nomePessoa, C.idTurma, C.nomeTurma, D.idProjeto, D.nomeProjeto ";
+            query += " FROM TB_FrequenciaAluno  A ";
+            query += " INNER JOIN TB_Frequencia B ON A.idFrequencia   = B.idFrequencia";
+            query += " INNER JOIN TB_Turmas     C ON B.idTurma        = C.idTurma";
+            query += " INNER JOIN TB_Projetos   D ON C.idProjeto      = D.idProjeto";
+            query += " INNER JOIN TB_Pessoas    E ON A.idPessoa       = E.idPessoa";
+
+            if (objectDTO.idFrequencia != 0)
+                whereClause += " AND A.idFrequencia = " + objectDTO.idFrequencia.ToString();
 
             query += whereClause;
 
@@ -63,6 +85,27 @@ namespace Somar.DAL
             var result = sqlCommand.ExecuteSQLCommand(query, param);
 
             return result;
+        }
+
+        public int GerarFrequencia(FrequenciaDTO _item)
+        {
+            RepGen<FrequenciaDTO> sqlCommand = new RepGen<FrequenciaDTO>();
+
+            string query = "EXEC SPR_GerarFrequencia ";
+            var param = new DynamicParameters();
+
+            param.Add("@idFrequencia", _item.idFrequencia, DbType.Int32);
+            param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
+
+            foreach (var item in param.ParameterNames)
+                query += "@" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            var result = sqlCommand.ExecuteSQLCommand(query, param);
+
+            return result;
+
         }
 
         public int UpdateData(FrequenciaDTO _item)

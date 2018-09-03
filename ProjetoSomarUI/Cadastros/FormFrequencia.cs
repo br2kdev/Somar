@@ -52,6 +52,7 @@ namespace ProjetoSomarUI.Cadastros
             Load += new EventHandler(FormMatricula_Load);
 
             InitializeGridView();
+            InitializeGridView2();
         }
 
         private void FormMatricula_Load(object sender, EventArgs e)
@@ -101,6 +102,10 @@ namespace ProjetoSomarUI.Cadastros
             txtDataAlteracao.Text = itemFreq.dataUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = itemFreq.nomePessoaUltAlteracao;
             
+            var listPresenca = new FrequenciaBLL().GetDetalhesFrequencia(new FrequenciaDTO() { idFrequencia = _idFrequencia });
+
+            GridViewDataBind2(listPresenca);
+
             // ************************************************** //
             // Preenche Matricula
             // ************************************************** //
@@ -109,8 +114,6 @@ namespace ProjetoSomarUI.Cadastros
             param.idPessoa = _idPessoa;
 
             var listMatr = new MatriculaBLL().GetDataWithParam(param);
-
-            GridViewDataBind2(listMatr);
             */
 
             ControlFormEdit(false);
@@ -279,7 +282,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new ModelFrequencia());
+            var fields = new GridViewControl().GetFields(new FrequenciaDTO());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -313,6 +316,64 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
 
             // ***************************************************************** //
+        }
+
+        public void InitializeGridView2()
+        {
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW 2
+            // ***************************************************************** //
+            this.dataGridView2.AutoSize = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+
+            // ***************************************************************** //
+            //  SET COLUMNS IN GRIDVIEW
+            // ***************************************************************** //
+
+            var fields2 = new GridViewControl().GetFields(new ModelFrequencia());
+
+            // Edit Image
+            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
+            img2.Name = "Image";
+            img2.HeaderText = "";
+            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img2.Width = 40;
+            this.dataGridView2.Columns.Add(img2);
+
+            // -------------------------------------------------------------
+            // All Fields
+            foreach (var item in fields2)
+            {
+                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
+                dt2.DataPropertyName = item.Key;
+                dt2.HeaderText = item.Value;
+
+                if (item.Key == "nomePessoa")
+                {
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                else if (item.Key == "nomeTurma")
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                this.dataGridView2.Columns.Add(dt2);
+            }
+
+            // Cancel Image
+            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
+            img3.Name = "ImageCancel";
+            img3.HeaderText = "";
+            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img3.Width = 40;
+            this.dataGridView2.Columns.Add(img3);
+
+            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
+            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
+            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
+            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
         }
 
         public void GridViewDataBind(List<FrequenciaDTO> result)
@@ -366,6 +427,60 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        #region Gridview2
+
+        public void GridViewDataBind2(List<FrequenciaDTO> result)
+        {
+            if (result.Count == 0)
+            {
+                dataGridView2.Visible = false;
+                //panelMessage.Visible = true;
+                lblMessage.Text = "Aluno ainda não possuí matricula";
+            }
+            else
+            {
+                dataGridView2.Visible = true;
+                dataGridView2.DataSource = result;
+                //panelMessage.Visible = false;
+                //lblMessage.Text = "";
+            }
+        }
+
+        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["Image"].Index)
+                e.Value = Resources.icon_search24x24;
+            else if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageCancel"].Index)
+                e.Value = Resources.icon_cancel24x24;
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                int idPessoa = Convert.ToInt32(this.dataGridView2[1, e.RowIndex].Value);
+
+                // CarregaDetalhes(idPessoa);
+
+                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
+                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
+            }
+        }
+
+        private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView2.Cursor = Cursors.Hand;
+        }
+
+        private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+                dataGridView2.Cursor = Cursors.Default;
+        }
+
+        #endregion
+
         #region EditMode
 
         public void ControlFormEdit(bool flagEnable)
@@ -374,6 +489,7 @@ namespace ProjetoSomarUI.Cadastros
 
             btnVoltar1.Text = "Voltar";
 
+            txtDataFrequencia.Enabled = flagEnable;
             cmbProjetoEdit.Enabled = flagEnable;
             cmbTurmaEdit.Enabled = flagEnable;
 
@@ -392,7 +508,7 @@ namespace ProjetoSomarUI.Cadastros
             {
                 btnEditar.Visible = false;
                 btnGravar.Visible = true;
-                //txtNome.Focus();
+                txtDataFrequencia.Focus();
             }
             else
             {
@@ -463,10 +579,7 @@ namespace ProjetoSomarUI.Cadastros
             param.idProjeto = Convert.ToInt32(cmbProjetoEdit.SelectedValue);
             param.idTurma = Convert.ToInt32(cmbTurmaEdit.SelectedValue);
             param.dataFrequencia = Convert.ToDateTime(txtDataFrequencia.Text);
-
-            //param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-
-            param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
+            param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
 
             FrequenciaBLL bus = new FrequenciaBLL();
             var idFrequencia = bus.SalvarFrequencia(param);
@@ -475,7 +588,9 @@ namespace ProjetoSomarUI.Cadastros
             {
                 lblCodigo.Text = idFrequencia.ToString();
                 MessageBox.Show("Frequencia gerada com sucesso!");
+
                 CarregaGrid();
+                CarregaDetalhes(idFrequencia);
             }
             else
                 throw new Exception("Erro na geração da Frequencia");
