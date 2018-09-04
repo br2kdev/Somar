@@ -70,9 +70,9 @@ namespace Somar.DAL
             param.Add("@horaInicio", _turmaDTO.horaInicio, DbType.String);
             param.Add("@horaTermino", _turmaDTO.horaTermino, DbType.String);
             param.Add("@idPessoaEducador", _turmaDTO.idPessoaEducador, DbType.Int32);
-            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", _turmaDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _turmaDTO.idPessoaUltAlteracao, DbType.Int32);
             param.Add("@idProjeto", _turmaDTO.idProjeto, DbType.Int32);
 
@@ -105,7 +105,7 @@ namespace Somar.DAL
             param.Add("@horaTermino", _turmaDTO.horaTermino, DbType.String);
             param.Add("@idPessoaEducador", _turmaDTO.idPessoaEducador, DbType.Int32);
             param.Add("@flagAtivo", _turmaDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _turmaDTO.idPessoaUltAlteracao, DbType.Int32);
             param.Add("@idProjeto", _turmaDTO.idProjeto, DbType.Int32);
 

@@ -167,8 +167,8 @@ namespace ProjetoSomarUI
                 string[] arr = new string[3];
 
                 arr[0] = item.nomePessoa;
-                arr[1] = item.dataNascimento.ToShortDateString();
-                arr[2] = Functions.CalcularIdade(item.dataNascimento).ToString();
+                arr[1] = item.dtNascimento.ToShortDateString();
+                arr[2] = Functions.CalcularIdade(item.dtNascimento).ToString();
 
                 itemBirth = new ListViewItem(arr);
 

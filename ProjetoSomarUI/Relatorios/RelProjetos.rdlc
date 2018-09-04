@@ -336,14 +336,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="DataTermino">
+                    <Textbox Name="dtTermino">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!DataTermino.Value</Value>
+                              <Value>=Fields!dtTermino.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -353,7 +353,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>DataTermino</rd:DefaultName>
+                      <rd:DefaultName>dtTermino</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -369,14 +369,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="DataCadastro">
+                    <Textbox Name="dtCadastro">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!DataCadastro.Value</Value>
+                              <Value>=Fields!dtCadastro.Value</Value>
                               <Style>
                                 <FontWeight>Normal</FontWeight>
                                 <Color>#333333</Color>
@@ -386,7 +386,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>DataCadastro</rd:DefaultName>
+                      <rd:DefaultName>dtCadastro</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -476,8 +476,8 @@
           <DataField>DataInicio</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="DataTermino">
-          <DataField>DataTermino</DataField>
+        <Field Name="dtTermino">
+          <DataField>dtTermino</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="Duracao">
@@ -488,8 +488,8 @@
           <DataField>Descricao</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DataCadastro">
-          <DataField>DataCadastro</DataField>
+        <Field Name="dtCadastro">
+          <DataField>dtCadastro</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
         <Field Name="ResponsavelPessoaId">

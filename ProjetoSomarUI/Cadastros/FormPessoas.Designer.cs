@@ -44,7 +44,7 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
+            this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.txtDataAtivacao = new System.Windows.Forms.DateTimePicker();
+            this.txtdtAtivacao = new System.Windows.Forms.DateTimePicker();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtIdEndereco = new System.Windows.Forms.TextBox();
@@ -117,7 +117,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtRG = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.txtdtNascimento = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdade = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -309,7 +309,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.Controls.Add(this.txtDataCadastro);
+            this.groupBox3.Controls.Add(this.txtdtCadastro);
             this.groupBox3.Controls.Add(this.txtDataAlteracao);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label11);
@@ -321,17 +321,17 @@
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             // 
-            // txtDataCadastro
+            // txtdtCadastro
             // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(125, 17);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 100;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdtCadastro.Enabled = false;
+            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtdtCadastro.Location = new System.Drawing.Point(125, 17);
+            this.txtdtCadastro.MaxLength = 10;
+            this.txtdtCadastro.Name = "txtdtCadastro";
+            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtdtCadastro.TabIndex = 100;
+            this.txtdtCadastro.TabStop = false;
+            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDataAlteracao
             // 
@@ -479,7 +479,7 @@
             this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.txtCPF);
             this.panel3.Controls.Add(this.panel2);
-            this.panel3.Controls.Add(this.txtDataAtivacao);
+            this.panel3.Controls.Add(this.txtdtAtivacao);
             this.panel3.Controls.Add(this.tabControl1);
             this.panel3.Controls.Add(this.label14);
             this.panel3.Controls.Add(this.label13);
@@ -487,7 +487,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.txtRG);
             this.panel3.Controls.Add(this.label3);
-            this.panel3.Controls.Add(this.txtDataNascimento);
+            this.panel3.Controls.Add(this.txtdtNascimento);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
@@ -604,19 +604,19 @@
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Visible = false;
             // 
-            // txtDataAtivacao
+            // txtdtAtivacao
             // 
-            this.txtDataAtivacao.AllowDrop = true;
-            this.txtDataAtivacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataAtivacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataAtivacao.Location = new System.Drawing.Point(554, 95);
-            this.txtDataAtivacao.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataAtivacao.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.txtDataAtivacao.Name = "txtDataAtivacao";
-            this.txtDataAtivacao.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDataAtivacao.Size = new System.Drawing.Size(128, 26);
-            this.txtDataAtivacao.TabIndex = 106;
-            this.txtDataAtivacao.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.txtdtAtivacao.AllowDrop = true;
+            this.txtdtAtivacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtdtAtivacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtdtAtivacao.Location = new System.Drawing.Point(554, 95);
+            this.txtdtAtivacao.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtdtAtivacao.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.txtdtAtivacao.Name = "txtdtAtivacao";
+            this.txtdtAtivacao.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtdtAtivacao.Size = new System.Drawing.Size(128, 26);
+            this.txtdtAtivacao.TabIndex = 106;
+            this.txtdtAtivacao.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // tabControl1
             // 
@@ -1126,20 +1126,20 @@
             this.label3.TabIndex = 98;
             this.label3.Text = "RG:";
             // 
-            // txtDataNascimento
+            // txtdtNascimento
             // 
-            this.txtDataNascimento.AllowDrop = true;
-            this.txtDataNascimento.Enabled = false;
-            this.txtDataNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataNascimento.Location = new System.Drawing.Point(554, 19);
-            this.txtDataNascimento.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataNascimento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            this.txtDataNascimento.Name = "txtDataNascimento";
-            this.txtDataNascimento.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtDataNascimento.Size = new System.Drawing.Size(128, 26);
-            this.txtDataNascimento.TabIndex = 2;
-            this.txtDataNascimento.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.txtdtNascimento.AllowDrop = true;
+            this.txtdtNascimento.Enabled = false;
+            this.txtdtNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtdtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtdtNascimento.Location = new System.Drawing.Point(554, 19);
+            this.txtdtNascimento.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtdtNascimento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.txtdtNascimento.Name = "txtdtNascimento";
+            this.txtdtNascimento.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtdtNascimento.Size = new System.Drawing.Size(128, 26);
+            this.txtdtNascimento.TabIndex = 2;
+            this.txtdtNascimento.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // label2
             // 
@@ -1256,14 +1256,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker txtDataNascimento;
+        private System.Windows.Forms.DateTimePicker txtdtNascimento;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtRG;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker txtDataAtivacao;
+        private System.Windows.Forms.DateTimePicker txtdtAtivacao;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.TextBox txtEditMode;
@@ -1309,7 +1309,7 @@
         private System.Windows.Forms.MaskedTextBox txtTelefone2;
         private System.Windows.Forms.MaskedTextBox txtTelefone1;
         private System.Windows.Forms.TextBox txtIdContato;
-        private System.Windows.Forms.TextBox txtDataCadastro;
+        private System.Windows.Forms.TextBox txtdtCadastro;
         private System.Windows.Forms.TextBox txtDataAlteracao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;

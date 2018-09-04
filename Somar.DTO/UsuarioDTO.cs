@@ -26,14 +26,14 @@ namespace Somar.DTO
         public string descPerfil { get; set; }
 
         [DisplayName("Data do Cadastro")]
-        public DateTime dataCadastro { get; set; }
+        public DateTime dtCadastro { get; set; }
 
         public bool flagAtivo { get; set; }
 
         [DisplayName("Status")]
         public string descricaoAtivo { get; set; }
 
-        public DateTime dataUltAlteracao { get; set; }
+        public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
     }

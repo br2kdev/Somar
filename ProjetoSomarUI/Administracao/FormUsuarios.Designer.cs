@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
+            this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
@@ -80,17 +80,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtDataCadastro
+            // txtdtCadastro
             // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(831, 447);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 6;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdtCadastro.Enabled = false;
+            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtdtCadastro.Location = new System.Drawing.Point(831, 447);
+            this.txtdtCadastro.MaxLength = 10;
+            this.txtdtCadastro.Name = "txtdtCadastro";
+            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtdtCadastro.TabIndex = 6;
+            this.txtdtCadastro.TabStop = false;
+            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel2
             // 
@@ -383,7 +383,7 @@
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
-            this.panel3.Controls.Add(this.txtDataCadastro);
+            this.panel3.Controls.Add(this.txtdtCadastro);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Controls.Add(this.txtNome);
@@ -554,7 +554,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtDataCadastro;
+        private System.Windows.Forms.TextBox txtdtCadastro;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.TextBox txtEditMode;

@@ -28,14 +28,14 @@ namespace Somar.DTO
         [DisplayName("Educador")]
         public int nomeEducador { get; set; }
 
-        public DateTime dataCadastro { get; set; }
+        public DateTime dtCadastro { get; set; }
 
         public bool flagAtivo { get; set; }
 
         [DisplayName("Status")]
         public string descricaoAtivo { get; set; }
 
-        public DateTime dataUltAlteracao { get; set; }
+        public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
 

@@ -77,9 +77,9 @@ namespace Somar.DAL
             param.Add("@login", objectDTO.login, DbType.String);
             param.Add("@senha", objectDTO.senha, DbType.String);
             param.Add("@idPerfil", objectDTO.idPerfil, DbType.Int32);
-            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
@@ -108,9 +108,9 @@ namespace Somar.DAL
             param.Add("@login", objectDTO.login, DbType.String);
             //param.Add("@senha", objectDTO.senha, DbType.String);
             param.Add("@idPerfil", objectDTO.idPerfil, DbType.Int32);
-            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)

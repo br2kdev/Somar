@@ -35,12 +35,12 @@ namespace Somar.DTO
         [DisplayName("Data de Matricula")]
         public DateTime? dtMatricula { get; set; }
 
-        public DateTime? dataNascimento { get; set; }
+        public DateTime? dtNascimento { get; set; }
 
         [DisplayName("Data de Cancelamento")]
-        public DateTime? dataCancelamento { get; set; }
+        public DateTime? dtCancelamento { get; set; }
 
-        public DateTime dataUltAlteracao { get; set; }
+        public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
 

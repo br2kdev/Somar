@@ -181,10 +181,10 @@ namespace ProjetoSomarUI.Cadastros
             //Footer
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -380,8 +380,8 @@ namespace ProjetoSomarUI.Cadastros
             CarregaEndereco(param.endereco, false);
 
             // txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
 
             ControlFormEdit(false);
         }

@@ -19,7 +19,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.idPessoa, A.nomePessoa, A.dataNascimento, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
+            query += " SELECT A.idPessoa, A.nomePessoa, A.dtNascimento, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END, ";
             query += " qtdeMatricula = (SELECT COUNT(1) FROM TB_Matricula E WHERE E.idPessoa = A.idPessoa AND E.dtCancelamento is null) ";
             query += " FROM TB_Pessoas          A ";
@@ -75,9 +75,9 @@ namespace Somar.DAL
 
             param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
-            param.Add("@dataMatricula", DateTime.Now, DbType.DateTime);
-            param.Add("@dataCancelamento", _item.dataCancelamento, DbType.DateTime);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtMatricula", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCancelamento", _item.dtCancelamento, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
@@ -103,9 +103,9 @@ namespace Somar.DAL
 
             param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
-            param.Add("@dataMatricula", _item.dtMatricula, DbType.DateTime);
-            param.Add("@dataCancelamento", _item.dataCancelamento, DbType.DateTime);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtMatricula", _item.dtMatricula, DbType.DateTime);
+            param.Add("@dtCancelamento", _item.dtCancelamento, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
             
             foreach (var item in param.ParameterNames)
@@ -115,6 +115,45 @@ namespace Somar.DAL
 
             where += " WHERE idMatricula = " + _item.idTurma.ToString();
             query += where;
+
+            var result = sqlCommand.ExecuteSQL(query, param);
+
+            return result;
+        }
+
+        public int CancelarMatricula(MatriculaDTO _item)
+        {
+            RepGen<MatriculaDTO> sqlCommand = new RepGen<MatriculaDTO>();
+
+            string query = "UPDATE TB_Matricula SET ";
+            string where = string.Empty;
+
+            var param = new DynamicParameters();
+
+            param.Add("@dtCancelamento", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
+
+            foreach (var item in param.ParameterNames)
+                query += " " + item + " = @" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            where += " WHERE idMatricula = " + _item.idMatricula.ToString();
+            query += where;
+
+            var result = sqlCommand.ExecuteSQL(query, param);
+
+            return result;
+        }
+
+        public int ExcluirMatricula(MatriculaDTO _item)
+        {
+            RepGen<MatriculaDTO> sqlCommand = new RepGen<MatriculaDTO>();
+
+            string query = "DELETE TB_Matricula Where idMatricula = " + _item.idMatricula;
+
+            var param = new DynamicParameters();
 
             var result = sqlCommand.ExecuteSQL(query, param);
 

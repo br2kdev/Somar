@@ -142,8 +142,8 @@ namespace ProjetoSomarUI.Administracao
 
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
             //txtDescricao.Text = param.descricaoProjeto;
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
 
             ControlFormEdit(false);
         }
@@ -159,7 +159,7 @@ namespace ProjetoSomarUI.Administracao
             lblCodigo.Text = "";
             txtLogin.Text = "";
             txtNome.Text = "";
-            txtDataCadastro.Text = "";
+            txtdtCadastro.Text = "";
             cmbStatus.SelectedIndex = 1;
         }
 
@@ -364,11 +364,11 @@ namespace ProjetoSomarUI.Administracao
             cmbStatus.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtLogin.BackColor = Color.WhiteSmoke;
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -411,10 +411,10 @@ namespace ProjetoSomarUI.Administracao
              txtNome.Text = retorno.Nome;
             
              txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
+             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
              txtDuracao.Text = Convert.ToString(retorno.Duracao);
              txtDescricao.Text = retorno.Descricao;
-             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
+             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
              txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
              */
         }

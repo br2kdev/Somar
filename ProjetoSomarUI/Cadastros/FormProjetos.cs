@@ -66,7 +66,7 @@ namespace ProjetoSomarUI.Cadastros
 
             cmbTempoProjeto.SelectedItem = "Definido";
             pnlTempoProjeto.Visible = true;
-            txtDataTermino.Format = DateTimePickerFormat.Short;
+            txtdtTermino.Format = DateTimePickerFormat.Short;
 
             ClearForm2();
             ControlFormEdit(true);
@@ -115,25 +115,25 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = param.nomeProjeto;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
-            txtDataInicio.Text = Convert.ToDateTime(param.dataInicio).ToShortDateString();
+            txtDataInicio.Text = Convert.ToDateTime(param.dtInicio).ToShortDateString();
 
-            if (param.dataTermino != null)
+            if (param.dtTermino != null)
             {
                 pnlTempoProjeto.Visible = true;
                 cmbTempoProjeto.SelectedItem = "Definido";
-                txtDataTermino.Text = Convert.ToDateTime(param.dataTermino).ToShortDateString();
+                txtdtTermino.Text = Convert.ToDateTime(param.dtTermino).ToShortDateString();
             }
             else
             {
                 pnlTempoProjeto.Visible = false;
                 cmbTempoProjeto.SelectedItem = "Indeterminado";
-                txtDataTermino.Text = string.Empty;
+                txtdtTermino.Text = string.Empty;
             }
 
             txtResponsavel.Text = param.nomeResposavel;
             txtDescricao.Text = param.descricaoProjeto;
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
 
             ControlFormEdit(false);
@@ -150,11 +150,11 @@ namespace ProjetoSomarUI.Cadastros
             lblCodigo.Text = string.Empty;
             txtNome.Text = string.Empty;
             txtDataInicio.Text = string.Empty;
-            txtDataTermino.Text = string.Empty;
+            txtdtTermino.Text = string.Empty;
 
             txtDuracao.Text = string.Empty;
             txtDescricao.Text = string.Empty;
-            txtDataCadastro.Text = string.Empty;
+            txtdtCadastro.Text = string.Empty;
             txtResponsavel.Text = string.Empty;
             txtNomeAlteracao.Text = string.Empty;
             txtDataAlteracao.Text = string.Empty;
@@ -355,7 +355,7 @@ namespace ProjetoSomarUI.Cadastros
 
             txtNome.Enabled = flagEnable;
             txtDataInicio.Enabled = flagEnable;
-            txtDataTermino.Enabled = flagEnable;
+            txtdtTermino.Enabled = flagEnable;
             txtDescricao.Enabled = flagEnable;
             txtDuracao.Enabled = flagEnable;
             txtResponsavel.Enabled = flagEnable;
@@ -363,13 +363,13 @@ namespace ProjetoSomarUI.Cadastros
             cmbTempoProjeto.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
             txtDataInicio.BackColor = Color.WhiteSmoke;
-            txtDataTermino.BackColor = Color.WhiteSmoke;
+            txtdtTermino.BackColor = Color.WhiteSmoke;
             txtDescricao.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtDuracao.BackColor = Color.WhiteSmoke;
             txtResponsavel.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
@@ -414,10 +414,10 @@ namespace ProjetoSomarUI.Cadastros
              txtNome.Text = retorno.Nome;
             
              txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
+             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
              txtDuracao.Text = Convert.ToString(retorno.Duracao);
              txtDescricao.Text = retorno.Descricao;
-             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
+             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
              txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
              */
         }
@@ -451,10 +451,10 @@ namespace ProjetoSomarUI.Cadastros
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
 
             if (!string.IsNullOrWhiteSpace(txtDataInicio.Text))
-                param.dataInicio = Convert.ToDateTime(txtDataInicio.Text);
+                param.dtInicio = Convert.ToDateTime(txtDataInicio.Text);
 
-            if (!string.IsNullOrWhiteSpace(txtDataTermino.Text))
-                param.dataTermino = Convert.ToDateTime(txtDataTermino.Text);
+            if (!string.IsNullOrWhiteSpace(txtdtTermino.Text))
+                param.dtTermino = Convert.ToDateTime(txtdtTermino.Text);
 
             param.descricaoProjeto = txtDescricao.Text;
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
@@ -517,15 +517,15 @@ namespace ProjetoSomarUI.Cadastros
             {
                 pnlTempoProjeto.Visible = false;
 
-                txtDataTermino.Format = DateTimePickerFormat.Custom;
-                txtDataTermino.CustomFormat = " ";
+                txtdtTermino.Format = DateTimePickerFormat.Custom;
+                txtdtTermino.CustomFormat = " ";
 
-                txtDataTermino.Text = string.Empty;
+                txtdtTermino.Text = string.Empty;
             }
             else
             {
                 pnlTempoProjeto.Visible = true;
-                txtDataTermino.Format = DateTimePickerFormat.Short;
+                txtdtTermino.Format = DateTimePickerFormat.Short;
             }
         }
     }

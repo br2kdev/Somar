@@ -47,19 +47,19 @@ namespace Somar.DAL
             var param = new DynamicParameters();
 
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
-            param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@dtNascimento", objectDTO.dtNascimento, DbType.DateTime);
             param.Add("@idTipoPessoa", objectDTO.idTipoPessoa, DbType.Int32);
             param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
-            param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
+            param.Add("@dtAtivacao", objectDTO.dtAtivacao, DbType.DateTime);
             param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
             param.Add("@numeroCPF", objectDTO.numeroCPF, DbType.String);
             param.Add("@observacoes", objectDTO.observacoes, DbType.String);
             param.Add("@idEndereco", objectDTO.idEndereco, DbType.Int32);
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
-            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
@@ -85,10 +85,10 @@ namespace Somar.DAL
             var param = new DynamicParameters();
 
             param.Add("@nomePessoa", objectDTO.nomePessoa, DbType.String);
-            param.Add("@dataNascimento", objectDTO.dataNascimento, DbType.DateTime);
+            param.Add("@dtNascimento", objectDTO.dtNascimento, DbType.DateTime);
             param.Add("@idTipoPessoa", objectDTO.idTipoPessoa, DbType.Int32);
             param.Add("@idGenero", objectDTO.idGenero, DbType.Int32);
-            param.Add("@dataAtivacao", objectDTO.dataAtivacao, DbType.DateTime);
+            param.Add("@dtAtivacao", objectDTO.dtAtivacao, DbType.DateTime);
             param.Add("@numeroRG", objectDTO.numeroRG, DbType.String);
             param.Add("@numeroCPF", objectDTO.numeroCPF, DbType.String);
             param.Add("@observacoes", objectDTO.observacoes, DbType.String);
@@ -96,7 +96,7 @@ namespace Somar.DAL
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
@@ -123,7 +123,7 @@ namespace Somar.DAL
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Pessoas          A ";
 
-            whereClause += " AND month(dataNascimento) = month(getdate())";
+            whereClause += " AND month(dtNascimento) = month(getdate())";
             whereClause += " AND flagAtivo = 1";
 
             //if (objectDTO.flagAtivo != null)

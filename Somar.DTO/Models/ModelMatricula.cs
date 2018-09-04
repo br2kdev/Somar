@@ -25,6 +25,6 @@ namespace Somar.DTO.Models
         public int qtdeMatricula { get; set; }
 
         [DisplayName("Data de Nascimento")]
-        public DateTime dataNascimento { get; set; }
+        public DateTime dtNascimento { get; set; }
     }
 }

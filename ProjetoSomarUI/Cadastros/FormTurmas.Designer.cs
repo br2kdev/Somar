@@ -39,7 +39,7 @@
             this.cmbProjeto = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
+            this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -160,7 +160,7 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
-            this.panel3.Controls.Add(this.txtDataCadastro);
+            this.panel3.Controls.Add(this.txtdtCadastro);
             this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
@@ -212,17 +212,17 @@
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
             this.cmbStatus.TabIndex = 92;
             // 
-            // txtDataCadastro
+            // txtdtCadastro
             // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(831, 276);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 6;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdtCadastro.Enabled = false;
+            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtdtCadastro.Location = new System.Drawing.Point(831, 276);
+            this.txtdtCadastro.MaxLength = 10;
+            this.txtdtCadastro.Name = "txtdtCadastro";
+            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtdtCadastro.TabIndex = 6;
+            this.txtdtCadastro.TabStop = false;
+            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -808,7 +808,7 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.TextBox txtDataCadastro;
+        private System.Windows.Forms.TextBox txtdtCadastro;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;

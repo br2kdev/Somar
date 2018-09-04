@@ -21,7 +21,7 @@ namespace Somar.DTO
         public string descTipoPessoa { get; set; }
 
         [DisplayName("Data de Nascimento")]
-        public DateTime dataNascimento { get; set; }
+        public DateTime dtNascimento { get; set; }
 
         public int idGenero { get; set; }
 
@@ -34,16 +34,16 @@ namespace Somar.DTO
 
         public string numeroCPF { get; set; }
 
-        public DateTime dataCadastro { get; set; }
+        public DateTime dtCadastro { get; set; }
 
-        public DateTime dataAtivacao { get; set; }
+        public DateTime dtAtivacao { get; set; }
 
         public bool flagAtivo { get; set; }
 
         [DisplayName("Status")]
         public string descricaoAtivo { get; set; }
 
-        public DateTime dataUltAlteracao { get; set; }
+        public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
 

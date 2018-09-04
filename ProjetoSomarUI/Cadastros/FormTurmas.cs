@@ -55,8 +55,8 @@ namespace ProjetoSomarUI.Cadastros
 
             Load += new EventHandler(FormTurmas_Load);
 
-            //txtDataInicio.CustomFormat = txtDataTermino.CustomFormat = "HH:mm";
-            //txtDataInicio.ShowUpDown = txtDataTermino.ShowUpDown = true;
+            //txtDataInicio.CustomFormat = txtdtTermino.CustomFormat = "HH:mm";
+            //txtDataInicio.ShowUpDown = txtdtTermino.ShowUpDown = true;
 
             InitializeGridView();
 
@@ -161,8 +161,8 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoFim.Text = param.horaTermino.Split(':')[1];
 
             txtDescricao.Text = param.descricaoTurma;
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
 
             ControlFormEdit(false);
@@ -188,7 +188,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDuracao.Text = string.Empty;
             txtDescricao.Text = string.Empty;
             txtNomeAlteracao.Text = string.Empty;
-            txtDataCadastro.Text = string.Empty;
+            txtdtCadastro.Text = string.Empty;
             txtResponsavel.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
         }
@@ -391,7 +391,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
             cmbPeriodo.BackColor = Color.WhiteSmoke;
@@ -400,7 +400,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoInicio.BackColor = Color.WhiteSmoke;
             cmbMinutoFim.BackColor = Color.WhiteSmoke;
             txtDescricao.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtDuracao.BackColor = Color.WhiteSmoke;
             txtResponsavel.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
@@ -445,10 +445,10 @@ namespace ProjetoSomarUI.Cadastros
              txtNome.Text = retorno.Nome;
             
              txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
+             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
              txtDuracao.Text = Convert.ToString(retorno.Duracao);
              txtDescricao.Text = retorno.Descricao;
-             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
+             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
              txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
              */
         }

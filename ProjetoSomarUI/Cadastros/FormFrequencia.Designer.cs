@@ -53,7 +53,7 @@
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtDataCadastro = new System.Windows.Forms.TextBox();
+            this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -333,7 +333,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.Controls.Add(this.txtDataCadastro);
+            this.groupBox3.Controls.Add(this.txtdtCadastro);
             this.groupBox3.Controls.Add(this.txtDataAlteracao);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label11);
@@ -345,17 +345,17 @@
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             // 
-            // txtDataCadastro
+            // txtdtCadastro
             // 
-            this.txtDataCadastro.Enabled = false;
-            this.txtDataCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataCadastro.Location = new System.Drawing.Point(118, 18);
-            this.txtDataCadastro.MaxLength = 10;
-            this.txtDataCadastro.Name = "txtDataCadastro";
-            this.txtDataCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtDataCadastro.TabIndex = 94;
-            this.txtDataCadastro.TabStop = false;
-            this.txtDataCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtdtCadastro.Enabled = false;
+            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtdtCadastro.Location = new System.Drawing.Point(118, 18);
+            this.txtdtCadastro.MaxLength = 10;
+            this.txtdtCadastro.Name = "txtdtCadastro";
+            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtdtCadastro.TabIndex = 94;
+            this.txtdtCadastro.TabStop = false;
+            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtDataAlteracao
             // 
@@ -568,7 +568,7 @@
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.TextBox txtEditMode;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtDataCadastro;
+        private System.Windows.Forms.TextBox txtdtCadastro;
         private System.Windows.Forms.TextBox txtDataAlteracao;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label11;

@@ -71,8 +71,8 @@ namespace Somar.DAL
             param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
             param.Add("@idDisciplina", _item.idDisciplina, DbType.Int32);
-            param.Add("@dataCadastro", DateTime.Now, DbType.DateTime);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)
@@ -120,7 +120,7 @@ namespace Somar.DAL
             param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
             param.Add("@idDisciplina", _item.idDisciplina, DbType.Int32);
-            param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
+            param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);
 
             foreach (var item in param.ParameterNames)

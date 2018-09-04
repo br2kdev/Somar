@@ -14,24 +14,24 @@ namespace Somar.DTO
         public string descricaoProjeto { get; set; }
 
         [DisplayName("Data de Início")]
-        public DateTime? dataInicio { get; set; }
+        public DateTime? dtInicio { get; set; }
 
         [DisplayName("Data de Término")]
-        public DateTime? dataTermino { get; set; }
+        public DateTime? dtTermino { get; set; }
 
         public int idPessoaResposavel { get; set; }
 
         [DisplayName("Responsável")]
         public string nomeResposavel { get; set; }
 
-        public DateTime dataCadastro { get; set; }
+        public DateTime dtCadastro { get; set; }
 
         public bool flagAtivo { get; set; }
 
         [DisplayName("Status")]
         public string descricaoAtivo { get; set; }
 
-        public DateTime dataUltAlteracao { get; set; }
+        public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
 

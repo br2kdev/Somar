@@ -31,10 +31,10 @@ namespace ProjetoSomarUI.Cadastros
             //Footer
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtSenha.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 

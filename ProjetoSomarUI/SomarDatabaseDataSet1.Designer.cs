@@ -285,13 +285,13 @@ namespace ProjetoSomarUI {
             
             private global::System.Data.DataColumn columnDataInicio;
             
-            private global::System.Data.DataColumn columnDataTermino;
+            private global::System.Data.DataColumn columndtTermino;
             
             private global::System.Data.DataColumn columnDuracao;
             
             private global::System.Data.DataColumn columnDescricao;
             
-            private global::System.Data.DataColumn columnDataCadastro;
+            private global::System.Data.DataColumn columndtCadastro;
             
             private global::System.Data.DataColumn columnResponsavelPessoaId;
             
@@ -354,9 +354,9 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataTerminoColumn {
+            public global::System.Data.DataColumn dtTerminoColumn {
                 get {
-                    return this.columnDataTermino;
+                    return this.columndtTermino;
                 }
             }
             
@@ -378,9 +378,9 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn DataCadastroColumn {
+            public global::System.Data.DataColumn dtCadastroColumn {
                 get {
-                    return this.columnDataCadastro;
+                    return this.columndtCadastro;
                 }
             }
             
@@ -429,16 +429,16 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProjetosRow AddProjetosRow(string Nome, System.DateTime DataInicio, System.DateTime DataTermino, int Duracao, string Descricao, System.DateTime DataCadastro, int ResponsavelPessoaId) {
+            public ProjetosRow AddProjetosRow(string Nome, System.DateTime DataInicio, System.DateTime dtTermino, int Duracao, string Descricao, System.DateTime dtCadastro, int ResponsavelPessoaId) {
                 ProjetosRow rowProjetosRow = ((ProjetosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Nome,
                         DataInicio,
-                        DataTermino,
+                        dtTermino,
                         Duracao,
                         Descricao,
-                        DataCadastro,
+                        dtCadastro,
                         ResponsavelPessoaId};
                 rowProjetosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProjetosRow);
@@ -465,10 +465,10 @@ namespace ProjetoSomarUI {
                 this.columnProjetoId = base.Columns["ProjetoId"];
                 this.columnNome = base.Columns["Nome"];
                 this.columnDataInicio = base.Columns["DataInicio"];
-                this.columnDataTermino = base.Columns["DataTermino"];
+                this.columndtTermino = base.Columns["dtTermino"];
                 this.columnDuracao = base.Columns["Duracao"];
                 this.columnDescricao = base.Columns["Descricao"];
-                this.columnDataCadastro = base.Columns["DataCadastro"];
+                this.columndtCadastro = base.Columns["dtCadastro"];
                 this.columnResponsavelPessoaId = base.Columns["ResponsavelPessoaId"];
             }
             
@@ -481,14 +481,14 @@ namespace ProjetoSomarUI {
                 base.Columns.Add(this.columnNome);
                 this.columnDataInicio = new global::System.Data.DataColumn("DataInicio", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDataInicio);
-                this.columnDataTermino = new global::System.Data.DataColumn("DataTermino", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataTermino);
+                this.columndtTermino = new global::System.Data.DataColumn("dtTermino", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtTermino);
                 this.columnDuracao = new global::System.Data.DataColumn("Duracao", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDuracao);
                 this.columnDescricao = new global::System.Data.DataColumn("Descricao", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescricao);
-                this.columnDataCadastro = new global::System.Data.DataColumn("DataCadastro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataCadastro);
+                this.columndtCadastro = new global::System.Data.DataColumn("dtCadastro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtCadastro);
                 this.columnResponsavelPessoaId = new global::System.Data.DataColumn("ResponsavelPessoaId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnResponsavelPessoaId);
                 this.columnProjetoId.AutoIncrement = true;
@@ -683,17 +683,17 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime DataTermino {
+            public System.DateTime dtTermino {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableProjetos.DataTerminoColumn]));
+                        return ((global::System.DateTime)(this[this.tableProjetos.dtTerminoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataTermino\' in table \'Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtTermino\' in table \'Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProjetos.DataTerminoColumn] = value;
+                    this[this.tableProjetos.dtTerminoColumn] = value;
                 }
             }
             
@@ -731,17 +731,17 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime DataCadastro {
+            public System.DateTime dtCadastro {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableProjetos.DataCadastroColumn]));
+                        return ((global::System.DateTime)(this[this.tableProjetos.dtCadastroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataCadastro\' in table \'Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtCadastro\' in table \'Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableProjetos.DataCadastroColumn] = value;
+                    this[this.tableProjetos.dtCadastroColumn] = value;
                 }
             }
             
@@ -787,14 +787,14 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataTerminoNull() {
-                return this.IsNull(this.tableProjetos.DataTerminoColumn);
+            public bool IsdtTerminoNull() {
+                return this.IsNull(this.tableProjetos.dtTerminoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataTerminoNull() {
-                this[this.tableProjetos.DataTerminoColumn] = global::System.Convert.DBNull;
+            public void SetdtTerminoNull() {
+                this[this.tableProjetos.dtTerminoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -823,14 +823,14 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDataCadastroNull() {
-                return this.IsNull(this.tableProjetos.DataCadastroColumn);
+            public bool IsdtCadastroNull() {
+                return this.IsNull(this.tableProjetos.dtCadastroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDataCadastroNull() {
-                this[this.tableProjetos.DataCadastroColumn] = global::System.Convert.DBNull;
+            public void SetdtCadastroNull() {
+                this[this.tableProjetos.dtCadastroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1008,24 +1008,24 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("ProjetoId", "ProjetoId");
             tableMapping.ColumnMappings.Add("Nome", "Nome");
             tableMapping.ColumnMappings.Add("DataInicio", "DataInicio");
-            tableMapping.ColumnMappings.Add("DataTermino", "DataTermino");
+            tableMapping.ColumnMappings.Add("dtTermino", "dtTermino");
             tableMapping.ColumnMappings.Add("Duracao", "Duracao");
             tableMapping.ColumnMappings.Add("Descricao", "Descricao");
-            tableMapping.ColumnMappings.Add("DataCadastro", "DataCadastro");
+            tableMapping.ColumnMappings.Add("dtCadastro", "dtCadastro");
             tableMapping.ColumnMappings.Add("ResponsavelPessoaId", "ResponsavelPessoaId");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Projetos] ([Nome], [DataInicio], [DataTermino], [Duracao], [De" +
-                "scricao], [DataCadastro], [ResponsavelPessoaId]) VALUES (@Nome, @DataInicio, @Da" +
-                "taTermino, @Duracao, @Descricao, @DataCadastro, @ResponsavelPessoaId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Projetos] ([Nome], [DataInicio], [dtTermino], [Duracao], [De" +
+                "scricao], [dtCadastro], [ResponsavelPessoaId]) VALUES (@Nome, @DataInicio, @Da" +
+                "taTermino, @Duracao, @Descricao, @dtCadastro, @ResponsavelPessoaId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nome", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nome", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataTermino", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Duracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Duracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descricao", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DataCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DataCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ResponsavelPessoaId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ResponsavelPessoaId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -1042,7 +1042,7 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ProjetoId, Nome, DataInicio, DataTermino, Duracao, Descricao, DataCadastro" +
+            this._commandCollection[0].CommandText = "SELECT ProjetoId, Nome, DataInicio, dtTermino, Duracao, Descricao, dtCadastro" +
                 ", ResponsavelPessoaId FROM dbo.Projetos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -1104,7 +1104,7 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Nome, global::System.Nullable<global::System.DateTime> DataInicio, global::System.Nullable<global::System.DateTime> DataTermino, global::System.Nullable<int> Duracao, string Descricao, global::System.Nullable<global::System.DateTime> DataCadastro, global::System.Nullable<int> ResponsavelPessoaId) {
+        public virtual int Insert(string Nome, global::System.Nullable<global::System.DateTime> DataInicio, global::System.Nullable<global::System.DateTime> dtTermino, global::System.Nullable<int> Duracao, string Descricao, global::System.Nullable<global::System.DateTime> dtCadastro, global::System.Nullable<int> ResponsavelPessoaId) {
             if ((Nome == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1117,8 +1117,8 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((DataTermino.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(DataTermino.Value));
+            if ((dtTermino.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(dtTermino.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -1135,8 +1135,8 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Descricao));
             }
-            if ((DataCadastro.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(DataCadastro.Value));
+            if ((dtCadastro.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(dtCadastro.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;

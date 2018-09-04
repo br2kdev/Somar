@@ -212,8 +212,8 @@ namespace ProjetoSomarUI.Cadastros
             */
             /*
 
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             */
 
@@ -238,8 +238,6 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoInicio.Text = string.Empty;
             cmbMinutoFim.Text = string.Empty;
             */
-            txtNomeAlteracao.Text = string.Empty;
-            txtDataCadastro.Text = string.Empty;
         }
 
         #endregion
@@ -321,64 +319,6 @@ namespace ProjetoSomarUI.Cadastros
             // ***************************************************************** //
         }
 
-        public void InitializeGridView2()
-        {
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW 2
-            // ***************************************************************** //
-            this.dataGridView2.AutoSize = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
-
-            // Edit Image
-            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
-            img2.Name = "Image";
-            img2.HeaderText = "";
-            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img2.Width = 40;
-            this.dataGridView2.Columns.Add(img2);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields2)
-            {
-                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
-                dt2.DataPropertyName = item.Key;
-                dt2.HeaderText = item.Value;
-
-                if (item.Key == "nomeTurma")
-                {
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                else if (item.Key == "nomeProjeto")
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView2.Columns.Add(dt2);
-            }
-
-            // Cancel Image
-            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
-            img3.Name = "ImageCancel";
-            img3.HeaderText = "";
-            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img3.Width = 40;
-            this.dataGridView2.Columns.Add(img3);
-
-            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
-            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
-            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
-            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
-        }
-
         public void GridViewDataBind(List<MatriculaDTO> result)
         {
             if (result.Count == 0)
@@ -400,25 +340,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
             {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-
-                /*
-                if (this.dataGridView1["c2", e.RowIndex].Value != null)
-                {
-                    string s = this.dataGridView1["c2", e.RowIndex].Value.ToString();
-
-                    switch (s)
-                    {
-                        case "Laptop":
-                            e.Value = Image.FromFile(@"c:\test\Laptop.gif");
-                            break;
-                        case "Desktop":
-                            e.Value = Image.FromFile(@"c:\test\Desktop.gif");
-                            break;
-                    }
-
-                }
-                */
+                e.Value = Resources.icon_search24x24;
             }
 
         }
@@ -430,9 +352,6 @@ namespace ProjetoSomarUI.Cadastros
                 int idPessoa = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
                 CarregaDetalhes(idPessoa);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
             }
         }
 
@@ -451,6 +370,66 @@ namespace ProjetoSomarUI.Cadastros
         #endregion
 
         #region Gridview2
+
+        public void InitializeGridView2()
+        {
+            // ***************************************************************** //
+            //  SET CUSTOM STYLE IN GRIDVIEW 2
+            // ***************************************************************** //
+            this.dataGridView2.AutoSize = false;
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
+            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
+
+            // ***************************************************************** //
+            //  SET COLUMNS IN GRIDVIEW
+            // ***************************************************************** //
+
+            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
+
+            // Cancel Image
+            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
+            img2.Name = "ImageCancel";
+            img2.HeaderText = "Cancelar";
+            img2.ToolTipText = "Cancelar Matricula";
+            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img2.Width = 60;
+            this.dataGridView2.Columns.Add(img2);
+
+            // -------------------------------------------------------------
+            // All Fields
+            foreach (var item in fields2)
+            {
+                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
+                dt2.DataPropertyName = item.Key;
+                dt2.HeaderText = item.Value;
+
+                if (item.Key == "nomeTurma")
+                {
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                else if (item.Key == "nomeProjeto")
+                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                this.dataGridView2.Columns.Add(dt2);
+            }
+
+            // Delete Image
+            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
+            img3.Name = "ImageDelete";
+            img3.HeaderText = "Excluir";
+            img2.ToolTipText = "Excluir Matricula";
+            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            img3.Width = 50;
+            this.dataGridView2.Columns.Add(img3);
+
+            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
+            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
+            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
+            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
+        }
 
         public void GridViewDataBind2(List<MatriculaDTO> result)
         {
@@ -471,34 +450,41 @@ namespace ProjetoSomarUI.Cadastros
 
         private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["Image"].Index)
-                e.Value = Resources.icon_search24x24;
+            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageDelete"].Index)
+                e.Value = Resources.icon_delete24x24;
             else if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageCancel"].Index)
                 e.Value = Resources.icon_cancel24x24;
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int idMatricula = Convert.ToInt32(this.dataGridView2[1, e.RowIndex].Value);
+
             if (e.ColumnIndex == 0)
             {
-                int idPessoa = Convert.ToInt32(this.dataGridView2[1, e.RowIndex].Value);
-
-                // CarregaDetalhes(idPessoa);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
+                if (MessageBox.Show("Deseja realmente cancelar a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    btnCancelaMatricula("cancelar", idMatricula);
+                }
+            }
+            else if (e.ColumnIndex == 8)
+            {
+                if (MessageBox.Show("Deseja realmente excluir a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    btnCancelaMatricula("excluir", idMatricula);
+                }
             }
         }
 
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 8)
                 dataGridView2.Cursor = Cursors.Hand;
         }
 
         private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 8)
                 dataGridView2.Cursor = Cursors.Default;
         }
 
@@ -507,6 +493,43 @@ namespace ProjetoSomarUI.Cadastros
         #endregion
 
         #region EditMode
+
+        private void btnCancelaMatricula(string acao, int _idMatricula)
+        {
+            int result = 0;
+
+            var item = new MatriculaDTO()
+            {
+                idMatricula = _idMatricula,
+                idPessoaUltAlteracao = Sessao.Usuario.idUsuario
+            };
+
+            if (acao == "cancelar")
+            { 
+                result = new MatriculaBLL().CancelarMatricula(item);
+                MessageBox.Show("Matricula cancelada com sucesso", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if(acao == "excluir")
+            { 
+                result = new MatriculaBLL().ExcluirMatricula(item);
+                MessageBox.Show("Matricula excluída com sucesso", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            int _idPessoa = Convert.ToInt32(lblCodigo.Text);
+
+            CarregaDetalhes(_idPessoa);
+        }
+
+        private void btnExcluirMatricula_Click(int _idMatricula)
+        {
+            var item = new MatriculaDTO()
+            {
+                idMatricula = _idMatricula,
+                idPessoaUltAlteracao = Sessao.Usuario.idUsuario
+            };
+
+            
+        }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -526,10 +549,10 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -572,7 +595,7 @@ namespace ProjetoSomarUI.Cadastros
             param.idTurma = _idTurma;
             param.idPessoa = _idPessoa;
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
-            param.dataUltAlteracao = DateTime.Now;
+            param.dtUltAlteracao = DateTime.Now;
 
             MatriculaBLL cmd = new MatriculaBLL();
             var idMatricula = cmd.SaveMatricula(param);
@@ -615,5 +638,6 @@ namespace ProjetoSomarUI.Cadastros
         }
 
         #endregion
+
     }
 }

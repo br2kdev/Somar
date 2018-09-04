@@ -48,8 +48,8 @@ namespace ProjetoSomarUI.Cadastros
 
             Load += new EventHandler(FormPessoas_Load);
 
-            //txtDataInicio.CustomFormat = txtDataNascimento.CustomFormat = "HH:mm";
-            //txtDataInicio.ShowUpDown = txtDataNascimento.ShowUpDown = true;
+            //txtDataInicio.CustomFormat = txtdtNascimento.CustomFormat = "HH:mm";
+            //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
 
             InitializeGridView();
 
@@ -218,12 +218,12 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = param.nomePessoa;
             txtRG.Text = param.numeroRG;
             txtCPF.Text = param.numeroCPF;
-            txtDataAtivacao.Text = param.dataAtivacao.ToShortDateString();
-            txtDataNascimento.Text = param.dataNascimento.ToShortDateString();
+            txtdtAtivacao.Text = param.dtAtivacao.ToShortDateString();
+            txtdtNascimento.Text = param.dtNascimento.ToShortDateString();
             txtIdEndereco.Text = param.idEndereco.ToString();
 
-            if (param.dataNascimento != null)
-                txtIdade.Text = Functions.CalcularIdade(param.dataNascimento).ToString();
+            if (param.dtNascimento != null)
+                txtIdade.Text = Functions.CalcularIdade(param.dtNascimento).ToString();
 
             cmbGenero.SelectedValue = param.idGenero;
             cmbTipoPessoa.SelectedValue = param.idTipoPessoa;
@@ -236,8 +236,8 @@ namespace ProjetoSomarUI.Cadastros
             CarregaContatos(param.contatos);
 
             txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
-            txtDataCadastro.Text = param.dataCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dataUltAlteracao.ToShortDateString();
+            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
+            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
 
             ControlFormEdit(false);
         }
@@ -308,8 +308,8 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = string.Empty;
             txtRG.Text = string.Empty;
             txtCPF.Text = string.Empty;
-            txtDataAtivacao.Text = string.Empty;
-            txtDataNascimento.Text = string.Empty;
+            txtdtAtivacao.Text = string.Empty;
+            txtdtNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
 
             txtCEP.Text = string.Empty;
@@ -320,9 +320,9 @@ namespace ProjetoSomarUI.Cadastros
             LimpaContatos();
 
             /*
-            txtDataNascimento.Enabled = false;
-            txtDataNascimento.Format = DateTimePickerFormat.Custom;
-            txtDataNascimento.CustomFormat = " ";
+            txtdtNascimento.Enabled = false;
+            txtdtNascimento.Format = DateTimePickerFormat.Custom;
+            txtdtNascimento.CustomFormat = " ";
             */
         }
 
@@ -517,13 +517,13 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Enabled = flagEnable;
             txtRG.Enabled = flagEnable;
             txtCPF.Enabled = flagEnable;
-            txtDataNascimento.Enabled = flagEnable;
+            txtdtNascimento.Enabled = flagEnable;
             txtIdade.Enabled = false;
             cmbGenero.Enabled = flagEnable;
             cmbTipoPessoa.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
             cmbEscola.Enabled = flagEnable;
-            txtDataAtivacao.Enabled = flagEnable;
+            txtdtAtivacao.Enabled = flagEnable;
 
             //Endereço
             txtCEP.Enabled = flagEnable;
@@ -551,12 +551,12 @@ namespace ProjetoSomarUI.Cadastros
             //Footer
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
-            txtDataCadastro.Enabled = false;
+            txtdtCadastro.Enabled = false;
 
             txtNome.BackColor = Color.WhiteSmoke;
-            txtDataNascimento.BackColor = Color.WhiteSmoke;
+            txtdtNascimento.BackColor = Color.WhiteSmoke;
             txtDescricao.BackColor = Color.WhiteSmoke;
-            txtDataCadastro.BackColor = Color.WhiteSmoke;
+            txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtIdade.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
@@ -600,10 +600,10 @@ namespace ProjetoSomarUI.Cadastros
              txtNome.Text = retorno.Nome;
             
              txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtDataTermino.Text = retorno.DataTermino.ToString("dd/MM/yyyy");
+             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
              txtDuracao.Text = Convert.ToString(retorno.Duracao);
              txtDescricao.Text = retorno.Descricao;
-             txtDataCadastro.Text = retorno.DataCadastro.ToString("dd/MM/yyyy");
+             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
              txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
              */
         }
@@ -639,10 +639,10 @@ namespace ProjetoSomarUI.Cadastros
             param.nomePessoa = txtNome.Text;
             param.numeroRG = txtRG.Text;
             param.numeroCPF = txtCPF.Text;
-            param.dataNascimento = Convert.ToDateTime(txtDataNascimento.Text);
+            param.dtNascimento = Convert.ToDateTime(txtdtNascimento.Text);
             param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
             param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
-            param.dataAtivacao = Convert.ToDateTime(txtDataAtivacao.Text);
+            param.dtAtivacao = Convert.ToDateTime(txtdtAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
 
@@ -678,7 +678,7 @@ namespace ProjetoSomarUI.Cadastros
 
             /*
             param.horaInicio = Convert.ToDateTime(txtDataInicio.Text);
-            param.horaTermino = Convert.ToDateTime(txtDataNascimento.Text);
+            param.horaTermino = Convert.ToDateTime(txtdtNascimento.Text);
             param.descricaoTurma = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             */

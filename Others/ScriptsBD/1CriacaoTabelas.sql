@@ -19,13 +19,13 @@ CREATE TABLE TB_Projetos
 	idProjeto				INT IDENTITY(1,1),
 	nomeProjeto				NVARCHAR(100),
 	descricaoProjeto		NVARCHAR(400),
-	dataInicio				SMALLDATETIME,
-	dataTermino				SMALLDATETIME,
+	dtInicio				SMALLDATETIME,
+	dtTermino				SMALLDATETIME,
 	nomeResposavel			VARCHAR(100),
 	--idPessoaResposavel	INT,				-- Alterar para nome
-	dataCadastro			SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 
@@ -40,9 +40,9 @@ CREATE TABLE TB_Turmas
 	HoraInicio				VARCHAR(10),
 	HoraTermino				VARCHAR(10),
 	idPessoaEducador		INT,
-	dataCadastro			SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT,
 	idProjeto				INT
 )
@@ -54,7 +54,7 @@ CREATE TABLE TB_Matricula
 	idTurma					INT,
 	dtMatricula				SMALLDATETIME,
 	dtCancelamento			SMALLDATETIME,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 
@@ -63,11 +63,11 @@ CREATE TABLE TB_Matricula
 CREATE TABLE TB_Frequencia
 (
 	idFrequencia			INT IDENTITY(1,1),
-	dataFrequencia			SMALLDATETIME,
+	dtFrequencia			SMALLDATETIME,
 	idTurma					INT,
 	idDisciplina			INT,
-	dataCadastro			SMALLDATETIME,
-	dataUltAlteracao		SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 
@@ -96,7 +96,7 @@ FROM TB_Pessoas	A
 ALTER PROCEDURE SPR_GerarFrequencia
 (
 	@idFrequencia			INT,
-	@dataFrequencia			SMALLDATETIME
+	@dtFrequencia			SMALLDATETIME
 )
 AS
 BEGIN
@@ -111,11 +111,9 @@ BEGIN
 	WHERE 1 = 1 
 	AND  idTurma = @idTurma
 	AND  dtCancelamento is NULL
-	AND  dtMatricula < @dataFrequencia
+	AND  dtMatricula < @dtFrequencia
 
 END
-
-
 
 CREATE TABLE TB_Usuarios
 (
@@ -124,9 +122,9 @@ CREATE TABLE TB_Usuarios
 	login					NVARCHAR(30),
 	senha					NVARCHAR(15),
 	idPerfil				INT,
-	dataCadastro			SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 
@@ -162,19 +160,19 @@ CREATE TABLE TB_Pessoas
 (
 	idPessoa				INT IDENTITY(1,1),
 	nomePessoa				NVARCHAR(100),
-	dataNascimento			SMALLDATETIME,
+	dtNascimento			SMALLDATETIME,
 	idTipoPessoa			INT,	
 	idGenero				INT,		
-	dataAtivacao			SMALLDATETIME,
+	dtAtivacao				SMALLDATETIME,
 	numeroRG				VARCHAR(20),
 	numeroCPF				VARCHAR(20),
 	observacoes				VARCHAR(400),	
 	idEndereco				INT,
 	idContato				INT,
 	idEscola				INT,
-	dataCadastro			SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 
@@ -205,6 +203,8 @@ CREATE TABLE TB_Contatos
    contato3	 VARCHAR(100)
 )
 
+-- ****************************************************************
+
 CREATE TABLE TB_DadosVariaveis
 (
 	idDadoVariavel		INT IDENTITY(1,1),
@@ -226,7 +226,7 @@ CREATE TABLE TB_Escolas
 	nomeEscola				INT,
 	observacoes				varchar(400),
 	idEndereco				INT,
-	dataCadastro			SMALLDATETIME,
+	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dataUltAlteracao		SMALLDATETIME,
 	idPessoaUltAlteracao	INT
@@ -240,13 +240,24 @@ select * from TB_Pessoas
 
 SELECT * 
 FROM TB_Pessoas A
-WHERE  month(dataNascimento) = month(getdate())
+WHERE  month(dtNascimento) = month(getdate())
 
+/*
+drop table TB_Turmas
+drop table TB_Matricula
+drop table TB_Frequencia
+drop table TB_FrequenciaAluno
+drop table TB_Usuarios
+drop table TB_Perfis
+drop table TB_Generos
+drop table TB_TipoPessoas
+drop table TB_Pessoas
+drop table TB_Enderecos
+drop table TB_Contatos
+*/
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
-INSERT INTO TB_Usuarios VALUES ('Felipe F. Brichucka','admin', '', 1, getdate(), 1, getdate(), 1)
-INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','vist', '', 1, getdate(), 1, getdate(), 1)
 INSERT INTO TB_Perfis   VALUES ('Administrador', 1)
 
 INSERT INTO TB_Generos VALUES ('Feminino', 1)
@@ -258,11 +269,50 @@ INSERT INTO TB_TipoPessoas VALUES ('Funcionário', 1)
 INSERT INTO TB_TipoPessoas VALUES ('Professor', 1)
 INSERT INTO TB_TipoPessoas VALUES ('Voluntário', 1)
 
+INSERT INTO TB_Usuarios VALUES ('Felipe F. Brichucka','Br2k', '', 1, getdate(), 1, getdate(), 1)
+INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','Vist', '', 1, getdate(), 1, getdate(), 1)
+INSERT INTO TB_Usuarios VALUES ('Hurbem Pinto','Hurbem', '', 1, getdate(), 1, getdate(), 1)
+INSERT INTO TB_Usuarios VALUES ('Leonardo Sotto','Sotto', '', 1, getdate(), 1, getdate(), 1)
+
 INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
 
 INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
+
+
+-- ************************************************************************* --
+-- INDEXES
+-- ************************************************************************* --
+CREATE INDEX IX#01_TB_Projetos ON TB_Projetos(idProjeto)
+CREATE INDEX IX#01_TB_Turmas   ON TB_Turmas(idTurma)
+CREATE INDEX IX#02_TB_Turmas   ON TB_Turmas(idProjeto)
+
+CREATE INDEX IX#01_TB_Matricula ON TB_Matricula(idMatricula)
+CREATE INDEX IX#02_TB_Matricula ON TB_Matricula(idPessoa)
+CREATE INDEX IX#03_TB_Matricula ON TB_Matricula(idTurma)
+
+CREATE INDEX IX#01_TB_Frequencia ON TB_Frequencia(idFrequencia)
+CREATE INDEX IX#02_TB_Frequencia ON TB_Frequencia(idTurma)
+
+CREATE INDEX IX#01_TB_FrequenciaAluno ON TB_FrequenciaAluno(idFrequenciaAluno)
+CREATE INDEX IX#02_TB_FrequenciaAluno ON TB_FrequenciaAluno(idFrequencia)
+CREATE INDEX IX#03_TB_FrequenciaAluno ON TB_FrequenciaAluno(idPessoa)
+
+CREATE INDEX IX#01_TB_Usuarios ON TB_Usuarios(idUsuario)
+CREATE INDEX IX#02_TB_Usuarios ON TB_Usuarios(login)
+
+CREATE INDEX IX#01_TB_Perfis      ON TB_Perfis(idPerfil)
+CREATE INDEX IX#01_TB_Generos     ON TB_Generos(idGenero)
+CREATE INDEX IX#01_TB_TipoPessoas ON TB_TipoPessoas(idTipoPessoa)
+
+CREATE INDEX IX#01_TB_Pessoas   ON TB_Pessoas(idPessoa)
+CREATE INDEX IX#01_TB_Enderecos ON TB_Enderecos(idEndereco)
+CREATE INDEX IX#01_TB_Contatos  ON TB_Contatos(idContato)
+
+-- ************************************************************************* --
+-- CEP INDEXES
+-- ************************************************************************* --
 
 CREATE CLUSTERED INDEX IX#01_Logradouro ON TB_CEP_Logradouro (CEP ASC)
 CREATE CLUSTERED INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)

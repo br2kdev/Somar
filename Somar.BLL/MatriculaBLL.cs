@@ -53,11 +53,18 @@ namespace Somar.BLL
             return result;
         }
 
-        public int RemoveMatricula(MatriculaDTO _projeto)
+        public int CancelarMatricula(MatriculaDTO _item)
         {
             MatriculaDAL cmd = new MatriculaDAL();
 
-            return cmd.UpdateData(_projeto);
+            return cmd.CancelarMatricula(_item);
+        }
+
+        public int ExcluirMatricula(MatriculaDTO _item)
+        {
+            MatriculaDAL cmd = new MatriculaDAL();
+
+            return cmd.ExcluirMatricula(_item);
         }
     }
 }
