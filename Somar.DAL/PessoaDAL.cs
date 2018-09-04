@@ -1,15 +1,10 @@
 ﻿using Dapper;
 using Somar.DAL.Repository;
-using Somar.DAL.Utilities;
 using Somar.DTO;
 using Somar.Shared;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Somar.DAL
 {
@@ -29,15 +24,14 @@ namespace Somar.DAL
             query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
             query += " LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa";
 
-
             if (objectDTO.idPessoa != 0)
                 whereClause += " AND A.idPessoa = " + objectDTO.idPessoa.ToString();
 
             if (!string.IsNullOrEmpty(objectDTO.nomePessoa))
                 whereClause += " AND A.nomePessoa like '%" + objectDTO.nomePessoa + "%'";
 
-            //if (objectDTO.flagAtivo != null)
-            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
+            if (objectDTO.idTipoPessoa != 0)
+                whereClause += " AND A.idTipoPessoa = " + objectDTO.idTipoPessoa;
 
             query += whereClause;
 

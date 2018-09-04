@@ -62,7 +62,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var param = new PessoaDTO();
+            var param = new MatriculaDTO();
 
             param.nomePessoa = txtSearch.Text;
             param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
@@ -79,7 +79,7 @@ namespace ProjetoSomarUI.Cadastros
             }
             */
 
-            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(param);
+            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(param);
 
             GridViewDataBind(lista);
         }
@@ -88,7 +88,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             ClearForm1();
 
-            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipo(TipoPessoa.Beneficiário);
+            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = Convert.ToInt32(TipoPessoa.Beneficiário) });
 
             GridViewDataBind(lista);
         }
@@ -112,9 +112,9 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaGrid()
         {
-            var idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
+            var _idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
 
-            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipoId(idTipoPessoa);
+            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = _idTipoPessoa });
 
             GridViewDataBind(lista);
         }
@@ -282,7 +282,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new PessoaDTO());
+            var fields = new GridViewControl().GetFields(new ModelMatricula());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -355,11 +355,11 @@ namespace ProjetoSomarUI.Cadastros
                 dt2.DataPropertyName = item.Key;
                 dt2.HeaderText = item.Value;
 
-                if (item.Key == "nomePessoa")
+                if (item.Key == "nomeTurma")
                 {
                     dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
-                else if (item.Key == "nomeTurma")
+                else if (item.Key == "nomeProjeto")
                     dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 this.dataGridView2.Columns.Add(dt2);
@@ -379,7 +379,7 @@ namespace ProjetoSomarUI.Cadastros
             this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
         }
 
-        public void GridViewDataBind(List<PessoaDTO> result)
+        public void GridViewDataBind(List<MatriculaDTO> result)
         {
             if (result.Count == 0)
             {

@@ -86,8 +86,7 @@ SELECT iCount = (SELECT COUNT(1)
 				 AND dtCancelamento is null), *
 FROM TB_Pessoas	A
 
-select * from TB_Matricula
-
+-- select * from TB_Matricula
 -- select * from TB_Frequencia
 -- select * from TB_FrequenciaAluno
 -- DROP PROCEDURE SPR_GerarFrequencia

@@ -26,8 +26,16 @@ namespace Somar.DTO
         [DisplayName("Nome da Turma")]
         public string nomeTurma { get; set; }
 
+        [DisplayName("Hora de Inicio")]
+        public string horaInicio { get; set; }
+
+        [DisplayName("Hora de Termino")]
+        public string horaTermino { get; set; }
+
         [DisplayName("Data de Matricula")]
-        public DateTime? dataMatricula { get; set; }
+        public DateTime? dtMatricula { get; set; }
+
+        public DateTime? dataNascimento { get; set; }
 
         [DisplayName("Data de Cancelamento")]
         public DateTime? dataCancelamento { get; set; }
@@ -37,5 +45,16 @@ namespace Somar.DTO
         public int idPessoaUltAlteracao { get; set; }
 
         public string nomePessoaUltAlteracao { get; set; }
+
+        public int idTipoPessoa { get; set; }
+
+        public string descTipoPessoa { get; set; }
+
+        public string descGenero { get; set; }
+
+        public string descSituacao { get; set; }
+
+        public int qtdeMatricula { get; set; }
+
     }
 }

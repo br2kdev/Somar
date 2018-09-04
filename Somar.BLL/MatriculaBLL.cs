@@ -6,6 +6,20 @@ namespace Somar.BLL
 {
     public class MatriculaBLL
     {
+        public List<MatriculaDTO> GetSituacaoAluno(MatriculaDTO _item)
+        {
+            MatriculaDAL cmd = new MatriculaDAL();
+
+            var listResult = cmd.GetSituacaoAluno(_item);
+
+            foreach (var item in listResult)
+            {
+                item.descSituacao = (item.qtdeMatricula > 0) ? "Matriculado" : " - ";
+            }
+
+            return listResult;
+        }
+
         public List<MatriculaDTO> GetAllData()
         {
             MatriculaDAL cmd = new MatriculaDAL();

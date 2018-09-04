@@ -15,10 +15,13 @@ namespace Somar.DTO.Models
         [DisplayName("Nome da Pessoa")]
         public string nomePessoa { get; set; }
 
+        [DisplayName("Tipo")]
+        public string descTipoPessoa { get; set; }
+
         [DisplayName("Situacao")]
         public string descSituacao { get; set; }
 
-        [DisplayName("Qtde. Matriculas")]
+        [DisplayName("Qtde. Turmas")]
         public int qtdeMatricula { get; set; }
 
         [DisplayName("Data de Nascimento")]

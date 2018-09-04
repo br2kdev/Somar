@@ -12,20 +12,20 @@ namespace Somar.DAL
 {
     public class MatriculaDAL
     {
-        public List<PessoaDTO> GetAlunoMatricula(PessoaDTO objectDTO)
+        public List<MatriculaDTO> GetSituacaoAluno(MatriculaDTO objectDTO)
         {
-            RepList<PessoaDTO> listPessoa = new RepList<PessoaDTO>();
+            RepList<MatriculaDTO> listResult = new RepList<MatriculaDTO>();
 
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
-            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " SELECT A.idPessoa, A.nomePessoa, A.dataNascimento, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END, ";
+            query += " qtdeMatricula = (SELECT COUNT(1) FROM TB_Matricula E WHERE E.idPessoa = A.idPessoa AND E.dtCancelamento is null) ";
             query += " FROM TB_Pessoas          A ";
             query += " LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero";
             query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
             query += " LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa";
-
 
             if (objectDTO.idPessoa != 0)
                 whereClause += " AND A.idPessoa = " + objectDTO.idPessoa.ToString();
@@ -33,12 +33,12 @@ namespace Somar.DAL
             if (!string.IsNullOrEmpty(objectDTO.nomePessoa))
                 whereClause += " AND A.nomePessoa like '%" + objectDTO.nomePessoa + "%'";
 
-            //if (objectDTO.flagAtivo != null)
-            //    whereClause += " AND flagAtivo like '%" + objectDTO.nomeProjeto + "%'";
+            if (objectDTO.idTipoPessoa != 0)
+                whereClause += " AND A.idTipoPessoa = " + objectDTO.idTipoPessoa;
 
             query += whereClause;
 
-            return listPessoa.GetDataInDatabase(query);
+            return listResult.GetDataInDatabase(query);
         }
 
         public List<MatriculaDTO> GetDataInDataBase(MatriculaDTO objectDTO)
@@ -48,7 +48,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.nomePessoa, C.nomeTurma, D.nomeProjeto ";
+            query += " SELECT A.*, B.nomePessoa, C.nomeTurma, D.nomeProjeto, C.HoraInicio, C.HoraTermino";
             //query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Matricula        A ";
             query += " LEFT JOIN TB_Pessoas     B ON A.idPessoa   = B.idPessoa";
@@ -103,7 +103,7 @@ namespace Somar.DAL
 
             param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
-            param.Add("@dataMatricula", _item.dataMatricula, DbType.DateTime);
+            param.Add("@dataMatricula", _item.dtMatricula, DbType.DateTime);
             param.Add("@dataCancelamento", _item.dataCancelamento, DbType.DateTime);
             param.Add("@dataUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", _item.idPessoaUltAlteracao, DbType.Int32);

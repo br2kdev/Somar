@@ -120,12 +120,6 @@ namespace Somar.BLL
             return cmd.GetPessoasPorTipo(idTipoPessoa);
         }
 
-        public List<PessoaDTO> GetPessoasPorTipoId(int idTipoPessoa)
-        {
-            PessoaDAL cmd = new PessoaDAL();
-            return cmd.GetPessoasPorTipoID(idTipoPessoa);
-        }
-
         public List<PessoaDTO> GetAniversariantes()
         {
             PessoaDAL cmd = new PessoaDAL();
