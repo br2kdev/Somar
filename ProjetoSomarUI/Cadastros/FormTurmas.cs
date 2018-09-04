@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormTurmas : Form
+    public partial class FormTurmas : FormBase
     {
         public FormTurmas()
         {

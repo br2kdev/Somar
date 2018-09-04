@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormMatricula : Form
+    public partial class FormMatricula : FormBase
     {
         public FormMatricula()
         {
