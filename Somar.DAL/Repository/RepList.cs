@@ -37,23 +37,18 @@ namespace Somar.DAL.Repository
             }
         }
 
-        /*
-        public List<T> returnListClass(string query, DynamicParameters param)
+        
+        public List<T> ReturnListClass(string query, DynamicParameters param)
         {
-            try
+            using (IDbConnection db = new SqlConnection(Globals.stringConn))
             {
-                connection();
-                con.Open();
-                IList<T> Tlista = SqlMapper.Query<T>(con, query, param, null, true, null, commandType: CommandType.StoredProcedure).ToList();
-                con.Close();
+                IList<T> Tlista = SqlMapper.Query<T>(db, query, param, null, true, null, commandType: CommandType.StoredProcedure).ToList();
+
                 return Tlista.ToList();
-            }
-            catch (Exception)
-            {
-                throw;
             }
         }
 
+        /*
         public T returnClass(string query, DynamicParameters param)
         {
             try

@@ -11,8 +11,8 @@ SELECT * FROM TB_CEPs
 */
 
 -- ******************************************************************* --
--- (projetos contínuos de cada centro solidário) 
--- campanhas solidárias (Festa da Páscoa, Dia das Crianças e Campanha "Natal é Jesus"). 
+-- (Projetos Contínuos de cada Centro Solidário) 
+-- Campanhas solidárias (Festa da Páscoa, Dia das Crianças e Campanha "Natal é Jesus"). 
 
 CREATE TABLE TB_Projetos
 (
@@ -29,7 +29,7 @@ CREATE TABLE TB_Projetos
 	idPessoaUltAlteracao	INT
 )
 
---alter table TB_Projetos alter Column idPessoaResposavel VARCHAR(100)
+-- ALTER TABLE TB_Projetos ALTER COLUMN idPessoaResposavel VARCHAR(100)
 
 CREATE TABLE TB_Turmas
 (
@@ -59,6 +59,7 @@ CREATE TABLE TB_Matricula
 )
 
 -- select * from TB_Frequencia
+-- select * from TB_FrequenciaAluno
 
 CREATE TABLE TB_Frequencia
 (
@@ -71,12 +72,11 @@ CREATE TABLE TB_Frequencia
 	idPessoaUltAlteracao	INT
 )
 
-CREATE TABLE TB_FrequenciaAluno
+CREATE TABLE TB_FrequenciaFaltas
 (
-	idFrequenciaAluno		INT IDENTITY(1,1),
+	idFrequenciaFalta		INT IDENTITY(1,1),
 	idFrequencia			INT,
 	idPessoa				INT,
-	flagPresenca			BIT,
 	justificativa			VARCHAR(100)
 )
 
@@ -90,29 +90,101 @@ FROM TB_Pessoas	A
 -- select * from TB_Frequencia
 -- select * from TB_FrequenciaAluno
 -- DROP PROCEDURE SPR_GerarFrequencia
--- EXEC SPR_GerarFrequencia 1, '2018-09-03'
--- SELECT * FROM TB_Matricula WHERE idTurma = 1
+-- EXEC SPR_GerarFrequencia 6
+-- SELECT * FROM TB_Frequencia		WHERE idTurma = 1
+-- SELECT * FROM TB_FrequenciaAluno WHERE idTurma = 1
 
-ALTER PROCEDURE SPR_GerarFrequencia
+EXEC SPR_GetListaChamada 7
+
+SELECT * FROM TB_FrequenciaAluno
+
+INSERT INTO TB_FrequenciaAluno VALUES (7, 1, 1, '')
+
+CREATE PROCEDURE SPR_AtualizaListaChamada
 (
-	@idFrequencia			INT,
-	@dtFrequencia			SMALLDATETIME
+	@idFrequencia	INT,
+	@idPessoa		INT,
+	@flagPresenca	BIT
 )
 AS
 BEGIN
 	
-	DECLARE @idTurma INT
-	
-	SELECT TOP 1 @idTurma = idTurma from TB_Frequencia WHERE idFrequencia = @idFrequencia
+	IF(@flagPresenca = 1)
+	BEGIN
+		DELETE TB_FrequenciaAluno WHERE idFrequencia = @idFrequencia AND idPessoa = @idPessoa
+	END
+	ELSE
+	BEGIN
+		INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa, flagPresenca) VALUES (@idFrequencia, @idPessoa, @flagPresenca)
+	END
+ 
+END
 
-	INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa)
-	SELECT @idFrequencia, idPessoa
+ALTER PROCEDURE SPR_GetListaChamada
+(
+	@idFrequencia			INT
+)
+AS
+BEGIN
+
+	DECLARE @idTurma		INT
+	DECLARE @dtFrequencia	SMALLDATETIME
+		
+	--SELECT * FROM TB_Frequencia
+	--SELECT * FROM TB_Matricula where idTurma = 1
+
+	SELECT TOP 1 @idTurma = idTurma, @dtFrequencia = dtFrequencia 
+	FROM TB_Frequencia 
+	WHERE idFrequencia = @idFrequencia
+
+	-- SELECT * FROM TB_FrequenciaAluno
+	-- INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa, flagPresenca)
+	/*
+	SELECT @idFrequencia, idPessoa, 1
 	FROM TB_Matricula 
 	WHERE 1 = 1 
 	AND  idTurma = @idTurma
 	AND  dtCancelamento is NULL
 	AND  dtMatricula < @dtFrequencia
+	*/
 
+	SELECT A.idMatricula, A.idPessoa, dtFrequencia = @dtFrequencia, B.nomePessoa, flagPresenca = (CASE WHEN C.idFrequenciaAluno IS NOT NULL THEN 0 ELSE 1 END)
+	FROM TB_Matricula			  A
+	INNER JOIN TB_Pessoas		  B ON A.idPessoa = B.idPessoa
+	LEFT  JOIN TB_FrequenciaAluno C ON C.idFrequencia = @idFrequencia AND A.idPessoa = C.idPessoa
+	WHERE  1 = 1 
+	  AND  A.idTurma = @idTurma
+	  AND  (A.dtCancelamento is NULL OR A.dtCancelamento > @dtFrequencia) 
+	  AND  A.dtMatricula < @dtFrequencia
+	  
+END
+
+ALTER PROCEDURE SPR_GerarFrequencia
+(
+	@idFrequencia			INT
+	
+)
+AS
+BEGIN
+	
+	SELECT * FROM TB_Frequencia
+	SELECT * FROM TB_Matricula where idTurma = 1
+
+	DECLARE @idTurma		INT
+	DECLARE @dtFrequencia	SMALLDATETIME
+	
+	SELECT TOP 1 @idTurma = idTurma, @dtFrequencia = dtFrequencia 
+	FROM TB_Frequencia 
+	WHERE idFrequencia = @idFrequencia
+
+	-- SELECT * FROM TB_FrequenciaAluno
+	INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa, flagPresenca)
+	SELECT @idFrequencia, idPessoa, 1
+	FROM TB_Matricula 
+	WHERE 1 = 1 
+	AND  idTurma = @idTurma
+	AND  dtCancelamento is NULL
+	AND  dtMatricula < @dtFrequencia
 END
 
 CREATE TABLE TB_Usuarios
@@ -235,7 +307,6 @@ CREATE TABLE TB_Escolas
 select * from TB_Usuarios
 select * from TB_Perfis
 select * from TB_Pessoas
-
 select * from TB_Pessoas
 
 SELECT * 
@@ -255,6 +326,7 @@ drop table TB_Pessoas
 drop table TB_Enderecos
 drop table TB_Contatos
 */
+
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
@@ -274,12 +346,11 @@ INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','Vist', '', 1, getdate(), 1, get
 INSERT INTO TB_Usuarios VALUES ('Hurbem Pinto','Hurbem', '', 1, getdate(), 1, getdate(), 1)
 INSERT INTO TB_Usuarios VALUES ('Leonardo Sotto','Sotto', '', 1, getdate(), 1, getdate(), 1)
 
-INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0)
+INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0, 0)
 
 INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
-
 
 -- ************************************************************************* --
 -- INDEXES
@@ -316,7 +387,7 @@ CREATE INDEX IX#01_TB_Contatos  ON TB_Contatos(idContato)
 
 CREATE CLUSTERED INDEX IX#01_Logradouro ON TB_CEP_Logradouro (CEP ASC)
 CREATE CLUSTERED INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
-CREATE CLUSTERED INDEX IX#01_Bairro ON TB_CEP_Bairro(bai_nu_sequencial)
+CREATE CLUSTERED INDEX IX#01_Bairro		ON TB_CEP_Bairro(bai_nu_sequencial)
 
 TB_Enderecos
 

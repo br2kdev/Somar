@@ -6,13 +6,16 @@ namespace Somar.DTO.Models
     public class ModelListaPresenca
     {
         [DisplayName("Código")]
-        public int idFrequenciaAluno { get; set; }
+        public int idPessoa { get; set; }
 
         [DisplayName("Data da Aula")]
-        public DateTime dataFrequencia { get; set; }
+        public DateTime dtFrequencia { get; set; }
 
         [DisplayName("Aluno")]
         public string nomePessoa { get; set; }
+
+        [DisplayName("Presença")]
+        public bool flagPresenca { get; set; }
 
     }
 }

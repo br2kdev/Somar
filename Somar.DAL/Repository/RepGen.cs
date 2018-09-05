@@ -43,6 +43,20 @@ namespace Somar.DAL.Repository
             return identity;
         }
 
+        public IDataReader ExecuteSQLProcedure(string query, DynamicParameters param)
+        {
+            using (IDbConnection db = new SqlConnection(Globals.stringConn))
+            {
+                var dr = db.ExecuteReader(query, param, commandType: CommandType.StoredProcedure);
+                dr.Read();
+
+                if (dr != null)
+                    return dr;
+            }
+
+            return null;
+        }
+
         /*
     public string ExecuteSQLCommand(string query, DynamicParameters param)
     {

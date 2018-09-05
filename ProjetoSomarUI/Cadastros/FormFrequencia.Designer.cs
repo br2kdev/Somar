@@ -28,20 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label12 = new System.Windows.Forms.Label();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.lblProjeto = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnEditar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtDataFrequencia = new System.Windows.Forms.DateTimePicker();
+            this.panelMessage2 = new System.Windows.Forms.Panel();
+            this.lblMessage2 = new System.Windows.Forms.Label();
+            this.txtdtFrequencia = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTurmaEdit = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -70,6 +74,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panelMessage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -129,15 +134,24 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblCodigo);
             this.panel1.Location = new System.Drawing.Point(15, 10);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(972, 51);
             this.panel1.TabIndex = 64;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(638, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(103, 43);
+            this.btnEditar.TabIndex = 80;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // lblTitle
             // 
@@ -158,15 +172,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(39, 35);
             this.pictureBox1.TabIndex = 78;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(641, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(103, 43);
-            this.btnEditar.TabIndex = 68;
-            this.btnEditar.Text = "Detalhes";
-            this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -192,7 +197,8 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtDataFrequencia);
+            this.panel3.Controls.Add(this.panelMessage2);
+            this.panel3.Controls.Add(this.txtdtFrequencia);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.cmbTurmaEdit);
             this.panel3.Controls.Add(this.label13);
@@ -208,18 +214,38 @@
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
             // 
-            // txtDataFrequencia
+            // panelMessage2
             // 
-            this.txtDataFrequencia.AllowDrop = true;
-            this.txtDataFrequencia.Enabled = false;
-            this.txtDataFrequencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtDataFrequencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataFrequencia.Location = new System.Drawing.Point(55, 13);
-            this.txtDataFrequencia.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
-            this.txtDataFrequencia.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.txtDataFrequencia.Name = "txtDataFrequencia";
-            this.txtDataFrequencia.Size = new System.Drawing.Size(128, 26);
-            this.txtDataFrequencia.TabIndex = 123;
+            this.panelMessage2.Controls.Add(this.lblMessage2);
+            this.panelMessage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.panelMessage2.Location = new System.Drawing.Point(3, 70);
+            this.panelMessage2.Name = "panelMessage2";
+            this.panelMessage2.Size = new System.Drawing.Size(966, 63);
+            this.panelMessage2.TabIndex = 47;
+            this.panelMessage2.Visible = false;
+            // 
+            // lblMessage2
+            // 
+            this.lblMessage2.AutoSize = true;
+            this.lblMessage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.lblMessage2.Location = new System.Drawing.Point(9, 23);
+            this.lblMessage2.Name = "lblMessage2";
+            this.lblMessage2.Size = new System.Drawing.Size(41, 20);
+            this.lblMessage2.TabIndex = 1;
+            this.lblMessage2.Text = "Text";
+            // 
+            // txtdtFrequencia
+            // 
+            this.txtdtFrequencia.AllowDrop = true;
+            this.txtdtFrequencia.Enabled = false;
+            this.txtdtFrequencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.txtdtFrequencia.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtdtFrequencia.Location = new System.Drawing.Point(55, 13);
+            this.txtdtFrequencia.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
+            this.txtdtFrequencia.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.txtdtFrequencia.Name = "txtdtFrequencia";
+            this.txtdtFrequencia.Size = new System.Drawing.Size(128, 26);
+            this.txtdtFrequencia.TabIndex = 123;
             // 
             // label1
             // 
@@ -278,7 +304,23 @@
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView2.Location = new System.Drawing.Point(3, 52);
             this.dataGridView2.MultiSelect = false;
@@ -287,7 +329,7 @@
             this.dataGridView2.RowTemplate.Height = 30;
             this.dataGridView2.RowTemplate.ReadOnly = true;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView2.Size = new System.Drawing.Size(966, 347);
             this.dataGridView2.TabIndex = 117;
             // 
@@ -314,7 +356,7 @@
             // 
             // btnVoltar1
             // 
-            this.btnVoltar1.Location = new System.Drawing.Point(428, 16);
+            this.btnVoltar1.Location = new System.Drawing.Point(444, 16);
             this.btnVoltar1.Name = "btnVoltar1";
             this.btnVoltar1.Size = new System.Drawing.Size(110, 34);
             this.btnVoltar1.TabIndex = 69;
@@ -491,23 +533,23 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(14, 105);
             this.dataGridView1.MultiSelect = false;
@@ -528,12 +570,15 @@
             this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
             this.Name = "FormFrequencia";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CadFrequencia";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panelMessage2.ResumeLayout(false);
+            this.panelMessage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -558,7 +603,6 @@
         private System.Windows.Forms.Label lblProjeto;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox lblCodigo;
         private System.Windows.Forms.Panel panel3;
@@ -585,9 +629,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker txtDataFrequencia;
+        private System.Windows.Forms.DateTimePicker txtdtFrequencia;
         private System.Windows.Forms.Panel panelMessage;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel panelMessage2;
+        private System.Windows.Forms.Label lblMessage2;
+        private System.Windows.Forms.Button btnEditar;
     }
 }

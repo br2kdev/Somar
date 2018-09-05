@@ -1196,7 +1196,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPessoas";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPessoas";
             this.panelConsulta.ResumeLayout(false);
             this.panelMessage.ResumeLayout(false);

@@ -46,12 +46,12 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.dataFrequencia, E.nomePessoa, C.idTurma, C.nomeTurma, D.idProjeto, D.nomeProjeto ";
-            query += " FROM TB_FrequenciaAluno  A ";
-            query += " INNER JOIN TB_Frequencia B ON A.idFrequencia   = B.idFrequencia";
-            query += " INNER JOIN TB_Turmas     C ON B.idTurma        = C.idTurma";
-            query += " INNER JOIN TB_Projetos   D ON C.idProjeto      = D.idProjeto";
-            query += " INNER JOIN TB_Pessoas    E ON A.idPessoa       = E.idPessoa";
+            query += " SELECT A.*, B.dtFrequencia, E.nomePessoa, C.idTurma, C.nomeTurma, D.idProjeto, D.nomeProjeto ";
+            query += " FROM TB_FrequenciaFaltas  A ";
+            query += " INNER JOIN TB_Frequencia  B ON A.idFrequencia   = B.idFrequencia";
+            query += " INNER JOIN TB_Turmas      C ON B.idTurma        = C.idTurma";
+            query += " INNER JOIN TB_Projetos    D ON C.idProjeto      = D.idProjeto";
+            query += " INNER JOIN TB_Pessoas     E ON A.idPessoa       = E.idPessoa";
 
             if (objectDTO.idFrequencia != 0)
                 whereClause += " AND A.idFrequencia = " + objectDTO.idFrequencia.ToString();
@@ -68,7 +68,7 @@ namespace Somar.DAL
             string query = "INSERT INTO TB_Frequencia VALUES (";
             var param = new DynamicParameters();
 
-            param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
+            param.Add("@dtFrequencia", _item.dtFrequencia, DbType.DateTime);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
             param.Add("@idDisciplina", _item.idDisciplina, DbType.Int32);
             param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
@@ -95,7 +95,7 @@ namespace Somar.DAL
             var param = new DynamicParameters();
 
             param.Add("@idFrequencia", _item.idFrequencia, DbType.Int32);
-            param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
+            param.Add("@dtFrequencia", _item.dtFrequencia, DbType.DateTime);
 
             foreach (var item in param.ParameterNames)
                 query += "@" + item + ",";
@@ -108,6 +108,42 @@ namespace Somar.DAL
 
         }
 
+        public List<FrequenciaDTO> GetAlunos(FrequenciaDTO _item)
+        {
+            RepList<FrequenciaDTO> sql = new RepList<FrequenciaDTO>();
+
+            string query = "SPR_GetListaChamada ";
+
+            var param = new DynamicParameters();
+
+            param.Add("@idFrequencia", _item.idFrequencia, DbType.Int32);
+
+            var result = sql.ReturnListClass(query, param);
+
+            return result;
+        }
+
+        public int UpdateListaChamada(FrequenciaDTO _item)
+        {
+            RepGen<FrequenciaDTO> sqlCommand = new RepGen<FrequenciaDTO>();
+
+            string query = "EXEC SPR_AtualizaListaChamada ";
+            var param = new DynamicParameters();
+
+            param.Add("@idFrequencia", _item.idFrequencia, DbType.Int32);
+            param.Add("@idPessoa", _item.idPessoa, DbType.Int32);
+            param.Add("@flagPresenca", _item.flagPresenca, DbType.Boolean);
+
+            foreach (var item in param.ParameterNames)
+                query += "@" + item + ",";
+
+            query = query.Remove(query.Length - 1);
+
+            var result = sqlCommand.ExecuteSQLCommand(query, param);
+
+            return result;
+        }
+
         public int UpdateData(FrequenciaDTO _item)
         {
             RepGen<FrequenciaDTO> sqlCommand = new RepGen<FrequenciaDTO>();
@@ -117,7 +153,7 @@ namespace Somar.DAL
 
             var param = new DynamicParameters();
 
-            param.Add("@dataFrequencia", _item.dataFrequencia, DbType.DateTime);
+            param.Add("@dtFrequencia", _item.dtFrequencia, DbType.DateTime);
             param.Add("@idTurma", _item.idTurma, DbType.Int32);
             param.Add("@idDisciplina", _item.idDisciplina, DbType.Int32);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);

@@ -53,6 +53,7 @@ namespace ProjetoSomarUI.Cadastros
         private void FormMatricula_Load(object sender, EventArgs e)
         {
             CarregaGrid();
+            CarregaComboProjeto();
             CarregaComboTipoPessoa();
 
             ClearForm1();
@@ -163,8 +164,6 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaDetalhes(int _idPessoa)
         {
-            CarregaComboProjeto();
-
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
@@ -436,14 +435,14 @@ namespace ProjetoSomarUI.Cadastros
             if (result.Count == 0)
             {
                 dataGridView2.Visible = false;
-                //panelMessage.Visible = true;
-                //lblMessage.Text = "Aluno ainda não possuí matricula";
+                panelMessage2.Visible = true;
+                lblMessage2.Text = "Aluno ainda não possuí matricula!";
             }
             else
             {
                 dataGridView2.Visible = true;
-                //panelMessage.Visible = false;
-                //lblMessage.Text = "";
+                panelMessage2.Visible = false;
+                lblMessage2.Text = "";
                 dataGridView2.DataSource = result;
             }
         }

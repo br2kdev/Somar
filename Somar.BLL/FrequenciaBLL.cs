@@ -41,11 +41,6 @@ namespace Somar.BLL
             if (_item.idFrequencia == 0)
             { 
                 result = cmd.InsertData(_item);
-
-                if(result != 0)
-                {
-                    cmd.GerarFrequencia(new FrequenciaDTO() { idFrequencia = result, dataFrequencia = _item.dataFrequencia });
-                }
             }
             else
             {
@@ -59,5 +54,26 @@ namespace Somar.BLL
 
             return result;
         }
+
+        public List<FrequenciaDTO> GetAlunos(FrequenciaDTO _item)
+        {
+            FrequenciaDAL cmd = new FrequenciaDAL();
+
+            var result = cmd.GetAlunos(_item);
+
+            return result;
+        }
+
+        public int UpdateListaChamada(FrequenciaDTO _item)
+        {
+            FrequenciaDAL cmd = new FrequenciaDAL();
+
+            int result = 0;
+
+            result = cmd.UpdateListaChamada(_item);
+
+            return result;
+        }
+
     }
 }

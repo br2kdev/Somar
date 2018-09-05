@@ -13,7 +13,7 @@ namespace Somar.DTO.Models
         public int idFrequencia { get; set; }
 
         [DisplayName("Data da Aula")]
-        public DateTime dataFrequencia { get; set; }
+        public DateTime dtFrequencia { get; set; }
 
         [DisplayName("Nome da Turma")]
         public string nomeTurma { get; set; }
