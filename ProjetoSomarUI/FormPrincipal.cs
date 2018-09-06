@@ -51,10 +51,10 @@ namespace ProjetoSomarUI
             lblNome.Text = Sessao.Usuario.nomeUsuario;
             lblPerfil.Text = Sessao.Usuario.descPerfil;
 
-            // this.Load += new EventHandler(HandleFormLoad);
+            //this.Load += new EventHandler(HandleFormLoad);
             this.splashScreen = new SplashScreen();
 
-            //this.timer1.Enabled = true;
+            this.timer1.Enabled = true;
 
             CarregarAniversariantes();
         }

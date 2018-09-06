@@ -126,6 +126,8 @@ namespace ProjetoSomarUI.Cadastros
 
             cmbProjetoEdit.SelectedIndex = -1;
             cmbTurmaEdit.SelectedIndex = -1;
+            dataGridView2.Visible = false;
+
 
             /*
             cmbPeriodo.Text = string.Empty;
@@ -250,7 +252,7 @@ namespace ProjetoSomarUI.Cadastros
             btnEditar.Visible = false;
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
-
+            
             ControlFormEdit(true);
 
             CarregaComboProjetoEdit();

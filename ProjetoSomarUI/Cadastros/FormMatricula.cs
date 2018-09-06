@@ -89,6 +89,8 @@ namespace ProjetoSomarUI.Cadastros
         {
             ClearForm1();
 
+            cmbTipoPessoa.SelectedValue = 1;
+
             List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = Convert.ToInt32(TipoPessoa.Beneficiário) });
 
             GridViewDataBind(lista);

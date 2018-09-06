@@ -251,6 +251,7 @@
             this.btnNovo.TabIndex = 28;
             this.btnNovo.Text = "Nova Matricula";
             this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Visible = false;
             // 
             // btnAll
             // 
@@ -259,7 +260,7 @@
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(97, 48);
             this.btnAll.TabIndex = 34;
-            this.btnAll.Text = "Ver Todos";
+            this.btnAll.Text = "Ver Beneficiarios";
             this.btnAll.UseVisualStyleBackColor = true;
             // 
             // btnSearch
@@ -462,8 +463,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 641);
-            this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.Name = "FormMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ALUNO";
