@@ -153,6 +153,7 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = param.nomeTurma;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
+            txtResponsavel.Text = param.nomeEducador;
             cmbPeriodo.Text = param.descricaoPeriodo;
 
             cmbHoraInicio.Text = param.horaInicio.Split(':')[0];
@@ -488,6 +489,7 @@ namespace ProjetoSomarUI.Cadastros
             param.descricaoTurma = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
+            param.nomeEducador = txtResponsavel.Text;
 
             TurmaBLL bus = new TurmaBLL();
             var idTurma = bus.SaveProject(param);

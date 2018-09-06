@@ -349,7 +349,7 @@
             // txtResponsavel
             // 
             this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtResponsavel.Location = new System.Drawing.Point(644, 245);
+            this.txtResponsavel.Location = new System.Drawing.Point(644, 284);
             this.txtResponsavel.MaxLength = 100;
             this.txtResponsavel.Name = "txtResponsavel";
             this.txtResponsavel.Size = new System.Drawing.Size(311, 27);
@@ -361,7 +361,7 @@
             this.txtDataInicio.Enabled = false;
             this.txtDataInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtDataInicio.Location = new System.Drawing.Point(133, 282);
+            this.txtDataInicio.Location = new System.Drawing.Point(133, 321);
             this.txtDataInicio.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtDataInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.txtDataInicio.Name = "txtDataInicio";
@@ -372,7 +372,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label3.Location = new System.Drawing.Point(32, 287);
+            this.label3.Location = new System.Drawing.Point(32, 326);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 17);
             this.label3.TabIndex = 101;
@@ -382,7 +382,7 @@
             // 
             this.pnlTempoProjeto.Controls.Add(this.txtdtTermino);
             this.pnlTempoProjeto.Controls.Add(this.label2);
-            this.pnlTempoProjeto.Location = new System.Drawing.Point(263, 274);
+            this.pnlTempoProjeto.Location = new System.Drawing.Point(263, 313);
             this.pnlTempoProjeto.Name = "pnlTempoProjeto";
             this.pnlTempoProjeto.Size = new System.Drawing.Size(274, 49);
             this.pnlTempoProjeto.TabIndex = 97;
@@ -419,7 +419,7 @@
             this.cmbTempoProjeto.Items.AddRange(new object[] {
             "Definido",
             "Indeterminado"});
-            this.cmbTempoProjeto.Location = new System.Drawing.Point(134, 244);
+            this.cmbTempoProjeto.Location = new System.Drawing.Point(134, 283);
             this.cmbTempoProjeto.Name = "cmbTempoProjeto";
             this.cmbTempoProjeto.Size = new System.Drawing.Size(128, 28);
             this.cmbTempoProjeto.TabIndex = 96;
@@ -429,7 +429,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(5, 250);
+            this.label4.Location = new System.Drawing.Point(5, 289);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(125, 17);
             this.label4.TabIndex = 95;
@@ -476,7 +476,7 @@
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
-            this.panel2.Location = new System.Drawing.Point(0, 327);
+            this.panel2.Location = new System.Drawing.Point(0, 366);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
@@ -590,7 +590,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(546, 251);
+            this.label7.Location = new System.Drawing.Point(546, 290);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 17);
             this.label7.TabIndex = 89;
@@ -599,18 +599,18 @@
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDescricao.Location = new System.Drawing.Point(134, 58);
+            this.txtDescricao.Location = new System.Drawing.Point(134, 56);
             this.txtDescricao.MaxLength = 400;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(821, 180);
+            this.txtDescricao.Size = new System.Drawing.Size(821, 219);
             this.txtDescricao.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(17, 63);
+            this.label5.Location = new System.Drawing.Point(17, 55);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 17);
             this.label5.TabIndex = 85;
@@ -642,8 +642,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1005, 637);
-            this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

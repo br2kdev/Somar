@@ -26,7 +26,7 @@ namespace Somar.DTO
         public int idPessoaEducador { get; set; }
 
         [DisplayName("Educador")]
-        public int nomeEducador { get; set; }
+        public string nomeEducador { get; set; }
 
         public DateTime dtCadastro { get; set; }
 

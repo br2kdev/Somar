@@ -40,7 +40,7 @@ namespace Somar.BLL
                 throw new Exception("Ocorreu um erro!");
         }
 
-        public int SaveProject(EscolaDTO item)
+        public int SaveEscola(EscolaDTO item)
         {
             EscolaDAL cmd = new EscolaDAL();
             EnderecoDAL cmdEndereco = new EnderecoDAL();

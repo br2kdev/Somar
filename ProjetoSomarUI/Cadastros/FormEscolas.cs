@@ -18,8 +18,20 @@ namespace ProjetoSomarUI.Cadastros
         public FormEscolas()
         {
             InitializeComponent();
+            InitializeForm();
             InitializeGridView();
-            ClearEscolas();
+        }
+
+        private void InitializeForm()
+        {
+            cmbStatus.Items.Add("Desativado");
+            cmbStatus.Items.Add("Ativo");
+
+            Load += new EventHandler(FormEscolas_Load);
+        }
+
+        private void FormEscolas_Load(object sender, EventArgs e)
+        {
             CarregaGrid();
         }
 
@@ -64,7 +76,6 @@ namespace ProjetoSomarUI.Cadastros
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
 
-
                 this.dataGridView1.Columns.Add(dt);
             }
 
@@ -80,12 +91,27 @@ namespace ProjetoSomarUI.Cadastros
 
         }
 
-
-
-        public void ClearEscolas()
+        public void ClearForm1()
         {
             cmbSearchType.SelectedIndex = 0;
             txtSearch.Text = string.Empty;
+        }
+
+        public void ClearForm2()
+        {
+            lblCodigo.Text = string.Empty;
+            txtNome.Text = string.Empty;
+            txtObservacoes.Text = string.Empty;
+
+            txtCEP.Text = string.Empty;
+            txtIdEndereco.Text = string.Empty;
+
+            LimpaEndereco();
+
+            txtdtCadastro.Text = string.Empty;
+            txtNomeAlteracao.Text = string.Empty;
+            txtDataAlteracao.Text = string.Empty;
+            cmbStatus.SelectedIndex = 1;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -94,6 +120,9 @@ namespace ProjetoSomarUI.Cadastros
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
 
+            ClearForm2();
+
+            cmbStatus.Enabled = true;
 
             btnGravar.Visible = true;
             btnVoltar1.Visible = true;
@@ -118,7 +147,6 @@ namespace ProjetoSomarUI.Cadastros
 
             GridViewDataBind(lista);
         }
-
 
         public void GridViewDataBind(List<EscolaDTO> result)
         {
@@ -201,7 +229,6 @@ namespace ProjetoSomarUI.Cadastros
             }
         }
 
-
         private void btnVoltar1_Click(object sender, EventArgs e)
         {
             panelConsulta.Visible = true;
@@ -239,11 +266,11 @@ namespace ProjetoSomarUI.Cadastros
 
 
             EscolaBLL bus = new EscolaBLL();
-            var idProjeto = bus.SaveProject(param);
+            var idEscola = bus.SaveEscola(param);
 
-            if (idProjeto > 0)
+            if (idEscola > 0)
             {
-                lblCodigo.Text = idProjeto.ToString();
+                lblCodigo.Text = idEscola.ToString();
                 MessageBox.Show("Escola cadastrada com sucesso!");
                 CarregaGrid();
             }
@@ -323,7 +350,6 @@ namespace ProjetoSomarUI.Cadastros
             }
         }
 
-
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
@@ -385,7 +411,6 @@ namespace ProjetoSomarUI.Cadastros
 
             ControlFormEdit(false);
         }
-
 
     }
 }

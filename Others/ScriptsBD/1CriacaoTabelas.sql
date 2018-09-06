@@ -16,13 +16,13 @@ SELECT * FROM TB_CEPs
 
 CREATE TABLE TB_Projetos
 (
-	idProjeto				INT IDENTITY(1,1),
+	idProjeto				INT IDENTITY(1,1) PRIMARY KEY,
 	nomeProjeto				NVARCHAR(100),
 	descricaoProjeto		NVARCHAR(400),
 	dtInicio				SMALLDATETIME,
 	dtTermino				SMALLDATETIME,
 	nomeResposavel			VARCHAR(100),
-	--idPessoaResposavel	INT,				-- Alterar para nome
+	-- idPessoaResposavel	INT,				-- Alterar para nome
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,
@@ -33,7 +33,7 @@ CREATE TABLE TB_Projetos
 
 CREATE TABLE TB_Turmas
 (
-	idTurma					INT IDENTITY(1,1),
+	idTurma					INT IDENTITY(1,1) PRIMARY KEY,
 	nomeTurma				NVARCHAR(100),
 	descricaoTurma			NVARCHAR(400),
 	descricaoPeriodo		VARCHAR(20),
@@ -49,7 +49,7 @@ CREATE TABLE TB_Turmas
 
 CREATE TABLE TB_Matricula
 (
-	idMatricula				INT IDENTITY(1,1),
+	idMatricula				INT IDENTITY(1,1) PRIMARY KEY,
 	idPessoa				INT,
 	idTurma					INT,
 	dtMatricula				SMALLDATETIME,
@@ -63,7 +63,7 @@ CREATE TABLE TB_Matricula
 
 CREATE TABLE TB_Frequencia
 (
-	idFrequencia			INT IDENTITY(1,1),
+	idFrequencia			INT IDENTITY(1,1) PRIMARY KEY,
 	dtFrequencia			SMALLDATETIME,
 	idTurma					INT,
 	idDisciplina			INT,
@@ -74,7 +74,7 @@ CREATE TABLE TB_Frequencia
 
 CREATE TABLE TB_FrequenciaFaltas
 (
-	idFrequenciaFalta		INT IDENTITY(1,1),
+	idFrequenciaFalta		INT IDENTITY(1,1) PRIMARY KEY,
 	idFrequencia			INT,
 	idPessoa				INT,
 	justificativa			VARCHAR(100)
@@ -94,11 +94,6 @@ FROM TB_Pessoas	A
 -- SELECT * FROM TB_Frequencia		WHERE idTurma = 1
 -- SELECT * FROM TB_FrequenciaAluno WHERE idTurma = 1
 
-EXEC SPR_GetListaChamada 7
-
-SELECT * FROM TB_FrequenciaAluno
-
-INSERT INTO TB_FrequenciaAluno VALUES (7, 1, 1, '')
 
 CREATE PROCEDURE SPR_AtualizaListaChamada
 (
@@ -111,16 +106,16 @@ BEGIN
 	
 	IF(@flagPresenca = 1)
 	BEGIN
-		DELETE TB_FrequenciaAluno WHERE idFrequencia = @idFrequencia AND idPessoa = @idPessoa
+		DELETE TB_FrequenciaFaltas WHERE idFrequencia = @idFrequencia AND idPessoa = @idPessoa
 	END
 	ELSE
 	BEGIN
-		INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa, flagPresenca) VALUES (@idFrequencia, @idPessoa, @flagPresenca)
+		INSERT INTO TB_FrequenciaFaltas (idFrequencia, idPessoa) VALUES (@idFrequencia, @idPessoa)
 	END
  
 END
 
-ALTER PROCEDURE SPR_GetListaChamada
+CREATE PROCEDURE SPR_GetListaChamada
 (
 	@idFrequencia			INT
 )
@@ -148,10 +143,10 @@ BEGIN
 	AND  dtMatricula < @dtFrequencia
 	*/
 
-	SELECT A.idMatricula, A.idPessoa, dtFrequencia = @dtFrequencia, B.nomePessoa, flagPresenca = (CASE WHEN C.idFrequenciaAluno IS NOT NULL THEN 0 ELSE 1 END)
-	FROM TB_Matricula			  A
-	INNER JOIN TB_Pessoas		  B ON A.idPessoa = B.idPessoa
-	LEFT  JOIN TB_FrequenciaAluno C ON C.idFrequencia = @idFrequencia AND A.idPessoa = C.idPessoa
+	SELECT A.idMatricula, A.idPessoa, dtFrequencia = @dtFrequencia, B.nomePessoa, flagPresenca = (CASE WHEN C.idFrequenciaFalta IS NOT NULL THEN 0 ELSE 1 END)
+	FROM TB_Matricula			   A
+	INNER JOIN TB_Pessoas		   B ON A.idPessoa     = B.idPessoa
+	LEFT  JOIN TB_FrequenciaFaltas C ON C.idFrequencia = @idFrequencia AND A.idPessoa = C.idPessoa
 	WHERE  1 = 1 
 	  AND  A.idTurma = @idTurma
 	  AND  (A.dtCancelamento is NULL OR A.dtCancelamento > @dtFrequencia) 
@@ -178,7 +173,7 @@ BEGIN
 	WHERE idFrequencia = @idFrequencia
 
 	-- SELECT * FROM TB_FrequenciaAluno
-	INSERT INTO TB_FrequenciaAluno (idFrequencia, idPessoa, flagPresenca)
+	INSERT INTO TB_FrequenciaFaltas (idFrequencia, idPessoa, flagPresenca)
 	SELECT @idFrequencia, idPessoa, 1
 	FROM TB_Matricula 
 	WHERE 1 = 1 
@@ -189,7 +184,7 @@ END
 
 CREATE TABLE TB_Usuarios
 (
-	idUsuario				INT IDENTITY(1,1),
+	idUsuario				INT IDENTITY(1,1) PRIMARY KEY,
 	nomeUsuario				NVARCHAR(100),
 	login					NVARCHAR(30),
 	senha					NVARCHAR(15),
@@ -205,21 +200,21 @@ CREATE TABLE TB_Usuarios
 -- ******************************************************* 
 CREATE TABLE TB_Perfis 
 (
-   idPerfil		INT IDENTITY(1,1),
+   idPerfil		INT IDENTITY(1,1) PRIMARY KEY,
    descPerfil	VARCHAR(50),
    flagAtivo	BIT,
 )
 
 CREATE TABLE TB_Generos
 (
-	idGenero	INT IDENTITY(1,1),
+	idGenero	INT IDENTITY(1,1) PRIMARY KEY,
 	descGenero	VARCHAR(100),
 	flagAtivo	BIT,
 )
 
 CREATE TABLE TB_TipoPessoas
 (
-	idTipoPessoa	INT IDENTITY(1,1),
+	idTipoPessoa	INT IDENTITY(1,1) PRIMARY KEY,
 	descTipoPessoa	VARCHAR(100),
 	flagAtivo		BIT,
 )
@@ -227,10 +222,9 @@ CREATE TABLE TB_TipoPessoas
 -- ******************************************************* 
 -- FINAL - TABELAS DE DOMÍNIO
 -- ******************************************************* 
-
 CREATE TABLE TB_Pessoas
 (
-	idPessoa				INT IDENTITY(1,1),
+	idPessoa				INT IDENTITY(1,1) PRIMARY KEY,
 	nomePessoa				NVARCHAR(100),
 	dtNascimento			SMALLDATETIME,
 	idTipoPessoa			INT,	
@@ -250,7 +244,7 @@ CREATE TABLE TB_Pessoas
 
 CREATE TABLE TB_Enderecos
 (
-	idEndereco				INT IDENTITY(1,1),
+	idEndereco				INT IDENTITY(1,1) PRIMARY KEY,
 	CEP						VARCHAR(10),
 	logradouro				NVARCHAR(100),
 	complemento				NVARCHAR(100),
@@ -264,7 +258,7 @@ CREATE TABLE TB_Enderecos
 
 CREATE TABLE TB_Contatos
 (
-   idContato INT IDENTITY(1,1),
+   idContato INT IDENTITY(1,1) PRIMARY KEY,
    nomePai	 VARCHAR(100),
    nomeMae	 VARCHAR(100),
    telefone1 VARCHAR(100),
@@ -279,14 +273,14 @@ CREATE TABLE TB_Contatos
 
 CREATE TABLE TB_DadosVariaveis
 (
-	idDadoVariavel		INT IDENTITY(1,1),
+	idDadoVariavel		INT IDENTITY(1,1) PRIMARY KEY,
 	nomeDadoVariavel	VARCHAR(100),
 	flagAtivo			BIT
 )
 
 CREATE TABLE TB_PessoaDV
 (
-	identificador	INT IDENTITY(1,1),
+	identificador	INT IDENTITY(1,1) PRIMARY KEY,
 	idPessoa		INT,
 	idDadoVariavel	INT,
 	flagMarcador	BIT
@@ -294,7 +288,7 @@ CREATE TABLE TB_PessoaDV
 
 CREATE TABLE TB_Escolas
 (
-	idEscola				INT IDENTITY,
+	idEscola				INT IDENTITY(1,1) PRIMARY KEY,
 	nomeEscola				INT,
 	observacoes				varchar(400),
 	idEndereco				INT,
@@ -314,10 +308,11 @@ FROM TB_Pessoas A
 WHERE  month(dtNascimento) = month(getdate())
 
 /*
+drop table TB_Projetos
 drop table TB_Turmas
 drop table TB_Matricula
 drop table TB_Frequencia
-drop table TB_FrequenciaAluno
+drop table TB_FrequenciaFaltas
 drop table TB_Usuarios
 drop table TB_Perfis
 drop table TB_Generos
@@ -346,7 +341,7 @@ INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','Vist', '', 1, getdate(), 1, get
 INSERT INTO TB_Usuarios VALUES ('Hurbem Pinto','Hurbem', '', 1, getdate(), 1, getdate(), 1)
 INSERT INTO TB_Usuarios VALUES ('Leonardo Sotto','Sotto', '', 1, getdate(), 1, getdate(), 1)
 
-INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, GETDATE(), 1, GETDATE(), 0, 0)
+INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, 0, GETDATE(), 1, GETDATE(), 0)
 
 INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
@@ -355,31 +350,31 @@ INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
 -- ************************************************************************* --
 -- INDEXES
 -- ************************************************************************* --
-CREATE INDEX IX#01_TB_Projetos ON TB_Projetos(idProjeto)
-CREATE INDEX IX#01_TB_Turmas   ON TB_Turmas(idTurma)
+CREATE CLUSTERED INDEX IX#01_TB_Projetos ON TB_Projetos(idProjeto)
+CREATE CLUSTERED INDEX IX#01_TB_Turmas   ON TB_Turmas(idTurma)
 CREATE INDEX IX#02_TB_Turmas   ON TB_Turmas(idProjeto)
 
-CREATE INDEX IX#01_TB_Matricula ON TB_Matricula(idMatricula)
+CREATE CLUSTERED INDEX IX#01_TB_Matricula ON TB_Matricula(idMatricula)
 CREATE INDEX IX#02_TB_Matricula ON TB_Matricula(idPessoa)
 CREATE INDEX IX#03_TB_Matricula ON TB_Matricula(idTurma)
 
-CREATE INDEX IX#01_TB_Frequencia ON TB_Frequencia(idFrequencia)
+CREATE CLUSTERED INDEX IX#01_TB_Frequencia ON TB_Frequencia(idFrequencia)
 CREATE INDEX IX#02_TB_Frequencia ON TB_Frequencia(idTurma)
 
-CREATE INDEX IX#01_TB_FrequenciaAluno ON TB_FrequenciaAluno(idFrequenciaAluno)
-CREATE INDEX IX#02_TB_FrequenciaAluno ON TB_FrequenciaAluno(idFrequencia)
-CREATE INDEX IX#03_TB_FrequenciaAluno ON TB_FrequenciaAluno(idPessoa)
+CREATE CLUSTERED INDEX IX#01_TB_FrequenciaFaltas ON TB_FrequenciaFaltas(idFrequenciaFalta)
+CREATE INDEX IX#02_TB_FrequenciaFaltas ON TB_FrequenciaFaltas(idFrequencia)
+CREATE INDEX IX#03_TB_FrequenciaFaltas ON TB_FrequenciaFaltas(idPessoa)
 
-CREATE INDEX IX#01_TB_Usuarios ON TB_Usuarios(idUsuario)
+CREATE CLUSTERED INDEX IX#01_TB_Usuarios ON TB_Usuarios(idUsuario)
 CREATE INDEX IX#02_TB_Usuarios ON TB_Usuarios(login)
 
-CREATE INDEX IX#01_TB_Perfis      ON TB_Perfis(idPerfil)
-CREATE INDEX IX#01_TB_Generos     ON TB_Generos(idGenero)
-CREATE INDEX IX#01_TB_TipoPessoas ON TB_TipoPessoas(idTipoPessoa)
+CREATE CLUSTERED CLUSTERED INDEX IX#01_TB_Perfis      ON TB_Perfis(idPerfil)
+CREATE CLUSTERED INDEX IX#01_TB_Generos     ON TB_Generos(idGenero)
+CREATE CLUSTERED INDEX IX#01_TB_TipoPessoas ON TB_TipoPessoas(idTipoPessoa)
 
-CREATE INDEX IX#01_TB_Pessoas   ON TB_Pessoas(idPessoa)
-CREATE INDEX IX#01_TB_Enderecos ON TB_Enderecos(idEndereco)
-CREATE INDEX IX#01_TB_Contatos  ON TB_Contatos(idContato)
+CREATE CLUSTERED INDEX IX#01_TB_Pessoas   ON TB_Pessoas(idPessoa)
+CREATE CLUSTERED INDEX IX#01_TB_Enderecos ON TB_Enderecos(idEndereco)
+CREATE CLUSTERED INDEX IX#01_TB_Contatos  ON TB_Contatos(idContato)
 
 -- ************************************************************************* --
 -- CEP INDEXES

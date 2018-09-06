@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.hdnIdEndereco = new System.Windows.Forms.TextBox();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
@@ -48,9 +49,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panelConsulta = new System.Windows.Forms.Panel();
-            this.panelMessage = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -84,18 +82,20 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
-            this.hdnIdEndereco = new System.Windows.Forms.TextBox();
+            this.panelMessage = new System.Windows.Forms.Panel();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panelConsulta.SuspendLayout();
-            this.panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCEP)).BeginInit();
             this.panelEdit.SuspendLayout();
+            this.panelMessage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblStatus
@@ -114,9 +114,6 @@
             this.cmbStatus.Enabled = false;
             this.cmbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Desativado",
-            "Ativo"});
             this.cmbStatus.Location = new System.Drawing.Point(831, 18);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
@@ -134,6 +131,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
+            // 
+            // hdnIdEndereco
+            // 
+            this.hdnIdEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.hdnIdEndereco.Location = new System.Drawing.Point(749, 17);
+            this.hdnIdEndereco.Name = "hdnIdEndereco";
+            this.hdnIdEndereco.Size = new System.Drawing.Size(100, 26);
+            this.hdnIdEndereco.TabIndex = 70;
+            this.hdnIdEndereco.Visible = false;
             // 
             // btnVoltar1
             // 
@@ -290,59 +296,6 @@
             this.panelConsulta.Name = "panelConsulta";
             this.panelConsulta.Size = new System.Drawing.Size(1009, 641);
             this.panelConsulta.TabIndex = 41;
-            // 
-            // panelMessage
-            // 
-            this.panelMessage.Controls.Add(this.lblMessage);
-            this.panelMessage.Location = new System.Drawing.Point(14, 112);
-            this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(979, 63);
-            this.panelMessage.TabIndex = 45;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(9, 27);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(28, 13);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Text";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 97);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.RowTemplate.ReadOnly = true;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
-            this.dataGridView1.TabIndex = 43;
             // 
             // groupBox1
             // 
@@ -731,14 +684,58 @@
             this.panelEdit.TabIndex = 42;
             this.panelEdit.Visible = false;
             // 
-            // hdnIdEndereco
+            // panelMessage
             // 
-            this.hdnIdEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.hdnIdEndereco.Location = new System.Drawing.Point(749, 17);
-            this.hdnIdEndereco.Name = "hdnIdEndereco";
-            this.hdnIdEndereco.Size = new System.Drawing.Size(100, 26);
-            this.hdnIdEndereco.TabIndex = 70;
-            this.hdnIdEndereco.Visible = false;
+            this.panelMessage.Controls.Add(this.lblMessage);
+            this.panelMessage.Location = new System.Drawing.Point(15, 108);
+            this.panelMessage.Name = "panelMessage";
+            this.panelMessage.Size = new System.Drawing.Size(979, 63);
+            this.panelMessage.TabIndex = 47;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(9, 27);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(28, 13);
+            this.lblMessage.TabIndex = 1;
+            this.lblMessage.Text = "Text";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridView1.Location = new System.Drawing.Point(15, 97);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.RowTemplate.Height = 30;
+            this.dataGridView1.RowTemplate.ReadOnly = true;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
+            this.dataGridView1.TabIndex = 46;
             // 
             // FormEscolas
             // 
@@ -754,9 +751,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panelConsulta.ResumeLayout(false);
-            this.panelMessage.ResumeLayout(false);
-            this.panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -766,6 +760,9 @@
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSearchCEP)).EndInit();
             this.panelEdit.ResumeLayout(false);
+            this.panelMessage.ResumeLayout(false);
+            this.panelMessage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -789,9 +786,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Panel panelConsulta;
-        private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbSearchType;
         private System.Windows.Forms.Button btnNovo;
@@ -826,5 +820,8 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox hdnIdEndereco;
+        private System.Windows.Forms.Panel panelMessage;
+        private System.Windows.Forms.Label lblMessage;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -50,7 +50,7 @@ namespace Somar.DAL
 
             param.Add("@nomeEscola", objectDTO.nomeEscola, DbType.String);
             param.Add("@observacoes", objectDTO.observacoes, DbType.String);
-            param.Add("@idEndereco", objectDTO.idEndereco, DbType.String);
+            param.Add("@idEndereco", objectDTO.idEndereco, DbType.Int32);
             param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
@@ -80,7 +80,7 @@ namespace Somar.DAL
 
             param.Add("@nomeEscola", objectDTO.nomeEscola, DbType.String);
             param.Add("@observacoes", objectDTO.observacoes, DbType.String);
-            param.Add("@idEndereco", objectDTO.idEndereco, DbType.String);
+            param.Add("@idEndereco", objectDTO.idEndereco, DbType.Int32);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);

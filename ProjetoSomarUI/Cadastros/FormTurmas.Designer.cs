@@ -28,21 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.btnGravar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.cmbMinutoFim = new System.Windows.Forms.ComboBox();
+            this.cmbHoraFim = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cmbMinutoInicio = new System.Windows.Forms.ComboBox();
+            this.cmbHoraInicio = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.cmbProjeto = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
-            this.txtdtCadastro = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtdtCadastro = new System.Windows.Forms.TextBox();
+            this.txtDataAlteracao = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
             this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -70,20 +82,6 @@
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbHoraInicio = new System.Windows.Forms.ComboBox();
-            this.cmbMinutoInicio = new System.Windows.Forms.ComboBox();
-            this.cmbMinutoFim = new System.Windows.Forms.ComboBox();
-            this.cmbHoraFim = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.cmbPeriodo = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtDataAlteracao = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -160,8 +158,6 @@
             this.panel3.Controls.Add(this.label12);
             this.panel3.Controls.Add(this.lblStatus);
             this.panel3.Controls.Add(this.cmbStatus);
-            this.panel3.Controls.Add(this.txtdtCadastro);
-            this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
             this.panel3.Controls.Add(this.txtResponsavel);
@@ -179,6 +175,142 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
+            // 
+            // cmbPeriodo
+            // 
+            this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPeriodo.DropDownWidth = 47;
+            this.cmbPeriodo.Enabled = false;
+            this.cmbPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbPeriodo.FormattingEnabled = true;
+            this.cmbPeriodo.ItemHeight = 20;
+            this.cmbPeriodo.Location = new System.Drawing.Point(134, 99);
+            this.cmbPeriodo.Name = "cmbPeriodo";
+            this.cmbPeriodo.Size = new System.Drawing.Size(162, 28);
+            this.cmbPeriodo.TabIndex = 106;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label15.Location = new System.Drawing.Point(20, 105);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(61, 17);
+            this.label15.TabIndex = 105;
+            this.label15.Text = "Período:";
+            // 
+            // cmbMinutoFim
+            // 
+            this.cmbMinutoFim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMinutoFim.Enabled = false;
+            this.cmbMinutoFim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbMinutoFim.FormattingEnabled = true;
+            this.cmbMinutoFim.Items.AddRange(new object[] {
+            "00",
+            "15",
+            "30",
+            "45"});
+            this.cmbMinutoFim.Location = new System.Drawing.Point(658, 99);
+            this.cmbMinutoFim.Name = "cmbMinutoFim";
+            this.cmbMinutoFim.Size = new System.Drawing.Size(47, 28);
+            this.cmbMinutoFim.TabIndex = 104;
+            // 
+            // cmbHoraFim
+            // 
+            this.cmbHoraFim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHoraFim.Enabled = false;
+            this.cmbHoraFim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbHoraFim.FormattingEnabled = true;
+            this.cmbHoraFim.Items.AddRange(new object[] {
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22"});
+            this.cmbHoraFim.Location = new System.Drawing.Point(605, 99);
+            this.cmbHoraFim.Name = "cmbHoraFim";
+            this.cmbHoraFim.Size = new System.Drawing.Size(47, 28);
+            this.cmbHoraFim.TabIndex = 103;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label14.Location = new System.Drawing.Point(650, 104);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(12, 17);
+            this.label14.TabIndex = 102;
+            this.label14.Text = ":";
+            // 
+            // cmbMinutoInicio
+            // 
+            this.cmbMinutoInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMinutoInicio.DropDownWidth = 47;
+            this.cmbMinutoInicio.Enabled = false;
+            this.cmbMinutoInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbMinutoInicio.FormattingEnabled = true;
+            this.cmbMinutoInicio.Items.AddRange(new object[] {
+            "00",
+            "15",
+            "30",
+            "45"});
+            this.cmbMinutoInicio.Location = new System.Drawing.Point(524, 99);
+            this.cmbMinutoInicio.Name = "cmbMinutoInicio";
+            this.cmbMinutoInicio.Size = new System.Drawing.Size(47, 28);
+            this.cmbMinutoInicio.TabIndex = 101;
+            // 
+            // cmbHoraInicio
+            // 
+            this.cmbHoraInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbHoraInicio.DropDownWidth = 47;
+            this.cmbHoraInicio.Enabled = false;
+            this.cmbHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbHoraInicio.FormattingEnabled = true;
+            this.cmbHoraInicio.ItemHeight = 20;
+            this.cmbHoraInicio.Items.AddRange(new object[] {
+            "06",
+            "07",
+            "08",
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22"});
+            this.cmbHoraInicio.Location = new System.Drawing.Point(471, 99);
+            this.cmbHoraInicio.Name = "cmbHoraInicio";
+            this.cmbHoraInicio.Size = new System.Drawing.Size(47, 28);
+            this.cmbHoraInicio.TabIndex = 100;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label13.Location = new System.Drawing.Point(516, 104);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(12, 17);
+            this.label13.TabIndex = 98;
+            this.label13.Text = ":";
             // 
             // cmbProjeto
             // 
@@ -212,28 +344,6 @@
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
             this.cmbStatus.TabIndex = 92;
             // 
-            // txtdtCadastro
-            // 
-            this.txtdtCadastro.Enabled = false;
-            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtdtCadastro.Location = new System.Drawing.Point(831, 276);
-            this.txtdtCadastro.MaxLength = 10;
-            this.txtdtCadastro.Name = "txtdtCadastro";
-            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
-            this.txtdtCadastro.TabIndex = 6;
-            this.txtdtCadastro.TabStop = false;
-            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(725, 281);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(103, 17);
-            this.label6.TabIndex = 91;
-            this.label6.Text = "Data Cadastro:";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -249,7 +359,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtdtCadastro);
             this.groupBox3.Controls.Add(this.txtDataAlteracao);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label11);
@@ -260,6 +370,66 @@
             this.groupBox3.Size = new System.Drawing.Size(972, 60);
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
+            // 
+            // txtdtCadastro
+            // 
+            this.txtdtCadastro.Enabled = false;
+            this.txtdtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtdtCadastro.Location = new System.Drawing.Point(121, 17);
+            this.txtdtCadastro.MaxLength = 10;
+            this.txtdtCadastro.Name = "txtdtCadastro";
+            this.txtdtCadastro.Size = new System.Drawing.Size(124, 27);
+            this.txtdtCadastro.TabIndex = 100;
+            this.txtdtCadastro.TabStop = false;
+            this.txtdtCadastro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtDataAlteracao
+            // 
+            this.txtDataAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtDataAlteracao.Location = new System.Drawing.Point(840, 17);
+            this.txtDataAlteracao.MaxLength = 100;
+            this.txtDataAlteracao.Name = "txtDataAlteracao";
+            this.txtDataAlteracao.Size = new System.Drawing.Size(118, 27);
+            this.txtDataAlteracao.TabIndex = 99;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label9.Location = new System.Drawing.Point(15, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(103, 17);
+            this.label9.TabIndex = 101;
+            this.label9.Text = "Data Cadastro:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label11.Location = new System.Drawing.Point(274, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(115, 17);
+            this.label11.TabIndex = 96;
+            this.label11.Text = "Última Alteração:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label16.Location = new System.Drawing.Point(732, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(106, 17);
+            this.label16.TabIndex = 98;
+            this.label16.Text = "Data Alteração:";
+            // 
+            // txtNomeAlteracao
+            // 
+            this.txtNomeAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.txtNomeAlteracao.Location = new System.Drawing.Point(389, 17);
+            this.txtNomeAlteracao.MaxLength = 100;
+            this.txtNomeAlteracao.Name = "txtNomeAlteracao";
+            this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
+            this.txtNomeAlteracao.TabIndex = 97;
             // 
             // txtResponsavel
             // 
@@ -309,6 +479,7 @@
             this.txtDuracao.Size = new System.Drawing.Size(124, 27);
             this.txtDuracao.TabIndex = 84;
             this.txtDuracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtDuracao.Visible = false;
             // 
             // label4
             // 
@@ -319,6 +490,7 @@
             this.label4.Size = new System.Drawing.Size(66, 17);
             this.label4.TabIndex = 83;
             this.label4.Text = "Duração:";
+            this.label4.Visible = false;
             // 
             // label2
             // 
@@ -415,23 +587,23 @@
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView1.Location = new System.Drawing.Point(14, 97);
             this.dataGridView1.MultiSelect = false;
@@ -572,209 +744,13 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label13.Location = new System.Drawing.Point(516, 104);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(12, 17);
-            this.label13.TabIndex = 98;
-            this.label13.Text = ":";
-            // 
-            // cmbHoraInicio
-            // 
-            this.cmbHoraInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHoraInicio.DropDownWidth = 47;
-            this.cmbHoraInicio.Enabled = false;
-            this.cmbHoraInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbHoraInicio.FormattingEnabled = true;
-            this.cmbHoraInicio.ItemHeight = 20;
-            this.cmbHoraInicio.Items.AddRange(new object[] {
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22"});
-            this.cmbHoraInicio.Location = new System.Drawing.Point(471, 99);
-            this.cmbHoraInicio.Name = "cmbHoraInicio";
-            this.cmbHoraInicio.Size = new System.Drawing.Size(47, 28);
-            this.cmbHoraInicio.TabIndex = 100;
-            // 
-            // cmbMinutoInicio
-            // 
-            this.cmbMinutoInicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMinutoInicio.DropDownWidth = 47;
-            this.cmbMinutoInicio.Enabled = false;
-            this.cmbMinutoInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbMinutoInicio.FormattingEnabled = true;
-            this.cmbMinutoInicio.Items.AddRange(new object[] {
-            "00",
-            "15",
-            "30",
-            "45"});
-            this.cmbMinutoInicio.Location = new System.Drawing.Point(524, 99);
-            this.cmbMinutoInicio.Name = "cmbMinutoInicio";
-            this.cmbMinutoInicio.Size = new System.Drawing.Size(47, 28);
-            this.cmbMinutoInicio.TabIndex = 101;
-            // 
-            // cmbMinutoFim
-            // 
-            this.cmbMinutoFim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMinutoFim.Enabled = false;
-            this.cmbMinutoFim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbMinutoFim.FormattingEnabled = true;
-            this.cmbMinutoFim.Items.AddRange(new object[] {
-            "00",
-            "15",
-            "30",
-            "45"});
-            this.cmbMinutoFim.Location = new System.Drawing.Point(658, 99);
-            this.cmbMinutoFim.Name = "cmbMinutoFim";
-            this.cmbMinutoFim.Size = new System.Drawing.Size(47, 28);
-            this.cmbMinutoFim.TabIndex = 104;
-            // 
-            // cmbHoraFim
-            // 
-            this.cmbHoraFim.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbHoraFim.Enabled = false;
-            this.cmbHoraFim.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbHoraFim.FormattingEnabled = true;
-            this.cmbHoraFim.Items.AddRange(new object[] {
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22"});
-            this.cmbHoraFim.Location = new System.Drawing.Point(605, 99);
-            this.cmbHoraFim.Name = "cmbHoraFim";
-            this.cmbHoraFim.Size = new System.Drawing.Size(47, 28);
-            this.cmbHoraFim.TabIndex = 103;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label14.Location = new System.Drawing.Point(650, 104);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(12, 17);
-            this.label14.TabIndex = 102;
-            this.label14.Text = ":";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label15.Location = new System.Drawing.Point(20, 105);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(61, 17);
-            this.label15.TabIndex = 105;
-            this.label15.Text = "Período:";
-            // 
-            // cmbPeriodo
-            // 
-            this.cmbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPeriodo.DropDownWidth = 47;
-            this.cmbPeriodo.Enabled = false;
-            this.cmbPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.cmbPeriodo.FormattingEnabled = true;
-            this.cmbPeriodo.ItemHeight = 20;
-            this.cmbPeriodo.Location = new System.Drawing.Point(134, 99);
-            this.cmbPeriodo.Name = "cmbPeriodo";
-            this.cmbPeriodo.Size = new System.Drawing.Size(162, 28);
-            this.cmbPeriodo.TabIndex = 106;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.textBox1.Location = new System.Drawing.Point(121, 17);
-            this.textBox1.MaxLength = 10;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(124, 27);
-            this.textBox1.TabIndex = 100;
-            this.textBox1.TabStop = false;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtDataAlteracao
-            // 
-            this.txtDataAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDataAlteracao.Location = new System.Drawing.Point(840, 17);
-            this.txtDataAlteracao.MaxLength = 100;
-            this.txtDataAlteracao.Name = "txtDataAlteracao";
-            this.txtDataAlteracao.Size = new System.Drawing.Size(118, 27);
-            this.txtDataAlteracao.TabIndex = 99;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label9.Location = new System.Drawing.Point(15, 22);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 17);
-            this.label9.TabIndex = 101;
-            this.label9.Text = "Data Cadastro:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label11.Location = new System.Drawing.Point(274, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(115, 17);
-            this.label11.TabIndex = 96;
-            this.label11.Text = "Última Alteração:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label16.Location = new System.Drawing.Point(732, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(106, 17);
-            this.label16.TabIndex = 98;
-            this.label16.Text = "Data Alteração:";
-            // 
-            // txtNomeAlteracao
-            // 
-            this.txtNomeAlteracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtNomeAlteracao.Location = new System.Drawing.Point(389, 17);
-            this.txtNomeAlteracao.MaxLength = 100;
-            this.txtNomeAlteracao.Name = "txtNomeAlteracao";
-            this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
-            this.txtNomeAlteracao.TabIndex = 97;
-            // 
             // FormTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 641);
-            this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.IsMdiContainer = true;
             this.Name = "FormTurmas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -808,8 +784,6 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cmbStatus;
-        private System.Windows.Forms.TextBox txtdtCadastro;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtResponsavel;
@@ -849,7 +823,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox cmbPeriodo;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtdtCadastro;
         private System.Windows.Forms.TextBox txtDataAlteracao;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
