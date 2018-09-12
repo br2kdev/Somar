@@ -14,6 +14,18 @@ SELECT * FROM TB_CEPs
 -- (Projetos Contínuos de cada Centro Solidário) 
 -- Campanhas solidárias (Festa da Páscoa, Dia das Crianças e Campanha "Natal é Jesus"). 
 
+SELECT  idProjeto
+		nomeProjeto
+		descricaoProjeto
+		dtInicio
+		dtTermino
+		nomeResposavel
+		dtCadastro
+		flagAtivo
+		dtUltAlteracao
+		idPessoaUltAlteracao
+FROM dbo.TB_Projetos
+
 CREATE TABLE TB_Projetos
 (
 	idProjeto				INT IDENTITY(1,1) PRIMARY KEY,
@@ -39,7 +51,8 @@ CREATE TABLE TB_Turmas
 	descricaoPeriodo		VARCHAR(20),
 	HoraInicio				VARCHAR(10),
 	HoraTermino				VARCHAR(10),
-	idPessoaEducador		INT,
+	--idPessoaEducador		INT,
+	nomeEducador			VARCHAR(100),
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,
@@ -289,7 +302,7 @@ CREATE TABLE TB_PessoaDV
 CREATE TABLE TB_Escolas
 (
 	idEscola				INT IDENTITY(1,1) PRIMARY KEY,
-	nomeEscola				INT,
+	nomeEscola				VARCHAR(100),
 	observacoes				varchar(400),
 	idEndereco				INT,
 	dtCadastro				SMALLDATETIME,

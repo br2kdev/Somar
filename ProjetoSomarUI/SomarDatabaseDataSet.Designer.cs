@@ -285,17 +285,17 @@ namespace ProjetoSomarUI {
             
             private global::System.Data.DataColumn columndescricaoProjeto;
             
-            private global::System.Data.DataColumn columndataInicio;
+            private global::System.Data.DataColumn columndtInicio;
             
-            private global::System.Data.DataColumn columndataTermino;
+            private global::System.Data.DataColumn columndtTermino;
             
-            private global::System.Data.DataColumn columnidPessoaResposavel;
+            private global::System.Data.DataColumn columnnomeResposavel;
             
-            private global::System.Data.DataColumn columndataCadastro;
+            private global::System.Data.DataColumn columndtCadastro;
             
             private global::System.Data.DataColumn columnflagAtivo;
             
-            private global::System.Data.DataColumn columndataUltAlteracao;
+            private global::System.Data.DataColumn columndtUltAlteracao;
             
             private global::System.Data.DataColumn columnidPessoaUltAlteracao;
             
@@ -358,33 +358,33 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dataInicioColumn {
+            public global::System.Data.DataColumn dtInicioColumn {
                 get {
-                    return this.columndataInicio;
+                    return this.columndtInicio;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dataTerminoColumn {
+            public global::System.Data.DataColumn dtTerminoColumn {
                 get {
-                    return this.columndataTermino;
+                    return this.columndtTermino;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn idPessoaResposavelColumn {
+            public global::System.Data.DataColumn nomeResposavelColumn {
                 get {
-                    return this.columnidPessoaResposavel;
+                    return this.columnnomeResposavel;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dataCadastroColumn {
+            public global::System.Data.DataColumn dtCadastroColumn {
                 get {
-                    return this.columndataCadastro;
+                    return this.columndtCadastro;
                 }
             }
             
@@ -398,9 +398,9 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn dataUltAlteracaoColumn {
+            public global::System.Data.DataColumn dtUltAlteracaoColumn {
                 get {
-                    return this.columndataUltAlteracao;
+                    return this.columndtUltAlteracao;
                 }
             }
             
@@ -449,22 +449,29 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow AddTB_ProjetosRow(string nomeProjeto, string descricaoProjeto, System.DateTime dataInicio, System.DateTime dataTermino, int idPessoaResposavel, System.DateTime dataCadastro, bool flagAtivo, System.DateTime dataUltAlteracao, int idPessoaUltAlteracao) {
+            public TB_ProjetosRow AddTB_ProjetosRow(string nomeProjeto, string descricaoProjeto, System.DateTime dtInicio, System.DateTime dtTermino, string nomeResposavel, System.DateTime dtCadastro, bool flagAtivo, System.DateTime dtUltAlteracao, int idPessoaUltAlteracao) {
                 TB_ProjetosRow rowTB_ProjetosRow = ((TB_ProjetosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         nomeProjeto,
                         descricaoProjeto,
-                        dataInicio,
-                        dataTermino,
-                        idPessoaResposavel,
-                        dataCadastro,
+                        dtInicio,
+                        dtTermino,
+                        nomeResposavel,
+                        dtCadastro,
                         flagAtivo,
-                        dataUltAlteracao,
+                        dtUltAlteracao,
                         idPessoaUltAlteracao};
                 rowTB_ProjetosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTB_ProjetosRow);
                 return rowTB_ProjetosRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TB_ProjetosRow FindByidProjeto(int idProjeto) {
+                return ((TB_ProjetosRow)(this.Rows.Find(new object[] {
+                            idProjeto})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -487,12 +494,12 @@ namespace ProjetoSomarUI {
                 this.columnidProjeto = base.Columns["idProjeto"];
                 this.columnnomeProjeto = base.Columns["nomeProjeto"];
                 this.columndescricaoProjeto = base.Columns["descricaoProjeto"];
-                this.columndataInicio = base.Columns["dataInicio"];
-                this.columndataTermino = base.Columns["dataTermino"];
-                this.columnidPessoaResposavel = base.Columns["idPessoaResposavel"];
-                this.columndataCadastro = base.Columns["dataCadastro"];
+                this.columndtInicio = base.Columns["dtInicio"];
+                this.columndtTermino = base.Columns["dtTermino"];
+                this.columnnomeResposavel = base.Columns["nomeResposavel"];
+                this.columndtCadastro = base.Columns["dtCadastro"];
                 this.columnflagAtivo = base.Columns["flagAtivo"];
-                this.columndataUltAlteracao = base.Columns["dataUltAlteracao"];
+                this.columndtUltAlteracao = base.Columns["dtUltAlteracao"];
                 this.columnidPessoaUltAlteracao = base.Columns["idPessoaUltAlteracao"];
             }
             
@@ -505,27 +512,31 @@ namespace ProjetoSomarUI {
                 base.Columns.Add(this.columnnomeProjeto);
                 this.columndescricaoProjeto = new global::System.Data.DataColumn("descricaoProjeto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescricaoProjeto);
-                this.columndataInicio = new global::System.Data.DataColumn("dataInicio", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndataInicio);
-                this.columndataTermino = new global::System.Data.DataColumn("dataTermino", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndataTermino);
-                this.columnidPessoaResposavel = new global::System.Data.DataColumn("idPessoaResposavel", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidPessoaResposavel);
-                this.columndataCadastro = new global::System.Data.DataColumn("dataCadastro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndataCadastro);
+                this.columndtInicio = new global::System.Data.DataColumn("dtInicio", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtInicio);
+                this.columndtTermino = new global::System.Data.DataColumn("dtTermino", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtTermino);
+                this.columnnomeResposavel = new global::System.Data.DataColumn("nomeResposavel", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnomeResposavel);
+                this.columndtCadastro = new global::System.Data.DataColumn("dtCadastro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtCadastro);
                 this.columnflagAtivo = new global::System.Data.DataColumn("flagAtivo", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnflagAtivo);
-                this.columndataUltAlteracao = new global::System.Data.DataColumn("dataUltAlteracao", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columndataUltAlteracao);
+                this.columndtUltAlteracao = new global::System.Data.DataColumn("dtUltAlteracao", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtUltAlteracao);
                 this.columnidPessoaUltAlteracao = new global::System.Data.DataColumn("idPessoaUltAlteracao", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidPessoaUltAlteracao);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnidProjeto}, true));
                 this.columnidProjeto.AutoIncrement = true;
                 this.columnidProjeto.AutoIncrementSeed = -1;
                 this.columnidProjeto.AutoIncrementStep = -1;
                 this.columnidProjeto.AllowDBNull = false;
                 this.columnidProjeto.ReadOnly = true;
+                this.columnidProjeto.Unique = true;
                 this.columnnomeProjeto.MaxLength = 100;
                 this.columndescricaoProjeto.MaxLength = 400;
+                this.columnnomeResposavel.MaxLength = 100;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -711,65 +722,65 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime dataInicio {
+            public System.DateTime dtInicio {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dataInicioColumn]));
+                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtInicioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dataInicio\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtInicio\' in table \'TB_Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dataInicioColumn] = value;
+                    this[this.tableTB_Projetos.dtInicioColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime dataTermino {
+            public System.DateTime dtTermino {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dataTerminoColumn]));
+                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtTerminoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dataTermino\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtTermino\' in table \'TB_Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dataTerminoColumn] = value;
+                    this[this.tableTB_Projetos.dtTerminoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int idPessoaResposavel {
+            public string nomeResposavel {
                 get {
                     try {
-                        return ((int)(this[this.tableTB_Projetos.idPessoaResposavelColumn]));
+                        return ((string)(this[this.tableTB_Projetos.nomeResposavelColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'idPessoaResposavel\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomeResposavel\' in table \'TB_Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.idPessoaResposavelColumn] = value;
+                    this[this.tableTB_Projetos.nomeResposavelColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime dataCadastro {
+            public System.DateTime dtCadastro {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dataCadastroColumn]));
+                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtCadastroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dataCadastro\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtCadastro\' in table \'TB_Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dataCadastroColumn] = value;
+                    this[this.tableTB_Projetos.dtCadastroColumn] = value;
                 }
             }
             
@@ -791,17 +802,17 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public System.DateTime dataUltAlteracao {
+            public System.DateTime dtUltAlteracao {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dataUltAlteracaoColumn]));
+                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtUltAlteracaoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dataUltAlteracao\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtUltAlteracao\' in table \'TB_Projetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dataUltAlteracaoColumn] = value;
+                    this[this.tableTB_Projetos.dtUltAlteracaoColumn] = value;
                 }
             }
             
@@ -847,50 +858,50 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdataInicioNull() {
-                return this.IsNull(this.tableTB_Projetos.dataInicioColumn);
+            public bool IsdtInicioNull() {
+                return this.IsNull(this.tableTB_Projetos.dtInicioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdataInicioNull() {
-                this[this.tableTB_Projetos.dataInicioColumn] = global::System.Convert.DBNull;
+            public void SetdtInicioNull() {
+                this[this.tableTB_Projetos.dtInicioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdataTerminoNull() {
-                return this.IsNull(this.tableTB_Projetos.dataTerminoColumn);
+            public bool IsdtTerminoNull() {
+                return this.IsNull(this.tableTB_Projetos.dtTerminoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdataTerminoNull() {
-                this[this.tableTB_Projetos.dataTerminoColumn] = global::System.Convert.DBNull;
+            public void SetdtTerminoNull() {
+                this[this.tableTB_Projetos.dtTerminoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsidPessoaResposavelNull() {
-                return this.IsNull(this.tableTB_Projetos.idPessoaResposavelColumn);
+            public bool IsnomeResposavelNull() {
+                return this.IsNull(this.tableTB_Projetos.nomeResposavelColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetidPessoaResposavelNull() {
-                this[this.tableTB_Projetos.idPessoaResposavelColumn] = global::System.Convert.DBNull;
+            public void SetnomeResposavelNull() {
+                this[this.tableTB_Projetos.nomeResposavelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdataCadastroNull() {
-                return this.IsNull(this.tableTB_Projetos.dataCadastroColumn);
+            public bool IsdtCadastroNull() {
+                return this.IsNull(this.tableTB_Projetos.dtCadastroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdataCadastroNull() {
-                this[this.tableTB_Projetos.dataCadastroColumn] = global::System.Convert.DBNull;
+            public void SetdtCadastroNull() {
+                this[this.tableTB_Projetos.dtCadastroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -907,14 +918,14 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsdataUltAlteracaoNull() {
-                return this.IsNull(this.tableTB_Projetos.dataUltAlteracaoColumn);
+            public bool IsdtUltAlteracaoNull() {
+                return this.IsNull(this.tableTB_Projetos.dtUltAlteracaoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetdataUltAlteracaoNull() {
-                this[this.tableTB_Projetos.dataUltAlteracaoColumn] = global::System.Convert.DBNull;
+            public void SetdtUltAlteracaoNull() {
+                this[this.tableTB_Projetos.dtUltAlteracaoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1092,27 +1103,102 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("idProjeto", "idProjeto");
             tableMapping.ColumnMappings.Add("nomeProjeto", "nomeProjeto");
             tableMapping.ColumnMappings.Add("descricaoProjeto", "descricaoProjeto");
-            tableMapping.ColumnMappings.Add("dataInicio", "dataInicio");
-            tableMapping.ColumnMappings.Add("dataTermino", "dataTermino");
-            tableMapping.ColumnMappings.Add("idPessoaResposavel", "idPessoaResposavel");
-            tableMapping.ColumnMappings.Add("dataCadastro", "dataCadastro");
+            tableMapping.ColumnMappings.Add("dtInicio", "dtInicio");
+            tableMapping.ColumnMappings.Add("dtTermino", "dtTermino");
+            tableMapping.ColumnMappings.Add("nomeResposavel", "nomeResposavel");
+            tableMapping.ColumnMappings.Add("dtCadastro", "dtCadastro");
             tableMapping.ColumnMappings.Add("flagAtivo", "flagAtivo");
-            tableMapping.ColumnMappings.Add("dataUltAlteracao", "dataUltAlteracao");
+            tableMapping.ColumnMappings.Add("dtUltAlteracao", "dtUltAlteracao");
             tableMapping.ColumnMappings.Add("idPessoaUltAlteracao", "idPessoaUltAlteracao");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[TB_Projetos] WHERE (([idProjeto] = @Original_idProjeto) AND ((@IsNull_nomeProjeto = 1 AND [nomeProjeto] IS NULL) OR ([nomeProjeto] = @Original_nomeProjeto)) AND ((@IsNull_descricaoProjeto = 1 AND [descricaoProjeto] IS NULL) OR ([descricaoProjeto] = @Original_descricaoProjeto)) AND ((@IsNull_dtInicio = 1 AND [dtInicio] IS NULL) OR ([dtInicio] = @Original_dtInicio)) AND ((@IsNull_dtTermino = 1 AND [dtTermino] IS NULL) OR ([dtTermino] = @Original_dtTermino)) AND ((@IsNull_nomeResposavel = 1 AND [nomeResposavel] IS NULL) OR ([nomeResposavel] = @Original_nomeResposavel)) AND ((@IsNull_dtCadastro = 1 AND [dtCadastro] IS NULL) OR ([dtCadastro] = @Original_dtCadastro)) AND ((@IsNull_flagAtivo = 1 AND [flagAtivo] IS NULL) OR ([flagAtivo] = @Original_flagAtivo)) AND ((@IsNull_dtUltAlteracao = 1 AND [dtUltAlteracao] IS NULL) OR ([dtUltAlteracao] = @Original_dtUltAlteracao)) AND ((@IsNull_idPessoaUltAlteracao = 1 AND [idPessoaUltAlteracao] IS NULL) OR ([idPessoaUltAlteracao] = @Original_idPessoaUltAlteracao)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nomeProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nomeProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_descricaoProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_descricaoProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtInicio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtTermino", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nomeResposavel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nomeResposavel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtCadastro", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_flagAtivo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_flagAtivo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtUltAlteracao", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TB_Projetos] ([nomeProjeto], [descricaoProjeto], [dataInicio], [dataTermino], [idPessoaResposavel], [dataCadastro], [flagAtivo], [dataUltAlteracao], [idPessoaUltAlteracao]) VALUES (@nomeProjeto, @descricaoProjeto, @dataInicio, @dataTermino, @idPessoaResposavel, @dataCadastro, @flagAtivo, @dataUltAlteracao, @idPessoaUltAlteracao)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TB_Projetos] ([nomeProjeto], [descricaoProjeto], [dtInicio], [dtTermino], [nomeResposavel], [dtCadastro], [flagAtivo], [dtUltAlteracao], [idPessoaUltAlteracao]) VALUES (@nomeProjeto, @descricaoProjeto, @dtInicio, @dtTermino, @nomeResposavel, @dtCadastro, @flagAtivo, @dtUltAlteracao, @idPessoaUltAlteracao);
+SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeResposavel, dtCadastro, flagAtivo, dtUltAlteracao, idPessoaUltAlteracao FROM TB_Projetos WHERE (idProjeto = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomeProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@descricaoProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataTermino", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idPessoaResposavel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaResposavel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomeResposavel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@flagAtivo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataUltAlteracao", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataUltAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtUltAlteracao", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[TB_Projetos] SET [nomeProjeto] = @nomeProjeto, [descricaoProjeto] =" +
+                " @descricaoProjeto, [dtInicio] = @dtInicio, [dtTermino] = @dtTermino, [nomeRespo" +
+                "savel] = @nomeResposavel, [dtCadastro] = @dtCadastro, [flagAtivo] = @flagAtivo, " +
+                "[dtUltAlteracao] = @dtUltAlteracao, [idPessoaUltAlteracao] = @idPessoaUltAlterac" +
+                "ao WHERE (([idProjeto] = @Original_idProjeto) AND ((@IsNull_nomeProjeto = 1 AND " +
+                "[nomeProjeto] IS NULL) OR ([nomeProjeto] = @Original_nomeProjeto)) AND ((@IsNull" +
+                "_descricaoProjeto = 1 AND [descricaoProjeto] IS NULL) OR ([descricaoProjeto] = @" +
+                "Original_descricaoProjeto)) AND ((@IsNull_dtInicio = 1 AND [dtInicio] IS NULL) O" +
+                "R ([dtInicio] = @Original_dtInicio)) AND ((@IsNull_dtTermino = 1 AND [dtTermino]" +
+                " IS NULL) OR ([dtTermino] = @Original_dtTermino)) AND ((@IsNull_nomeResposavel =" +
+                " 1 AND [nomeResposavel] IS NULL) OR ([nomeResposavel] = @Original_nomeResposavel" +
+                ")) AND ((@IsNull_dtCadastro = 1 AND [dtCadastro] IS NULL) OR ([dtCadastro] = @Or" +
+                "iginal_dtCadastro)) AND ((@IsNull_flagAtivo = 1 AND [flagAtivo] IS NULL) OR ([fl" +
+                "agAtivo] = @Original_flagAtivo)) AND ((@IsNull_dtUltAlteracao = 1 AND [dtUltAlte" +
+                "racao] IS NULL) OR ([dtUltAlteracao] = @Original_dtUltAlteracao)) AND ((@IsNull_" +
+                "idPessoaUltAlteracao = 1 AND [idPessoaUltAlteracao] IS NULL) OR ([idPessoaUltAlt" +
+                "eracao] = @Original_idPessoaUltAlteracao)));\r\nSELECT idProjeto, nomeProjeto, des" +
+                "cricaoProjeto, dtInicio, dtTermino, nomeResposavel, dtCadastro, flagAtivo, dtUlt" +
+                "Alteracao, idPessoaUltAlteracao FROM TB_Projetos WHERE (idProjeto = @idProjeto)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomeProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@descricaoProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomeResposavel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@flagAtivo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtUltAlteracao", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nomeProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nomeProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_descricaoProjeto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_descricaoProjeto", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "descricaoProjeto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtInicio", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtInicio", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtInicio", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtTermino", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtTermino", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtTermino", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_nomeResposavel", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nomeResposavel", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nomeResposavel", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtCadastro", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtCadastro", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtCadastro", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_flagAtivo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_flagAtivo", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "flagAtivo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dtUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dtUltAlteracao", global::System.Data.SqlDbType.SmallDateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dtUltAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idPessoaUltAlteracao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idPessoaUltAlteracao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idProjeto", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "idProjeto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1128,9 +1214,9 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT idProjeto, nomeProjeto, descricaoProjeto, dataInicio, dataTermino, idPesso" +
-                "aResposavel, dataCadastro, flagAtivo, dataUltAlteracao, idPessoaUltAlteracao FRO" +
-                "M dbo.TB_Projetos";
+            this._commandCollection[0].CommandText = "SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeResposa" +
+                "vel, dtCadastro, flagAtivo, dtUltAlteracao, idPessoaUltAlteracao FROM dbo.TB_Pro" +
+                "jetos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -1190,8 +1276,102 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_idProjeto, string Original_nomeProjeto, string Original_descricaoProjeto, global::System.Nullable<global::System.DateTime> Original_dtInicio, global::System.Nullable<global::System.DateTime> Original_dtTermino, string Original_nomeResposavel, global::System.Nullable<global::System.DateTime> Original_dtCadastro, global::System.Nullable<bool> Original_flagAtivo, global::System.Nullable<global::System.DateTime> Original_dtUltAlteracao, global::System.Nullable<int> Original_idPessoaUltAlteracao) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_idProjeto));
+            if ((Original_nomeProjeto == null)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_nomeProjeto));
+            }
+            if ((Original_descricaoProjeto == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_descricaoProjeto));
+            }
+            if ((Original_dtInicio.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_dtInicio.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_dtTermino.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_dtTermino.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((Original_nomeResposavel == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_nomeResposavel));
+            }
+            if ((Original_dtCadastro.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((System.DateTime)(Original_dtCadastro.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_flagAtivo.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((bool)(Original_flagAtivo.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_dtUltAlteracao.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((System.DateTime)(Original_dtUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((Original_idPessoaUltAlteracao.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_idPessoaUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string nomeProjeto, string descricaoProjeto, global::System.Nullable<global::System.DateTime> dataInicio, global::System.Nullable<global::System.DateTime> dataTermino, global::System.Nullable<int> idPessoaResposavel, global::System.Nullable<global::System.DateTime> dataCadastro, global::System.Nullable<bool> flagAtivo, global::System.Nullable<global::System.DateTime> dataUltAlteracao, global::System.Nullable<int> idPessoaUltAlteracao) {
+        public virtual int Insert(string nomeProjeto, string descricaoProjeto, global::System.Nullable<global::System.DateTime> dtInicio, global::System.Nullable<global::System.DateTime> dtTermino, string nomeResposavel, global::System.Nullable<global::System.DateTime> dtCadastro, global::System.Nullable<bool> flagAtivo, global::System.Nullable<global::System.DateTime> dtUltAlteracao, global::System.Nullable<int> idPessoaUltAlteracao) {
             if ((nomeProjeto == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -1204,26 +1384,26 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(descricaoProjeto));
             }
-            if ((dataInicio.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(dataInicio.Value));
+            if ((dtInicio.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(dtInicio.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((dataTermino.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(dataTermino.Value));
+            if ((dtTermino.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(dtTermino.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((idPessoaResposavel.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(idPessoaResposavel.Value));
-            }
-            else {
+            if ((nomeResposavel == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((dataCadastro.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(dataCadastro.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(nomeResposavel));
+            }
+            if ((dtCadastro.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(dtCadastro.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
@@ -1234,8 +1414,8 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((dataUltAlteracao.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(dataUltAlteracao.Value));
+            if ((dtUltAlteracao.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((System.DateTime)(dtUltAlteracao.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
@@ -1260,6 +1440,202 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string nomeProjeto, 
+                    string descricaoProjeto, 
+                    global::System.Nullable<global::System.DateTime> dtInicio, 
+                    global::System.Nullable<global::System.DateTime> dtTermino, 
+                    string nomeResposavel, 
+                    global::System.Nullable<global::System.DateTime> dtCadastro, 
+                    global::System.Nullable<bool> flagAtivo, 
+                    global::System.Nullable<global::System.DateTime> dtUltAlteracao, 
+                    global::System.Nullable<int> idPessoaUltAlteracao, 
+                    int Original_idProjeto, 
+                    string Original_nomeProjeto, 
+                    string Original_descricaoProjeto, 
+                    global::System.Nullable<global::System.DateTime> Original_dtInicio, 
+                    global::System.Nullable<global::System.DateTime> Original_dtTermino, 
+                    string Original_nomeResposavel, 
+                    global::System.Nullable<global::System.DateTime> Original_dtCadastro, 
+                    global::System.Nullable<bool> Original_flagAtivo, 
+                    global::System.Nullable<global::System.DateTime> Original_dtUltAlteracao, 
+                    global::System.Nullable<int> Original_idPessoaUltAlteracao, 
+                    int idProjeto) {
+            if ((nomeProjeto == null)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(nomeProjeto));
+            }
+            if ((descricaoProjeto == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(descricaoProjeto));
+            }
+            if ((dtInicio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(dtInicio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((dtTermino.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(dtTermino.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((nomeResposavel == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(nomeResposavel));
+            }
+            if ((dtCadastro.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(dtCadastro.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((flagAtivo.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((bool)(flagAtivo.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((dtUltAlteracao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(dtUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((idPessoaUltAlteracao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(idPessoaUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_idProjeto));
+            if ((Original_nomeProjeto == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_nomeProjeto));
+            }
+            if ((Original_descricaoProjeto == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(Original_descricaoProjeto));
+            }
+            if ((Original_dtInicio.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_dtInicio.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((Original_dtTermino.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((System.DateTime)(Original_dtTermino.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((Original_nomeResposavel == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_nomeResposavel));
+            }
+            if ((Original_dtCadastro.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((System.DateTime)(Original_dtCadastro.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((Original_flagAtivo.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((bool)(Original_flagAtivo.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((Original_dtUltAlteracao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((System.DateTime)(Original_dtUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            if ((Original_idPessoaUltAlteracao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(Original_idPessoaUltAlteracao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(idProjeto));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string nomeProjeto, 
+                    string descricaoProjeto, 
+                    global::System.Nullable<global::System.DateTime> dtInicio, 
+                    global::System.Nullable<global::System.DateTime> dtTermino, 
+                    string nomeResposavel, 
+                    global::System.Nullable<global::System.DateTime> dtCadastro, 
+                    global::System.Nullable<bool> flagAtivo, 
+                    global::System.Nullable<global::System.DateTime> dtUltAlteracao, 
+                    global::System.Nullable<int> idPessoaUltAlteracao, 
+                    int Original_idProjeto, 
+                    string Original_nomeProjeto, 
+                    string Original_descricaoProjeto, 
+                    global::System.Nullable<global::System.DateTime> Original_dtInicio, 
+                    global::System.Nullable<global::System.DateTime> Original_dtTermino, 
+                    string Original_nomeResposavel, 
+                    global::System.Nullable<global::System.DateTime> Original_dtCadastro, 
+                    global::System.Nullable<bool> Original_flagAtivo, 
+                    global::System.Nullable<global::System.DateTime> Original_dtUltAlteracao, 
+                    global::System.Nullable<int> Original_idPessoaUltAlteracao) {
+            return this.Update(nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeResposavel, dtCadastro, flagAtivo, dtUltAlteracao, idPessoaUltAlteracao, Original_idProjeto, Original_nomeProjeto, Original_descricaoProjeto, Original_dtInicio, Original_dtTermino, Original_nomeResposavel, Original_dtCadastro, Original_flagAtivo, Original_dtUltAlteracao, Original_idPessoaUltAlteracao, Original_idProjeto);
         }
     }
     

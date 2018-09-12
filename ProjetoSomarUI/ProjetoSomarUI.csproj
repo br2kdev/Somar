@@ -170,6 +170,7 @@
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\Login.cs" />
+    <Compile Include="Modules\Print.cs" />
     <Compile Include="Modules\Sessao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,19 +179,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\FormVisualizador.cs">
+    <Compile Include="Relatorios\FormReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\FormVisualizador.Designer.cs">
-      <DependentUpon>FormVisualizador.cs</DependentUpon>
+    <Compile Include="Relatorios\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="SomarDatabaseDataSet1.cs">
-      <DependentUpon>SomarDatabaseDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="SomarDatabaseDataSet1.Designer.cs">
+    <Compile Include="SomarDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SomarDatabaseDataSet1.xsd</DependentUpon>
+      <DependentUpon>SomarDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
@@ -233,15 +231,17 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\FormVisualizador.resx">
-      <DependentUpon>FormVisualizador.cs</DependentUpon>
+    <EmbeddedResource Include="Relatorios\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelProjetos.rdlc" />
+    <EmbeddedResource Include="Relatorios\ReportProjetos.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\Somar.DTO.Models.ModelFrequencia.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -251,16 +251,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="SomarDatabaseDataSet1.xsc">
-      <DependentUpon>SomarDatabaseDataSet1.xsd</DependentUpon>
+    <None Include="SomarDatabaseDataSet.xsc">
+      <DependentUpon>SomarDatabaseDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SomarDatabaseDataSet1.xsd">
+    <None Include="SomarDatabaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SomarDatabaseDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>SomarDatabaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SomarDatabaseDataSet1.xss">
-      <DependentUpon>SomarDatabaseDataSet1.xsd</DependentUpon>
+    <None Include="SomarDatabaseDataSet.xss">
+      <DependentUpon>SomarDatabaseDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +274,14 @@
     <None Include="imgs\birthday_icon.png" />
     <None Include="imgs\icon_delete24x24.png" />
     <None Include="imgs\icon_cancel24x24.png" />
+    <None Include="imgs\icon_printer32x32.png" />
+    <None Include="imgs\icon_search32x32.png" />
+    <None Include="imgs\icon_reload32x32.png" />
+    <None Include="imgs\icon_reload232x32.png" />
+    <None Include="imgs\icon_add48x48.png" />
+    <None Include="imgs\icon_add2_32x32.png" />
+    <None Include="imgs\icon_back32x32.png" />
+    <None Include="imgs\icon_edit2_32x32.png" />
     <Content Include="imgs\others\imgSomar.jpg" />
     <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />
@@ -316,6 +324,9 @@
       <Project>{c2119b43-6a1d-415e-8ac0-b5a03bde3822}</Project>
       <Name>Somar.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

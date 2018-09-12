@@ -192,7 +192,7 @@ namespace ProjetoSomarUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Relatorios.FormVisualizador frm = new Relatorios.FormVisualizador();
+            Relatorios.FormReport frm = new Relatorios.FormReport();
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }

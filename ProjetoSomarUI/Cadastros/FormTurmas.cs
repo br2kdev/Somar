@@ -80,21 +80,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var param = new TurmaDTO();
 
-            if (cmbSearchType.SelectedItem.ToString() == "Nome do Turma")
-            {
-                param.nomeTurma = txtSearch.Text;
-            }
-            else if (cmbSearchType.SelectedItem.ToString() == "Código do Turma")
-            {
-                if (txtSearch.Text != string.Empty)
-                    param.idTurma = Convert.ToInt32(txtSearch.Text);
-            }
-
-            List<TurmaDTO> lista = new TurmaBLL().GetDataWithParam(param);
-
-            GridViewDataBind(lista);
         }
 
         private void btnAll_Click(object sender, EventArgs e)
