@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Somar.Shared
 {
-    public class GridViewControl
+    public class GridViewControlUtils
     {
         public Dictionary<string, string> GetFields<T>(T className)
         {

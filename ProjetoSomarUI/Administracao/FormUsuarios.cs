@@ -219,7 +219,7 @@ namespace ProjetoSomarUI.Administracao
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new UsuarioDTO());
+            var fields = new GridViewControlUtils().GetFields(new UsuarioDTO());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -316,13 +316,13 @@ namespace ProjetoSomarUI.Administracao
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Hand;
         }
 
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Default;
         }
 

@@ -281,7 +281,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new ModelMatricula());
+            var fields = new GridViewControlUtils().GetFields(new ModelMatricula());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -358,13 +358,13 @@ namespace ProjetoSomarUI.Cadastros
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Hand;
         }
 
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Default;
         }
 
@@ -388,7 +388,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields2 = new GridViewControl().GetFields(new MatriculaDTO());
+            var fields2 = new GridViewControlUtils().GetFields(new MatriculaDTO());
 
             // Cancel Image
             DataGridViewImageColumn img2 = new DataGridViewImageColumn();

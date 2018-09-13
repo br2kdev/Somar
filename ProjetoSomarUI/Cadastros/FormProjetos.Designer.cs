@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelConsulta = new System.Windows.Forms.Panel();
-            this.panelMessage = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEditar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -56,7 +58,9 @@
             this.lblStatus = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
@@ -70,31 +74,20 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnVoltar1 = new System.Windows.Forms.Button();
-            this.btnGravar = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.panelConsulta.SuspendLayout();
-            this.panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.pnlTempoProjeto.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelConsulta
             // 
-            this.panelConsulta.Controls.Add(this.panelMessage);
-            this.panelConsulta.Controls.Add(this.dataGridView1);
+            this.panelConsulta.Controls.Add(this.Grid);
             this.panelConsulta.Controls.Add(this.groupBox1);
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
@@ -102,58 +95,14 @@
             this.panelConsulta.Size = new System.Drawing.Size(1005, 637);
             this.panelConsulta.TabIndex = 39;
             // 
-            // panelMessage
+            // Grid
             // 
-            this.panelMessage.Controls.Add(this.lblMessage);
-            this.panelMessage.Location = new System.Drawing.Point(14, 112);
-            this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(979, 63);
-            this.panelMessage.TabIndex = 45;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(9, 27);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(28, 13);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Text";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 97);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.RowTemplate.ReadOnly = true;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
-            this.dataGridView1.TabIndex = 43;
+            this.Grid.ControlHeight = 524;
+            this.Grid.ControlWidth = 979;
+            this.Grid.Location = new System.Drawing.Point(11, 91);
+            this.Grid.Name = "Grid";
+            this.Grid.Size = new System.Drawing.Size(989, 536);
+            this.Grid.TabIndex = 46;
             // 
             // groupBox1
             // 
@@ -173,6 +122,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.Location = new System.Drawing.Point(796, 19);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint.TabIndex = 36;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // cmbSearchType
             // 
             this.cmbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -186,6 +147,48 @@
             this.cmbSearchType.Size = new System.Drawing.Size(157, 26);
             this.cmbSearchType.TabIndex = 35;
             this.cmbSearchType.SelectedIndexChanged += new System.EventHandler(this.cmbSearchType_SelectedIndexChanged);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
+            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNovo.FlatAppearance.BorderSize = 2;
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnNovo.Location = new System.Drawing.Point(896, 12);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(70, 60);
+            this.btnNovo.TabIndex = 28;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
+            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAll.Location = new System.Drawing.Point(698, 19);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(58, 46);
+            this.btnAll.TabIndex = 34;
+            this.btnAll.UseVisualStyleBackColor = false;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Location = new System.Drawing.Point(632, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(61, 48);
+            this.btnSearch.TabIndex = 33;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -234,6 +237,30 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(972, 51);
             this.panel1.TabIndex = 64;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
+            this.pictureBox1.TabIndex = 78;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(656, 3);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(81, 43);
+            this.btnEditar.TabIndex = 68;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // label8
             // 
@@ -426,6 +453,20 @@
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
             // 
+            // btnVoltar1
+            // 
+            this.btnVoltar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
+            this.btnVoltar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoltar1.Location = new System.Drawing.Point(393, 11);
+            this.btnVoltar1.Name = "btnVoltar1";
+            this.btnVoltar1.Size = new System.Drawing.Size(84, 45);
+            this.btnVoltar1.TabIndex = 69;
+            this.btnVoltar1.Text = "Voltar";
+            this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar1.UseVisualStyleBackColor = true;
+            this.btnVoltar1.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // txtEditMode
             // 
             this.txtEditMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
@@ -434,6 +475,22 @@
             this.txtEditMode.Size = new System.Drawing.Size(100, 26);
             this.txtEditMode.TabIndex = 68;
             this.txtEditMode.Visible = false;
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGravar.Image = global::ProjetoSomarUI.Properties.Resources.icon_save32x32;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGravar.Location = new System.Drawing.Point(566, 11);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(90, 45);
+            this.btnGravar.TabIndex = 6;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Visible = false;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // groupBox3
             // 
@@ -560,127 +617,14 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Projeto:";
             // 
-            // printDocument1
-            // 
-            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 35);
-            this.pictureBox1.TabIndex = 78;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(656, 3);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(81, 43);
-            this.btnEditar.TabIndex = 68;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditar.UseVisualStyleBackColor = true;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnVoltar1
-            // 
-            this.btnVoltar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
-            this.btnVoltar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoltar1.Location = new System.Drawing.Point(393, 11);
-            this.btnVoltar1.Name = "btnVoltar1";
-            this.btnVoltar1.Size = new System.Drawing.Size(84, 45);
-            this.btnVoltar1.TabIndex = 69;
-            this.btnVoltar1.Text = "Voltar";
-            this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar1.UseVisualStyleBackColor = true;
-            this.btnVoltar1.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnGravar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGravar.Image = global::ProjetoSomarUI.Properties.Resources.icon_save32x32;
-            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGravar.Location = new System.Drawing.Point(566, 11);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(90, 45);
-            this.btnGravar.TabIndex = 6;
-            this.btnGravar.Text = "Gravar";
-            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Visible = false;
-            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
-            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrint.Location = new System.Drawing.Point(796, 19);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(58, 46);
-            this.btnPrint.TabIndex = 36;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
-            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNovo.FlatAppearance.BorderSize = 2;
-            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnNovo.Location = new System.Drawing.Point(896, 12);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(70, 60);
-            this.btnNovo.TabIndex = 28;
-            this.btnNovo.UseVisualStyleBackColor = false;
-            this.btnNovo.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnAll
-            // 
-            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
-            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAll.Location = new System.Drawing.Point(698, 19);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(58, 46);
-            this.btnAll.TabIndex = 34;
-            this.btnAll.UseVisualStyleBackColor = false;
-            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(632, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(61, 48);
-            this.btnSearch.TabIndex = 33;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // FormProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1005, 637);
-            this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -691,14 +635,12 @@
             this.Text = "PROJETOS";
             this.Load += new System.EventHandler(this.FormProjetos_Load);
             this.panelConsulta.ResumeLayout(false);
-            this.panelMessage.ResumeLayout(false);
-            this.panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEdit.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.pnlTempoProjeto.ResumeLayout(false);
@@ -707,7 +649,6 @@
             this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -724,9 +665,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelEdit;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label8;
@@ -762,5 +700,6 @@
         private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.Button btnPrint;
         private System.Drawing.Printing.PrintDocument printDocument1;
+        private Controls.GridViewControl Grid;
     }
 }

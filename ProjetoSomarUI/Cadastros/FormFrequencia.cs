@@ -285,7 +285,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new ModelFrequencia());
+            var fields = new GridViewControlUtils().GetFields(new ModelFrequencia());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -360,13 +360,13 @@ namespace ProjetoSomarUI.Cadastros
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Hand;
         }
 
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Default;
         }
 
@@ -393,7 +393,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
             
-            var fields2 = new GridViewControl().GetFields(new ModelListaPresenca());
+            var fields2 = new GridViewControlUtils().GetFields(new ModelListaPresenca());
 
             // Edit Image
             DataGridViewImageColumn img2 = new DataGridViewImageColumn();
@@ -545,13 +545,13 @@ namespace ProjetoSomarUI.Cadastros
 
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView2.Cursor = Cursors.Hand;
         }
 
         private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView2.Cursor = Cursors.Default;
         }
 

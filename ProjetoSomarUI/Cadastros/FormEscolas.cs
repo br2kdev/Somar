@@ -53,7 +53,7 @@ namespace ProjetoSomarUI.Cadastros
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
-            var fields = new GridViewControl().GetFields(new EscolaDTO());
+            var fields = new GridViewControlUtils().GetFields(new EscolaDTO());
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
@@ -371,13 +371,13 @@ namespace ProjetoSomarUI.Cadastros
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Hand;
         }
 
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControl.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
                 dataGridView1.Cursor = Cursors.Default;
         }
 

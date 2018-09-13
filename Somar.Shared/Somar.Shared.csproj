@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="Enums.cs" />
     <Compile Include="Functions.cs" />
-    <Compile Include="GridViewControl.cs" />
+    <Compile Include="GridViewControlUtils.cs" />
     <Compile Include="Hardworker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

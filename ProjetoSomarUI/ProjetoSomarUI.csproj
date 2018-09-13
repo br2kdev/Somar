@@ -154,6 +154,12 @@
     <Compile Include="Cadastros\FormTurmas.Designer.cs">
       <DependentUpon>FormTurmas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\GridViewControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\GridViewControl.Designer.cs">
+      <DependentUpon>GridViewControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\FormQuadroAnalitico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\FormQuadroAnalitico.Designer.cs">
+      <DependentUpon>FormQuadroAnalitico.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\FormReport.cs">
       <SubType>Form</SubType>
@@ -220,6 +232,9 @@
     <EmbeddedResource Include="Cadastros\FormTurmas.resx">
       <DependentUpon>FormTurmas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\GridViewControl.resx">
+      <DependentUpon>GridViewControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +245,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\FormQuadroAnalitico.resx">
+      <DependentUpon>FormQuadroAnalitico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>

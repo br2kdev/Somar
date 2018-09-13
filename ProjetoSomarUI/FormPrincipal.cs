@@ -136,6 +136,13 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Relatorios.FormQuadroAnalitico frm = new Relatorios.FormQuadroAnalitico();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
         #endregion
 
         #region Load Widgets
@@ -198,8 +205,9 @@ namespace ProjetoSomarUI
         }
 
 
+
         #endregion
 
-    
+
     }
 }
