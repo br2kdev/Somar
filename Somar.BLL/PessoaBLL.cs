@@ -47,7 +47,7 @@ namespace Somar.BLL
                 throw new Exception("Ocorreu um erro!");
         }
 
-        public int SaveProject(PessoaDTO item)
+        public int SavePessoa(PessoaDTO item)
         {
             PessoaDAL cmd = new PessoaDAL();
             EnderecoDAL cmdEndereco = new EnderecoDAL();

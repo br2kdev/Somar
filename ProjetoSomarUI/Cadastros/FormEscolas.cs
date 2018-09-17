@@ -19,7 +19,6 @@ namespace ProjetoSomarUI.Cadastros
         {
             InitializeComponent();
             InitializeForm();
-            InitializeGridView();
         }
 
         private void InitializeForm()
@@ -27,7 +26,14 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
 
+            cmbSearchType.Items.Add("Nome da Escola");
+            cmbSearchType.Items.Add("Código da Escola");
+
+            ClearForm1();
+
             Load += new EventHandler(FormEscolas_Load);
+
+            InitializeGridView();
         }
 
         private void FormEscolas_Load(object sender, EventArgs e)
@@ -105,7 +111,7 @@ namespace ProjetoSomarUI.Cadastros
 
             txtCEP.Text = string.Empty;
             txtIdEndereco.Text = string.Empty;
-
+            
             LimpaEndereco();
 
             txtdtCadastro.Text = string.Empty;
@@ -121,10 +127,8 @@ namespace ProjetoSomarUI.Cadastros
             panelConsulta.Visible = false;
 
             ClearForm2();
+            ControlFormEdit(true);
 
-            cmbStatus.Enabled = true;
-
-            btnGravar.Visible = true;
             btnVoltar1.Visible = true;
             btnVoltar1.Text = "Voltar";
         }
@@ -167,12 +171,13 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnAll_Click(object sender, EventArgs e)
         {
+            ClearForm1();
+
             var param = new EscolaDTO();
 
             List<EscolaDTO> lista = new EscolaBLL().GetDataWithParam(param);
 
             GridViewDataBind(lista);
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -247,7 +252,7 @@ namespace ProjetoSomarUI.Cadastros
             param.nomeEscola = txtNome.Text;
             param.observacoes = txtObservacoes.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
-            param.idEndereco = 
+            param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
 
             // *********************************************

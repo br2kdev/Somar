@@ -12,6 +12,7 @@ using Somar.DTO;
 using System.Drawing.Printing;
 using System.Collections;
 using ProjetoSomarUI.Modules;
+using DGVPrinterHelper;
 
 namespace ProjetoSomarUI.Controls
 {
@@ -88,9 +89,8 @@ namespace ProjetoSomarUI.Controls
         {
             InitializeComponent();
 
-            this.printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
-            this.printDocument1.BeginPrint += new PrintEventHandler(this.printDocument1_BeginPrint);
-            this.printDocument1.PrintPage += new PrintPageEventHandler(this.printDocument1_PrintPage);
+            //this.printDocument1.PrintPage += new PrintPageEventHandler(this.printDocument1_PrintPage);
+            //this.printDocument1.BeginPrint += new PrintEventHandler(this.printDocument1_BeginPrint);
         }
 
         #region Gridview Controls
@@ -179,32 +179,6 @@ namespace ProjetoSomarUI.Controls
         }
         */
 
-        public void btnExport()
-        {
-            Print.ShowPrintPreview(printDocument1);
-
-            /*
-            //Open the print dialog
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printDocument1;
-            printDialog.UseEXDialog = true;
-
-            //Get the document
-            if (DialogResult.OK == printDialog.ShowDialog())
-            {
-                printDocument1.DocumentName = "Test Page Print";
-                printDocument1.Print();
-            }
-            */
-
-            /*
-            //Open the print preview dialog
-            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-            objPPdialog.Document = printDocument1;
-            objPPdialog.ShowDialog();
-            */
-        }
-
         public void GridViewDataBind(DataTable result)
         {
             if (result.Rows.Count == 0)
@@ -221,7 +195,7 @@ namespace ProjetoSomarUI.Controls
                 dataGridView1.DataSource = result;
             }
         }
-        
+
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
@@ -266,18 +240,152 @@ namespace ProjetoSomarUI.Controls
 
         #endregion
 
+        public void btnExport()
+        {
+            printDGVPrinter();
+
+            //printWithResize();
+
+            //Print.ShowPrintPreview(printDocument1);
+
+            //printDGVPrinter();
+
+
+            /*
+            //Open the print dialog
+            PrintDialog printDialog = new PrintDialog();
+            printDialog.Document = printDocument1;
+            printDialog.UseEXDialog = true;
+
+            //Get the document
+            if (DialogResult.OK == printDialog.ShowDialog())
+            {
+                printDocument1.DocumentName = "Test Page Print";
+                printDocument1.Print();
+            }
+            */
+
+            /*
+            //Open the print preview dialog
+            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+            objPPdialog.Document = printDocument1;
+            objPPdialog.ShowDialog();
+            */
+        }
+
+        public void printDGVPrinter()
+        {
+            DGVPrinter printer = new DGVPrinter();
+
+            printer.Title = "Projetos";
+            printer.SubTitle = " " + DateTime.Now.ToShortDateString();
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+
+            printer.PorportionalColumns = true;
+            //printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.Porportional;
+            printer.ColumnWidth = DGVPrinter.ColumnWidthSetting.DataWidth;
+            printer.RowHeight = DGVPrinter.RowHeightSetting.CellHeight;
+
+            //Hide Columns
+            printer.HideColumns.Add("Image");
+
+            printer.HeaderCellAlignment = StringAlignment.Center;
+            printer.Footer = "Somar - ";
+            printer.FooterSpacing = 15;
+
+            printer.HideColumns.Add(" ");
+
+            printer.CellFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.NoWrap;
+            printer.PrintSettings.DefaultPageSettings.PaperSize = new PaperSize("210 x 297 mm", 800, 800);
+            printer.PrintSettings.DefaultPageSettings.Landscape = true;
+            //printer.PrintSettings.DefaultPageSettings. = true;
+            printer.PrintSettings.DefaultPageSettings.Margins = new Margins(3, 3, 3, 3);
+
+            //printer.PrintDataGridView(dataGridView1);
+            printer.PrintPreviewDataGridView(dataGridView1);
+
+        }
+
+        /*
+         
+        public void printWithResize()
+        {
+            Font holdFont = new Font(dataGridView1.Font.Name, dataGridView1.Font.Size, FontStyle.Regular);
+            dataGridView1.Font = new Font("Arial", 6, FontStyle.Regular);
+            dataGridView1.AutoResizeColumns();
+            Application.DoEvents();
+
+            DGVPrinter printer = new DGVPrinter();
+
+            printer.PrintMargins.Left = 6;
+            printer.PrintMargins.Right = 6;
+            printer.PrintMargins.Top = 12;
+            printer.PrintMargins.Bottom = 12;
+            printer.PorportionalColumns = true;
+            
+            printer.HideColumns.Add("Image");
+
+            printer.CellFormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.NoWrap;
+
+            for (int i = 0; i < dataGridView1.Columns.Count; ++i)
+            {
+                if (dataGridView1.Columns[i].Visible == false) continue;
+                printer.ColumnWidths[dataGridView1.Columns[i].Name] = getwidestColumn(i);
+            }
+
+            printer.PageNumbers = true;
+
+            // Page Settings
+            //printer.PrintSettings.DefaultPageSettings.PaperSize = new PaperSize("210 x 297 mm", 800, 800);
+            //printer.PrintSettings.DefaultPageSettings.Landscape = true;
+            //printer.PrintSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom", Me.Height, (Me.Width + 47))
+            //printer.PrintSettings.DefaultPageSettings.Margins = new Margins(3, 3, 3, 3);
+            //printer.PrintSettings.DefaultPageSettings.PaperSize.RawKind = 10;
+            //printer.PrintAction = Printing.PrintAction.PrintToPreview    'PrintForm1.PrintAction = Printing.PrintAction.PrintToPrinter
+
+            printer.PrintPreviewDataGridView(dataGridView1);
+            //printer.PrintDataGridView(dataGridView1);
+
+            dataGridView1.Font = holdFont;
+            holdFont.Dispose();
+            dataGridView1.AutoResizeColumns();
+        }
+
+
+
+        
+        private float getwidestColumn(int column)
+        {
+            float widest = -1;
+            Font gridfont = dataGridView1.Font;
+            Graphics g = dataGridView1.CreateGraphics();
+
+            foreach (DataGridViewRow dgvr in dataGridView1.Rows)
+            {
+                if (dgvr.Visible == false) continue;
+                string s = dgvr.Cells[column].EditedFormattedValue.ToString();
+                SizeF x = g.MeasureString(s, gridfont);
+                widest = (x.Width > widest) ? x.Width : widest;
+            }
+
+            g.Dispose();
+            return (widest + 20); // extra needed
+        }
+
         #region Begin Print Event Handler
         /// <summary>
         /// Handles the begin print event of print document
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        private void printDocument1_BeginPrint(object sender, PrintEventArgs e)
         {
             try
             {
                 strFormat = new StringFormat();
-                strFormat.Alignment = StringAlignment.Near;
+                strFormat.Alignment = StringAlignment.Center;
                 strFormat.LineAlignment = StringAlignment.Center;
                 strFormat.Trimming = StringTrimming.EllipsisCharacter;
 
@@ -290,6 +398,7 @@ namespace ProjetoSomarUI.Controls
 
                 // Calculating Total Widths
                 iTotalWidth = 0;
+
                 foreach (DataGridViewColumn dgvGridCol in dataGridView1.Columns)
                 {
                     iTotalWidth += dgvGridCol.Width;
@@ -308,7 +417,7 @@ namespace ProjetoSomarUI.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void printDocument1_PrintPage1(object sender, PrintPageEventArgs e)
         {
 
             string reportName = "Projetos";
@@ -340,6 +449,7 @@ namespace ProjetoSomarUI.Controls
                         iLeftMargin += iTmpWidth;
                     }
                 }
+
                 //Loop till all the grid rows not get printed
                 while (iRow <= dataGridView1.Rows.Count - 1)
                 {
@@ -365,11 +475,13 @@ namespace ProjetoSomarUI.Controls
                             e.Graphics.DrawString(reportName, new Font(dataGridView1.Font, FontStyle.Bold), Brushes.Black, e.MarginBounds.Left, e.MarginBounds.Top - e.Graphics.MeasureString(reportName, new Font(dataGridView1.Font, FontStyle.Bold), e.MarginBounds.Width).Height - 13);
 
                             String strDate = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
+                            
                             //Draw Date
                             e.Graphics.DrawString(strDate, new Font(dataGridView1.Font, FontStyle.Bold), Brushes.Black, e.MarginBounds.Left + (e.MarginBounds.Width - e.Graphics.MeasureString(strDate, new Font(dataGridView1.Font, FontStyle.Bold), e.MarginBounds.Width).Width), e.MarginBounds.Top - e.Graphics.MeasureString(reportName, new Font(new Font(dataGridView1.Font, FontStyle.Bold), FontStyle.Bold), e.MarginBounds.Width).Height - 13);
 
                             //Draw Columns                 
                             iTopMargin = e.MarginBounds.Top;
+
                             foreach (DataGridViewColumn GridCol in dataGridView1.Columns)
                             {
                                 e.Graphics.FillRectangle(new SolidBrush(Color.LightGray), new Rectangle((int)arrColumnLefts[iCount], iTopMargin, (int)arrColumnWidths[iCount], iHeaderHeight));
@@ -382,6 +494,7 @@ namespace ProjetoSomarUI.Controls
                         }
 
                         iCount = 0;
+
                         //Draw Columns Contents                
                         foreach (DataGridViewCell Cel in GridRow.Cells)
                         {
@@ -412,6 +525,9 @@ namespace ProjetoSomarUI.Controls
                 MessageBox.Show(exc.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         #endregion
+        */
+
     }
 }

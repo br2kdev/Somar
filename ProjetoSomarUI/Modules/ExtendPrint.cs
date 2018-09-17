@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Modules
 {
-    public static class Print
+    public static class ExtendPrint
     {
         public static void ShowPrintPreview(PrintDocument printDocument1)
         {
@@ -28,6 +28,7 @@ namespace ProjetoSomarUI.Modules
 
             //Open the print preview dialog
             PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
+
             objPPdialog.Document = printDocument1;
             objPPdialog.ShowDialog();
         }

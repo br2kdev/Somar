@@ -235,6 +235,9 @@ CREATE TABLE TB_TipoPessoas
 -- ******************************************************* 
 -- FINAL - TABELAS DE DOMÍNIO
 -- ******************************************************* 
+--select * from TB_Pessoas
+alter table TB_Pessoas alter column arrayFoto NVARCHAR(4000)
+
 CREATE TABLE TB_Pessoas
 (
 	idPessoa				INT IDENTITY(1,1) PRIMARY KEY,
@@ -249,6 +252,7 @@ CREATE TABLE TB_Pessoas
 	idEndereco				INT,
 	idContato				INT,
 	idEscola				INT,
+	arrayFoto				NVARCHAR(MAX),
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,
@@ -299,6 +303,8 @@ CREATE TABLE TB_PessoaDV
 	flagMarcador	BIT
 )
 
+--truncate table TB_Escolas
+--drop table TB_Escolas
 CREATE TABLE TB_Escolas
 (
 	idEscola				INT IDENTITY(1,1) PRIMARY KEY,
@@ -307,7 +313,7 @@ CREATE TABLE TB_Escolas
 	idEndereco				INT,
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
-	dataUltAlteracao		SMALLDATETIME,
+	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
 

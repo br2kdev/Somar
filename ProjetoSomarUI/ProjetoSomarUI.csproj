@@ -175,9 +175,12 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Login.cs" />
-    <Compile Include="Modules\Print.cs" />
-    <Compile Include="Modules\Sessao.cs" />
+    <Compile Include="Modules\ExtendDataGridPrinter.cs" />
+    <Compile Include="Modules\ExtendDGVPrinter.cs" />
+    <Compile Include="Modules\ExtendBitmap.cs" />
+    <Compile Include="Modules\ExtendLogin.cs" />
+    <Compile Include="Modules\ExtendPrint.cs" />
+    <Compile Include="Modules\ExtendSessao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

@@ -59,6 +59,7 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnFoto = new System.Windows.Forms.Button();
             this.cmbEscola = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.picImage = new System.Windows.Forms.PictureBox();
@@ -472,6 +473,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.btnFoto);
             this.panel3.Controls.Add(this.cmbEscola);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.picImage);
@@ -502,6 +504,17 @@
             this.panel3.Size = new System.Drawing.Size(984, 536);
             this.panel3.TabIndex = 66;
             // 
+            // btnFoto
+            // 
+            this.btnFoto.Location = new System.Drawing.Point(731, 143);
+            this.btnFoto.Name = "btnFoto";
+            this.btnFoto.Size = new System.Drawing.Size(47, 34);
+            this.btnFoto.TabIndex = 70;
+            this.btnFoto.Text = "Foto";
+            this.btnFoto.UseVisualStyleBackColor = true;
+            this.btnFoto.Visible = false;
+            this.btnFoto.Click += new System.EventHandler(this.btnFoto_Click);
+            // 
             // cmbEscola
             // 
             this.cmbEscola.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -527,6 +540,7 @@
             // 
             this.picImage.BackColor = System.Drawing.Color.Gainsboro;
             this.picImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picImage.Enabled = false;
             this.picImage.Location = new System.Drawing.Point(779, 11);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(184, 165);
@@ -571,7 +585,7 @@
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
-            this.panel2.Location = new System.Drawing.Point(0, 405);
+            this.panel2.Location = new System.Drawing.Point(0, 408);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(980, 64);
             this.panel2.TabIndex = 79;
@@ -624,10 +638,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 164);
+            this.tabControl1.Location = new System.Drawing.Point(3, 169);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(987, 236);
+            this.tabControl1.Size = new System.Drawing.Size(977, 236);
             this.tabControl1.TabIndex = 104;
             // 
             // tabPage2
@@ -653,7 +667,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(979, 206);
+            this.tabPage2.Size = new System.Drawing.Size(969, 206);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereço";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -865,7 +879,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(979, 206);
+            this.tabPage1.Size = new System.Drawing.Size(969, 206);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contatos";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1042,7 +1056,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(979, 206);
+            this.tabPage3.Size = new System.Drawing.Size(969, 206);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1321,5 +1335,6 @@
         private System.Windows.Forms.PictureBox picImage;
         private System.Windows.Forms.ComboBox cmbEscola;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnFoto;
     }
 }

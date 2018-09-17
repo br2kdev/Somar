@@ -1,9 +1,12 @@
-﻿using Somar.BLL;
+﻿using ProjetoSomarUI.Modules;
+using Somar.BLL;
 using Somar.DTO;
 using Somar.Shared;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Cadastros
@@ -172,8 +175,6 @@ namespace ProjetoSomarUI.Cadastros
             GridViewDataBind(lista);
         }
 
-        
-
         public void CarregaComboGenero()
         {
             List<GenericDTO> lista = new GenericBLL().GetAllData(new GenericDTO() { dominio = domains.Genero });
@@ -196,9 +197,16 @@ namespace ProjetoSomarUI.Cadastros
         {
             List<EscolaDTO> lista = new EscolaBLL().GetAllData();
 
-            cmbEscola.DisplayMember = "nomeEscola";
-            cmbEscola.ValueMember = "idEscola";
-            cmbEscola.DataSource = lista;
+            lista.Insert(0, new EscolaDTO() { idEscola = 0, nomeEscola = "Selecione..." });
+
+            this.cmbEscola.DataSource = null;
+            this.cmbEscola.Items.Clear();
+
+            this.cmbEscola.DisplayMember = "nomeEscola";
+            this.cmbEscola.ValueMember = "idEscola";
+            this.cmbEscola.DataSource = lista;
+
+            this.cmbEscola.SelectedValue = 0;
         }
 
         public void CarregaDetalhes(int idPessoa)
@@ -227,7 +235,29 @@ namespace ProjetoSomarUI.Cadastros
 
             cmbGenero.SelectedValue = param.idGenero;
             cmbTipoPessoa.SelectedValue = param.idTipoPessoa;
+            cmbEscola.SelectedValue = param.idEscola;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
+
+            // ************************************************** //
+            // Fotos
+            // ************************************************** //
+            if (string.IsNullOrEmpty(param.fotoBase64))
+            {
+                picImage.Image = null;
+            }
+            else
+            {
+                Image newImage;
+                try
+                {
+                    newImage = ExtendBitmap.Base64ToImage(param.fotoBase64);
+                    picImage.Image = newImage;
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
 
             // ************************************************** //
             // Preenche Tela de Detalhes
@@ -311,6 +341,8 @@ namespace ProjetoSomarUI.Cadastros
             txtdtAtivacao.Text = string.Empty;
             txtdtNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
+
+            picImage.Image = null;
 
             txtCEP.Text = string.Empty;
             txtIdEndereco.Text = string.Empty;
@@ -396,7 +428,7 @@ namespace ProjetoSomarUI.Cadastros
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                     //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
                 }
-                else if(item.Key == "descTipoPessoa" || item.Key == "descGenero")
+                else if (item.Key == "descTipoPessoa" || item.Key == "descGenero")
                     dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
 
                 this.dataGridView1.Columns.Add(dt);
@@ -525,6 +557,8 @@ namespace ProjetoSomarUI.Cadastros
             cmbEscola.Enabled = flagEnable;
             txtdtAtivacao.Enabled = flagEnable;
 
+            picImage.Enabled = flagEnable;
+
             //Endereço
             txtCEP.Enabled = flagEnable;
             txtLogradouro.Enabled = false;
@@ -649,6 +683,24 @@ namespace ProjetoSomarUI.Cadastros
             param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);
             param.idContato = string.IsNullOrEmpty(txtIdContato.Text) ? 0 : Convert.ToInt32(txtIdContato.Text);
             param.idEscola = Convert.ToInt32(cmbEscola.SelectedValue);
+
+            // *********************************************
+            // FOTO
+            // *********************************************
+
+            if (picImage.Image != null)
+            {
+                /*
+                ImageConverter _imageConverter = new ImageConverter();
+                byte[] xByte = (byte[])_imageConverter.ConvertTo(picImage.Image, typeof(byte[]));
+                param.arrayFoto = xByte;
+                */
+
+                var img = ExtendBitmap.ImageToBase64(picImage.Image, ImageFormat.Jpeg);
+
+                param.fotoBase64 = img;
+            }
+
             // *********************************************
             // ENDEREÇO
             // *********************************************
@@ -685,7 +737,7 @@ namespace ProjetoSomarUI.Cadastros
             //param.idPessoaResposavel = //txtResponsavel.Text;
 
             PessoaBLL bus = new PessoaBLL();
-            var idPessoa = bus.SaveProject(param);
+            var idPessoa = bus.SavePessoa(param);
 
             if (idPessoa > 0)
             {
@@ -741,12 +793,25 @@ namespace ProjetoSomarUI.Cadastros
 
             if (fileOpen.ShowDialog() == DialogResult.OK)
             {
-                picImage.Image = Image.FromFile(fileOpen.FileName);
+                var OriginalImage = Image.FromFile(fileOpen.FileName);
+
+                Bitmap bmpOriginal = (Bitmap)OriginalImage;
+
+                var newImage = ExtendBitmap.GetResizedImage(bmpOriginal, 184, 165);
+
+                //picImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                picImage.SizeMode = PictureBoxSizeMode.CenterImage;
+                picImage.Image = (Image)newImage;
             }
+
             fileOpen.Dispose();
         }
 
         #endregion
 
+        private void btnFoto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -73,7 +73,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.panelConsulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
@@ -699,7 +698,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.Button btnPrint;
-        private System.Drawing.Printing.PrintDocument printDocument1;
         private Controls.GridViewControl Grid;
     }
 }

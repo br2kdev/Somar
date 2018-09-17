@@ -71,6 +71,23 @@ namespace Somar.BLL
             }
             else
             {
+
+                // *********************************************** //
+                // ENDEREÇO
+                // *********************************************** //
+                if (item.idEndereco == 0)
+                {
+                    result = cmdEndereco.InsertData(item.endereco);
+
+                    item.idEndereco = result;
+                }
+                else
+                {
+                    item.endereco.idEndereco = item.idEndereco;
+
+                    result = cmdEndereco.UpdateData(item.endereco);
+                }
+
                 result = cmd.UpdateData(item);
 
                 if (result != 0)
