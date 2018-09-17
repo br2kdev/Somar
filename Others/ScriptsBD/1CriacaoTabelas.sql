@@ -252,7 +252,7 @@ CREATE TABLE TB_Pessoas
 	idEndereco				INT,
 	idContato				INT,
 	idEscola				INT,
-	arrayFoto				NVARCHAR(MAX),
+	fotoBase64				NVARCHAR(MAX),
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,

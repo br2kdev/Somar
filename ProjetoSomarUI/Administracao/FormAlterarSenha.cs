@@ -1,6 +1,5 @@
 ﻿using Somar.BLL;
 using Somar.DTO;
-using Somar.Shared;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,48 +10,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProjetoSomarUI.Cadastros
+namespace ProjetoSomarUI.Administracao
 {
-    public partial class FormAlterarSenha : Form
+    public partial class FormAlterarSenha : FormBase
     {
         public FormAlterarSenha()
         {
             InitializeComponent();
-            ControlFormEdit(true);
+
+            Load += new EventHandler(FormAlterarSenha_Load);
         }
 
-        public void ControlFormEdit(bool flagEnable)
+        private void FormAlterarSenha_Load(object sender, EventArgs e)
         {
-            txtEditMode.Text = flagEnable.ToString();
+            txtUsuario.Text = Sessao.Usuario.login;
 
-            btnVoltar1.Text = "Voltar";
-            txtSenha.Enabled = flagEnable;
+            txtUsuario.Enabled = false;
 
-            //Footer
-            txtNomeAlteracao.Enabled = false;
-            txtDataAlteracao.Enabled = false;
-            txtdtCadastro.Enabled = false;
-
-            txtSenha.BackColor = Color.WhiteSmoke;
-            txtdtCadastro.BackColor = Color.WhiteSmoke;
-            txtNomeAlteracao.BackColor = Color.WhiteSmoke;
-            txtDataAlteracao.BackColor = Color.WhiteSmoke;
-
-            if (flagEnable)
-            {
-                btnGravar.Visible = true;
-                btnVoltar1.Visible = true;
-                txtSenha.Focus();
-
-            }
-            else
-            {
-                btnGravar.Visible = false;
-            }
         }
 
-
-        private void btnVoltar1_Click(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
             Close();
         }
@@ -60,7 +37,6 @@ namespace ProjetoSomarUI.Cadastros
         private void btnGravar_Click(object sender, EventArgs e)
         {
             UsuarioDTO param = new UsuarioDTO();
-
 
             if (txtSenha.Text == txtConfirmarSenha.Text)
             {
@@ -86,8 +62,5 @@ namespace ProjetoSomarUI.Cadastros
                 throw new Exception("Erro na alteração da senha");
 
         }
-
-
-
     }
 }

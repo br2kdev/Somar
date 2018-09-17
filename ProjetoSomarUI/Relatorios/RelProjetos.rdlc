@@ -76,16 +76,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.70624cm</Width>
+                  <Width>1.28291cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>12.47479cm</Width>
+                  <Width>7.71229cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.02917cm</Width>
+                  <Width>6.69714cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.16145cm</Width>
+                  <Width>2.42063cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.31478cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -103,6 +106,7 @@
                                 <TextRun>
                                   <Value>ID</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -138,6 +142,7 @@
                                 <TextRun>
                                   <Value>Nome do Projeto</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -162,6 +167,42 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="Textbox3">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Responsável</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <FontWeight>SemiBold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="Textbox36">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -169,8 +210,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Data de Início</Value>
+                                  <Value>Início</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -204,8 +246,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Data de Término</Value>
+                                  <Value>Término</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -245,7 +288,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!idProjeto.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -278,13 +323,50 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!nomeProjeto.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>nomeProjeto</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <BackgroundColor>= iif(RowNumber("DataSetProjetos") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="nomeResposavel">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!nomeResposavel.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>nomeResposavel</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -311,6 +393,7 @@
                                 <TextRun>
                                   <Value>=Fields!dtInicio.Value</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <Format>=String.Format("{0:dd/MM/yyyy}", Fields!dtInicio.Value)</Format>
                                   </Style>
                                 </TextRun>
@@ -346,6 +429,7 @@
                                 <TextRun>
                                   <Value>=Fields!dtTermino.Value</Value>
                                   <Style>
+                                    <FontSize>9pt</FontSize>
                                     <Format>=String.Format("{0:dd/MM/yyyy}", Fields!dtTermino.Value)</Format>
                                   </Style>
                                 </TextRun>
@@ -380,6 +464,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -408,7 +493,7 @@
             <Top>3.11891cm</Top>
             <Left>0.26141cm</Left>
             <Height>1.2cm</Height>
-            <Width>20.37166cm</Width>
+            <Width>20.42775cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -432,7 +517,7 @@
           </Image>
           <Line Name="Line1">
             <Top>2.85637cm</Top>
-            <Left>0.26141cm</Left>
+            <Left>0.3175cm</Left>
             <Height>0cm</Height>
             <Width>20.37166cm</Width>
             <ZIndex>2</ZIndex>

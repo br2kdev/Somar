@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAlunos = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.menuPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -84,8 +84,8 @@
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
             this.diarioToolStripMenuItem,
-            this.sairToolStripMenuItem,
-            this.administrativoToolStripMenuItem});
+            this.administrativoToolStripMenuItem,
+            this.sairToolStripMenuItem});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Size = new System.Drawing.Size(1072, 28);
@@ -96,10 +96,10 @@
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuariosToolStripMenuItem,
+            this.escolasToolStripMenuItem,
             this.projetosToolStripMenuItem,
             this.turmasToolStripMenuItem,
-            this.pessoasToolStripMenuItem,
-            this.escolasToolStripMenuItem});
+            this.pessoasToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -107,35 +107,35 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // projetosToolStripMenuItem
             // 
             this.projetosToolStripMenuItem.Name = "projetosToolStripMenuItem";
-            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.projetosToolStripMenuItem.Text = "Projetos";
             this.projetosToolStripMenuItem.Click += new System.EventHandler(this.projetosToolStripMenuItem_Click);
             // 
             // turmasToolStripMenuItem
             // 
             this.turmasToolStripMenuItem.Name = "turmasToolStripMenuItem";
-            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.turmasToolStripMenuItem.Text = "Turmas";
             this.turmasToolStripMenuItem.Click += new System.EventHandler(this.turmasToolStripMenuItem_Click);
             // 
             // pessoasToolStripMenuItem
             // 
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.pessoasToolStripMenuItem.Text = "Pessoas";
             this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
             // 
             // escolasToolStripMenuItem
             // 
             this.escolasToolStripMenuItem.Name = "escolasToolStripMenuItem";
-            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.escolasToolStripMenuItem.Text = "Escolas";
             this.escolasToolStripMenuItem.Click += new System.EventHandler(this.escolasToolStripMenuItem_Click);
             // 
@@ -180,7 +180,7 @@
             // alterarSenhaToolStripMenuItem
             // 
             this.alterarSenhaToolStripMenuItem.Name = "alterarSenhaToolStripMenuItem";
-            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.alterarSenhaToolStripMenuItem.Text = "Alterar Senha";
             this.alterarSenhaToolStripMenuItem.Click += new System.EventHandler(this.alterarSenhaToolStripMenuItem_Click);
             // 
@@ -256,10 +256,20 @@
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnAlunos);
-            this.panel2.Location = new System.Drawing.Point(938, 160);
+            this.panel2.Location = new System.Drawing.Point(938, 31);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(133, 414);
+            this.panel2.Size = new System.Drawing.Size(133, 543);
             this.panel2.TabIndex = 5;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(17, 212);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(101, 50);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Quadro Analítico";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -422,16 +432,6 @@
             this.label7.Size = new System.Drawing.Size(171, 16);
             this.label7.TabIndex = 3;
             this.label7.Text = "Aniversariantes da Mês";
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(17, 212);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 50);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Quadro Analítico";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FormPrincipal
             // 

@@ -138,7 +138,6 @@ namespace Somar.DAL
 
             param.Add("@senha", objectDTO.senha, DbType.String);
             
-
             foreach (var item in param.ParameterNames)
                 query += " " + item + " = @" + item + ",";
 

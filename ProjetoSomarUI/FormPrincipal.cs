@@ -124,7 +124,7 @@ namespace ProjetoSomarUI
 
         private void alterarSenhaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAlterarSenha frm = new FormAlterarSenha();
+            Administracao.FormAlterarSenha frm = new Administracao.FormAlterarSenha();
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
@@ -203,8 +203,6 @@ namespace ProjetoSomarUI
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
-
-
 
         #endregion
 
