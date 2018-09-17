@@ -690,14 +690,7 @@ namespace ProjetoSomarUI.Cadastros
 
             if (picImage.Image != null)
             {
-                /*
-                ImageConverter _imageConverter = new ImageConverter();
-                byte[] xByte = (byte[])_imageConverter.ConvertTo(picImage.Image, typeof(byte[]));
-                param.arrayFoto = xByte;
-                */
-
                 var img = ExtendBitmap.ImageToBase64(picImage.Image, ImageFormat.Jpeg);
-
                 param.fotoBase64 = img;
             }
 
