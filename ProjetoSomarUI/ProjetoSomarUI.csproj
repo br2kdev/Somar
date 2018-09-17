@@ -188,6 +188,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\FormPainel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\FormPainel.Designer.cs">
+      <DependentUpon>FormPainel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\FormQuadroAnalitico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -199,6 +205,9 @@
     </Compile>
     <Compile Include="Relatorios\FormReport.Designer.cs">
       <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SomarDatabaseDataSet.cs">
+      <DependentUpon>SomarDatabaseDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="SomarDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -249,6 +258,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\FormPainel.resx">
+      <DependentUpon>FormPainel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\FormQuadroAnalitico.resx">
       <DependentUpon>FormQuadroAnalitico.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +268,7 @@
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelProjetos.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelTurmas.rdlc" />
     <EmbeddedResource Include="Relatorios\ReportProjetos.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
