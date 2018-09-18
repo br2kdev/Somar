@@ -24,5 +24,12 @@ namespace ProjetoSomarUI.Relatorios
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.Dashboard, null);
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }

@@ -21,15 +21,8 @@ namespace ProjetoSomarUI.Controls
     {
         #region Member Variables
 
-        StringFormat strFormat;                         // Used to format the grid rows.
         ArrayList arrColumnLefts = new ArrayList();     // Used to save left coordinates of columns
         ArrayList arrColumnWidths = new ArrayList();    // Used to save column widths
-        int iCellHeight = 0;                            // Used to get/set the datagridview cell height
-        int iTotalWidth = 0;                            //
-        int iRow = 0;                                   // Used as counter
-        bool bFirstPage = false;                        // Used to check whether we are printing first page
-        bool bNewPage = false;                          // Used to check whether we are printing a new page
-        int iHeaderHeight = 0;                          // Used for the header height
 
         private string msg { get; set; }
 

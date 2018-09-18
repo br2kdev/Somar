@@ -26,6 +26,7 @@ namespace Somar.Shared
     public enum Relatorio
     {
         Projetos = 0,
-        Turmas = 1
+        Turmas = 1,
+        Dashboard = 2,
     };
 }

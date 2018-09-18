@@ -33,6 +33,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnTurmas = new System.Windows.Forms.Button();
+            this.btnDashboard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -88,11 +89,22 @@
             this.btnTurmas.UseVisualStyleBackColor = true;
             this.btnTurmas.Click += new System.EventHandler(this.btnTurmas_Click);
             // 
+            // btnDashboard
+            // 
+            this.btnDashboard.Location = new System.Drawing.Point(12, 134);
+            this.btnDashboard.Name = "btnDashboard";
+            this.btnDashboard.Size = new System.Drawing.Size(101, 50);
+            this.btnDashboard.TabIndex = 67;
+            this.btnDashboard.Text = "Quadro Analítico";
+            this.btnDashboard.UseVisualStyleBackColor = true;
+            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            // 
             // FormPainel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 450);
+            this.Controls.Add(this.btnDashboard);
             this.Controls.Add(this.btnTurmas);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnProjetos);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTurmas;
+        private System.Windows.Forms.Button btnDashboard;
     }
 }

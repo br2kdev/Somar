@@ -30,20 +30,55 @@ namespace ProjetoSomarUI.Relatorios
 
         public void ShowReport()
         {
-            switch (_relatorio)
+            if (_relatorio == Relatorio.Dashboard)
             {
-                case Relatorio.Projetos:
-                    _dataTable = LoadReportProjetos(_dataTable);
-                    break;
-                case Relatorio.Turmas:
-                    _dataTable = LoadReportTurmas(_dataTable);
-                    break;
-                default:
-                    break;
-            }
+                this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelDashboard.rdlc";
+                
+                var _dataTable1 = new ProjetoBLL().GetAllData(false).ToDataTable();
+                ReportDataSource rds1 = new ReportDataSource("DataSetAlunosPorEscola", _dataTable1);
+                this.reportViewer1.LocalReport.DataSources.Add(rds1);
 
-            ReportDataSource rds = new ReportDataSource("DataSet", _dataTable);
-            this.reportViewer1.LocalReport.DataSources.Add(rds);
+                var _dataTable2 = new ProjetoBLL().GetAllData(false).ToDataTable();
+                ReportDataSource rds2 = new ReportDataSource("DataSetAlunosPorProjeto", _dataTable2);
+                this.reportViewer1.LocalReport.DataSources.Add(rds2);
+
+                var _dataTable3 = new ProjetoBLL().GetAllData(false).ToDataTable();
+                ReportDataSource rds3 = new ReportDataSource("DataSetPessoasPorBairro", _dataTable3);
+                this.reportViewer1.LocalReport.DataSources.Add(rds3);
+
+                /*
+                var _dataTable1 = new ProjetoBLL().GetAllData(false).ToDataTable();
+                ReportDataSource rds1 = new ReportDataSource("DataSetProjetos", _dataTable1);
+                this.reportViewer1.LocalReport.DataSources.Add(rds1);
+
+                var _dataTable2 = new TurmaBLL().GetAllData().ToDataTable();
+                ReportDataSource rds2 = new ReportDataSource("DataSetTurmas", _dataTable2);
+                this.reportViewer1.LocalReport.DataSources.Add(rds2);
+                */
+
+            }
+            else
+            {
+                switch (_relatorio)
+                {
+                    case Relatorio.Projetos:
+                        _dataTable = LoadReportProjetos(_dataTable);
+                        break;
+                    case Relatorio.Turmas:
+                        _dataTable = LoadReportTurmas(_dataTable);
+                        break;
+                    /*
+                    case Relatorio.Dashboard:
+                        _dataTable = LoadReportTurmas(_dataTable);
+                        break;
+                    */
+                    default:
+                        break;
+                }
+
+                ReportDataSource rds = new ReportDataSource("DataSet", _dataTable);
+                this.reportViewer1.LocalReport.DataSources.Add(rds);
+            }
 
             ConfigurePrint();
 
@@ -92,7 +127,17 @@ namespace ProjetoSomarUI.Relatorios
         {
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelTurmas.rdlc";
 
-            if(_dataTable == null)
+            if (_dataTable == null)
+                _dataTable = new TurmaBLL().GetAllData().ToDataTable();
+
+            return _dataTable;
+        }
+
+        private DataTable LoadReportDashboard(DataTable _dataTable)
+        {
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelDashboard.rdlc";
+
+            if (_dataTable == null)
                 _dataTable = new TurmaBLL().GetAllData().ToDataTable();
 
             return _dataTable;

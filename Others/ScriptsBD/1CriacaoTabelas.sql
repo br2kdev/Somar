@@ -391,6 +391,45 @@ INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
 
+-- ****************************** -- 
+-- ALUNOS POR ESCOLA
+-- ****************************** -- 
+SELECT A.idEscola, A.nomeEscola, QtdAlunos = COUNT(1)
+FROM TB_Escolas		  A
+INNER JOIN TB_Escolas B ON A.idEscola = B.idEscola
+GROUP BY A.idEscola, A.nomeEscola
+
+-- ****************************** -- 
+-- ALUNOS POR PROJETO (Matricula)
+-- ****************************** -- 
+SELECT C.idProjeto, C.nomeProjeto, QtdeAlunos = COUNT(1)
+FROM TB_Matricula      A
+INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
+INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto
+WHERE A.dtCancelamento IS NOT NULL
+GROUP BY C.idProjeto, C.nomeProjeto
+
+-- ****************************** -- 
+-- PESSOAS POR BAIRRO
+-- ****************************** -- 
+SELECT B.idBairro, C.bai_no, QtdePessoas = COUNT(1)
+FROM  TB_Pessoas		  A
+INNER JOIN TB_Enderecos   B ON A.idEndereco = B.idEndereco
+INNER JOIN TB_CEP_Bairro  C ON B.idBairro   = C.bai_nu_sequencial
+GROUP BY B.idBairro, C.bai_no
+
+-- ****************************** -- 
+-- ALUNOS POR FAIXA ETARIA
+-- ****************************** -- 
+
+
+-- ****************************** -- 
+-- ALUNOS POR Educador
+-- ****************************** --
+
+ 
+
+
 -- ************************************************************************* --
 -- INDEXES
 -- ************************************************************************* --
