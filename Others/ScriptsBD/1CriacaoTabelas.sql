@@ -261,7 +261,7 @@ from TB_Pessoas
 insert into TB_Pessoas
 select * from ##tempCad
 */
-
+select * from TB_Pessoas
 CREATE TABLE TB_Pessoas
 (
 	idPessoa				INT IDENTITY(1,1) PRIMARY KEY,
