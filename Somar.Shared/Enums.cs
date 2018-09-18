@@ -22,4 +22,10 @@ namespace Somar.Shared
         Professor = 4,
         Voluntário = 5
     };
+
+    public enum Relatorio
+    {
+        Projetos = 0,
+        Turmas = 1
+    };
 }

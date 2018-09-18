@@ -11,24 +11,21 @@ namespace ProjetoSomarUI.Cadastros
 {
     public partial class FormTurmas : FormBase
     {
+        delegate void UserControlMethod(int idTurma);
+
         public FormTurmas()
         {
+            Inicialize();            
+        }
+
+        private void Inicialize()
+        {
             InitializeComponent();
-            InitializeForm();
-        }
 
-        private void FormTurmas_Load(object sender, EventArgs e)
-        {
-            CarregaGrid();
-            CarregaComboProjeto();
-        }
-
-        private void InitializeForm()
-        {
             #region ComboLists
 
-            cmbSearchType.Items.Add("Nome do Turma");
-            cmbSearchType.Items.Add("Código do Turma");
+            cmbSearchType.Items.Add("Nome da Turma");
+            cmbSearchType.Items.Add("Código da Turma");
 
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
@@ -46,6 +43,7 @@ namespace ProjetoSomarUI.Cadastros
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);
+            btnPrint.Click += new EventHandler(btnPrint_Click);
 
             btnEditar.Click += new EventHandler(btnEditar_Click);
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
@@ -58,12 +56,39 @@ namespace ProjetoSomarUI.Cadastros
             //txtDataInicio.CustomFormat = txtdtTermino.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtTermino.ShowUpDown = true;
 
-            InitializeGridView();
-
+            Grid.InitializeGridView(new TurmaDTO(), "Nenhuma turma encontrada!");
             ClearForm1();
+
+            UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
+            Grid.CallingPageMethod = CellClicked;
+        }
+
+        private void FormTurmas_Load(object sender, EventArgs e)
+        {
+            CarregaGrid();
+            CarregaComboProjeto();
         }
 
         #region Events
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var param = new TurmaDTO();
+
+            if (cmbSearchType.SelectedItem.ToString() == "Nome da Turma")
+            {
+                param.nomeTurma = txtSearch.Text;
+            }
+            else if (cmbSearchType.SelectedItem.ToString() == "Código da Turma")
+            {
+                if (txtSearch.Text != string.Empty)
+                    param.idTurma = Convert.ToInt32(txtSearch.Text);
+            }
+
+            List<TurmaDTO> lista = new TurmaBLL().GetDataWithParam(param);
+
+            Grid.GridViewDataBind(lista.ToDataTable());
+        }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
@@ -78,18 +103,13 @@ namespace ProjetoSomarUI.Cadastros
             btnVoltar1.Text = "Voltar";
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAll_Click(object sender, EventArgs e)
         {
             ClearForm1();
 
             List<TurmaDTO> lista = new TurmaBLL().GetAllData();
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable());
         }
 
         #endregion
@@ -100,7 +120,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             List<TurmaDTO> lista = new TurmaBLL().GetAllData();
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable());
         }
 
         public void CarregaComboProjeto()
@@ -183,156 +203,6 @@ namespace ProjetoSomarUI.Cadastros
         #endregion
 
         #region Controls
-
-        #region Gridview Controls
-
-        public void InitializeGridView()
-        {
-
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            /*
-            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            */
-
-            /*            
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            */
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new TurmaDTO());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 50;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomeTurma")
-                {
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
-                }
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-        }
-
-        public void GridViewDataBind(List<TurmaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhum Turma encontrado";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-            {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-
-                /*
-                if (this.dataGridView1["c2", e.RowIndex].Value != null)
-                {
-                    string s = this.dataGridView1["c2", e.RowIndex].Value.ToString();
-
-                    switch (s)
-                    {
-                        case "Laptop":
-                            e.Value = Image.FromFile(@"c:\test\Laptop.gif");
-                            break;
-                        case "Desktop":
-                            e.Value = Image.FromFile(@"c:\test\Desktop.gif");
-                            break;
-                    }
-
-                }
-                */
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idTurma = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idTurma);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
-        #endregion
 
         #region Combobox Controls
 
@@ -523,6 +393,11 @@ namespace ProjetoSomarUI.Cadastros
                 Limpar();
             }
             */
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Grid.btnExport(Relatorio.Turmas);
         }
 
         #endregion

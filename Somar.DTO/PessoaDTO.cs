@@ -28,6 +28,10 @@ namespace Somar.DTO
         [DisplayName("Gênero")]
         public string descGenero { get; set; }
 
+        public int idSituacao { get; set; }
+
+        public string descSituacao { get; set; }
+
         public string observacoes { get; set; }
 
         public string numeroRG { get; set; }

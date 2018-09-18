@@ -197,13 +197,6 @@ namespace ProjetoSomarUI
                 CarregarAniversariantes();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Relatorios.FormReport frm = new Relatorios.FormReport();
-            frm.ShowInTaskbar = false;
-            frm.ShowDialog();
-        }
-
         #endregion
 
 

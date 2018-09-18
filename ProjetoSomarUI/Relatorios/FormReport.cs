@@ -12,74 +12,97 @@ namespace ProjetoSomarUI.Relatorios
 {
     public partial class FormReport : Form
     {
-        public FormReport()
+        #region Load Configurations
+
+        private DataTable _dataTable;
+
+        private Relatorio _relatorio;
+
+        public FormReport(Relatorio relatorio, DataTable dataTable)
         {
             InitializeComponent();
+
+            _dataTable = dataTable;
+            _relatorio = relatorio;
+
+            this.reportViewer1.LocalReport.DataSources.Clear();
         }
 
-        private void LoadReport()
+        public void ShowReport()
         {
-            this.reportViewer1.Reset();
+            switch (_relatorio)
+            {
+                case Relatorio.Projetos:
+                    _dataTable = LoadReportProjetos(_dataTable);
+                    break;
+                case Relatorio.Turmas:
+                    _dataTable = LoadReportTurmas(_dataTable);
+                    break;
+                default:
+                    break;
+            }
+
+            ReportDataSource rds = new ReportDataSource("DataSet", _dataTable);
+            this.reportViewer1.LocalReport.DataSources.Add(rds);
 
             ConfigurePrint();
 
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelProjetos.rdlc";
-            ReportDataSource rds = new ReportDataSource("DataSetProjetos", GetProjetos());
-            this.reportViewer1.LocalReport.DataSources.Clear();
-            this.reportViewer1.LocalReport.DataSources.Add(rds);
-
-            /*
-            ReportParameter CustID = new ReportParameter("CustomerID", CustomerList.CustomerID);
-            this.reportViewer1.LocalReport.SetParameters(CustID);
-            */
-
-            this.reportViewer1.LocalReport.Refresh();
+            this.reportViewer1.Update();
             this.reportViewer1.RefreshReport();
-            //ViewButtonClicked();
         }
 
         private void ConfigurePrint()
         {
+            this.reportViewer1.ProcessingMode = ProcessingMode.Local;
+            this.reportViewer1.ShowProgress = true;
+            this.reportViewer1.LocalReport.EnableExternalImages = false; ;
             this.reportViewer1.ZoomMode = ZoomMode.Percent;
             this.reportViewer1.ZoomPercent = 100;
             this.reportViewer1.ZoomMode = ZoomMode.PageWidth;
             this.reportViewer1.ZoomMode = ZoomMode.FullPage;
 
-            PageSettings ps = new PageSettings(); //Declare a new PageSettings for printing
-            ps.Landscape = false; //Set True for landscape, False for Portrait
+            PageSettings ps = new PageSettings();               // Declare a new PageSettings for printing
+            ps.Landscape = false;                               // Set True for landscape, False for Portrait
+            ps.Margins = new Margins(10, 10, 10, 10);           // Set margins
+            ps.PaperSize = new PaperSize("A4", 850, 1100);
 
-            ps.Margins = new Margins(0, 0, 0, 0); //Set margins
-            //ps.PaperSize = new PaperSize("MyPaperSize", 8, 11);
-
-            reportViewer1.SetPageSettings(ps);
+            //this.reportViewer1.SetPageSettings(ps);
         }
 
-        private DataTable GetProjetos()
+        #endregion
+
+        #region Reports
+
+        private DataTable LoadReportProjetos(DataTable _dataTable)
         {
-            DataSet ds = new DataSet();
-            ds.DataSetName = "DataSetProjetos";
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelProjetos.rdlc";
 
-            List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(false);
+            if (_dataTable == null)
+                _dataTable = new ProjetoBLL().GetAllData(false).ToDataTable();
 
-            var dt = lista.ToDataTable();
-
-            return dt;
+            return _dataTable;
 
             /*
-            SqlConnection con = new SqlConnection(Home.ConString);
-            string sql = "SELECT * FROM Customers";
-            SqlDataAdapter da = new SqlDataAdapter(sql, con);
-            
-            da.Fill(ds);
-            DataTable dt = ds.Tables[0];
-            return dt;
+            ReportParameter CustID = new ReportParameter("CustomerID", CustomerList.CustomerID);
+            this.reportViewer1.LocalReport.SetParameters(CustID);
             */
         }
 
-        private void FormReport_Load(object sender, EventArgs e)
+        private DataTable LoadReportTurmas(DataTable _dataTable)
         {
-            LoadReport();
-            this.reportViewer1.RefreshReport();
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelTurmas.rdlc";
+
+            if(_dataTable == null)
+                _dataTable = new TurmaBLL().GetAllData().ToDataTable();
+
+            return _dataTable;
+        }
+
+        #endregion
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+            ShowReport();
         }
     }
 }

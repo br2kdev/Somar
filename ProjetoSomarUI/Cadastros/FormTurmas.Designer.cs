@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
@@ -68,27 +66,24 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelConsulta = new System.Windows.Forms.Panel();
-            this.panelMessage = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panelConsulta.SuspendLayout();
-            this.panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -554,8 +549,7 @@
             // 
             // panelConsulta
             // 
-            this.panelConsulta.Controls.Add(this.panelMessage);
-            this.panelConsulta.Controls.Add(this.dataGridView1);
+            this.panelConsulta.Controls.Add(this.Grid);
             this.panelConsulta.Controls.Add(this.groupBox1);
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
@@ -563,66 +557,23 @@
             this.panelConsulta.Size = new System.Drawing.Size(1009, 641);
             this.panelConsulta.TabIndex = 41;
             // 
-            // panelMessage
+            // Grid
             // 
-            this.panelMessage.Controls.Add(this.lblMessage);
-            this.panelMessage.Location = new System.Drawing.Point(14, 112);
-            this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(979, 63);
-            this.panelMessage.TabIndex = 45;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(9, 27);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(28, 13);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Text";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 97);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.RowTemplate.ReadOnly = true;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
-            this.dataGridView1.TabIndex = 43;
+            this.Grid.ControlHeight = 524;
+            this.Grid.ControlWidth = 979;
+            this.Grid.Location = new System.Drawing.Point(12, 97);
+            this.Grid.Name = "Grid";
+            this.Grid.Size = new System.Drawing.Size(989, 536);
+            this.Grid.TabIndex = 47;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.btnSearch);
-            this.groupBox1.Controls.Add(this.cmbSearchType);
+            this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.btnNovo);
             this.groupBox1.Controls.Add(this.btnAll);
+            this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.cmbSearchType);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
@@ -642,31 +593,6 @@
             this.cmbSearchType.Name = "cmbSearchType";
             this.cmbSearchType.Size = new System.Drawing.Size(157, 26);
             this.cmbSearchType.TabIndex = 35;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNovo.FlatAppearance.BorderSize = 2;
-            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnNovo.Location = new System.Drawing.Point(875, 18);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(97, 48);
-            this.btnNovo.TabIndex = 28;
-            this.btnNovo.Text = "Nova Turma";
-            this.btnNovo.UseVisualStyleBackColor = false;
-            // 
-            // btnAll
-            // 
-            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAll.Location = new System.Drawing.Point(734, 18);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(97, 48);
-            this.btnAll.TabIndex = 34;
-            this.btnAll.Text = "Ver Todas";
-            this.btnAll.UseVisualStyleBackColor = true;
             // 
             // txtSearch
             // 
@@ -734,16 +660,55 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.Location = new System.Drawing.Point(801, 19);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint.TabIndex = 40;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
+            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNovo.FlatAppearance.BorderSize = 2;
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnNovo.Location = new System.Drawing.Point(901, 12);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(70, 60);
+            this.btnNovo.TabIndex = 37;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
+            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAll.Location = new System.Drawing.Point(703, 19);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(58, 46);
+            this.btnAll.TabIndex = 39;
+            this.btnAll.UseVisualStyleBackColor = false;
+            // 
             // btnSearch
             // 
-            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search24x24;
+            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
             this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(631, 18);
+            this.btnSearch.Location = new System.Drawing.Point(637, 18);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(61, 48);
-            this.btnSearch.TabIndex = 36;
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.TabIndex = 38;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // FormTurmas
             // 
@@ -764,9 +729,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panelConsulta.ResumeLayout(false);
-            this.panelMessage.ResumeLayout(false);
-            this.panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEdit.ResumeLayout(false);
@@ -800,13 +762,8 @@
         private System.Windows.Forms.TextBox lblCodigo;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelConsulta;
-        private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbSearchType;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
@@ -829,6 +786,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtNomeAlteracao;
+        private Controls.GridViewControl Grid;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Button btnSearch;
     }
 }

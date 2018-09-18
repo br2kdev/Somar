@@ -9,6 +9,7 @@ SELECT * FROM TB_Estados
 SELECT * FROM TB_Cidades
 SELECT * FROM TB_CEPs
 */
+select * from TB_Usuarios
 
 -- ******************************************************************* --
 -- (Projetos Contínuos de cada Centro Solidário) 
@@ -236,7 +237,30 @@ CREATE TABLE TB_TipoPessoas
 -- FINAL - TABELAS DE DOMÍNIO
 -- ******************************************************* 
 --select * from TB_Pessoas
-alter table TB_Pessoas alter column arrayFoto NVARCHAR(4000)
+/*
+select  nomePessoa
+		,dtNascimento
+		,idTipoPessoa
+		,idGenero
+		,dtAtivacao
+		,numeroRG
+		,numeroCPF
+		,observacoes
+		,idEndereco
+		,idContato
+		,idEscola
+		,fotoBase64
+		,0 as idSituacao 
+		,dtCadastro
+		,flagAtivo
+		,dtUltAlteracao
+		,idPessoaUltAlteracao
+into ##tempCad
+from TB_Pessoas
+
+insert into TB_Pessoas
+select * from ##tempCad
+*/
 
 CREATE TABLE TB_Pessoas
 (
@@ -253,6 +277,7 @@ CREATE TABLE TB_Pessoas
 	idContato				INT,
 	idEscola				INT,
 	fotoBase64				NVARCHAR(MAX),
+	idSituacao				INT,
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,

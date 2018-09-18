@@ -154,6 +154,18 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="dtTurmas" msprop:Generator_TableClassName="dtTurmasDataTable" msprop:Generator_TableVarName="tabledtTurmas" msprop:Generator_RowChangedName="dtTurmasRowChanged" msprop:Generator_TablePropName="dtTurmas" msprop:Generator_RowDeletingName="dtTurmasRowDeleting" msprop:Generator_RowChangingName="dtTurmasRowChanging" msprop:Generator_RowEvHandlerName="dtTurmasRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTurmasRowDeleted" msprop:Generator_RowClassName="dtTurmasRow" msprop:Generator_UserTableName="dtTurmas" msprop:Generator_RowEvArgName="dtTurmasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idTurma" msprop:Generator_ColumnVarNameInTable="columnidTurma" msprop:Generator_ColumnPropNameInRow="idTurma" msprop:Generator_ColumnPropNameInTable="idTurmaColumn" msprop:Generator_UserColumnName="idTurma" type="xs:string" minOccurs="0" />
+              <xs:element name="nomeTurma" msprop:Generator_ColumnVarNameInTable="columnnomeTurma" msprop:Generator_ColumnPropNameInRow="nomeTurma" msprop:Generator_ColumnPropNameInTable="nomeTurmaColumn" msprop:Generator_UserColumnName="nomeTurma" type="xs:string" minOccurs="0" />
+              <xs:element name="horario" msprop:Generator_ColumnVarNameInTable="columnhorario" msprop:Generator_ColumnPropNameInRow="horario" msprop:Generator_ColumnPropNameInTable="horarioColumn" msprop:Generator_UserColumnName="horario" type="xs:string" minOccurs="0" />
+              <xs:element name="descricaoPeriodo" msprop:Generator_ColumnVarNameInTable="columndescricaoPeriodo" msprop:Generator_ColumnPropNameInRow="descricaoPeriodo" msprop:Generator_ColumnPropNameInTable="descricaoPeriodoColumn" msprop:Generator_UserColumnName="descricaoPeriodo" type="xs:string" minOccurs="0" />
+              <xs:element name="nomeEducador" msprop:Generator_ColumnVarNameInTable="columnnomeEducador" msprop:Generator_ColumnPropNameInRow="nomeEducador" msprop:Generator_ColumnPropNameInTable="nomeEducadorColumn" msprop:Generator_UserColumnName="nomeEducador" type="xs:string" minOccurs="0" />
+              <xs:element name="nomeProjeto" msprop:Generator_ColumnVarNameInTable="columnnomeProjeto" msprop:Generator_ColumnPropNameInRow="nomeProjeto" msprop:Generator_ColumnPropNameInTable="nomeProjetoColumn" msprop:Generator_UserColumnName="nomeProjeto" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">

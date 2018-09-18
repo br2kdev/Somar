@@ -21,6 +21,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void InitializeForm()
         {
+
             #region ComboLists
 
             cmbSearchType.Items.Add("Nome da Pessoa");
@@ -29,6 +30,17 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
 
+            Dictionary<int, string> items = new Dictionary<int, string>();
+
+            items.Add(0, "Selecione...");
+            items.Add(1, "Verde");
+            items.Add(2, "Amarelo");
+            items.Add(3, "Vermelho");
+
+            cmbSituacao.DataSource = new BindingSource(items, null);
+            cmbSituacao.DisplayMember = "Value";
+            cmbSituacao.ValueMember = "Key";
+            
             #endregion
 
             #region Button Events
@@ -40,6 +52,8 @@ namespace ProjetoSomarUI.Cadastros
             btnEditar.Click += new EventHandler(btnEditar_Click);
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
+
+            cmbSituacao.SelectedIndexChanged += new EventHandler(cmbSituacao_SelectedIndexChanged);
 
             btnSearchCEP.Click += new EventHandler(btnSearchCEP_Click);
 
@@ -57,6 +71,21 @@ namespace ProjetoSomarUI.Cadastros
             InitializeGridView();
 
             ClearForm1();
+        }
+
+        private void cmbSituacao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idSituacao = 0;
+
+            if (cmbSituacao.SelectedValue != null)
+            {
+                idSituacao = Convert.ToInt32(cmbSituacao.SelectedValue.ToString());
+
+                string iconName = "icon_ball" + idSituacao.ToString();
+                picSituacao.Image = (Image)Properties.Resources.ResourceManager.GetObject(iconName);
+            }
+            
+            //picSituacao.Image
         }
 
         private void txtCEP_Focus(object sender, EventArgs e)
@@ -236,6 +265,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbGenero.SelectedValue = param.idGenero;
             cmbTipoPessoa.SelectedValue = param.idTipoPessoa;
             cmbEscola.SelectedValue = param.idEscola;
+            cmbSituacao.SelectedValue = param.idSituacao;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
             // ************************************************** //
@@ -342,6 +372,8 @@ namespace ProjetoSomarUI.Cadastros
             txtdtNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
 
+            cmbSituacao.SelectedIndex = 1;
+            picSituacao.Image = null;
             picImage.Image = null;
 
             txtCEP.Text = string.Empty;
@@ -553,6 +585,7 @@ namespace ProjetoSomarUI.Cadastros
             txtIdade.Enabled = false;
             cmbGenero.Enabled = flagEnable;
             cmbTipoPessoa.Enabled = flagEnable;
+            cmbSituacao.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
             cmbEscola.Enabled = flagEnable;
             txtdtAtivacao.Enabled = flagEnable;
@@ -678,6 +711,7 @@ namespace ProjetoSomarUI.Cadastros
             param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
             param.dtAtivacao = Convert.ToDateTime(txtdtAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
+            param.idSituacao = Convert.ToInt32(cmbSituacao.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
 
             param.idEndereco = string.IsNullOrEmpty(txtIdEndereco.Text) ? 0 : Convert.ToInt32(txtIdEndereco.Text);

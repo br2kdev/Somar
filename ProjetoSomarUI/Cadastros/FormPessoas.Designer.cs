@@ -59,7 +59,9 @@
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnFoto = new System.Windows.Forms.Button();
+            this.picSituacao = new System.Windows.Forms.PictureBox();
+            this.cmbSituacao = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.cmbEscola = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.picImage = new System.Windows.Forms.PictureBox();
@@ -112,6 +114,7 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
@@ -132,6 +135,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSituacao)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -290,7 +294,7 @@
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblStatus.Location = new System.Drawing.Point(499, 61);
+            this.lblStatus.Location = new System.Drawing.Point(498, 60);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(52, 17);
             this.lblStatus.TabIndex = 93;
@@ -302,9 +306,9 @@
             this.cmbStatus.Enabled = false;
             this.cmbStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Location = new System.Drawing.Point(554, 55);
+            this.cmbStatus.Location = new System.Drawing.Point(553, 55);
             this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.Size = new System.Drawing.Size(126, 28);
+            this.cmbStatus.Size = new System.Drawing.Size(128, 28);
             this.cmbStatus.TabIndex = 92;
             // 
             // groupBox3
@@ -386,7 +390,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(485, 100);
+            this.label7.Location = new System.Drawing.Point(485, 135);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(66, 17);
             this.label7.TabIndex = 89;
@@ -473,7 +477,9 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.btnFoto);
+            this.panel3.Controls.Add(this.picSituacao);
+            this.panel3.Controls.Add(this.cmbSituacao);
+            this.panel3.Controls.Add(this.label30);
             this.panel3.Controls.Add(this.cmbEscola);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.picImage);
@@ -504,16 +510,34 @@
             this.panel3.Size = new System.Drawing.Size(984, 536);
             this.panel3.TabIndex = 66;
             // 
-            // btnFoto
+            // picSituacao
             // 
-            this.btnFoto.Location = new System.Drawing.Point(731, 143);
-            this.btnFoto.Name = "btnFoto";
-            this.btnFoto.Size = new System.Drawing.Size(47, 34);
-            this.btnFoto.TabIndex = 70;
-            this.btnFoto.Text = "Foto";
-            this.btnFoto.UseVisualStyleBackColor = true;
-            this.btnFoto.Visible = false;
-            this.btnFoto.Click += new System.EventHandler(this.btnFoto_Click);
+            this.picSituacao.Location = new System.Drawing.Point(701, 10);
+            this.picSituacao.Name = "picSituacao";
+            this.picSituacao.Size = new System.Drawing.Size(56, 56);
+            this.picSituacao.TabIndex = 115;
+            this.picSituacao.TabStop = false;
+            // 
+            // cmbSituacao
+            // 
+            this.cmbSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSituacao.Enabled = false;
+            this.cmbSituacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.cmbSituacao.FormattingEnabled = true;
+            this.cmbSituacao.Location = new System.Drawing.Point(553, 17);
+            this.cmbSituacao.Name = "cmbSituacao";
+            this.cmbSituacao.Size = new System.Drawing.Size(128, 28);
+            this.cmbSituacao.TabIndex = 114;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.label30.Location = new System.Drawing.Point(483, 22);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(67, 17);
+            this.label30.TabIndex = 113;
+            this.label30.Text = "Situação:";
             // 
             // cmbEscola
             // 
@@ -544,6 +568,7 @@
             this.picImage.Location = new System.Drawing.Point(779, 11);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(184, 165);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picImage.TabIndex = 110;
             this.picImage.TabStop = false;
             this.picImage.Click += new System.EventHandler(this.cmdBrowser_Click);
@@ -623,7 +648,7 @@
             this.txtdtAtivacao.AllowDrop = true;
             this.txtdtAtivacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtdtAtivacao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtdtAtivacao.Location = new System.Drawing.Point(554, 95);
+            this.txtdtAtivacao.Location = new System.Drawing.Point(553, 130);
             this.txtdtAtivacao.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtdtAtivacao.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.txtdtAtivacao.Name = "txtdtAtivacao";
@@ -637,6 +662,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.tabControl1.Location = new System.Drawing.Point(3, 169);
             this.tabControl1.Name = "tabControl1";
@@ -1078,11 +1104,21 @@
             this.txtDescricao.Size = new System.Drawing.Size(938, 232);
             this.txtDescricao.TabIndex = 88;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(969, 206);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label14.Location = new System.Drawing.Point(731, 23);
+            this.label14.Location = new System.Drawing.Point(733, 98);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 17);
             this.label14.TabIndex = 103;
@@ -1146,7 +1182,7 @@
             this.txtdtNascimento.Enabled = false;
             this.txtdtNascimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
             this.txtdtNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtdtNascimento.Location = new System.Drawing.Point(554, 19);
+            this.txtdtNascimento.Location = new System.Drawing.Point(553, 94);
             this.txtdtNascimento.MaxDate = new System.DateTime(2050, 12, 31, 0, 0, 0, 0);
             this.txtdtNascimento.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.txtdtNascimento.Name = "txtdtNascimento";
@@ -1159,7 +1195,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label2.Location = new System.Drawing.Point(465, 23);
+            this.label2.Location = new System.Drawing.Point(464, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 96;
@@ -1168,12 +1204,12 @@
             // txtIdade
             // 
             this.txtIdade.Enabled = false;
-            this.txtIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtIdade.Location = new System.Drawing.Point(684, 18);
+            this.txtIdade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.5F);
+            this.txtIdade.Location = new System.Drawing.Point(686, 93);
             this.txtIdade.MaxLength = 10;
             this.txtIdade.Name = "txtIdade";
             this.txtIdade.ReadOnly = true;
-            this.txtIdade.Size = new System.Drawing.Size(44, 27);
+            this.txtIdade.Size = new System.Drawing.Size(44, 28);
             this.txtIdade.TabIndex = 84;
             this.txtIdade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -1226,6 +1262,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSituacao)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -1335,6 +1372,9 @@
         private System.Windows.Forms.PictureBox picImage;
         private System.Windows.Forms.ComboBox cmbEscola;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnFoto;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.ComboBox cmbSituacao;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.PictureBox picSituacao;
     }
 }

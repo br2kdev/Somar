@@ -17,8 +17,9 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa, ";
-            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa ";
+            query += " ,descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
+            //query += " ,descSituacao = CASE WHEN A.idSituacao = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Pessoas          A ";
             query += " LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero";
             query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
@@ -58,6 +59,7 @@ namespace Somar.DAL
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
             param.Add("@fotoBase64", objectDTO.fotoBase64, DbType.String);
+            param.Add("@idSituacao", objectDTO.idSituacao, DbType.Int32);
             param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
@@ -97,6 +99,7 @@ namespace Somar.DAL
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
             param.Add("@fotoBase64", objectDTO.fotoBase64, DbType.String);
+            param.Add("@idSituacao", objectDTO.idSituacao, DbType.Int32);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);

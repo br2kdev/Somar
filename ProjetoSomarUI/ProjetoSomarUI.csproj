@@ -316,6 +316,9 @@
     <None Include="imgs\icon_add2_32x32.png" />
     <None Include="imgs\icon_back32x32.png" />
     <None Include="imgs\icon_edit2_32x32.png" />
+    <None Include="imgs\icon_ball1.png" />
+    <None Include="imgs\icon_ball2.png" />
+    <None Include="imgs\icon_ball3.png" />
     <Content Include="imgs\others\imgSomar.jpg" />
     <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />

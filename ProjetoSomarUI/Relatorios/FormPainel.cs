@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Somar.Shared;
+using System;
 using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Relatorios
@@ -17,16 +11,16 @@ namespace ProjetoSomarUI.Relatorios
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnProjetos_Click(object sender, EventArgs e)
         {
-            Relatorios.FormReport frm = new Relatorios.FormReport();
+            FormReport frm = new FormReport(Relatorio.Projetos, null);
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void btnTurmas_Click(object sender, EventArgs e)
         {
-            Relatorios.FormReport frm = new Relatorios.FormReport();
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.Turmas, null);
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }

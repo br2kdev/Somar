@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnProjetos = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnTurmas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button2
+            // btnProjetos
             // 
-            this.button2.Location = new System.Drawing.Point(12, 69);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 50);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Projetos";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btnProjetos.Location = new System.Drawing.Point(12, 69);
+            this.btnProjetos.Name = "btnProjetos";
+            this.btnProjetos.Size = new System.Drawing.Size(101, 50);
+            this.btnProjetos.TabIndex = 3;
+            this.btnProjetos.Text = "Projetos";
+            this.btnProjetos.UseVisualStyleBackColor = true;
+            this.btnProjetos.Click += new System.EventHandler(this.btnProjetos_Click);
             // 
             // pictureBox1
             // 
@@ -78,23 +78,24 @@
             this.panel1.Size = new System.Drawing.Size(554, 51);
             this.panel1.TabIndex = 65;
             // 
-            // button1
+            // btnTurmas
             // 
-            this.button1.Location = new System.Drawing.Point(119, 69);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 50);
-            this.button1.TabIndex = 66;
-            this.button1.Text = "Turmas";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnTurmas.Location = new System.Drawing.Point(119, 69);
+            this.btnTurmas.Name = "btnTurmas";
+            this.btnTurmas.Size = new System.Drawing.Size(101, 50);
+            this.btnTurmas.TabIndex = 66;
+            this.btnTurmas.Text = "Turmas";
+            this.btnTurmas.UseVisualStyleBackColor = true;
+            this.btnTurmas.Click += new System.EventHandler(this.btnTurmas_Click);
             // 
             // FormPainel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnTurmas);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnProjetos);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormPainel";
@@ -110,10 +111,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnProjetos;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnTurmas;
     }
 }

@@ -177,25 +177,6 @@ namespace ProjetoSomarUI.Cadastros
 
         #region Controls
 
-        #region Gridview Controls
-
-        /*
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idProjeto = Convert.ToInt32(this.Grid.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idProjeto);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
-            }
-        }
-        */
-
-        #endregion
-
         #region Combobox Controls
 
         private void cmbSearchType_SelectedIndexChanged(object sender, EventArgs e)
@@ -405,7 +386,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            Grid.btnExport();
+            Grid.btnExport(Relatorio.Projetos);
         }
         
     }
