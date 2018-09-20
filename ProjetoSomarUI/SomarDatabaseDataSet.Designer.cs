@@ -24,13 +24,13 @@ namespace ProjetoSomarUI {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class SomarDatabaseDataSet : global::System.Data.DataSet {
         
-        private TB_ProjetosDataTable tableTB_Projetos;
+        private dtProjetosDataTable tabledtProjetos;
         
-        private AlunosPorEscolaDataTable tableAlunosPorEscola;
+        private dtAlunosPorEscolaDataTable tabledtAlunosPorEscola;
         
-        private AlunosPorProjetoDataTable tableAlunosPorProjeto;
+        private dtAlunosPorProjetoDataTable tabledtAlunosPorProjeto;
         
-        private PessoasPorBairroDataTable tablePessoasPorBairro;
+        private dtPessoasPorBairroDataTable tabledtPessoasPorBairro;
         
         private dtTurmasDataTable tabledtTurmas;
         
@@ -62,17 +62,17 @@ namespace ProjetoSomarUI {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["TB_Projetos"] != null)) {
-                    base.Tables.Add(new TB_ProjetosDataTable(ds.Tables["TB_Projetos"]));
+                if ((ds.Tables["dtProjetos"] != null)) {
+                    base.Tables.Add(new dtProjetosDataTable(ds.Tables["dtProjetos"]));
                 }
-                if ((ds.Tables["AlunosPorEscola"] != null)) {
-                    base.Tables.Add(new AlunosPorEscolaDataTable(ds.Tables["AlunosPorEscola"]));
+                if ((ds.Tables["dtAlunosPorEscola"] != null)) {
+                    base.Tables.Add(new dtAlunosPorEscolaDataTable(ds.Tables["dtAlunosPorEscola"]));
                 }
-                if ((ds.Tables["AlunosPorProjeto"] != null)) {
-                    base.Tables.Add(new AlunosPorProjetoDataTable(ds.Tables["AlunosPorProjeto"]));
+                if ((ds.Tables["dtAlunosPorProjeto"] != null)) {
+                    base.Tables.Add(new dtAlunosPorProjetoDataTable(ds.Tables["dtAlunosPorProjeto"]));
                 }
-                if ((ds.Tables["PessoasPorBairro"] != null)) {
-                    base.Tables.Add(new PessoasPorBairroDataTable(ds.Tables["PessoasPorBairro"]));
+                if ((ds.Tables["dtPessoasPorBairro"] != null)) {
+                    base.Tables.Add(new dtPessoasPorBairroDataTable(ds.Tables["dtPessoasPorBairro"]));
                 }
                 if ((ds.Tables["dtTurmas"] != null)) {
                     base.Tables.Add(new dtTurmasDataTable(ds.Tables["dtTurmas"]));
@@ -99,9 +99,9 @@ namespace ProjetoSomarUI {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public TB_ProjetosDataTable TB_Projetos {
+        public dtProjetosDataTable dtProjetos {
             get {
-                return this.tableTB_Projetos;
+                return this.tabledtProjetos;
             }
         }
         
@@ -109,9 +109,9 @@ namespace ProjetoSomarUI {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public AlunosPorEscolaDataTable AlunosPorEscola {
+        public dtAlunosPorEscolaDataTable dtAlunosPorEscola {
             get {
-                return this.tableAlunosPorEscola;
+                return this.tabledtAlunosPorEscola;
             }
         }
         
@@ -119,9 +119,9 @@ namespace ProjetoSomarUI {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public AlunosPorProjetoDataTable AlunosPorProjeto {
+        public dtAlunosPorProjetoDataTable dtAlunosPorProjeto {
             get {
-                return this.tableAlunosPorProjeto;
+                return this.tabledtAlunosPorProjeto;
             }
         }
         
@@ -129,9 +129,9 @@ namespace ProjetoSomarUI {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public PessoasPorBairroDataTable PessoasPorBairro {
+        public dtPessoasPorBairroDataTable dtPessoasPorBairro {
             get {
-                return this.tablePessoasPorBairro;
+                return this.tabledtPessoasPorBairro;
             }
         }
         
@@ -212,17 +212,17 @@ namespace ProjetoSomarUI {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["TB_Projetos"] != null)) {
-                    base.Tables.Add(new TB_ProjetosDataTable(ds.Tables["TB_Projetos"]));
+                if ((ds.Tables["dtProjetos"] != null)) {
+                    base.Tables.Add(new dtProjetosDataTable(ds.Tables["dtProjetos"]));
                 }
-                if ((ds.Tables["AlunosPorEscola"] != null)) {
-                    base.Tables.Add(new AlunosPorEscolaDataTable(ds.Tables["AlunosPorEscola"]));
+                if ((ds.Tables["dtAlunosPorEscola"] != null)) {
+                    base.Tables.Add(new dtAlunosPorEscolaDataTable(ds.Tables["dtAlunosPorEscola"]));
                 }
-                if ((ds.Tables["AlunosPorProjeto"] != null)) {
-                    base.Tables.Add(new AlunosPorProjetoDataTable(ds.Tables["AlunosPorProjeto"]));
+                if ((ds.Tables["dtAlunosPorProjeto"] != null)) {
+                    base.Tables.Add(new dtAlunosPorProjetoDataTable(ds.Tables["dtAlunosPorProjeto"]));
                 }
-                if ((ds.Tables["PessoasPorBairro"] != null)) {
-                    base.Tables.Add(new PessoasPorBairroDataTable(ds.Tables["PessoasPorBairro"]));
+                if ((ds.Tables["dtPessoasPorBairro"] != null)) {
+                    base.Tables.Add(new dtPessoasPorBairroDataTable(ds.Tables["dtPessoasPorBairro"]));
                 }
                 if ((ds.Tables["dtTurmas"] != null)) {
                     base.Tables.Add(new dtTurmasDataTable(ds.Tables["dtTurmas"]));
@@ -260,28 +260,28 @@ namespace ProjetoSomarUI {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableTB_Projetos = ((TB_ProjetosDataTable)(base.Tables["TB_Projetos"]));
+            this.tabledtProjetos = ((dtProjetosDataTable)(base.Tables["dtProjetos"]));
             if ((initTable == true)) {
-                if ((this.tableTB_Projetos != null)) {
-                    this.tableTB_Projetos.InitVars();
+                if ((this.tabledtProjetos != null)) {
+                    this.tabledtProjetos.InitVars();
                 }
             }
-            this.tableAlunosPorEscola = ((AlunosPorEscolaDataTable)(base.Tables["AlunosPorEscola"]));
+            this.tabledtAlunosPorEscola = ((dtAlunosPorEscolaDataTable)(base.Tables["dtAlunosPorEscola"]));
             if ((initTable == true)) {
-                if ((this.tableAlunosPorEscola != null)) {
-                    this.tableAlunosPorEscola.InitVars();
+                if ((this.tabledtAlunosPorEscola != null)) {
+                    this.tabledtAlunosPorEscola.InitVars();
                 }
             }
-            this.tableAlunosPorProjeto = ((AlunosPorProjetoDataTable)(base.Tables["AlunosPorProjeto"]));
+            this.tabledtAlunosPorProjeto = ((dtAlunosPorProjetoDataTable)(base.Tables["dtAlunosPorProjeto"]));
             if ((initTable == true)) {
-                if ((this.tableAlunosPorProjeto != null)) {
-                    this.tableAlunosPorProjeto.InitVars();
+                if ((this.tabledtAlunosPorProjeto != null)) {
+                    this.tabledtAlunosPorProjeto.InitVars();
                 }
             }
-            this.tablePessoasPorBairro = ((PessoasPorBairroDataTable)(base.Tables["PessoasPorBairro"]));
+            this.tabledtPessoasPorBairro = ((dtPessoasPorBairroDataTable)(base.Tables["dtPessoasPorBairro"]));
             if ((initTable == true)) {
-                if ((this.tablePessoasPorBairro != null)) {
-                    this.tablePessoasPorBairro.InitVars();
+                if ((this.tabledtPessoasPorBairro != null)) {
+                    this.tabledtPessoasPorBairro.InitVars();
                 }
             }
             this.tabledtTurmas = ((dtTurmasDataTable)(base.Tables["dtTurmas"]));
@@ -300,39 +300,39 @@ namespace ProjetoSomarUI {
             this.Namespace = "http://tempuri.org/SomarDatabaseDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableTB_Projetos = new TB_ProjetosDataTable();
-            base.Tables.Add(this.tableTB_Projetos);
-            this.tableAlunosPorEscola = new AlunosPorEscolaDataTable();
-            base.Tables.Add(this.tableAlunosPorEscola);
-            this.tableAlunosPorProjeto = new AlunosPorProjetoDataTable();
-            base.Tables.Add(this.tableAlunosPorProjeto);
-            this.tablePessoasPorBairro = new PessoasPorBairroDataTable();
-            base.Tables.Add(this.tablePessoasPorBairro);
+            this.tabledtProjetos = new dtProjetosDataTable();
+            base.Tables.Add(this.tabledtProjetos);
+            this.tabledtAlunosPorEscola = new dtAlunosPorEscolaDataTable();
+            base.Tables.Add(this.tabledtAlunosPorEscola);
+            this.tabledtAlunosPorProjeto = new dtAlunosPorProjetoDataTable();
+            base.Tables.Add(this.tabledtAlunosPorProjeto);
+            this.tabledtPessoasPorBairro = new dtPessoasPorBairroDataTable();
+            base.Tables.Add(this.tabledtPessoasPorBairro);
             this.tabledtTurmas = new dtTurmasDataTable();
             base.Tables.Add(this.tabledtTurmas);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeTB_Projetos() {
+        private bool ShouldSerializedtProjetos() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeAlunosPorEscola() {
+        private bool ShouldSerializedtAlunosPorEscola() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializeAlunosPorProjeto() {
+        private bool ShouldSerializedtAlunosPorProjeto() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        private bool ShouldSerializePessoasPorBairro() {
+        private bool ShouldSerializedtPessoasPorBairro() {
             return false;
         }
         
@@ -398,16 +398,16 @@ namespace ProjetoSomarUI {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void TB_ProjetosRowChangeEventHandler(object sender, TB_ProjetosRowChangeEvent e);
+        public delegate void dtProjetosRowChangeEventHandler(object sender, dtProjetosRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void AlunosPorEscolaRowChangeEventHandler(object sender, AlunosPorEscolaRowChangeEvent e);
+        public delegate void dtAlunosPorEscolaRowChangeEventHandler(object sender, dtAlunosPorEscolaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void AlunosPorProjetoRowChangeEventHandler(object sender, AlunosPorProjetoRowChangeEvent e);
+        public delegate void dtAlunosPorProjetoRowChangeEventHandler(object sender, dtAlunosPorProjetoRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public delegate void PessoasPorBairroRowChangeEventHandler(object sender, PessoasPorBairroRowChangeEvent e);
+        public delegate void dtPessoasPorBairroRowChangeEventHandler(object sender, dtPessoasPorBairroRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         public delegate void dtTurmasRowChangeEventHandler(object sender, dtTurmasRowChangeEvent e);
@@ -417,7 +417,7 @@ namespace ProjetoSomarUI {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class TB_ProjetosDataTable : global::System.Data.TypedTableBase<TB_ProjetosRow> {
+        public partial class dtProjetosDataTable : global::System.Data.TypedTableBase<dtProjetosRow> {
             
             private global::System.Data.DataColumn columnidProjeto;
             
@@ -441,8 +441,8 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosDataTable() {
-                this.TableName = "TB_Projetos";
+            public dtProjetosDataTable() {
+                this.TableName = "dtProjetos";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -450,7 +450,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal TB_ProjetosDataTable(global::System.Data.DataTable table) {
+            internal dtProjetosDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -467,7 +467,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected TB_ProjetosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtProjetosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -563,34 +563,34 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow this[int index] {
+            public dtProjetosRow this[int index] {
                 get {
-                    return ((TB_ProjetosRow)(this.Rows[index]));
+                    return ((dtProjetosRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event TB_ProjetosRowChangeEventHandler TB_ProjetosRowChanging;
+            public event dtProjetosRowChangeEventHandler dtProjetosRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event TB_ProjetosRowChangeEventHandler TB_ProjetosRowChanged;
+            public event dtProjetosRowChangeEventHandler dtProjetosRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event TB_ProjetosRowChangeEventHandler TB_ProjetosRowDeleting;
+            public event dtProjetosRowChangeEventHandler dtProjetosRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event TB_ProjetosRowChangeEventHandler TB_ProjetosRowDeleted;
+            public event dtProjetosRowChangeEventHandler dtProjetosRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddTB_ProjetosRow(TB_ProjetosRow row) {
+            public void AdddtProjetosRow(dtProjetosRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow AddTB_ProjetosRow(string nomeProjeto, string descricaoProjeto, System.DateTime dtInicio, System.DateTime dtTermino, string nomeResposavel, System.DateTime dtCadastro, bool flagAtivo, System.DateTime dtUltAlteracao, int idPessoaUltAlteracao) {
-                TB_ProjetosRow rowTB_ProjetosRow = ((TB_ProjetosRow)(this.NewRow()));
+            public dtProjetosRow AdddtProjetosRow(string nomeProjeto, string descricaoProjeto, System.DateTime dtInicio, System.DateTime dtTermino, string nomeResposavel, System.DateTime dtCadastro, bool flagAtivo, System.DateTime dtUltAlteracao, int idPessoaUltAlteracao) {
+                dtProjetosRow rowdtProjetosRow = ((dtProjetosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         nomeProjeto,
@@ -602,22 +602,22 @@ namespace ProjetoSomarUI {
                         flagAtivo,
                         dtUltAlteracao,
                         idPessoaUltAlteracao};
-                rowTB_ProjetosRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowTB_ProjetosRow);
-                return rowTB_ProjetosRow;
+                rowdtProjetosRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtProjetosRow);
+                return rowdtProjetosRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow FindByidProjeto(int idProjeto) {
-                return ((TB_ProjetosRow)(this.Rows.Find(new object[] {
+            public dtProjetosRow FindByidProjeto(int idProjeto) {
+                return ((dtProjetosRow)(this.Rows.Find(new object[] {
                             idProjeto})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                TB_ProjetosDataTable cln = ((TB_ProjetosDataTable)(base.Clone()));
+                dtProjetosDataTable cln = ((dtProjetosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -625,7 +625,7 @@ namespace ProjetoSomarUI {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new TB_ProjetosDataTable();
+                return new dtProjetosDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -681,28 +681,28 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow NewTB_ProjetosRow() {
-                return ((TB_ProjetosRow)(this.NewRow()));
+            public dtProjetosRow NewdtProjetosRow() {
+                return ((dtProjetosRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new TB_ProjetosRow(builder);
+                return new dtProjetosRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(TB_ProjetosRow);
+                return typeof(dtProjetosRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.TB_ProjetosRowChanged != null)) {
-                    this.TB_ProjetosRowChanged(this, new TB_ProjetosRowChangeEvent(((TB_ProjetosRow)(e.Row)), e.Action));
+                if ((this.dtProjetosRowChanged != null)) {
+                    this.dtProjetosRowChanged(this, new dtProjetosRowChangeEvent(((dtProjetosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -710,8 +710,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.TB_ProjetosRowChanging != null)) {
-                    this.TB_ProjetosRowChanging(this, new TB_ProjetosRowChangeEvent(((TB_ProjetosRow)(e.Row)), e.Action));
+                if ((this.dtProjetosRowChanging != null)) {
+                    this.dtProjetosRowChanging(this, new dtProjetosRowChangeEvent(((dtProjetosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -719,8 +719,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.TB_ProjetosRowDeleted != null)) {
-                    this.TB_ProjetosRowDeleted(this, new TB_ProjetosRowChangeEvent(((TB_ProjetosRow)(e.Row)), e.Action));
+                if ((this.dtProjetosRowDeleted != null)) {
+                    this.dtProjetosRowDeleted(this, new dtProjetosRowChangeEvent(((dtProjetosRow)(e.Row)), e.Action));
                 }
             }
             
@@ -728,14 +728,14 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.TB_ProjetosRowDeleting != null)) {
-                    this.TB_ProjetosRowDeleting(this, new TB_ProjetosRowChangeEvent(((TB_ProjetosRow)(e.Row)), e.Action));
+                if ((this.dtProjetosRowDeleting != null)) {
+                    this.dtProjetosRowDeleting(this, new dtProjetosRowChangeEvent(((dtProjetosRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveTB_ProjetosRow(TB_ProjetosRow row) {
+            public void RemovedtProjetosRow(dtProjetosRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -762,7 +762,7 @@ namespace ProjetoSomarUI {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "TB_ProjetosDataTable";
+                attribute2.FixedValue = "dtProjetosDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -808,18 +808,18 @@ namespace ProjetoSomarUI {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class AlunosPorEscolaDataTable : global::System.Data.TypedTableBase<AlunosPorEscolaRow> {
+        public partial class dtAlunosPorEscolaDataTable : global::System.Data.TypedTableBase<dtAlunosPorEscolaRow> {
             
-            private global::System.Data.DataColumn columnidEscola;
+            private global::System.Data.DataColumn columnid;
             
-            private global::System.Data.DataColumn columnnomeEscola;
+            private global::System.Data.DataColumn columndisplayName;
             
-            private global::System.Data.DataColumn columnQtdAlunos;
+            private global::System.Data.DataColumn columndisplayCount;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaDataTable() {
-                this.TableName = "AlunosPorEscola";
+            public dtAlunosPorEscolaDataTable() {
+                this.TableName = "dtAlunosPorEscola";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -827,7 +827,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal AlunosPorEscolaDataTable(global::System.Data.DataTable table) {
+            internal dtAlunosPorEscolaDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -844,32 +844,32 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected AlunosPorEscolaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtAlunosPorEscolaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn idEscolaColumn {
+            public global::System.Data.DataColumn idColumn {
                 get {
-                    return this.columnidEscola;
+                    return this.columnid;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn nomeEscolaColumn {
+            public global::System.Data.DataColumn displayNameColumn {
                 get {
-                    return this.columnnomeEscola;
+                    return this.columndisplayName;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn QtdAlunosColumn {
+            public global::System.Data.DataColumn displayCountColumn {
                 get {
-                    return this.columnQtdAlunos;
+                    return this.columndisplayCount;
                 }
             }
             
@@ -884,54 +884,54 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRow this[int index] {
+            public dtAlunosPorEscolaRow this[int index] {
                 get {
-                    return ((AlunosPorEscolaRow)(this.Rows[index]));
+                    return ((dtAlunosPorEscolaRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorEscolaRowChangeEventHandler AlunosPorEscolaRowChanging;
+            public event dtAlunosPorEscolaRowChangeEventHandler dtAlunosPorEscolaRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorEscolaRowChangeEventHandler AlunosPorEscolaRowChanged;
+            public event dtAlunosPorEscolaRowChangeEventHandler dtAlunosPorEscolaRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorEscolaRowChangeEventHandler AlunosPorEscolaRowDeleting;
+            public event dtAlunosPorEscolaRowChangeEventHandler dtAlunosPorEscolaRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorEscolaRowChangeEventHandler AlunosPorEscolaRowDeleted;
+            public event dtAlunosPorEscolaRowChangeEventHandler dtAlunosPorEscolaRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddAlunosPorEscolaRow(AlunosPorEscolaRow row) {
+            public void AdddtAlunosPorEscolaRow(dtAlunosPorEscolaRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRow AddAlunosPorEscolaRow(string nomeEscola, int QtdAlunos) {
-                AlunosPorEscolaRow rowAlunosPorEscolaRow = ((AlunosPorEscolaRow)(this.NewRow()));
+            public dtAlunosPorEscolaRow AdddtAlunosPorEscolaRow(string displayName, int displayCount) {
+                dtAlunosPorEscolaRow rowdtAlunosPorEscolaRow = ((dtAlunosPorEscolaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        nomeEscola,
-                        QtdAlunos};
-                rowAlunosPorEscolaRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowAlunosPorEscolaRow);
-                return rowAlunosPorEscolaRow;
+                        displayName,
+                        displayCount};
+                rowdtAlunosPorEscolaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtAlunosPorEscolaRow);
+                return rowdtAlunosPorEscolaRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRow FindByidEscola(int idEscola) {
-                return ((AlunosPorEscolaRow)(this.Rows.Find(new object[] {
-                            idEscola})));
+            public dtAlunosPorEscolaRow FindByid(int id) {
+                return ((dtAlunosPorEscolaRow)(this.Rows.Find(new object[] {
+                            id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                AlunosPorEscolaDataTable cln = ((AlunosPorEscolaDataTable)(base.Clone()));
+                dtAlunosPorEscolaDataTable cln = ((dtAlunosPorEscolaDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -939,62 +939,62 @@ namespace ProjetoSomarUI {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new AlunosPorEscolaDataTable();
+                return new dtAlunosPorEscolaDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnidEscola = base.Columns["idEscola"];
-                this.columnnomeEscola = base.Columns["nomeEscola"];
-                this.columnQtdAlunos = base.Columns["QtdAlunos"];
+                this.columnid = base.Columns["id"];
+                this.columndisplayName = base.Columns["displayName"];
+                this.columndisplayCount = base.Columns["displayCount"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnidEscola = new global::System.Data.DataColumn("idEscola", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnidEscola);
-                this.columnnomeEscola = new global::System.Data.DataColumn("nomeEscola", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnomeEscola);
-                this.columnQtdAlunos = new global::System.Data.DataColumn("QtdAlunos", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQtdAlunos);
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columndisplayName = new global::System.Data.DataColumn("displayName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndisplayName);
+                this.columndisplayCount = new global::System.Data.DataColumn("displayCount", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndisplayCount);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnidEscola}, true));
-                this.columnidEscola.AutoIncrement = true;
-                this.columnidEscola.AutoIncrementSeed = -1;
-                this.columnidEscola.AutoIncrementStep = -1;
-                this.columnidEscola.AllowDBNull = false;
-                this.columnidEscola.ReadOnly = true;
-                this.columnidEscola.Unique = true;
-                this.columnnomeEscola.MaxLength = 100;
-                this.columnQtdAlunos.ReadOnly = true;
+                                this.columnid}, true));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
+                this.columndisplayName.MaxLength = 100;
+                this.columndisplayCount.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRow NewAlunosPorEscolaRow() {
-                return ((AlunosPorEscolaRow)(this.NewRow()));
+            public dtAlunosPorEscolaRow NewdtAlunosPorEscolaRow() {
+                return ((dtAlunosPorEscolaRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new AlunosPorEscolaRow(builder);
+                return new dtAlunosPorEscolaRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(AlunosPorEscolaRow);
+                return typeof(dtAlunosPorEscolaRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.AlunosPorEscolaRowChanged != null)) {
-                    this.AlunosPorEscolaRowChanged(this, new AlunosPorEscolaRowChangeEvent(((AlunosPorEscolaRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorEscolaRowChanged != null)) {
+                    this.dtAlunosPorEscolaRowChanged(this, new dtAlunosPorEscolaRowChangeEvent(((dtAlunosPorEscolaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1002,8 +1002,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.AlunosPorEscolaRowChanging != null)) {
-                    this.AlunosPorEscolaRowChanging(this, new AlunosPorEscolaRowChangeEvent(((AlunosPorEscolaRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorEscolaRowChanging != null)) {
+                    this.dtAlunosPorEscolaRowChanging(this, new dtAlunosPorEscolaRowChangeEvent(((dtAlunosPorEscolaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1011,8 +1011,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.AlunosPorEscolaRowDeleted != null)) {
-                    this.AlunosPorEscolaRowDeleted(this, new AlunosPorEscolaRowChangeEvent(((AlunosPorEscolaRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorEscolaRowDeleted != null)) {
+                    this.dtAlunosPorEscolaRowDeleted(this, new dtAlunosPorEscolaRowChangeEvent(((dtAlunosPorEscolaRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1020,14 +1020,14 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.AlunosPorEscolaRowDeleting != null)) {
-                    this.AlunosPorEscolaRowDeleting(this, new AlunosPorEscolaRowChangeEvent(((AlunosPorEscolaRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorEscolaRowDeleting != null)) {
+                    this.dtAlunosPorEscolaRowDeleting(this, new dtAlunosPorEscolaRowChangeEvent(((dtAlunosPorEscolaRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveAlunosPorEscolaRow(AlunosPorEscolaRow row) {
+            public void RemovedtAlunosPorEscolaRow(dtAlunosPorEscolaRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1054,7 +1054,7 @@ namespace ProjetoSomarUI {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "AlunosPorEscolaDataTable";
+                attribute2.FixedValue = "dtAlunosPorEscolaDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1100,7 +1100,7 @@ namespace ProjetoSomarUI {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class AlunosPorProjetoDataTable : global::System.Data.TypedTableBase<AlunosPorProjetoRow> {
+        public partial class dtAlunosPorProjetoDataTable : global::System.Data.TypedTableBase<dtAlunosPorProjetoRow> {
             
             private global::System.Data.DataColumn columnidProjeto;
             
@@ -1110,8 +1110,8 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoDataTable() {
-                this.TableName = "AlunosPorProjeto";
+            public dtAlunosPorProjetoDataTable() {
+                this.TableName = "dtAlunosPorProjeto";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1119,7 +1119,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal AlunosPorProjetoDataTable(global::System.Data.DataTable table) {
+            internal dtAlunosPorProjetoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1136,7 +1136,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected AlunosPorProjetoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtAlunosPorProjetoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1176,54 +1176,54 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRow this[int index] {
+            public dtAlunosPorProjetoRow this[int index] {
                 get {
-                    return ((AlunosPorProjetoRow)(this.Rows[index]));
+                    return ((dtAlunosPorProjetoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorProjetoRowChangeEventHandler AlunosPorProjetoRowChanging;
+            public event dtAlunosPorProjetoRowChangeEventHandler dtAlunosPorProjetoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorProjetoRowChangeEventHandler AlunosPorProjetoRowChanged;
+            public event dtAlunosPorProjetoRowChangeEventHandler dtAlunosPorProjetoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorProjetoRowChangeEventHandler AlunosPorProjetoRowDeleting;
+            public event dtAlunosPorProjetoRowChangeEventHandler dtAlunosPorProjetoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event AlunosPorProjetoRowChangeEventHandler AlunosPorProjetoRowDeleted;
+            public event dtAlunosPorProjetoRowChangeEventHandler dtAlunosPorProjetoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddAlunosPorProjetoRow(AlunosPorProjetoRow row) {
+            public void AdddtAlunosPorProjetoRow(dtAlunosPorProjetoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRow AddAlunosPorProjetoRow(string nomeProjeto, int QtdeAlunos) {
-                AlunosPorProjetoRow rowAlunosPorProjetoRow = ((AlunosPorProjetoRow)(this.NewRow()));
+            public dtAlunosPorProjetoRow AdddtAlunosPorProjetoRow(string nomeProjeto, int QtdeAlunos) {
+                dtAlunosPorProjetoRow rowdtAlunosPorProjetoRow = ((dtAlunosPorProjetoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         nomeProjeto,
                         QtdeAlunos};
-                rowAlunosPorProjetoRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowAlunosPorProjetoRow);
-                return rowAlunosPorProjetoRow;
+                rowdtAlunosPorProjetoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtAlunosPorProjetoRow);
+                return rowdtAlunosPorProjetoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRow FindByidProjeto(int idProjeto) {
-                return ((AlunosPorProjetoRow)(this.Rows.Find(new object[] {
+            public dtAlunosPorProjetoRow FindByidProjeto(int idProjeto) {
+                return ((dtAlunosPorProjetoRow)(this.Rows.Find(new object[] {
                             idProjeto})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                AlunosPorProjetoDataTable cln = ((AlunosPorProjetoDataTable)(base.Clone()));
+                dtAlunosPorProjetoDataTable cln = ((dtAlunosPorProjetoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1231,7 +1231,7 @@ namespace ProjetoSomarUI {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new AlunosPorProjetoDataTable();
+                return new dtAlunosPorProjetoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1265,28 +1265,28 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRow NewAlunosPorProjetoRow() {
-                return ((AlunosPorProjetoRow)(this.NewRow()));
+            public dtAlunosPorProjetoRow NewdtAlunosPorProjetoRow() {
+                return ((dtAlunosPorProjetoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new AlunosPorProjetoRow(builder);
+                return new dtAlunosPorProjetoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(AlunosPorProjetoRow);
+                return typeof(dtAlunosPorProjetoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.AlunosPorProjetoRowChanged != null)) {
-                    this.AlunosPorProjetoRowChanged(this, new AlunosPorProjetoRowChangeEvent(((AlunosPorProjetoRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorProjetoRowChanged != null)) {
+                    this.dtAlunosPorProjetoRowChanged(this, new dtAlunosPorProjetoRowChangeEvent(((dtAlunosPorProjetoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1294,8 +1294,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.AlunosPorProjetoRowChanging != null)) {
-                    this.AlunosPorProjetoRowChanging(this, new AlunosPorProjetoRowChangeEvent(((AlunosPorProjetoRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorProjetoRowChanging != null)) {
+                    this.dtAlunosPorProjetoRowChanging(this, new dtAlunosPorProjetoRowChangeEvent(((dtAlunosPorProjetoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1303,8 +1303,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.AlunosPorProjetoRowDeleted != null)) {
-                    this.AlunosPorProjetoRowDeleted(this, new AlunosPorProjetoRowChangeEvent(((AlunosPorProjetoRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorProjetoRowDeleted != null)) {
+                    this.dtAlunosPorProjetoRowDeleted(this, new dtAlunosPorProjetoRowChangeEvent(((dtAlunosPorProjetoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1312,14 +1312,14 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.AlunosPorProjetoRowDeleting != null)) {
-                    this.AlunosPorProjetoRowDeleting(this, new AlunosPorProjetoRowChangeEvent(((AlunosPorProjetoRow)(e.Row)), e.Action));
+                if ((this.dtAlunosPorProjetoRowDeleting != null)) {
+                    this.dtAlunosPorProjetoRowDeleting(this, new dtAlunosPorProjetoRowChangeEvent(((dtAlunosPorProjetoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemoveAlunosPorProjetoRow(AlunosPorProjetoRow row) {
+            public void RemovedtAlunosPorProjetoRow(dtAlunosPorProjetoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1346,7 +1346,7 @@ namespace ProjetoSomarUI {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "AlunosPorProjetoDataTable";
+                attribute2.FixedValue = "dtAlunosPorProjetoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1392,7 +1392,7 @@ namespace ProjetoSomarUI {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PessoasPorBairroDataTable : global::System.Data.TypedTableBase<PessoasPorBairroRow> {
+        public partial class dtPessoasPorBairroDataTable : global::System.Data.TypedTableBase<dtPessoasPorBairroRow> {
             
             private global::System.Data.DataColumn columnidBairro;
             
@@ -1402,8 +1402,8 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroDataTable() {
-                this.TableName = "PessoasPorBairro";
+            public dtPessoasPorBairroDataTable() {
+                this.TableName = "dtPessoasPorBairro";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1411,7 +1411,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal PessoasPorBairroDataTable(global::System.Data.DataTable table) {
+            internal dtPessoasPorBairroDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1428,7 +1428,7 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            protected PessoasPorBairroDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dtPessoasPorBairroDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -1468,47 +1468,47 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroRow this[int index] {
+            public dtPessoasPorBairroRow this[int index] {
                 get {
-                    return ((PessoasPorBairroRow)(this.Rows[index]));
+                    return ((dtPessoasPorBairroRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PessoasPorBairroRowChangeEventHandler PessoasPorBairroRowChanging;
+            public event dtPessoasPorBairroRowChangeEventHandler dtPessoasPorBairroRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PessoasPorBairroRowChangeEventHandler PessoasPorBairroRowChanged;
+            public event dtPessoasPorBairroRowChangeEventHandler dtPessoasPorBairroRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PessoasPorBairroRowChangeEventHandler PessoasPorBairroRowDeleting;
+            public event dtPessoasPorBairroRowChangeEventHandler dtPessoasPorBairroRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public event PessoasPorBairroRowChangeEventHandler PessoasPorBairroRowDeleted;
+            public event dtPessoasPorBairroRowChangeEventHandler dtPessoasPorBairroRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void AddPessoasPorBairroRow(PessoasPorBairroRow row) {
+            public void AdddtPessoasPorBairroRow(dtPessoasPorBairroRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroRow AddPessoasPorBairroRow(int idBairro, string bai_no, int QtdePessoas) {
-                PessoasPorBairroRow rowPessoasPorBairroRow = ((PessoasPorBairroRow)(this.NewRow()));
+            public dtPessoasPorBairroRow AdddtPessoasPorBairroRow(int idBairro, string bai_no, int QtdePessoas) {
+                dtPessoasPorBairroRow rowdtPessoasPorBairroRow = ((dtPessoasPorBairroRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idBairro,
                         bai_no,
                         QtdePessoas};
-                rowPessoasPorBairroRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPessoasPorBairroRow);
-                return rowPessoasPorBairroRow;
+                rowdtPessoasPorBairroRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdtPessoasPorBairroRow);
+                return rowdtPessoasPorBairroRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                PessoasPorBairroDataTable cln = ((PessoasPorBairroDataTable)(base.Clone()));
+                dtPessoasPorBairroDataTable cln = ((dtPessoasPorBairroDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1516,7 +1516,7 @@ namespace ProjetoSomarUI {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new PessoasPorBairroDataTable();
+                return new dtPessoasPorBairroDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1543,28 +1543,28 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroRow NewPessoasPorBairroRow() {
-                return ((PessoasPorBairroRow)(this.NewRow()));
+            public dtPessoasPorBairroRow NewdtPessoasPorBairroRow() {
+                return ((dtPessoasPorBairroRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PessoasPorBairroRow(builder);
+                return new dtPessoasPorBairroRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(PessoasPorBairroRow);
+                return typeof(dtPessoasPorBairroRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.PessoasPorBairroRowChanged != null)) {
-                    this.PessoasPorBairroRowChanged(this, new PessoasPorBairroRowChangeEvent(((PessoasPorBairroRow)(e.Row)), e.Action));
+                if ((this.dtPessoasPorBairroRowChanged != null)) {
+                    this.dtPessoasPorBairroRowChanged(this, new dtPessoasPorBairroRowChangeEvent(((dtPessoasPorBairroRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1572,8 +1572,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.PessoasPorBairroRowChanging != null)) {
-                    this.PessoasPorBairroRowChanging(this, new PessoasPorBairroRowChangeEvent(((PessoasPorBairroRow)(e.Row)), e.Action));
+                if ((this.dtPessoasPorBairroRowChanging != null)) {
+                    this.dtPessoasPorBairroRowChanging(this, new dtPessoasPorBairroRowChangeEvent(((dtPessoasPorBairroRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1581,8 +1581,8 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.PessoasPorBairroRowDeleted != null)) {
-                    this.PessoasPorBairroRowDeleted(this, new PessoasPorBairroRowChangeEvent(((PessoasPorBairroRow)(e.Row)), e.Action));
+                if ((this.dtPessoasPorBairroRowDeleted != null)) {
+                    this.dtPessoasPorBairroRowDeleted(this, new dtPessoasPorBairroRowChangeEvent(((dtPessoasPorBairroRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1590,14 +1590,14 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.PessoasPorBairroRowDeleting != null)) {
-                    this.PessoasPorBairroRowDeleting(this, new PessoasPorBairroRowChangeEvent(((PessoasPorBairroRow)(e.Row)), e.Action));
+                if ((this.dtPessoasPorBairroRowDeleting != null)) {
+                    this.dtPessoasPorBairroRowDeleting(this, new dtPessoasPorBairroRowChangeEvent(((dtPessoasPorBairroRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void RemovePessoasPorBairroRow(PessoasPorBairroRow row) {
+            public void RemovedtPessoasPorBairroRow(dtPessoasPorBairroRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1624,7 +1624,7 @@ namespace ProjetoSomarUI {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PessoasPorBairroDataTable";
+                attribute2.FixedValue = "dtPessoasPorBairroDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1676,13 +1676,33 @@ namespace ProjetoSomarUI {
             
             private global::System.Data.DataColumn columnnomeTurma;
             
-            private global::System.Data.DataColumn columnhorario;
+            private global::System.Data.DataColumn columndescricaoTurma;
             
             private global::System.Data.DataColumn columndescricaoPeriodo;
             
+            private global::System.Data.DataColumn columnHoraInicio;
+            
+            private global::System.Data.DataColumn columnHoraTermino;
+            
             private global::System.Data.DataColumn columnnomeEducador;
             
+            private global::System.Data.DataColumn columndtCadastro;
+            
+            private global::System.Data.DataColumn columnflagAtivo;
+            
+            private global::System.Data.DataColumn columndtUltAlteracao;
+            
+            private global::System.Data.DataColumn columnidPessoaUltAlteracao;
+            
+            private global::System.Data.DataColumn columnidProjeto;
+            
+            private global::System.Data.DataColumn columnhorario;
+            
             private global::System.Data.DataColumn columnnomeProjeto;
+            
+            private global::System.Data.DataColumn columnnomePessoaUltAlteracao;
+            
+            private global::System.Data.DataColumn columndescricaoAtivo;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1735,9 +1755,9 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn horarioColumn {
+            public global::System.Data.DataColumn descricaoTurmaColumn {
                 get {
-                    return this.columnhorario;
+                    return this.columndescricaoTurma;
                 }
             }
             
@@ -1751,6 +1771,22 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn HoraInicioColumn {
+                get {
+                    return this.columnHoraInicio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn HoraTerminoColumn {
+                get {
+                    return this.columnHoraTermino;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nomeEducadorColumn {
                 get {
                     return this.columnnomeEducador;
@@ -1759,9 +1795,73 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn dtCadastroColumn {
+                get {
+                    return this.columndtCadastro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn flagAtivoColumn {
+                get {
+                    return this.columnflagAtivo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn dtUltAlteracaoColumn {
+                get {
+                    return this.columndtUltAlteracao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn idPessoaUltAlteracaoColumn {
+                get {
+                    return this.columnidPessoaUltAlteracao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn idProjetoColumn {
+                get {
+                    return this.columnidProjeto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn horarioColumn {
+                get {
+                    return this.columnhorario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn nomeProjetoColumn {
                 get {
                     return this.columnnomeProjeto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn nomePessoaUltAlteracaoColumn {
+                get {
+                    return this.columnnomePessoaUltAlteracao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn descricaoAtivoColumn {
+                get {
+                    return this.columndescricaoAtivo;
                 }
             }
             
@@ -1802,18 +1902,35 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public dtTurmasRow AdddtTurmasRow(string idTurma, string nomeTurma, string horario, string descricaoPeriodo, string nomeEducador, string nomeProjeto) {
+            public dtTurmasRow AdddtTurmasRow(string nomeTurma, string descricaoTurma, string descricaoPeriodo, string HoraInicio, string HoraTermino, string nomeEducador, System.DateTime dtCadastro, bool flagAtivo, System.DateTime dtUltAlteracao, int idPessoaUltAlteracao, int idProjeto, string horario, string nomeProjeto, string nomePessoaUltAlteracao, string descricaoAtivo) {
                 dtTurmasRow rowdtTurmasRow = ((dtTurmasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        idTurma,
+                        null,
                         nomeTurma,
-                        horario,
+                        descricaoTurma,
                         descricaoPeriodo,
+                        HoraInicio,
+                        HoraTermino,
                         nomeEducador,
-                        nomeProjeto};
+                        dtCadastro,
+                        flagAtivo,
+                        dtUltAlteracao,
+                        idPessoaUltAlteracao,
+                        idProjeto,
+                        horario,
+                        nomeProjeto,
+                        nomePessoaUltAlteracao,
+                        descricaoAtivo};
                 rowdtTurmasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtTurmasRow);
                 return rowdtTurmasRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public dtTurmasRow FindByidTurma(int idTurma) {
+                return ((dtTurmasRow)(this.Rows.Find(new object[] {
+                            idTurma})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1835,27 +1952,77 @@ namespace ProjetoSomarUI {
             internal void InitVars() {
                 this.columnidTurma = base.Columns["idTurma"];
                 this.columnnomeTurma = base.Columns["nomeTurma"];
-                this.columnhorario = base.Columns["horario"];
+                this.columndescricaoTurma = base.Columns["descricaoTurma"];
                 this.columndescricaoPeriodo = base.Columns["descricaoPeriodo"];
+                this.columnHoraInicio = base.Columns["HoraInicio"];
+                this.columnHoraTermino = base.Columns["HoraTermino"];
                 this.columnnomeEducador = base.Columns["nomeEducador"];
+                this.columndtCadastro = base.Columns["dtCadastro"];
+                this.columnflagAtivo = base.Columns["flagAtivo"];
+                this.columndtUltAlteracao = base.Columns["dtUltAlteracao"];
+                this.columnidPessoaUltAlteracao = base.Columns["idPessoaUltAlteracao"];
+                this.columnidProjeto = base.Columns["idProjeto"];
+                this.columnhorario = base.Columns["horario"];
                 this.columnnomeProjeto = base.Columns["nomeProjeto"];
+                this.columnnomePessoaUltAlteracao = base.Columns["nomePessoaUltAlteracao"];
+                this.columndescricaoAtivo = base.Columns["descricaoAtivo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnidTurma = new global::System.Data.DataColumn("idTurma", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnidTurma = new global::System.Data.DataColumn("idTurma", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidTurma);
                 this.columnnomeTurma = new global::System.Data.DataColumn("nomeTurma", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnomeTurma);
-                this.columnhorario = new global::System.Data.DataColumn("horario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnhorario);
+                this.columndescricaoTurma = new global::System.Data.DataColumn("descricaoTurma", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescricaoTurma);
                 this.columndescricaoPeriodo = new global::System.Data.DataColumn("descricaoPeriodo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescricaoPeriodo);
+                this.columnHoraInicio = new global::System.Data.DataColumn("HoraInicio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoraInicio);
+                this.columnHoraTermino = new global::System.Data.DataColumn("HoraTermino", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoraTermino);
                 this.columnnomeEducador = new global::System.Data.DataColumn("nomeEducador", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnomeEducador);
+                this.columndtCadastro = new global::System.Data.DataColumn("dtCadastro", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtCadastro);
+                this.columnflagAtivo = new global::System.Data.DataColumn("flagAtivo", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnflagAtivo);
+                this.columndtUltAlteracao = new global::System.Data.DataColumn("dtUltAlteracao", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndtUltAlteracao);
+                this.columnidPessoaUltAlteracao = new global::System.Data.DataColumn("idPessoaUltAlteracao", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidPessoaUltAlteracao);
+                this.columnidProjeto = new global::System.Data.DataColumn("idProjeto", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidProjeto);
+                this.columnhorario = new global::System.Data.DataColumn("horario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnhorario);
                 this.columnnomeProjeto = new global::System.Data.DataColumn("nomeProjeto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnomeProjeto);
+                this.columnnomePessoaUltAlteracao = new global::System.Data.DataColumn("nomePessoaUltAlteracao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnomePessoaUltAlteracao);
+                this.columndescricaoAtivo = new global::System.Data.DataColumn("descricaoAtivo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescricaoAtivo);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnidTurma}, true));
+                this.columnidTurma.AutoIncrement = true;
+                this.columnidTurma.AutoIncrementSeed = -1;
+                this.columnidTurma.AutoIncrementStep = -1;
+                this.columnidTurma.AllowDBNull = false;
+                this.columnidTurma.ReadOnly = true;
+                this.columnidTurma.Unique = true;
+                this.columnnomeTurma.MaxLength = 100;
+                this.columndescricaoTurma.MaxLength = 400;
+                this.columndescricaoPeriodo.MaxLength = 20;
+                this.columnHoraInicio.MaxLength = 10;
+                this.columnHoraTermino.MaxLength = 10;
+                this.columnnomeEducador.MaxLength = 100;
+                this.columnhorario.ReadOnly = true;
+                this.columnhorario.MaxLength = 24;
+                this.columnnomeProjeto.MaxLength = 100;
+                this.columnnomePessoaUltAlteracao.MaxLength = 100;
+                this.columndescricaoAtivo.ReadOnly = true;
+                this.columndescricaoAtivo.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1985,25 +2152,25 @@ namespace ProjetoSomarUI {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class TB_ProjetosRow : global::System.Data.DataRow {
+        public partial class dtProjetosRow : global::System.Data.DataRow {
             
-            private TB_ProjetosDataTable tableTB_Projetos;
+            private dtProjetosDataTable tabledtProjetos;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal TB_ProjetosRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtProjetosRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableTB_Projetos = ((TB_ProjetosDataTable)(this.Table));
+                this.tabledtProjetos = ((dtProjetosDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int idProjeto {
                 get {
-                    return ((int)(this[this.tableTB_Projetos.idProjetoColumn]));
+                    return ((int)(this[this.tabledtProjetos.idProjetoColumn]));
                 }
                 set {
-                    this[this.tableTB_Projetos.idProjetoColumn] = value;
+                    this[this.tabledtProjetos.idProjetoColumn] = value;
                 }
             }
             
@@ -2012,14 +2179,14 @@ namespace ProjetoSomarUI {
             public string nomeProjeto {
                 get {
                     try {
-                        return ((string)(this[this.tableTB_Projetos.nomeProjetoColumn]));
+                        return ((string)(this[this.tabledtProjetos.nomeProjetoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nomeProjeto\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomeProjeto\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.nomeProjetoColumn] = value;
+                    this[this.tabledtProjetos.nomeProjetoColumn] = value;
                 }
             }
             
@@ -2028,14 +2195,14 @@ namespace ProjetoSomarUI {
             public string descricaoProjeto {
                 get {
                     try {
-                        return ((string)(this[this.tableTB_Projetos.descricaoProjetoColumn]));
+                        return ((string)(this[this.tabledtProjetos.descricaoProjetoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'descricaoProjeto\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'descricaoProjeto\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.descricaoProjetoColumn] = value;
+                    this[this.tabledtProjetos.descricaoProjetoColumn] = value;
                 }
             }
             
@@ -2044,14 +2211,14 @@ namespace ProjetoSomarUI {
             public System.DateTime dtInicio {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtInicioColumn]));
+                        return ((global::System.DateTime)(this[this.tabledtProjetos.dtInicioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dtInicio\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtInicio\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dtInicioColumn] = value;
+                    this[this.tabledtProjetos.dtInicioColumn] = value;
                 }
             }
             
@@ -2060,14 +2227,14 @@ namespace ProjetoSomarUI {
             public System.DateTime dtTermino {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtTerminoColumn]));
+                        return ((global::System.DateTime)(this[this.tabledtProjetos.dtTerminoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dtTermino\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtTermino\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dtTerminoColumn] = value;
+                    this[this.tabledtProjetos.dtTerminoColumn] = value;
                 }
             }
             
@@ -2076,14 +2243,14 @@ namespace ProjetoSomarUI {
             public string nomeResposavel {
                 get {
                     try {
-                        return ((string)(this[this.tableTB_Projetos.nomeResposavelColumn]));
+                        return ((string)(this[this.tabledtProjetos.nomeResposavelColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nomeResposavel\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomeResposavel\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.nomeResposavelColumn] = value;
+                    this[this.tabledtProjetos.nomeResposavelColumn] = value;
                 }
             }
             
@@ -2092,14 +2259,14 @@ namespace ProjetoSomarUI {
             public System.DateTime dtCadastro {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtCadastroColumn]));
+                        return ((global::System.DateTime)(this[this.tabledtProjetos.dtCadastroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dtCadastro\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtCadastro\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dtCadastroColumn] = value;
+                    this[this.tabledtProjetos.dtCadastroColumn] = value;
                 }
             }
             
@@ -2108,14 +2275,14 @@ namespace ProjetoSomarUI {
             public bool flagAtivo {
                 get {
                     try {
-                        return ((bool)(this[this.tableTB_Projetos.flagAtivoColumn]));
+                        return ((bool)(this[this.tabledtProjetos.flagAtivoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'flagAtivo\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'flagAtivo\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.flagAtivoColumn] = value;
+                    this[this.tabledtProjetos.flagAtivoColumn] = value;
                 }
             }
             
@@ -2124,14 +2291,14 @@ namespace ProjetoSomarUI {
             public System.DateTime dtUltAlteracao {
                 get {
                     try {
-                        return ((global::System.DateTime)(this[this.tableTB_Projetos.dtUltAlteracaoColumn]));
+                        return ((global::System.DateTime)(this[this.tabledtProjetos.dtUltAlteracaoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'dtUltAlteracao\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtUltAlteracao\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.dtUltAlteracaoColumn] = value;
+                    this[this.tabledtProjetos.dtUltAlteracaoColumn] = value;
                 }
             }
             
@@ -2140,230 +2307,230 @@ namespace ProjetoSomarUI {
             public int idPessoaUltAlteracao {
                 get {
                     try {
-                        return ((int)(this[this.tableTB_Projetos.idPessoaUltAlteracaoColumn]));
+                        return ((int)(this[this.tabledtProjetos.idPessoaUltAlteracaoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'idPessoaUltAlteracao\' in table \'TB_Projetos\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'idPessoaUltAlteracao\' in table \'dtProjetos\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTB_Projetos.idPessoaUltAlteracaoColumn] = value;
+                    this[this.tabledtProjetos.idPessoaUltAlteracaoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsnomeProjetoNull() {
-                return this.IsNull(this.tableTB_Projetos.nomeProjetoColumn);
+                return this.IsNull(this.tabledtProjetos.nomeProjetoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnomeProjetoNull() {
-                this[this.tableTB_Projetos.nomeProjetoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.nomeProjetoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdescricaoProjetoNull() {
-                return this.IsNull(this.tableTB_Projetos.descricaoProjetoColumn);
+                return this.IsNull(this.tabledtProjetos.descricaoProjetoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdescricaoProjetoNull() {
-                this[this.tableTB_Projetos.descricaoProjetoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.descricaoProjetoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdtInicioNull() {
-                return this.IsNull(this.tableTB_Projetos.dtInicioColumn);
+                return this.IsNull(this.tabledtProjetos.dtInicioColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdtInicioNull() {
-                this[this.tableTB_Projetos.dtInicioColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.dtInicioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdtTerminoNull() {
-                return this.IsNull(this.tableTB_Projetos.dtTerminoColumn);
+                return this.IsNull(this.tabledtProjetos.dtTerminoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdtTerminoNull() {
-                this[this.tableTB_Projetos.dtTerminoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.dtTerminoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsnomeResposavelNull() {
-                return this.IsNull(this.tableTB_Projetos.nomeResposavelColumn);
+                return this.IsNull(this.tabledtProjetos.nomeResposavelColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnomeResposavelNull() {
-                this[this.tableTB_Projetos.nomeResposavelColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.nomeResposavelColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdtCadastroNull() {
-                return this.IsNull(this.tableTB_Projetos.dtCadastroColumn);
+                return this.IsNull(this.tabledtProjetos.dtCadastroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdtCadastroNull() {
-                this[this.tableTB_Projetos.dtCadastroColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.dtCadastroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsflagAtivoNull() {
-                return this.IsNull(this.tableTB_Projetos.flagAtivoColumn);
+                return this.IsNull(this.tabledtProjetos.flagAtivoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetflagAtivoNull() {
-                this[this.tableTB_Projetos.flagAtivoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.flagAtivoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsdtUltAlteracaoNull() {
-                return this.IsNull(this.tableTB_Projetos.dtUltAlteracaoColumn);
+                return this.IsNull(this.tabledtProjetos.dtUltAlteracaoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdtUltAlteracaoNull() {
-                this[this.tableTB_Projetos.dtUltAlteracaoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.dtUltAlteracaoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsidPessoaUltAlteracaoNull() {
-                return this.IsNull(this.tableTB_Projetos.idPessoaUltAlteracaoColumn);
+                return this.IsNull(this.tabledtProjetos.idPessoaUltAlteracaoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetidPessoaUltAlteracaoNull() {
-                this[this.tableTB_Projetos.idPessoaUltAlteracaoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtProjetos.idPessoaUltAlteracaoColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class AlunosPorEscolaRow : global::System.Data.DataRow {
+        public partial class dtAlunosPorEscolaRow : global::System.Data.DataRow {
             
-            private AlunosPorEscolaDataTable tableAlunosPorEscola;
+            private dtAlunosPorEscolaDataTable tabledtAlunosPorEscola;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal AlunosPorEscolaRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtAlunosPorEscolaRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableAlunosPorEscola = ((AlunosPorEscolaDataTable)(this.Table));
+                this.tabledtAlunosPorEscola = ((dtAlunosPorEscolaDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int idEscola {
+            public int id {
                 get {
-                    return ((int)(this[this.tableAlunosPorEscola.idEscolaColumn]));
+                    return ((int)(this[this.tabledtAlunosPorEscola.idColumn]));
                 }
                 set {
-                    this[this.tableAlunosPorEscola.idEscolaColumn] = value;
+                    this[this.tabledtAlunosPorEscola.idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string nomeEscola {
-                get {
-                    try {
-                        return ((string)(this[this.tableAlunosPorEscola.nomeEscolaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nomeEscola\' in table \'AlunosPorEscola\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableAlunosPorEscola.nomeEscolaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int QtdAlunos {
+            public string displayName {
                 get {
                     try {
-                        return ((int)(this[this.tableAlunosPorEscola.QtdAlunosColumn]));
+                        return ((string)(this[this.tabledtAlunosPorEscola.displayNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'QtdAlunos\' in table \'AlunosPorEscola\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'displayName\' in table \'dtAlunosPorEscola\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAlunosPorEscola.QtdAlunosColumn] = value;
+                    this[this.tabledtAlunosPorEscola.displayNameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsnomeEscolaNull() {
-                return this.IsNull(this.tableAlunosPorEscola.nomeEscolaColumn);
+            public int displayCount {
+                get {
+                    try {
+                        return ((int)(this[this.tabledtAlunosPorEscola.displayCountColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'displayCount\' in table \'dtAlunosPorEscola\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAlunosPorEscola.displayCountColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetnomeEscolaNull() {
-                this[this.tableAlunosPorEscola.nomeEscolaColumn] = global::System.Convert.DBNull;
+            public bool IsdisplayNameNull() {
+                return this.IsNull(this.tabledtAlunosPorEscola.displayNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsQtdAlunosNull() {
-                return this.IsNull(this.tableAlunosPorEscola.QtdAlunosColumn);
+            public void SetdisplayNameNull() {
+                this[this.tabledtAlunosPorEscola.displayNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetQtdAlunosNull() {
-                this[this.tableAlunosPorEscola.QtdAlunosColumn] = global::System.Convert.DBNull;
+            public bool IsdisplayCountNull() {
+                return this.IsNull(this.tabledtAlunosPorEscola.displayCountColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdisplayCountNull() {
+                this[this.tabledtAlunosPorEscola.displayCountColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class AlunosPorProjetoRow : global::System.Data.DataRow {
+        public partial class dtAlunosPorProjetoRow : global::System.Data.DataRow {
             
-            private AlunosPorProjetoDataTable tableAlunosPorProjeto;
+            private dtAlunosPorProjetoDataTable tabledtAlunosPorProjeto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal AlunosPorProjetoRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtAlunosPorProjetoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableAlunosPorProjeto = ((AlunosPorProjetoDataTable)(this.Table));
+                this.tabledtAlunosPorProjeto = ((dtAlunosPorProjetoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int idProjeto {
                 get {
-                    return ((int)(this[this.tableAlunosPorProjeto.idProjetoColumn]));
+                    return ((int)(this[this.tabledtAlunosPorProjeto.idProjetoColumn]));
                 }
                 set {
-                    this[this.tableAlunosPorProjeto.idProjetoColumn] = value;
+                    this[this.tabledtAlunosPorProjeto.idProjetoColumn] = value;
                 }
             }
             
@@ -2372,14 +2539,14 @@ namespace ProjetoSomarUI {
             public string nomeProjeto {
                 get {
                     try {
-                        return ((string)(this[this.tableAlunosPorProjeto.nomeProjetoColumn]));
+                        return ((string)(this[this.tabledtAlunosPorProjeto.nomeProjetoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'nomeProjeto\' in table \'AlunosPorProjeto\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomeProjeto\' in table \'dtAlunosPorProjeto\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAlunosPorProjeto.nomeProjetoColumn] = value;
+                    this[this.tabledtAlunosPorProjeto.nomeProjetoColumn] = value;
                 }
             }
             
@@ -2388,54 +2555,54 @@ namespace ProjetoSomarUI {
             public int QtdeAlunos {
                 get {
                     try {
-                        return ((int)(this[this.tableAlunosPorProjeto.QtdeAlunosColumn]));
+                        return ((int)(this[this.tabledtAlunosPorProjeto.QtdeAlunosColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'QtdeAlunos\' in table \'AlunosPorProjeto\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtdeAlunos\' in table \'dtAlunosPorProjeto\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableAlunosPorProjeto.QtdeAlunosColumn] = value;
+                    this[this.tabledtAlunosPorProjeto.QtdeAlunosColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsnomeProjetoNull() {
-                return this.IsNull(this.tableAlunosPorProjeto.nomeProjetoColumn);
+                return this.IsNull(this.tabledtAlunosPorProjeto.nomeProjetoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnomeProjetoNull() {
-                this[this.tableAlunosPorProjeto.nomeProjetoColumn] = global::System.Convert.DBNull;
+                this[this.tabledtAlunosPorProjeto.nomeProjetoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsQtdeAlunosNull() {
-                return this.IsNull(this.tableAlunosPorProjeto.QtdeAlunosColumn);
+                return this.IsNull(this.tabledtAlunosPorProjeto.QtdeAlunosColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetQtdeAlunosNull() {
-                this[this.tableAlunosPorProjeto.QtdeAlunosColumn] = global::System.Convert.DBNull;
+                this[this.tabledtAlunosPorProjeto.QtdeAlunosColumn] = global::System.Convert.DBNull;
             }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class PessoasPorBairroRow : global::System.Data.DataRow {
+        public partial class dtPessoasPorBairroRow : global::System.Data.DataRow {
             
-            private PessoasPorBairroDataTable tablePessoasPorBairro;
+            private dtPessoasPorBairroDataTable tabledtPessoasPorBairro;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            internal PessoasPorBairroRow(global::System.Data.DataRowBuilder rb) : 
+            internal dtPessoasPorBairroRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablePessoasPorBairro = ((PessoasPorBairroDataTable)(this.Table));
+                this.tabledtPessoasPorBairro = ((dtPessoasPorBairroDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2443,14 +2610,14 @@ namespace ProjetoSomarUI {
             public int idBairro {
                 get {
                     try {
-                        return ((int)(this[this.tablePessoasPorBairro.idBairroColumn]));
+                        return ((int)(this[this.tabledtPessoasPorBairro.idBairroColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'idBairro\' in table \'PessoasPorBairro\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'idBairro\' in table \'dtPessoasPorBairro\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePessoasPorBairro.idBairroColumn] = value;
+                    this[this.tabledtPessoasPorBairro.idBairroColumn] = value;
                 }
             }
             
@@ -2458,10 +2625,10 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string bai_no {
                 get {
-                    return ((string)(this[this.tablePessoasPorBairro.bai_noColumn]));
+                    return ((string)(this[this.tabledtPessoasPorBairro.bai_noColumn]));
                 }
                 set {
-                    this[this.tablePessoasPorBairro.bai_noColumn] = value;
+                    this[this.tabledtPessoasPorBairro.bai_noColumn] = value;
                 }
             }
             
@@ -2470,39 +2637,39 @@ namespace ProjetoSomarUI {
             public int QtdePessoas {
                 get {
                     try {
-                        return ((int)(this[this.tablePessoasPorBairro.QtdePessoasColumn]));
+                        return ((int)(this[this.tabledtPessoasPorBairro.QtdePessoasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'QtdePessoas\' in table \'PessoasPorBairro\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtdePessoas\' in table \'dtPessoasPorBairro\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePessoasPorBairro.QtdePessoasColumn] = value;
+                    this[this.tabledtPessoasPorBairro.QtdePessoasColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsidBairroNull() {
-                return this.IsNull(this.tablePessoasPorBairro.idBairroColumn);
+                return this.IsNull(this.tabledtPessoasPorBairro.idBairroColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetidBairroNull() {
-                this[this.tablePessoasPorBairro.idBairroColumn] = global::System.Convert.DBNull;
+                this[this.tabledtPessoasPorBairro.idBairroColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsQtdePessoasNull() {
-                return this.IsNull(this.tablePessoasPorBairro.QtdePessoasColumn);
+                return this.IsNull(this.tabledtPessoasPorBairro.QtdePessoasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetQtdePessoasNull() {
-                this[this.tablePessoasPorBairro.QtdePessoasColumn] = global::System.Convert.DBNull;
+                this[this.tabledtPessoasPorBairro.QtdePessoasColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2522,14 +2689,9 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string idTurma {
+            public int idTurma {
                 get {
-                    try {
-                        return ((string)(this[this.tabledtTurmas.idTurmaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'idTurma\' in table \'dtTurmas\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tabledtTurmas.idTurmaColumn]));
                 }
                 set {
                     this[this.tabledtTurmas.idTurmaColumn] = value;
@@ -2554,17 +2716,17 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string horario {
+            public string descricaoTurma {
                 get {
                     try {
-                        return ((string)(this[this.tabledtTurmas.horarioColumn]));
+                        return ((string)(this[this.tabledtTurmas.descricaoTurmaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'horario\' in table \'dtTurmas\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'descricaoTurma\' in table \'dtTurmas\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtTurmas.horarioColumn] = value;
+                    this[this.tabledtTurmas.descricaoTurmaColumn] = value;
                 }
             }
             
@@ -2586,6 +2748,38 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string HoraInicio {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTurmas.HoraInicioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoraInicio\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.HoraInicioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string HoraTermino {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTurmas.HoraTerminoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoraTermino\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.HoraTerminoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string nomeEducador {
                 get {
                     try {
@@ -2597,6 +2791,102 @@ namespace ProjetoSomarUI {
                 }
                 set {
                     this[this.tabledtTurmas.nomeEducadorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime dtCadastro {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledtTurmas.dtCadastroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtCadastro\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.dtCadastroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool flagAtivo {
+                get {
+                    try {
+                        return ((bool)(this[this.tabledtTurmas.flagAtivoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'flagAtivo\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.flagAtivoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime dtUltAlteracao {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabledtTurmas.dtUltAlteracaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dtUltAlteracao\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.dtUltAlteracaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int idPessoaUltAlteracao {
+                get {
+                    try {
+                        return ((int)(this[this.tabledtTurmas.idPessoaUltAlteracaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idPessoaUltAlteracao\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.idPessoaUltAlteracaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int idProjeto {
+                get {
+                    try {
+                        return ((int)(this[this.tabledtTurmas.idProjetoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idProjeto\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.idProjetoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string horario {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTurmas.horarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'horario\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.horarioColumn] = value;
                 }
             }
             
@@ -2618,14 +2908,34 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsidTurmaNull() {
-                return this.IsNull(this.tabledtTurmas.idTurmaColumn);
+            public string nomePessoaUltAlteracao {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTurmas.nomePessoaUltAlteracaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nomePessoaUltAlteracao\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.nomePessoaUltAlteracaoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetidTurmaNull() {
-                this[this.tabledtTurmas.idTurmaColumn] = global::System.Convert.DBNull;
+            public string descricaoAtivo {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtTurmas.descricaoAtivoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'descricaoAtivo\' in table \'dtTurmas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtTurmas.descricaoAtivoColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2642,14 +2952,14 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IshorarioNull() {
-                return this.IsNull(this.tabledtTurmas.horarioColumn);
+            public bool IsdescricaoTurmaNull() {
+                return this.IsNull(this.tabledtTurmas.descricaoTurmaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SethorarioNull() {
-                this[this.tabledtTurmas.horarioColumn] = global::System.Convert.DBNull;
+            public void SetdescricaoTurmaNull() {
+                this[this.tabledtTurmas.descricaoTurmaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2666,6 +2976,30 @@ namespace ProjetoSomarUI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsHoraInicioNull() {
+                return this.IsNull(this.tabledtTurmas.HoraInicioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetHoraInicioNull() {
+                this[this.tabledtTurmas.HoraInicioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsHoraTerminoNull() {
+                return this.IsNull(this.tabledtTurmas.HoraTerminoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetHoraTerminoNull() {
+                this[this.tabledtTurmas.HoraTerminoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsnomeEducadorNull() {
                 return this.IsNull(this.tabledtTurmas.nomeEducadorColumn);
             }
@@ -2674,6 +3008,78 @@ namespace ProjetoSomarUI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnomeEducadorNull() {
                 this[this.tabledtTurmas.nomeEducadorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdtCadastroNull() {
+                return this.IsNull(this.tabledtTurmas.dtCadastroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdtCadastroNull() {
+                this[this.tabledtTurmas.dtCadastroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsflagAtivoNull() {
+                return this.IsNull(this.tabledtTurmas.flagAtivoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetflagAtivoNull() {
+                this[this.tabledtTurmas.flagAtivoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdtUltAlteracaoNull() {
+                return this.IsNull(this.tabledtTurmas.dtUltAlteracaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdtUltAlteracaoNull() {
+                this[this.tabledtTurmas.dtUltAlteracaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsidPessoaUltAlteracaoNull() {
+                return this.IsNull(this.tabledtTurmas.idPessoaUltAlteracaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetidPessoaUltAlteracaoNull() {
+                this[this.tabledtTurmas.idPessoaUltAlteracaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsidProjetoNull() {
+                return this.IsNull(this.tabledtTurmas.idProjetoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetidProjetoNull() {
+                this[this.tabledtTurmas.idProjetoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IshorarioNull() {
+                return this.IsNull(this.tabledtTurmas.horarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SethorarioNull() {
+                this[this.tabledtTurmas.horarioColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2687,28 +3093,52 @@ namespace ProjetoSomarUI {
             public void SetnomeProjetoNull() {
                 this[this.tabledtTurmas.nomeProjetoColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsnomePessoaUltAlteracaoNull() {
+                return this.IsNull(this.tabledtTurmas.nomePessoaUltAlteracaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetnomePessoaUltAlteracaoNull() {
+                this[this.tabledtTurmas.nomePessoaUltAlteracaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsdescricaoAtivoNull() {
+                return this.IsNull(this.tabledtTurmas.descricaoAtivoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetdescricaoAtivoNull() {
+                this[this.tabledtTurmas.descricaoAtivoColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class TB_ProjetosRowChangeEvent : global::System.EventArgs {
+        public class dtProjetosRowChangeEvent : global::System.EventArgs {
             
-            private TB_ProjetosRow eventRow;
+            private dtProjetosRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRowChangeEvent(TB_ProjetosRow row, global::System.Data.DataRowAction action) {
+            public dtProjetosRowChangeEvent(dtProjetosRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public TB_ProjetosRow Row {
+            public dtProjetosRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2727,22 +3157,22 @@ namespace ProjetoSomarUI {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class AlunosPorEscolaRowChangeEvent : global::System.EventArgs {
+        public class dtAlunosPorEscolaRowChangeEvent : global::System.EventArgs {
             
-            private AlunosPorEscolaRow eventRow;
+            private dtAlunosPorEscolaRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRowChangeEvent(AlunosPorEscolaRow row, global::System.Data.DataRowAction action) {
+            public dtAlunosPorEscolaRowChangeEvent(dtAlunosPorEscolaRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorEscolaRow Row {
+            public dtAlunosPorEscolaRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2761,22 +3191,22 @@ namespace ProjetoSomarUI {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class AlunosPorProjetoRowChangeEvent : global::System.EventArgs {
+        public class dtAlunosPorProjetoRowChangeEvent : global::System.EventArgs {
             
-            private AlunosPorProjetoRow eventRow;
+            private dtAlunosPorProjetoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRowChangeEvent(AlunosPorProjetoRow row, global::System.Data.DataRowAction action) {
+            public dtAlunosPorProjetoRowChangeEvent(dtAlunosPorProjetoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public AlunosPorProjetoRow Row {
+            public dtAlunosPorProjetoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2795,22 +3225,22 @@ namespace ProjetoSomarUI {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public class PessoasPorBairroRowChangeEvent : global::System.EventArgs {
+        public class dtPessoasPorBairroRowChangeEvent : global::System.EventArgs {
             
-            private PessoasPorBairroRow eventRow;
+            private dtPessoasPorBairroRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroRowChangeEvent(PessoasPorBairroRow row, global::System.Data.DataRowAction action) {
+            public dtPessoasPorBairroRowChangeEvent(dtPessoasPorBairroRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public PessoasPorBairroRow Row {
+            public dtPessoasPorBairroRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2872,7 +3302,7 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class TB_ProjetosTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtProjetosTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -2886,7 +3316,7 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public TB_ProjetosTableAdapter() {
+        public dtProjetosTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -2983,7 +3413,7 @@ namespace ProjetoSomarUI.SomarDatabaseDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "TB_Projetos";
+            tableMapping.DataSetTable = "dtProjetos";
             tableMapping.ColumnMappings.Add("idProjeto", "idProjeto");
             tableMapping.ColumnMappings.Add("nomeProjeto", "nomeProjeto");
             tableMapping.ColumnMappings.Add("descricaoProjeto", "descricaoProjeto");
@@ -3108,7 +3538,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SomarDatabaseDataSet.TB_ProjetosDataTable dataTable) {
+        public virtual int Fill(SomarDatabaseDataSet.dtProjetosDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3121,9 +3551,9 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SomarDatabaseDataSet.TB_ProjetosDataTable GetData() {
+        public virtual SomarDatabaseDataSet.dtProjetosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SomarDatabaseDataSet.TB_ProjetosDataTable dataTable = new SomarDatabaseDataSet.TB_ProjetosDataTable();
+            SomarDatabaseDataSet.dtProjetosDataTable dataTable = new SomarDatabaseDataSet.dtProjetosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3131,7 +3561,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(SomarDatabaseDataSet.TB_ProjetosDataTable dataTable) {
+        public virtual int Update(SomarDatabaseDataSet.dtProjetosDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -3139,7 +3569,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(SomarDatabaseDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "TB_Projetos");
+            return this.Adapter.Update(dataSet, "dtProjetos");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3532,7 +3962,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AlunosPorEscolaTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtAlunosPorEscolaTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3546,7 +3976,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public AlunosPorEscolaTableAdapter() {
+        public dtAlunosPorEscolaTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3643,10 +4073,10 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "AlunosPorEscola";
-            tableMapping.ColumnMappings.Add("idEscola", "idEscola");
-            tableMapping.ColumnMappings.Add("nomeEscola", "nomeEscola");
-            tableMapping.ColumnMappings.Add("QtdAlunos", "QtdAlunos");
+            tableMapping.DataSetTable = "dtAlunosPorEscola";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("displayName", "displayName");
+            tableMapping.ColumnMappings.Add("displayCount", "displayCount");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3663,32 +4093,19 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT A.idEscola, A.nomeEscola, QtdAlunos = COUNT(1)\r\nFROM TB_Escolas\t\t  A\r\nINNE" +
-                "R JOIN TB_Escolas B ON A.idEscola = B.idEscola\r\nGROUP BY A.idEscola, A.nomeEscol" +
-                "a";
+            this._commandCollection[0].CommandText = "SELECT id = A.idEscola, displayName = A.nomeEscola, displayCount = COUNT(1)\r\nFROM" +
+                " TB_Escolas\t\t  A\r\nINNER JOIN TB_Pessoas B ON A.idEscola = B.idEscola\r\nGROUP BY A" +
+                ".idEscola, A.nomeEscola";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SomarDatabaseDataSet.AlunosPorEscolaDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SomarDatabaseDataSet.AlunosPorEscolaDataTable GetData() {
+        public virtual SomarDatabaseDataSet.dtAlunosPorEscolaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SomarDatabaseDataSet.AlunosPorEscolaDataTable dataTable = new SomarDatabaseDataSet.AlunosPorEscolaDataTable();
+            SomarDatabaseDataSet.dtAlunosPorEscolaDataTable dataTable = new SomarDatabaseDataSet.dtAlunosPorEscolaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3703,7 +4120,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class AlunosPorProjetoTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtAlunosPorProjetoTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3717,7 +4134,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public AlunosPorProjetoTableAdapter() {
+        public dtAlunosPorProjetoTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3814,7 +4231,7 @@ SELECT idProjeto, nomeProjeto, descricaoProjeto, dtInicio, dtTermino, nomeRespos
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "AlunosPorProjeto";
+            tableMapping.DataSetTable = "dtAlunosPorProjeto";
             tableMapping.ColumnMappings.Add("idProjeto", "idProjeto");
             tableMapping.ColumnMappings.Add("nomeProjeto", "nomeProjeto");
             tableMapping.ColumnMappings.Add("QtdeAlunos", "QtdeAlunos");
@@ -3846,23 +4263,10 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SomarDatabaseDataSet.AlunosPorProjetoDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SomarDatabaseDataSet.AlunosPorProjetoDataTable GetData() {
+        public virtual SomarDatabaseDataSet.dtAlunosPorProjetoDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SomarDatabaseDataSet.AlunosPorProjetoDataTable dataTable = new SomarDatabaseDataSet.AlunosPorProjetoDataTable();
+            SomarDatabaseDataSet.dtAlunosPorProjetoDataTable dataTable = new SomarDatabaseDataSet.dtAlunosPorProjetoDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3877,7 +4281,7 @@ GROUP BY C.idProjeto, C.nomeProjeto";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PessoasPorBairroTableAdapter : global::System.ComponentModel.Component {
+    public partial class dtPessoasPorBairroTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -3891,7 +4295,7 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-        public PessoasPorBairroTableAdapter() {
+        public dtPessoasPorBairroTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -3988,7 +4392,7 @@ GROUP BY C.idProjeto, C.nomeProjeto";
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "PessoasPorBairro";
+            tableMapping.DataSetTable = "dtPessoasPorBairro";
             tableMapping.ColumnMappings.Add("idBairro", "idBairro");
             tableMapping.ColumnMappings.Add("bai_no", "bai_no");
             tableMapping.ColumnMappings.Add("QtdePessoas", "QtdePessoas");
@@ -4017,23 +4421,185 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(SomarDatabaseDataSet.PessoasPorBairroDataTable dataTable) {
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual SomarDatabaseDataSet.dtPessoasPorBairroDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
+            SomarDatabaseDataSet.dtPessoasPorBairroDataTable dataTable = new SomarDatabaseDataSet.dtPessoasPorBairroDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class dtTurmasTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public dtTurmasTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
             }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "dtTurmas";
+            tableMapping.ColumnMappings.Add("idTurma", "idTurma");
+            tableMapping.ColumnMappings.Add("nomeTurma", "nomeTurma");
+            tableMapping.ColumnMappings.Add("descricaoTurma", "descricaoTurma");
+            tableMapping.ColumnMappings.Add("descricaoPeriodo", "descricaoPeriodo");
+            tableMapping.ColumnMappings.Add("HoraInicio", "HoraInicio");
+            tableMapping.ColumnMappings.Add("HoraTermino", "HoraTermino");
+            tableMapping.ColumnMappings.Add("nomeEducador", "nomeEducador");
+            tableMapping.ColumnMappings.Add("dtCadastro", "dtCadastro");
+            tableMapping.ColumnMappings.Add("flagAtivo", "flagAtivo");
+            tableMapping.ColumnMappings.Add("dtUltAlteracao", "dtUltAlteracao");
+            tableMapping.ColumnMappings.Add("idPessoaUltAlteracao", "idPessoaUltAlteracao");
+            tableMapping.ColumnMappings.Add("idProjeto", "idProjeto");
+            tableMapping.ColumnMappings.Add("horario", "horario");
+            tableMapping.ColumnMappings.Add("nomeProjeto", "nomeProjeto");
+            tableMapping.ColumnMappings.Add("nomePessoaUltAlteracao", "nomePessoaUltAlteracao");
+            tableMapping.ColumnMappings.Add("descricaoAtivo", "descricaoAtivo");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::ProjetoSomarUI.Properties.Settings.Default.SomarDatabase;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT  A.*, A.HoraInicio + ' às ' + A.HoraTermino as horario, 
+		B.nomeProjeto, 
+		C.nomeUsuario as nomePessoaUltAlteracao,
+descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END
+FROM TB_Turmas A
+LEFT JOIN TB_Projetos B ON A.idProjeto = B.idProjeto
+LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual SomarDatabaseDataSet.PessoasPorBairroDataTable GetData() {
+        public virtual SomarDatabaseDataSet.dtTurmasDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            SomarDatabaseDataSet.PessoasPorBairroDataTable dataTable = new SomarDatabaseDataSet.PessoasPorBairroDataTable();
+            SomarDatabaseDataSet.dtTurmasDataTable dataTable = new SomarDatabaseDataSet.dtTurmasDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4051,7 +4617,7 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         
         private UpdateOrderOption _updateOrder;
         
-        private TB_ProjetosTableAdapter _tB_ProjetosTableAdapter;
+        private dtProjetosTableAdapter _dtProjetosTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4073,12 +4639,12 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public TB_ProjetosTableAdapter TB_ProjetosTableAdapter {
+        public dtProjetosTableAdapter dtProjetosTableAdapter {
             get {
-                return this._tB_ProjetosTableAdapter;
+                return this._dtProjetosTableAdapter;
             }
             set {
-                this._tB_ProjetosTableAdapter = value;
+                this._dtProjetosTableAdapter = value;
             }
         }
         
@@ -4101,9 +4667,9 @@ GROUP BY C.idProjeto, C.nomeProjeto";
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._tB_ProjetosTableAdapter != null) 
-                            && (this._tB_ProjetosTableAdapter.Connection != null))) {
-                    return this._tB_ProjetosTableAdapter.Connection;
+                if (((this._dtProjetosTableAdapter != null) 
+                            && (this._dtProjetosTableAdapter.Connection != null))) {
+                    return this._dtProjetosTableAdapter.Connection;
                 }
                 return null;
             }
@@ -4118,7 +4684,7 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._tB_ProjetosTableAdapter != null)) {
+                if ((this._dtProjetosTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4132,12 +4698,12 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateUpdatedRows(SomarDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tB_ProjetosTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TB_Projetos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._dtProjetosTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.dtProjetos.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._tB_ProjetosTableAdapter.Update(updatedRows));
+                    result = (result + this._dtProjetosTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4151,11 +4717,11 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateInsertedRows(SomarDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._tB_ProjetosTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TB_Projetos.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._dtProjetosTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.dtProjetos.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._tB_ProjetosTableAdapter.Update(addedRows));
+                    result = (result + this._dtProjetosTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4169,11 +4735,11 @@ GROUP BY C.idProjeto, C.nomeProjeto";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private int UpdateDeletedRows(SomarDatabaseDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._tB_ProjetosTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TB_Projetos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._dtProjetosTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.dtProjetos.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._tB_ProjetosTableAdapter.Update(deletedRows));
+                    result = (result + this._dtProjetosTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -4216,8 +4782,8 @@ GROUP BY C.idProjeto, C.nomeProjeto";
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._tB_ProjetosTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._tB_ProjetosTableAdapter.Connection) == false))) {
+            if (((this._dtProjetosTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._dtProjetosTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -4253,13 +4819,13 @@ GROUP BY C.idProjeto, C.nomeProjeto";
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._tB_ProjetosTableAdapter != null)) {
-                    revertConnections.Add(this._tB_ProjetosTableAdapter, this._tB_ProjetosTableAdapter.Connection);
-                    this._tB_ProjetosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._tB_ProjetosTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._tB_ProjetosTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._tB_ProjetosTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._tB_ProjetosTableAdapter.Adapter);
+                if ((this._dtProjetosTableAdapter != null)) {
+                    revertConnections.Add(this._dtProjetosTableAdapter, this._dtProjetosTableAdapter.Connection);
+                    this._dtProjetosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._dtProjetosTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._dtProjetosTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._dtProjetosTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._dtProjetosTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -4320,9 +4886,9 @@ GROUP BY C.idProjeto, C.nomeProjeto";
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._tB_ProjetosTableAdapter != null)) {
-                    this._tB_ProjetosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._tB_ProjetosTableAdapter]));
-                    this._tB_ProjetosTableAdapter.Transaction = null;
+                if ((this._dtProjetosTableAdapter != null)) {
+                    this._dtProjetosTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._dtProjetosTableAdapter]));
+                    this._dtProjetosTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

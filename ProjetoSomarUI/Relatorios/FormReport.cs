@@ -7,6 +7,7 @@ using System.Data;
 using System.Windows.Forms;
 using Somar.Shared;
 using System.Drawing.Printing;
+using ProjetoSomarUI.SomarDatabaseDataSetTableAdapters;
 
 namespace ProjetoSomarUI.Relatorios
 {
@@ -32,30 +33,7 @@ namespace ProjetoSomarUI.Relatorios
         {
             if (_relatorio == Relatorio.Dashboard)
             {
-                this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelDashboard.rdlc";
-                
-                var _dataTable1 = new ProjetoBLL().GetAllData(false).ToDataTable();
-                ReportDataSource rds1 = new ReportDataSource("DataSetAlunosPorEscola", _dataTable1);
-                this.reportViewer1.LocalReport.DataSources.Add(rds1);
-
-                var _dataTable2 = new ProjetoBLL().GetAllData(false).ToDataTable();
-                ReportDataSource rds2 = new ReportDataSource("DataSetAlunosPorProjeto", _dataTable2);
-                this.reportViewer1.LocalReport.DataSources.Add(rds2);
-
-                var _dataTable3 = new ProjetoBLL().GetAllData(false).ToDataTable();
-                ReportDataSource rds3 = new ReportDataSource("DataSetPessoasPorBairro", _dataTable3);
-                this.reportViewer1.LocalReport.DataSources.Add(rds3);
-
-                /*
-                var _dataTable1 = new ProjetoBLL().GetAllData(false).ToDataTable();
-                ReportDataSource rds1 = new ReportDataSource("DataSetProjetos", _dataTable1);
-                this.reportViewer1.LocalReport.DataSources.Add(rds1);
-
-                var _dataTable2 = new TurmaBLL().GetAllData().ToDataTable();
-                ReportDataSource rds2 = new ReportDataSource("DataSetTurmas", _dataTable2);
-                this.reportViewer1.LocalReport.DataSources.Add(rds2);
-                */
-
+                LoadDashboard();
             }
             else
             {
@@ -86,11 +64,32 @@ namespace ProjetoSomarUI.Relatorios
             this.reportViewer1.RefreshReport();
         }
 
+        private void LoadDashboard()
+        {
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelDashboard.rdlc";
+
+            dtAlunosPorEscolaTableAdapter dt1 = new dtAlunosPorEscolaTableAdapter();
+            dtAlunosPorProjetoTableAdapter dt2 = new dtAlunosPorProjetoTableAdapter();
+            dtPessoasPorBairroTableAdapter dt3 = new dtPessoasPorBairroTableAdapter();
+
+            var result1 = dt1.GetData().CopyToDataTable();
+            var result2 = dt2.GetData().CopyToDataTable();
+            var result3 = dt3.GetData().CopyToDataTable();
+
+            ReportDataSource rds1 = new ReportDataSource("dsAlunosPorEscola", result1);         // Alunos por Escola
+            ReportDataSource rds2 = new ReportDataSource("dsAlunosPorProjeto", result2);   // Alunos por Projeto
+            ReportDataSource rds3 = new ReportDataSource("dsPessoasPorBairro", result3);   // Pessoas por Bairro
+
+            this.reportViewer1.LocalReport.DataSources.Add(rds1);
+            this.reportViewer1.LocalReport.DataSources.Add(rds2);
+            this.reportViewer1.LocalReport.DataSources.Add(rds3);
+        }
+
         private void ConfigurePrint()
         {
             this.reportViewer1.ProcessingMode = ProcessingMode.Local;
             this.reportViewer1.ShowProgress = true;
-            this.reportViewer1.LocalReport.EnableExternalImages = false; ;
+            this.reportViewer1.LocalReport.EnableExternalImages = false;
             this.reportViewer1.ZoomMode = ZoomMode.Percent;
             this.reportViewer1.ZoomPercent = 100;
             this.reportViewer1.ZoomMode = ZoomMode.PageWidth;
@@ -113,7 +112,10 @@ namespace ProjetoSomarUI.Relatorios
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelProjetos.rdlc";
 
             if (_dataTable == null)
-                _dataTable = new ProjetoBLL().GetAllData(false).ToDataTable();
+            {
+                dtProjetosTableAdapter dt = new dtProjetosTableAdapter();
+                _dataTable = dt.GetData().CopyToDataTable();
+            }
 
             return _dataTable;
 
@@ -128,17 +130,10 @@ namespace ProjetoSomarUI.Relatorios
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelTurmas.rdlc";
 
             if (_dataTable == null)
-                _dataTable = new TurmaBLL().GetAllData().ToDataTable();
-
-            return _dataTable;
-        }
-
-        private DataTable LoadReportDashboard(DataTable _dataTable)
-        {
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelDashboard.rdlc";
-
-            if (_dataTable == null)
-                _dataTable = new TurmaBLL().GetAllData().ToDataTable();
+            {
+                dtTurmasTableAdapter dt = new dtTurmasTableAdapter();
+                _dataTable = dt.GetData().CopyToDataTable();
+            }
 
             return _dataTable;
         }
@@ -148,6 +143,11 @@ namespace ProjetoSomarUI.Relatorios
         private void reportViewer1_Load(object sender, EventArgs e)
         {
             ShowReport();
+        }
+
+        private void FormReport_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

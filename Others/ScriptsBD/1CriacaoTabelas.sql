@@ -394,9 +394,9 @@ INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
 -- ****************************** -- 
 -- ALUNOS POR ESCOLA
 -- ****************************** -- 
-SELECT A.idEscola, A.nomeEscola, QtdAlunos = COUNT(1)
+SELECT id = A.idEscola, displayName = A.nomeEscola, displayCount = COUNT(1)
 FROM TB_Escolas		  A
-INNER JOIN TB_Escolas B ON A.idEscola = B.idEscola
+INNER JOIN TB_Pessoas B ON A.idEscola = B.idEscola
 GROUP BY A.idEscola, A.nomeEscola
 
 -- ****************************** -- 

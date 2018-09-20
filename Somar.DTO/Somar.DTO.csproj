@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContatoDTO.cs" />
+    <Compile Include="DashboardDTO.cs" />
     <Compile Include="EnderecoDTO.cs" />
     <Compile Include="EscolaDTO.cs" />
     <Compile Include="FrequenciaDTO.cs" />

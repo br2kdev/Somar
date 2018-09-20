@@ -63,6 +63,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Relatório";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormReport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -11,35 +11,35 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSetAlunosPorEscola">
+    <DataSet Name="dsAlunosPorEscola">
       <Query>
         <DataSourceName>SomarDatabaseDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="idEscola">
-          <DataField>idEscola</DataField>
+        <Field Name="id">
+          <DataField>id</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="nomeEscola">
-          <DataField>nomeEscola</DataField>
+        <Field Name="displayName">
+          <DataField>displayName</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="QtdAlunos">
-          <DataField>QtdAlunos</DataField>
+        <Field Name="displayCount">
+          <DataField>displayCount</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SomarDatabaseDataSet</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Brichucka\source\repos\Somar\ProjetoSomarUI\SomarDatabaseDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>AlunosPorEscola</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableName>dtAlunosPorEscola</rd:TableName>
+        <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>AlunosPorEscolaTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>dtAlunosPorEscolaTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="DataSetAlunosPorProjeto">
+    <DataSet Name="dsAlunosPorProjeto">
       <Query>
         <DataSourceName>SomarDatabaseDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -61,13 +61,13 @@
       <rd:DataSetInfo>
         <rd:DataSetName>SomarDatabaseDataSet</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Brichucka\source\repos\Somar\ProjetoSomarUI\SomarDatabaseDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>AlunosPorProjeto</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableName>dtAlunosPorProjeto</rd:TableName>
+        <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>AlunosPorProjetoTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>dtAlunosPorProjetoTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
-    <DataSet Name="DataSetPessoasPorBairro">
+    <DataSet Name="dsPessoasPorBairro">
       <Query>
         <DataSourceName>SomarDatabaseDataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -89,10 +89,10 @@
       <rd:DataSetInfo>
         <rd:DataSetName>SomarDatabaseDataSet</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Brichucka\source\repos\Somar\ProjetoSomarUI\SomarDatabaseDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>PessoasPorBairro</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
+        <rd:TableName>dtPessoasPorBairro</rd:TableName>
+        <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>PessoasPorBairroTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>dtPessoasPorBairroTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -100,17 +100,109 @@
     <ReportSection>
       <Body>
         <ReportItems>
+          <Image Name="imgLogo">
+            <Source>Embedded</Source>
+            <Value>LogoSimples</Value>
+            <Sizing>FitProportional</Sizing>
+            <Top>0.3175cm</Top>
+            <Left>0.89641cm</Left>
+            <Height>2.18792cm</Height>
+            <Width>2.63771cm</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Image>
+          <Line Name="Line1">
+            <Top>2.85637cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>0cm</Height>
+            <Width>20.37166cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Color>LightGrey</Color>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>RELATÓRIO: </Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox15</rd:DefaultName>
+            <Top>1.06045cm</Top>
+            <Left>3.85974cm</Left>
+            <Height>0.75875cm</Height>
+            <Width>3.79646cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox16">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Quadro Analítico</Value>
+                    <Style>
+                      <FontSize>16pt</FontSize>
+                      <FontWeight>Thin</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox15</rd:DefaultName>
+            <Top>1.06045cm</Top>
+            <Left>7.81622cm</Left>
+            <Height>0.75875cm</Height>
+            <Width>6.99792cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
           <Tablix Name="Tablix6">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.28291cm</Width>
+                  <Width>5.46333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.11188cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.35797cm</Width>
+                  <Width>2.30506cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -119,17 +211,18 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox32">
+                        <Textbox Name="Textbox14">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ID</Value>
+                                  <Value>ALUNOS POR ESCOLA</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -138,21 +231,29 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox32</rd:DefaultName>
+                          <rd:DefaultName>Textbox14</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <BackgroundColor>MidnightBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox34">
@@ -230,49 +331,14 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idEscola">
+                        <Textbox Name="displayName">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!idEscola.Value</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>idEscola</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorEscola") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="nomeEscola">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!nomeEscola.Value</Value>
+                                  <Value>=Fields!displayName.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -281,13 +347,13 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>nomeEscola</rd:DefaultName>
+                          <rd:DefaultName>displayName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorEscola") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsAlunosPorEscola") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -298,14 +364,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="QtdAlunos">
+                        <Textbox Name="displayCount">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!QtdAlunos.Value</Value>
+                                  <Value>=Fields!displayCount.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -316,13 +382,13 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>QtdAlunos</rd:DefaultName>
+                          <rd:DefaultName>displayCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorEscola") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsAlunosPorEscola") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -339,11 +405,13 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
@@ -356,129 +424,31 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <FixedRowHeaders>true</FixedRowHeaders>
-            <DataSetName>DataSetAlunosPorEscola</DataSetName>
+            <DataSetName>dsAlunosPorEscola</DataSetName>
             <SortExpressions>
               <SortExpression>
-                <Value>=Fields!nomeEscola.Value</Value>
+                <Value>=Fields!displayName.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>3.11891cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>1.2cm</Height>
-            <Width>9.75276cm</Width>
+            <Top>3.46622cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>1.8cm</Height>
+            <Width>7.76839cm</Width>
+            <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
             </Style>
           </Tablix>
-          <Image Name="imgLogo">
-            <Source>Embedded</Source>
-            <Value>LogoSimples</Value>
-            <Sizing>FitProportional</Sizing>
-            <Top>0.3175cm</Top>
-            <Left>0.89641cm</Left>
-            <Height>2.18792cm</Height>
-            <Width>2.63771cm</Width>
-            <ZIndex>1</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-          </Image>
-          <Line Name="Line1">
-            <Top>2.85637cm</Top>
-            <Left>0.3175cm</Left>
-            <Height>0cm</Height>
-            <Width>20.37166cm</Width>
-            <ZIndex>2</ZIndex>
-            <Style>
-              <Border>
-                <Color>LightGrey</Color>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox15">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>RELATÓRIO: </Value>
-                    <Style>
-                      <FontSize>16pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>1.06045cm</Top>
-            <Left>3.85974cm</Left>
-            <Height>0.75875cm</Height>
-            <Width>3.79646cm</Width>
-            <ZIndex>3</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox16">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Quadro Analítico</Value>
-                    <Style>
-                      <FontSize>16pt</FontSize>
-                      <FontWeight>Thin</FontWeight>
-                      <TextDecoration>None</TextDecoration>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox15</rd:DefaultName>
-            <Top>1.06045cm</Top>
-            <Left>7.81622cm</Left>
-            <Height>0.75875cm</Height>
-            <Width>6.99792cm</Width>
-            <ZIndex>4</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
           <Tablix Name="Tablix7">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.28291cm</Width>
+                  <Width>5.46333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.11188cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.35797cm</Width>
+                  <Width>2.30506cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -487,17 +457,18 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox33">
+                        <Textbox Name="Textbox18">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ID</Value>
+                                  <Value>ALUNOS POR PROJETO</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -506,21 +477,29 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox32</rd:DefaultName>
+                          <rd:DefaultName>Textbox18</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <BackgroundColor>MidnightBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox35">
@@ -557,24 +536,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox12">
+                        <Textbox Name="Textbox4">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Qtde Alunos</Value>
+                                  <Value>Qtde. Alunos</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -596,42 +577,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idProjeto2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!idProjeto.Value</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>idProjeto</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorProjeto") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="nomeProjeto2">
+                        <Textbox Name="displayName2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -647,13 +593,13 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>nomeProjeto</rd:DefaultName>
+                          <rd:DefaultName>displayName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorProjeto") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsAlunosPorProjeto") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -664,7 +610,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="QtdeAlunos">
+                        <Textbox Name="displayCount2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -677,16 +623,18 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>QtdeAlunos</rd:DefaultName>
+                          <rd:DefaultName>displayCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetAlunosPorProjeto") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsAlunosPorProjeto") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -703,11 +651,13 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
@@ -720,16 +670,16 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <FixedRowHeaders>true</FixedRowHeaders>
-            <DataSetName>DataSetAlunosPorProjeto</DataSetName>
+            <DataSetName>dsAlunosPorProjeto</DataSetName>
             <SortExpressions>
               <SortExpression>
                 <Value>=Fields!nomeProjeto.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>3.11891cm</Top>
-            <Left>10.9364cm</Left>
-            <Height>1.2cm</Height>
-            <Width>9.75276cm</Width>
+            <Top>3.46622cm</Top>
+            <Left>8.66335cm</Left>
+            <Height>1.8cm</Height>
+            <Width>7.76839cm</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
@@ -741,13 +691,10 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.28291cm</Width>
+                  <Width>5.46333cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.11188cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.35797cm</Width>
+                  <Width>2.30506cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -756,17 +703,18 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox36">
+                        <Textbox Name="Textbox20">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>ID</Value>
+                                  <Value>PESSOAS POR BAIRRO</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
+                                    <Color>White</Color>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -775,24 +723,32 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox32</rd:DefaultName>
+                          <rd:DefaultName>Textbox20</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>WhiteSmoke</BackgroundColor>
+                            <BackgroundColor>MidnightBlue</BackgroundColor>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <ColSpan>2</ColSpan>
                       </CellContents>
                     </TablixCell>
+                    <TablixCell />
+                  </TablixCells>
+                </TablixRow>
+                <TablixRow>
+                  <Height>0.6cm</Height>
+                  <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox37">
+                        <Textbox Name="Textbox36">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -826,24 +782,26 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox13">
+                        <Textbox Name="Textbox5">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Qtde Pessoas</Value>
+                                  <Value>Qtde. Alunos</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                     <FontWeight>SemiBold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox12</rd:DefaultName>
+                          <rd:DefaultName>Textbox3</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -865,42 +823,7 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="idProjeto3">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!idBairro.Value</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Center</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>idProjeto</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Color>LightGrey</Color>
-                              <Style>Solid</Style>
-                            </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetPessoasPorBairro") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="nomeProjeto3">
+                        <Textbox Name="displayName3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -916,13 +839,13 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>nomeProjeto</rd:DefaultName>
+                          <rd:DefaultName>displayName</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetPessoasPorBairro") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsPessoasPorBairro") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -933,7 +856,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="QtdeAlunos2">
+                        <Textbox Name="displayCount3">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -946,16 +869,18 @@
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>QtdeAlunos</rd:DefaultName>
+                          <rd:DefaultName>displayCount</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <BackgroundColor>= iif(RowNumber("DataSetPessoasPorBairro") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                            <BackgroundColor>= iif(RowNumber("dsPessoasPorBairro") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -972,11 +897,13 @@
               <TablixMembers>
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
               <TablixMembers>
+                <TablixMember>
+                  <KeepWithGroup>After</KeepWithGroup>
+                </TablixMember>
                 <TablixMember>
                   <KeepWithGroup>After</KeepWithGroup>
                 </TablixMember>
@@ -989,16 +916,16 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <FixedRowHeaders>true</FixedRowHeaders>
-            <DataSetName>DataSetPessoasPorBairro</DataSetName>
+            <DataSetName>dsPessoasPorBairro</DataSetName>
             <SortExpressions>
               <SortExpression>
                 <Value>=Fields!bai_no.Value</Value>
               </SortExpression>
             </SortExpressions>
-            <Top>5.08018cm</Top>
-            <Left>0.26141cm</Left>
-            <Height>1.2cm</Height>
-            <Width>9.75276cm</Width>
+            <Top>5.63581cm</Top>
+            <Left>0.3175cm</Left>
+            <Height>1.8cm</Height>
+            <Width>7.76839cm</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
