@@ -76,7 +76,7 @@ namespace ProjetoSomarUI.Relatorios
             var result2 = dt2.GetData().CopyToDataTable();
             var result3 = dt3.GetData().CopyToDataTable();
 
-            ReportDataSource rds1 = new ReportDataSource("dsAlunosPorEscola", result1);         // Alunos por Escola
+            ReportDataSource rds1 = new ReportDataSource("dsAlunosPorEscola", result1);    // Alunos por Escola
             ReportDataSource rds2 = new ReportDataSource("dsAlunosPorProjeto", result2);   // Alunos por Projeto
             ReportDataSource rds3 = new ReportDataSource("dsPessoasPorBairro", result3);   // Pessoas por Bairro
 

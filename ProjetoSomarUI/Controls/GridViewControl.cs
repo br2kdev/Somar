@@ -134,6 +134,7 @@ namespace ProjetoSomarUI.Controls
 
             // Edit Image
             DataGridViewImageColumn img = new DataGridViewImageColumn();
+            img.SortMode = DataGridViewColumnSortMode.NotSortable;
             img.Name = "Image";
             img.HeaderText = "";
             img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
@@ -196,27 +197,29 @@ namespace ProjetoSomarUI.Controls
             {
                 e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
             }
-
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
-                int idClicked = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
+                if(e.RowIndex > -1)
+                { 
+                    int idClicked = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
-                if (_PageMethod != null)
-                {
-                    _PageMethod.DynamicInvoke(idClicked);
+                    if (_PageMethod != null)
+                    {
+                        _PageMethod.DynamicInvoke(idClicked);
+                    }
+
+                    //MessageBox.Show("OK");
+                    //userFunctionPointer.DynamicInvoke(idProjeto);
+
+                    // CarregaDetalhes(idProjeto);
+
+                    // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
+                    // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
                 }
-
-                //MessageBox.Show("OK");
-                //userFunctionPointer.DynamicInvoke(idProjeto);
-
-                // CarregaDetalhes(idProjeto);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
             }
         }
 

@@ -421,6 +421,9 @@ GROUP BY B.idBairro, C.bai_no
 -- ****************************** -- 
 -- ALUNOS POR FAIXA ETARIA
 -- ****************************** -- 
+SELECT dtNascimento -- QtdePessoas = COUNT(1)
+FROM  TB_Pessoas		  A
+
 
 
 -- ****************************** -- 
@@ -428,6 +431,31 @@ GROUP BY B.idBairro, C.bai_no
 -- ****************************** --
 
  
+
+CREATE FUNCTION calcular_idade(@nascimento DATE, @data_base DATE)
+RETURNS INT
+AS
+BEGIN
+  DECLARE @idade      INT;
+  DECLARE @dia_inicio INT;
+  DECLARE @dia_fim    INT;
+
+  SET @data_base = ISNULL(@data_base, GETDATE()); -- Caso seja nula considera a data atual
+  SET @idade = DATEDIFF(YEAR, @nascimento, @data_base);
+  -- Deve ser feito dessa forma por conta do ano bissexto
+  -- Por exemplo: dia 16/06 ficará 616 e 14/12 ficará 1214
+  SET @dia_inicio = (MONTH(@nascimento) * 100) + DAY(@nascimento);
+  SET @dia_fim = (MONTH(@data_base) * 100) + DAY(@data_base);
+
+  -- Se ainda não passou no ano base
+  IF @dia_fim < @dia_inicio
+  BEGIN
+    SET @idade = @idade - 1;
+  END;
+
+  RETURN @idade;
+END;
+GO
 
 
 -- ************************************************************************* --
