@@ -18,9 +18,12 @@ namespace Somar.DAL
 
             string query = string.Empty;
 
-            query += "SELECT * ";
-            query += "FROM TB_Contatos A ";
-            query += "WHERE A.idContato = " + idContato.ToString();
+            query += " SELECT A.*, B.nomePessoa as nomePai, C.nomePessoa as nomeMae ";
+            query += " FROM TB_Contatos      A ";
+            query += " LEFT JOIN TB_Pessoas  B ON A.idPai = B.idPessoa";
+            query += " LEFT JOIN TB_Pessoas  C ON A.idMae = C.idPessoa";
+
+            query += " WHERE A.idContato = " + idContato.ToString();
 
             var resultList = listContato.GetDataInDatabase(query);
 
@@ -38,8 +41,8 @@ namespace Somar.DAL
             string query = "INSERT INTO TB_Contatos VALUES (";
             var param = new DynamicParameters();
 
-            param.Add("@nomePai", objectDTO.nomePai, DbType.String);
-            param.Add("@nomeMae", objectDTO.nomeMae, DbType.String);
+            param.Add("@idPai", objectDTO.idPai, DbType.Int32);
+            param.Add("@idMae", objectDTO.idMae, DbType.Int32);
             param.Add("@telefone1", objectDTO.telefone1, DbType.String);
             param.Add("@contato1", objectDTO.contato1, DbType.String);
             param.Add("@telefone2", objectDTO.telefone2, DbType.String);
@@ -69,8 +72,8 @@ namespace Somar.DAL
 
             var param = new DynamicParameters();
 
-            param.Add("@nomePai", objectDTO.nomePai, DbType.String);
-            param.Add("@nomeMae", objectDTO.nomeMae, DbType.String);
+            param.Add("@idPai", objectDTO.idPai, DbType.Int32);
+            param.Add("@idMae", objectDTO.idMae, DbType.Int32);
             param.Add("@telefone1", objectDTO.telefone1, DbType.String);
             param.Add("@contato1", objectDTO.contato1, DbType.String);
             param.Add("@telefone2", objectDTO.telefone2, DbType.String);

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panelConsulta = new System.Windows.Forms.Panel();
-            this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPrint = new System.Windows.Forms.Button();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
@@ -73,6 +72,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.panelConsulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
@@ -91,17 +91,8 @@
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
             this.panelConsulta.Name = "panelConsulta";
-            this.panelConsulta.Size = new System.Drawing.Size(1005, 637);
+            this.panelConsulta.Size = new System.Drawing.Size(1005, 641);
             this.panelConsulta.TabIndex = 39;
-            // 
-            // Grid
-            // 
-            this.Grid.ControlHeight = 524;
-            this.Grid.ControlWidth = 979;
-            this.Grid.Location = new System.Drawing.Point(11, 91);
-            this.Grid.Name = "Grid";
-            this.Grid.Size = new System.Drawing.Size(989, 536);
-            this.Grid.TabIndex = 46;
             // 
             // groupBox1
             // 
@@ -114,7 +105,7 @@
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.groupBox1.Location = new System.Drawing.Point(14, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(979, 79);
             this.groupBox1.TabIndex = 38;
@@ -219,7 +210,7 @@
             this.panelEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdit.Location = new System.Drawing.Point(0, 0);
             this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(1005, 637);
+            this.panelEdit.Size = new System.Drawing.Size(1005, 641);
             this.panelEdit.TabIndex = 40;
             this.panelEdit.Visible = false;
             // 
@@ -616,15 +607,26 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Projeto:";
             // 
+            // Grid
+            // 
+            this.Grid.AutoSize = true;
+            this.Grid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Grid.ControlHeight = 547;
+            this.Grid.ControlWidth = 979;
+            this.Grid.Location = new System.Drawing.Point(14, 87);
+            this.Grid.Name = "Grid";
+            this.Grid.Size = new System.Drawing.Size(982, 550);
+            this.Grid.TabIndex = 39;
+            // 
             // FormProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1005, 637);
+            this.ClientSize = new System.Drawing.Size(1005, 641);
             this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormProjetos";
@@ -634,6 +636,7 @@
             this.Text = "PROJETOS";
             this.Load += new System.EventHandler(this.FormProjetos_Load);
             this.panelConsulta.ResumeLayout(false);
+            this.panelConsulta.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEdit.ResumeLayout(false);

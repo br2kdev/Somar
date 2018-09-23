@@ -53,7 +53,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.txtNomeAlteracao = new System.Windows.Forms.TextBox();
-            this.txtResponsavel = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -68,6 +67,10 @@
             this.panelConsulta = new System.Windows.Forms.Panel();
             this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cmbSearchType = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -75,10 +78,7 @@
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
+            this.ddlEducador = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -141,6 +141,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.ddlEducador);
             this.panel3.Controls.Add(this.cmbPeriodo);
             this.panel3.Controls.Add(this.label15);
             this.panel3.Controls.Add(this.cmbMinutoFim);
@@ -155,7 +156,6 @@
             this.panel3.Controls.Add(this.cmbStatus);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.groupBox3);
-            this.panel3.Controls.Add(this.txtResponsavel);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txtDescricao);
             this.panel3.Controls.Add(this.label5);
@@ -426,15 +426,6 @@
             this.txtNomeAlteracao.Size = new System.Drawing.Size(329, 27);
             this.txtNomeAlteracao.TabIndex = 97;
             // 
-            // txtResponsavel
-            // 
-            this.txtResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtResponsavel.Location = new System.Drawing.Point(134, 276);
-            this.txtResponsavel.MaxLength = 100;
-            this.txtResponsavel.Name = "txtResponsavel";
-            this.txtResponsavel.Size = new System.Drawing.Size(483, 27);
-            this.txtResponsavel.TabIndex = 5;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -559,12 +550,14 @@
             // 
             // Grid
             // 
-            this.Grid.ControlHeight = 524;
+            this.Grid.AutoSize = true;
+            this.Grid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Grid.ControlHeight = 547;
             this.Grid.ControlWidth = 979;
-            this.Grid.Location = new System.Drawing.Point(12, 97);
+            this.Grid.Location = new System.Drawing.Point(14, 85);
             this.Grid.Name = "Grid";
-            this.Grid.Size = new System.Drawing.Size(989, 536);
-            this.Grid.TabIndex = 47;
+            this.Grid.Size = new System.Drawing.Size(982, 550);
+            this.Grid.TabIndex = 39;
             // 
             // groupBox1
             // 
@@ -577,12 +570,62 @@
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.groupBox1.Location = new System.Drawing.Point(14, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(979, 79);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.Location = new System.Drawing.Point(801, 19);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint.TabIndex = 40;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
+            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNovo.FlatAppearance.BorderSize = 2;
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnNovo.Location = new System.Drawing.Point(901, 12);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(70, 60);
+            this.btnNovo.TabIndex = 37;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
+            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAll.Location = new System.Drawing.Point(703, 19);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(58, 46);
+            this.btnAll.TabIndex = 39;
+            this.btnAll.UseVisualStyleBackColor = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Location = new System.Drawing.Point(637, 18);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(61, 48);
+            this.btnSearch.TabIndex = 38;
+            this.btnSearch.UseVisualStyleBackColor = false;
             // 
             // cmbSearchType
             // 
@@ -660,63 +703,24 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // btnPrint
+            // ddlEducador
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
-            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPrint.Location = new System.Drawing.Point(801, 19);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(58, 46);
-            this.btnPrint.TabIndex = 40;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
-            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNovo.FlatAppearance.BorderSize = 2;
-            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnNovo.Location = new System.Drawing.Point(901, 12);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(70, 60);
-            this.btnNovo.TabIndex = 37;
-            this.btnNovo.UseVisualStyleBackColor = false;
-            // 
-            // btnAll
-            // 
-            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
-            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAll.Location = new System.Drawing.Point(703, 19);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(58, 46);
-            this.btnAll.TabIndex = 39;
-            this.btnAll.UseVisualStyleBackColor = false;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
-            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(637, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(61, 48);
-            this.btnSearch.TabIndex = 38;
-            this.btnSearch.UseVisualStyleBackColor = false;
+            this.ddlEducador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlEducador.Enabled = false;
+            this.ddlEducador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.ddlEducador.FormattingEnabled = true;
+            this.ddlEducador.Location = new System.Drawing.Point(134, 277);
+            this.ddlEducador.Name = "ddlEducador";
+            this.ddlEducador.Size = new System.Drawing.Size(437, 28);
+            this.ddlEducador.TabIndex = 107;
             // 
             // FormTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 641);
-            this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.IsMdiContainer = true;
             this.Name = "FormTurmas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -729,6 +733,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panelConsulta.ResumeLayout(false);
+            this.panelConsulta.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelEdit.ResumeLayout(false);
@@ -749,7 +754,6 @@
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label5;
@@ -786,10 +790,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtNomeAlteracao;
-        private Controls.GridViewControl Grid;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Button btnSearch;
+        private Controls.GridViewControl Grid;
+        private System.Windows.Forms.ComboBox ddlEducador;
     }
 }

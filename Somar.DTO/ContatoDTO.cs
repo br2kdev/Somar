@@ -10,7 +10,11 @@ namespace Somar.DTO
     {
         public int idContato { get; set; }
 
+        public int idPai { get; set; }
+
         public string nomePai { get; set; }
+
+        public int idMae { get; set; }
 
         public string nomeMae { get; set; }
 

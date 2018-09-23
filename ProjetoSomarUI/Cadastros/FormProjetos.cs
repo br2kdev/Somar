@@ -18,6 +18,8 @@ namespace ProjetoSomarUI.Cadastros
 
     public partial class FormProjetos : FormBase
     {
+        private string gridMessage = "Nenhum projeto encontrado!";
+
         delegate void UserControlMethod(int idProjeto);
 
         public FormProjetos()
@@ -29,7 +31,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             InitializeComponent();
             ClearForm1();
-            Grid.InitializeGridView(new ProjetoDTO(), "Nenhum projeto encontrado!");
+            Grid.InitializeGridView(new ProjetoDTO());
 
             UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
             Grid.CallingPageMethod = CellClicked;
@@ -58,7 +60,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<ProjetoDTO> lista = new ProjetoBLL().GetDataWithParam(param);
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -67,7 +69,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(false);
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -95,7 +97,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(false);
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         /*

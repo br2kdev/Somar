@@ -215,6 +215,29 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtAlunosPorEducadorTableAdapter" GeneratorDataComponentClassName="dtAlunosPorEducadorTableAdapter" Name="dtAlunosPorEducador" UserDataComponentName="dtAlunosPorEducadorTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT B.idPessoaEducador, C.nomePessoa, QtdeAlunos = COUNT(1)
+FROM TB_Matricula      A
+INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
+INNER JOIN TB_Pessoas  C ON B.idPessoaEducador   = C.idPessoa
+WHERE A.dtCancelamento IS NOT NULL
+GROUP BY B.idPessoaEducador, C.nomePessoa</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idPessoaEducador" DataSetColumn="idPessoaEducador" />
+              <Mapping SourceColumn="nomePessoa" DataSetColumn="nomePessoa" />
+              <Mapping SourceColumn="QtdeAlunos" DataSetColumn="QtdeAlunos" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -223,7 +246,7 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
   <xs:element name="SomarDatabaseDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="SomarDatabaseDataSet" msprop:Generator_UserDSName="SomarDatabaseDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtProjetos" msprop:Generator_TableClassName="dtProjetosDataTable" msprop:Generator_TableVarName="tabledtProjetos" msprop:Generator_RowChangedName="dtProjetosRowChanged" msprop:Generator_TablePropName="dtProjetos" msprop:Generator_RowDeletingName="dtProjetosRowDeleting" msprop:Generator_RowChangingName="dtProjetosRowChanging" msprop:Generator_RowEvHandlerName="dtProjetosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtProjetosRowDeleted" msprop:Generator_RowClassName="dtProjetosRow" msprop:Generator_UserTableName="dtProjetos" msprop:Generator_RowEvArgName="dtProjetosRowChangeEvent">
+        <xs:element name="dtProjetos" msprop:Generator_TableClassName="dtProjetosDataTable" msprop:Generator_TableVarName="tabledtProjetos" msprop:Generator_TablePropName="dtProjetos" msprop:Generator_RowDeletingName="dtProjetosRowDeleting" msprop:Generator_RowChangingName="dtProjetosRowChanging" msprop:Generator_RowEvHandlerName="dtProjetosRowChangeEventHandler" msprop:Generator_RowDeletedName="dtProjetosRowDeleted" msprop:Generator_UserTableName="dtProjetos" msprop:Generator_RowChangedName="dtProjetosRowChanged" msprop:Generator_RowEvArgName="dtProjetosRowChangeEvent" msprop:Generator_RowClassName="dtProjetosRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProjeto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidProjeto" msprop:Generator_ColumnPropNameInRow="idProjeto" msprop:Generator_ColumnPropNameInTable="idProjetoColumn" msprop:Generator_UserColumnName="idProjeto" type="xs:int" />
@@ -257,7 +280,7 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtAlunosPorEscola" msprop:Generator_TableClassName="dtAlunosPorEscolaDataTable" msprop:Generator_TableVarName="tabledtAlunosPorEscola" msprop:Generator_RowChangedName="dtAlunosPorEscolaRowChanged" msprop:Generator_TablePropName="dtAlunosPorEscola" msprop:Generator_RowDeletingName="dtAlunosPorEscolaRowDeleting" msprop:Generator_RowChangingName="dtAlunosPorEscolaRowChanging" msprop:Generator_RowEvHandlerName="dtAlunosPorEscolaRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAlunosPorEscolaRowDeleted" msprop:Generator_RowClassName="dtAlunosPorEscolaRow" msprop:Generator_UserTableName="dtAlunosPorEscola" msprop:Generator_RowEvArgName="dtAlunosPorEscolaRowChangeEvent">
+        <xs:element name="dtAlunosPorEscola" msprop:Generator_TableClassName="dtAlunosPorEscolaDataTable" msprop:Generator_TableVarName="tabledtAlunosPorEscola" msprop:Generator_TablePropName="dtAlunosPorEscola" msprop:Generator_RowDeletingName="dtAlunosPorEscolaRowDeleting" msprop:Generator_RowChangingName="dtAlunosPorEscolaRowChanging" msprop:Generator_RowEvHandlerName="dtAlunosPorEscolaRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAlunosPorEscolaRowDeleted" msprop:Generator_UserTableName="dtAlunosPorEscola" msprop:Generator_RowChangedName="dtAlunosPorEscolaRowChanged" msprop:Generator_RowEvArgName="dtAlunosPorEscolaRowChangeEvent" msprop:Generator_RowClassName="dtAlunosPorEscolaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -272,7 +295,7 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtAlunosPorProjeto" msprop:Generator_TableClassName="dtAlunosPorProjetoDataTable" msprop:Generator_TableVarName="tabledtAlunosPorProjeto" msprop:Generator_RowChangedName="dtAlunosPorProjetoRowChanged" msprop:Generator_TablePropName="dtAlunosPorProjeto" msprop:Generator_RowDeletingName="dtAlunosPorProjetoRowDeleting" msprop:Generator_RowChangingName="dtAlunosPorProjetoRowChanging" msprop:Generator_RowEvHandlerName="dtAlunosPorProjetoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAlunosPorProjetoRowDeleted" msprop:Generator_RowClassName="dtAlunosPorProjetoRow" msprop:Generator_UserTableName="dtAlunosPorProjeto" msprop:Generator_RowEvArgName="dtAlunosPorProjetoRowChangeEvent">
+        <xs:element name="dtAlunosPorProjeto" msprop:Generator_TableClassName="dtAlunosPorProjetoDataTable" msprop:Generator_TableVarName="tabledtAlunosPorProjeto" msprop:Generator_TablePropName="dtAlunosPorProjeto" msprop:Generator_RowDeletingName="dtAlunosPorProjetoRowDeleting" msprop:Generator_RowChangingName="dtAlunosPorProjetoRowChanging" msprop:Generator_RowEvHandlerName="dtAlunosPorProjetoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAlunosPorProjetoRowDeleted" msprop:Generator_UserTableName="dtAlunosPorProjeto" msprop:Generator_RowChangedName="dtAlunosPorProjetoRowChanged" msprop:Generator_RowEvArgName="dtAlunosPorProjetoRowChangeEvent" msprop:Generator_RowClassName="dtAlunosPorProjetoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idProjeto" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidProjeto" msprop:Generator_ColumnPropNameInRow="idProjeto" msprop:Generator_ColumnPropNameInTable="idProjetoColumn" msprop:Generator_UserColumnName="idProjeto" type="xs:int" />
@@ -287,7 +310,7 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtPessoasPorBairro" msprop:Generator_TableClassName="dtPessoasPorBairroDataTable" msprop:Generator_TableVarName="tabledtPessoasPorBairro" msprop:Generator_RowChangedName="dtPessoasPorBairroRowChanged" msprop:Generator_TablePropName="dtPessoasPorBairro" msprop:Generator_RowDeletingName="dtPessoasPorBairroRowDeleting" msprop:Generator_RowChangingName="dtPessoasPorBairroRowChanging" msprop:Generator_RowEvHandlerName="dtPessoasPorBairroRowChangeEventHandler" msprop:Generator_RowDeletedName="dtPessoasPorBairroRowDeleted" msprop:Generator_RowClassName="dtPessoasPorBairroRow" msprop:Generator_UserTableName="dtPessoasPorBairro" msprop:Generator_RowEvArgName="dtPessoasPorBairroRowChangeEvent">
+        <xs:element name="dtPessoasPorBairro" msprop:Generator_TableClassName="dtPessoasPorBairroDataTable" msprop:Generator_TableVarName="tabledtPessoasPorBairro" msprop:Generator_TablePropName="dtPessoasPorBairro" msprop:Generator_RowDeletingName="dtPessoasPorBairroRowDeleting" msprop:Generator_RowChangingName="dtPessoasPorBairroRowChanging" msprop:Generator_RowEvHandlerName="dtPessoasPorBairroRowChangeEventHandler" msprop:Generator_RowDeletedName="dtPessoasPorBairroRowDeleted" msprop:Generator_UserTableName="dtPessoasPorBairro" msprop:Generator_RowChangedName="dtPessoasPorBairroRowChanged" msprop:Generator_RowEvArgName="dtPessoasPorBairroRowChangeEvent" msprop:Generator_RowClassName="dtPessoasPorBairroRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idBairro" msprop:Generator_ColumnVarNameInTable="columnidBairro" msprop:Generator_ColumnPropNameInRow="idBairro" msprop:Generator_ColumnPropNameInTable="idBairroColumn" msprop:Generator_UserColumnName="idBairro" type="xs:int" minOccurs="0" />
@@ -302,7 +325,7 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="dtTurmas" msprop:Generator_TableClassName="dtTurmasDataTable" msprop:Generator_TableVarName="tabledtTurmas" msprop:Generator_TablePropName="dtTurmas" msprop:Generator_RowDeletingName="dtTurmasRowDeleting" msprop:Generator_RowChangingName="dtTurmasRowChanging" msprop:Generator_RowEvHandlerName="dtTurmasRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTurmasRowDeleted" msprop:Generator_UserTableName="dtTurmas" msprop:Generator_RowChangedName="dtTurmasRowChanged" msprop:Generator_RowEvArgName="dtTurmasRowChangeEvent" msprop:Generator_RowClassName="dtTurmasRow">
+        <xs:element name="dtTurmas" msprop:Generator_TableClassName="dtTurmasDataTable" msprop:Generator_TableVarName="tabledtTurmas" msprop:Generator_RowChangedName="dtTurmasRowChanged" msprop:Generator_TablePropName="dtTurmas" msprop:Generator_RowDeletingName="dtTurmasRowDeleting" msprop:Generator_RowChangingName="dtTurmasRowChanging" msprop:Generator_RowEvHandlerName="dtTurmasRowChangeEventHandler" msprop:Generator_RowDeletedName="dtTurmasRowDeleted" msprop:Generator_RowClassName="dtTurmasRow" msprop:Generator_UserTableName="dtTurmas" msprop:Generator_RowEvArgName="dtTurmasRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="idTurma" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidTurma" msprop:Generator_ColumnPropNameInRow="idTurma" msprop:Generator_ColumnPropNameInTable="idTurmaColumn" msprop:Generator_UserColumnName="idTurma" type="xs:int" />
@@ -381,6 +404,21 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtAlunosPorEducador" msprop:Generator_TableClassName="dtAlunosPorEducadorDataTable" msprop:Generator_TableVarName="tabledtAlunosPorEducador" msprop:Generator_TablePropName="dtAlunosPorEducador" msprop:Generator_RowDeletingName="dtAlunosPorEducadorRowDeleting" msprop:Generator_RowChangingName="dtAlunosPorEducadorRowChanging" msprop:Generator_RowEvHandlerName="dtAlunosPorEducadorRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAlunosPorEducadorRowDeleted" msprop:Generator_UserTableName="dtAlunosPorEducador" msprop:Generator_RowChangedName="dtAlunosPorEducadorRowChanged" msprop:Generator_RowEvArgName="dtAlunosPorEducadorRowChangeEvent" msprop:Generator_RowClassName="dtAlunosPorEducadorRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idPessoaEducador" msprop:Generator_ColumnVarNameInTable="columnidPessoaEducador" msprop:Generator_ColumnPropNameInRow="idPessoaEducador" msprop:Generator_ColumnPropNameInTable="idPessoaEducadorColumn" msprop:Generator_UserColumnName="idPessoaEducador" type="xs:int" minOccurs="0" />
+              <xs:element name="nomePessoa" msprop:Generator_ColumnVarNameInTable="columnnomePessoa" msprop:Generator_ColumnPropNameInRow="nomePessoa" msprop:Generator_ColumnPropNameInTable="nomePessoaColumn" msprop:Generator_UserColumnName="nomePessoa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QtdeAlunos" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQtdeAlunos" msprop:Generator_ColumnPropNameInRow="QtdeAlunos" msprop:Generator_ColumnPropNameInTable="QtdeAlunosColumn" msprop:Generator_UserColumnName="QtdeAlunos" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

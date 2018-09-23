@@ -25,8 +25,12 @@ namespace Somar.DTO
 
         public int idGenero { get; set; }
 
+        public string siglaGenero { get; set; }
+
         [DisplayName("Gênero")]
         public string descGenero { get; set; }
+
+        public bool flagResponsavel { get; set; }
 
         public int idSituacao { get; set; }
 
@@ -64,5 +68,7 @@ namespace Somar.DTO
         public EnderecoDTO endereco { get; set; }
 
         public ContatoDTO contatos { get; set; }
+
+        public List<DadosVariaveisDTO> dadosVariaveis { get; set; }
     }
 }

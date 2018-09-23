@@ -71,18 +71,22 @@ namespace ProjetoSomarUI.Relatorios
             dtAlunosPorEscolaTableAdapter dt1 = new dtAlunosPorEscolaTableAdapter();
             dtAlunosPorProjetoTableAdapter dt2 = new dtAlunosPorProjetoTableAdapter();
             dtPessoasPorBairroTableAdapter dt3 = new dtPessoasPorBairroTableAdapter();
+            dtAlunosPorEducadorTableAdapter dt4 = new dtAlunosPorEducadorTableAdapter();
 
             var result1 = dt1.GetData().CopyToDataTable();
             var result2 = dt2.GetData().CopyToDataTable();
             var result3 = dt3.GetData().CopyToDataTable();
+            var result4 = dt4.GetData().CopyToDataTable();
 
             ReportDataSource rds1 = new ReportDataSource("dsAlunosPorEscola", result1);    // Alunos por Escola
             ReportDataSource rds2 = new ReportDataSource("dsAlunosPorProjeto", result2);   // Alunos por Projeto
             ReportDataSource rds3 = new ReportDataSource("dsPessoasPorBairro", result3);   // Pessoas por Bairro
+            ReportDataSource rds4 = new ReportDataSource("dsAlunosPorEducador", result4);  // Alunos por Educador
 
             this.reportViewer1.LocalReport.DataSources.Add(rds1);
             this.reportViewer1.LocalReport.DataSources.Add(rds2);
             this.reportViewer1.LocalReport.DataSources.Add(rds3);
+            this.reportViewer1.LocalReport.DataSources.Add(rds4);
         }
 
         private void ConfigurePrint()

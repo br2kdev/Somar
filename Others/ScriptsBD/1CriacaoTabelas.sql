@@ -11,6 +11,8 @@ SELECT * FROM TB_CEPs
 */
 select * from TB_Usuarios
 
+select * from TB_PessoaDV
+
 -- ******************************************************************* --
 -- (Projetos Contínuos de cada Centro Solidário) 
 -- Campanhas solidárias (Festa da Páscoa, Dia das Crianças e Campanha "Natal é Jesus"). 
@@ -44,6 +46,8 @@ CREATE TABLE TB_Projetos
 
 -- ALTER TABLE TB_Projetos ALTER COLUMN idPessoaResposavel VARCHAR(100)
 
+drop table TB_Turmas
+
 CREATE TABLE TB_Turmas
 (
 	idTurma					INT IDENTITY(1,1) PRIMARY KEY,
@@ -52,8 +56,7 @@ CREATE TABLE TB_Turmas
 	descricaoPeriodo		VARCHAR(20),
 	HoraInicio				VARCHAR(10),
 	HoraTermino				VARCHAR(10),
-	--idPessoaEducador		INT,
-	nomeEducador			VARCHAR(100),
+	idPessoaEducador		INT,
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
 	dtUltAlteracao			SMALLDATETIME,
@@ -222,6 +225,7 @@ CREATE TABLE TB_Perfis
 CREATE TABLE TB_Generos
 (
 	idGenero	INT IDENTITY(1,1) PRIMARY KEY,
+	siglaGenero	VARCHAR(1),
 	descGenero	VARCHAR(100),
 	flagAtivo	BIT,
 )
@@ -237,6 +241,7 @@ CREATE TABLE TB_TipoPessoas
 -- FINAL - TABELAS DE DOMÍNIO
 -- ******************************************************* 
 --select * from TB_Pessoas
+--select * from ##tempCad
 /*
 select  nomePessoa
 		,dtNascimento
@@ -250,6 +255,7 @@ select  nomePessoa
 		,idContato
 		,idEscola
 		,fotoBase64
+		,0 as flagResponsavel 
 		,0 as idSituacao 
 		,dtCadastro
 		,flagAtivo
@@ -260,8 +266,10 @@ from TB_Pessoas
 
 insert into TB_Pessoas
 select * from ##tempCad
+
 */
-select * from TB_Pessoas
+--select * from TB_Pessoas
+
 CREATE TABLE TB_Pessoas
 (
 	idPessoa				INT IDENTITY(1,1) PRIMARY KEY,
@@ -277,6 +285,7 @@ CREATE TABLE TB_Pessoas
 	idContato				INT,
 	idEscola				INT,
 	fotoBase64				NVARCHAR(MAX),
+	flagResponsavel			BIT,
 	idSituacao				INT,
 	dtCadastro				SMALLDATETIME,
 	flagAtivo				BIT,
@@ -301,8 +310,8 @@ CREATE TABLE TB_Enderecos
 CREATE TABLE TB_Contatos
 (
    idContato INT IDENTITY(1,1) PRIMARY KEY,
-   nomePai	 VARCHAR(100),
-   nomeMae	 VARCHAR(100),
+   idPai	 INT,
+   idMae	 INT,
    telefone1 VARCHAR(100),
    contato1	 VARCHAR(100),
    telefone2 VARCHAR(100),
@@ -319,6 +328,8 @@ CREATE TABLE TB_DadosVariaveis
 	nomeDadoVariavel	VARCHAR(100),
 	flagAtivo			BIT
 )
+
+insert into TB_DadosVariaveis values ('Teste', 1)
 
 CREATE TABLE TB_PessoaDV
 (
@@ -371,8 +382,8 @@ drop table TB_Contatos
 -- ******************************************************* 
 INSERT INTO TB_Perfis   VALUES ('Administrador', 1)
 
-INSERT INTO TB_Generos VALUES ('Feminino', 1)
-INSERT INTO TB_Generos VALUES ('Masculino', 1)
+INSERT INTO TB_Generos VALUES ('F','Feminino', 1)
+INSERT INTO TB_Generos VALUES ('M','Masculino', 1)
 
 INSERT INTO TB_TipoPessoas VALUES ('Beneficiário', 1)
 INSERT INTO TB_TipoPessoas VALUES ('Educador', 1)
@@ -409,6 +420,27 @@ INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto
 WHERE A.dtCancelamento IS NOT NULL
 GROUP BY C.idProjeto, C.nomeProjeto
 
+
+SELECT b.NomeProjeto, A.* 
+FROM TB_Turmas A
+inner join TB_Projetos B ON A.idProjeto = B.idProjeto
+--inner join TB_Pessoas  C ON A.idPessoaPae = C.idPessoa
+
+select * from TB_DadosVariaveis 
+
+delete TB_DadosVariaveis wh	ere idDadoVariavel in (4, 5, 6)
+
+-- ****************************** -- 
+-- ALUNOS POR EDUCADOR
+-- ****************************** -- 
+SELECT B.idPessoaEducador, C.nomePessoa, QtdeAlunos = COUNT(1)
+FROM TB_Matricula      A
+INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
+INNER JOIN TB_Pessoas  C ON B.idPessoaEducador   = C.idPessoa
+WHERE A.dtCancelamento IS NOT NULL
+GROUP BY B.idPessoaEducador, C.nomePessoa
+
+
 -- ****************************** -- 
 -- PESSOAS POR BAIRRO
 -- ****************************** -- 
@@ -421,8 +453,22 @@ GROUP BY B.idBairro, C.bai_no
 -- ****************************** -- 
 -- ALUNOS POR FAIXA ETARIA
 -- ****************************** -- 
-SELECT dtNascimento -- QtdePessoas = COUNT(1)
-FROM  TB_Pessoas		  A
+
+SELECT 
+		SUM(CASE WHEN A.idade BETWEEN 0 and 2 then 1 ELSE 0 END)  as ZeroADois,
+		SUM(CASE WHEN A.idade BETWEEN 3 and 4 then 1 ELSE 0 END)  as TresAQuatro,
+		SUM(CASE WHEN A.idade BETWEEN 5 and 6 then 1 ELSE 0 END)  as CincoASeis,
+		SUM(CASE WHEN A.idade BETWEEN 5 and 6 then 1 ELSE 0 END)  as CincoASeis,
+		SUM(CASE WHEN A.idade BETWEEN 7 and 50 then 1 ELSE 0 END) as MaisD7
+FROM (
+		SELECT dbo.calcular_idade(dtNascimento, GETDATE()) AS idade -- QtdePessoas = COUNT(1)
+		FROM  TB_Pessoas		  A
+		INNER JOIN TB_Matricula   B ON A.idPessoa = B.idPessoa
+		WHERE B.dtCancelamento IS NOT NULL
+	 ) A
+
+--select * from TB_Pessoas
+--GROUP BY idade
 
 
 

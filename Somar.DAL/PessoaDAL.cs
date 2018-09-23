@@ -17,7 +17,7 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa ";
+            query += " SELECT A.*, B.siglaGenero, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa ";
             query += " ,descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             //query += " ,descSituacao = CASE WHEN A.idSituacao = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Pessoas          A ";
@@ -33,6 +33,9 @@ namespace Somar.DAL
 
             if (objectDTO.idTipoPessoa != 0)
                 whereClause += " AND A.idTipoPessoa = " + objectDTO.idTipoPessoa;
+
+            if (objectDTO.flagResponsavel)
+                whereClause += " AND A.flagResponsavel = 1";
 
             query += whereClause;
 
@@ -59,6 +62,7 @@ namespace Somar.DAL
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
             param.Add("@fotoBase64", objectDTO.fotoBase64, DbType.String);
+            param.Add("@flagResponsavel", objectDTO.flagResponsavel, DbType.Int32);
             param.Add("@idSituacao", objectDTO.idSituacao, DbType.Int32);
             param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
@@ -99,6 +103,7 @@ namespace Somar.DAL
             param.Add("@idContato", objectDTO.idContato, DbType.Int32);
             param.Add("@idEscola", objectDTO.idEscola, DbType.Int32);
             param.Add("@fotoBase64", objectDTO.fotoBase64, DbType.String);
+            param.Add("@flagResponsavel", objectDTO.flagResponsavel, DbType.Int32);
             param.Add("@idSituacao", objectDTO.idSituacao, DbType.Int32);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);

@@ -89,11 +89,8 @@ namespace ProjetoSomarUI.Controls
 
         #region Gridview Controls
 
-        public void InitializeGridView<T>(T modelItem, string msg)
+        public void InitializeGridView<T>(T modelItem)
         {
-
-            msg = "Nenhum projeto encontrado";
-
             // ***************************************************************** //
             //  SET CUSTOM STYLE IN GRIDVIEW
             // ***************************************************************** //
@@ -174,7 +171,7 @@ namespace ProjetoSomarUI.Controls
         }
         */
 
-        public void GridViewDataBind(DataTable result)
+        public void GridViewDataBind(DataTable result, string msg)
         {
             if (result.Rows.Count == 0)
             {

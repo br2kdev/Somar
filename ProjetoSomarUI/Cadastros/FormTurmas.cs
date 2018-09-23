@@ -11,6 +11,8 @@ namespace ProjetoSomarUI.Cadastros
 {
     public partial class FormTurmas : FormBase
     {
+        private string gridMessage = "Nenhuma turma encontrada!";
+
         delegate void UserControlMethod(int idTurma);
 
         public FormTurmas()
@@ -56,7 +58,7 @@ namespace ProjetoSomarUI.Cadastros
             //txtDataInicio.CustomFormat = txtdtTermino.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtTermino.ShowUpDown = true;
 
-            Grid.InitializeGridView(new TurmaDTO(), "Nenhuma turma encontrada!");
+            Grid.InitializeGridView(new TurmaDTO());
             ClearForm1();
 
             UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
@@ -67,6 +69,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             CarregaGrid();
             CarregaComboProjeto();
+            CarregaComboEducador();
         }
 
         #region Events
@@ -87,7 +90,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<TurmaDTO> lista = new TurmaBLL().GetDataWithParam(param);
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -109,7 +112,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<TurmaDTO> lista = new TurmaBLL().GetAllData();
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         #endregion
@@ -120,16 +123,39 @@ namespace ProjetoSomarUI.Cadastros
         {
             List<TurmaDTO> lista = new TurmaBLL().GetAllData();
 
-            Grid.GridViewDataBind(lista.ToDataTable());
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         public void CarregaComboProjeto()
         {
             List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
 
-            cmbProjeto.DisplayMember = "nomeProjeto";
-            cmbProjeto.ValueMember = "idProjeto";
-            cmbProjeto.DataSource = lista;
+            lista.Insert(0, new ProjetoDTO() { idProjeto = 0, nomeProjeto = "Selecione..." });
+
+            this.cmbProjeto.DataSource = null;
+            this.cmbProjeto.Items.Clear();
+
+            this.cmbProjeto.DisplayMember = "nomeProjeto";
+            this.cmbProjeto.ValueMember = "idProjeto";
+            this.cmbProjeto.DataSource = lista;
+
+            this.cmbProjeto.SelectedValue = 0;
+        }
+
+        public void CarregaComboEducador()
+        {
+            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipo(TipoPessoa.Educador);
+
+            lista.Insert(0, new PessoaDTO() { idPessoa = 0, nomePessoa = "Selecione..." });
+
+            this.ddlEducador.DataSource = null;
+            this.ddlEducador.Items.Clear();
+
+            this.ddlEducador.DisplayMember = "nomePessoa";
+            this.ddlEducador.ValueMember = "idPessoa";
+            this.ddlEducador.DataSource = lista;
+
+            this.ddlEducador.SelectedValue = 0;
         }
 
         public void CarregaDetalhes(int idTurma)
@@ -148,7 +174,7 @@ namespace ProjetoSomarUI.Cadastros
             lblCodigo.Text = param.idTurma.ToString();
             cmbProjeto.SelectedValue = param.idProjeto;
 
-            if (cmbProjeto.SelectedValue == null)
+            if (param.idProjeto != 0 && cmbProjeto.SelectedValue == null)
             {
                 List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
 
@@ -159,7 +185,16 @@ namespace ProjetoSomarUI.Cadastros
             txtNome.Text = param.nomeTurma;
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
 
-            txtResponsavel.Text = param.nomeEducador;
+            ddlEducador.SelectedValue = param.idPessoaEducador;
+
+            if (param.idPessoaEducador != 0 && ddlEducador.SelectedValue == null)
+            {
+                List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipo(TipoPessoa.Educador);
+
+                lista.Add(new PessoaDTO() { idPessoa = param.idPessoaEducador, nomePessoa = param.nomeEducador });
+                cmbProjeto.DataSource = lista;
+            }
+
             cmbPeriodo.Text = param.descricaoPeriodo;
 
             cmbHoraInicio.Text = param.horaInicio.Split(':')[0];
@@ -196,7 +231,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDescricao.Text = string.Empty;
             txtNomeAlteracao.Text = string.Empty;
             txtdtCadastro.Text = string.Empty;
-            txtResponsavel.Text = string.Empty;
+            ddlEducador.SelectedIndex = 0;
             cmbStatus.SelectedIndex = 1;
         }
 
@@ -244,7 +279,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbMinutoFim.Enabled = flagEnable;
             txtDescricao.Enabled = flagEnable;
             txtDuracao.Enabled = flagEnable;
-            txtResponsavel.Enabled = flagEnable;
+            ddlEducador.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
@@ -259,7 +294,7 @@ namespace ProjetoSomarUI.Cadastros
             txtDescricao.BackColor = Color.WhiteSmoke;
             txtdtCadastro.BackColor = Color.WhiteSmoke;
             txtDuracao.BackColor = Color.WhiteSmoke;
-            txtResponsavel.BackColor = Color.WhiteSmoke;
+            ddlEducador.BackColor = Color.WhiteSmoke;
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
@@ -345,7 +380,7 @@ namespace ProjetoSomarUI.Cadastros
             param.descricaoTurma = txtDescricao.Text;
             param.idProjeto = Convert.ToInt32(cmbProjeto.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idPessoaUltAlteracao;
-            param.nomeEducador = txtResponsavel.Text;
+            param.idPessoaEducador = Convert.ToInt32(ddlEducador.SelectedValue);
 
             TurmaBLL bus = new TurmaBLL();
             var idTurma = bus.SaveProject(param);

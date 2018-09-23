@@ -15,10 +15,10 @@ namespace Somar.BLL
             return cmd.GetDataInDataBase(new PessoaDTO());
         }
 
-        public List<PessoaDTO> GetDataWithParam(PessoaDTO _projeto)
+        public List<PessoaDTO> GetDataWithParam(PessoaDTO _item)
         {
             PessoaDAL cmd = new PessoaDAL();
-            return cmd.GetDataInDataBase(_projeto);
+            return cmd.GetDataInDataBase(_item);
         }
 
         public PessoaDTO GetByID(PessoaDTO _pessoa)
@@ -41,6 +41,9 @@ namespace Somar.BLL
                     result[0].contatos = cmdContato.GetContatos(result[0].idContato);
                 }
 
+                DadosVariaveisDAL cmdDados = new DadosVariaveisDAL();
+                result[0].dadosVariaveis = cmdDados.GetDadosPorIdPessoa(_pessoa.idPessoa);
+
                 return result.SingleOrDefault();
             }
             else
@@ -52,8 +55,10 @@ namespace Somar.BLL
             PessoaDAL cmd = new PessoaDAL();
             EnderecoDAL cmdEndereco = new EnderecoDAL();
             ContatoDAL cmdContato = new ContatoDAL();
+            DadosVariaveisDAL cmdDado = new DadosVariaveisDAL();
 
             int result = 0;
+            int _idPessoa = 0;
 
             // *********************************************** //
             // ENDEREÇO
@@ -93,6 +98,7 @@ namespace Somar.BLL
             if (item.idPessoa == 0)
             { 
                 result = cmd.InsertData(item);
+                _idPessoa = result;
             }
             else
             {
@@ -100,9 +106,16 @@ namespace Somar.BLL
 
                 if (result != 0)
                 {
-                    return item.idPessoa;
+                    result = item.idPessoa;
+                    _idPessoa = result;
                 }
             }
+
+            // *********************************************** //
+            // DADOS VARIÁVEIS
+            // *********************************************** //
+
+            cmdDado.UpdateData(item.dadosVariaveis, _idPessoa);
 
             return result;
         }
@@ -125,5 +138,6 @@ namespace Somar.BLL
             PessoaDAL cmd = new PessoaDAL();
             return cmd.GetAniversariantes(new PessoaDTO());
         }
+
     }
 }

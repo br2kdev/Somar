@@ -175,6 +175,7 @@
     <Compile Include="FormPrincipal.Designer.cs">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ExtendCheckboxList.cs" />
     <Compile Include="Modules\ExtendDataGridPrinter.cs" />
     <Compile Include="Modules\ExtendDGVPrinter.cs" />
     <Compile Include="Modules\ExtendBitmap.cs" />
