@@ -14,14 +14,18 @@ namespace ProjetoSomarUI.Cadastros
 {
     public partial class FormPessoas : FormBase
     {
+        private string gridMessage = "Nenhuma pessoa encontrada!";
+
+        delegate void UserControlMethod(int idTurma);
+
         public FormPessoas()
         {
-            InitializeComponent();
             InitializeForm();
         }
 
         private void InitializeForm()
         {
+            InitializeComponent();
 
             #region ComboLists
 
@@ -77,9 +81,11 @@ namespace ProjetoSomarUI.Cadastros
             //txtDataInicio.CustomFormat = txtdtNascimento.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
 
-            InitializeGridView();
-
+            Grid.InitializeGridView(new PessoaDTO());
             ClearForm1();
+
+            UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
+            Grid.CallingPageMethod = CellClicked;
         }
 
         private void FormPessoas_Load(object sender, EventArgs e)
@@ -153,7 +159,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(param);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -162,7 +168,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<PessoaDTO> lista = new PessoaBLL().GetAllData();
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnSearchCEP_Click(object sender, EventArgs e)
@@ -220,7 +226,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             List<PessoaDTO> lista = new PessoaBLL().GetAllData();
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         public void CarregaComboGenero()
@@ -259,27 +265,24 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaResponsaveis()
         {
-            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(new PessoaDTO() { flagResponsavel = true });
-
             this.ddlPai.DataSource = null;
             this.ddlPai.Items.Clear();
 
-            this.ddlMae.DataSource = null;
-            this.ddlMae.Items.Clear();
-
             this.ddlPai.DisplayMember = "nomePessoa";
             this.ddlPai.ValueMember = "idPessoa";
-            this.ddlPai.DataSource = lista.FindAll(where => where.siglaGenero.Equals("M"));
 
             this.ddlPai.AutoCompleteMode = AutoCompleteMode.Suggest;
             this.ddlPai.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            this.ddlMae.DisplayMember = "nomePessoa";
-            this.ddlMae.ValueMember = "idPessoa";
-            this.ddlMae.DataSource = lista.FindAll(where => where.siglaGenero.Equals("F"));
-
             this.ddlPai.SelectedValue = -1;
-            this.ddlMae.SelectedValue = -1;
+        }
+
+        public void CarregaResponsaveis(string nameSearch)
+        {
+            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(new PessoaDTO() { nomePessoa = nameSearch, flagResponsavel = true });
+
+            //this.ddlPai.Items.Clear();
+            //this.ddlPai.DataSource = lista.FindAll(where => where.siglaGenero.Equals("M"));
         }
 
         public void CarregaDadosVariaveis()
@@ -463,7 +466,7 @@ namespace ProjetoSomarUI.Cadastros
             txtdtNascimento.Text = string.Empty;
             cmbStatus.SelectedIndex = 1;
 
-            cmbSituacao.SelectedIndex = 1;
+            cmbSituacao.SelectedIndex = 0;
             picSituacao.Image = null;
             picImage.Image = null;
 
@@ -487,159 +490,6 @@ namespace ProjetoSomarUI.Cadastros
         #endregion
 
         #region Controls
-
-        #region Gridview Controls
-
-        public void InitializeGridView()
-        {
-
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            /*
-            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            */
-
-            /*            
-
-
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            */
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new PessoaDTO());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 40;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomePessoa")
-                {
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
-                }
-                else if (item.Key == "descTipoPessoa" || item.Key == "descGenero")
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-        }
-
-        public void GridViewDataBind(List<PessoaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhuma pessoa encontrada";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-            {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-
-                /*
-                if (this.dataGridView1["c2", e.RowIndex].Value != null)
-                {
-                    string s = this.dataGridView1["c2", e.RowIndex].Value.ToString();
-
-                    switch (s)
-                    {
-                        case "Laptop":
-                            e.Value = Image.FromFile(@"c:\test\Laptop.gif");
-                            break;
-                        case "Desktop":
-                            e.Value = Image.FromFile(@"c:\test\Desktop.gif");
-                            break;
-                    }
-
-                }
-                */
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idPessoa = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idPessoa);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
-        #endregion
 
         #region Combobox Controls
 
@@ -974,6 +824,9 @@ namespace ProjetoSomarUI.Cadastros
             string txt = comboBox.Text;
             string foundItem = String.Empty;
 
+            if (txt.Length > 3)
+                CarregaResponsaveis(txt);
+
             foreach (PessoaDTO item in comboBox.Items)
             { 
                 if (!String.IsNullOrEmpty(txt) && item.nomePessoa.ToLower().StartsWith(txt.ToLower()))
@@ -1024,5 +877,9 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

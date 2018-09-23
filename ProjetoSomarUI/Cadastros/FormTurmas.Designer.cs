@@ -34,6 +34,7 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.ddlEducador = new System.Windows.Forms.ComboBox();
             this.cmbPeriodo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmbMinutoFim = new System.Windows.Forms.ComboBox();
@@ -78,7 +79,6 @@
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
-            this.ddlEducador = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -170,6 +170,17 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(973, 536);
             this.panel3.TabIndex = 66;
+            // 
+            // ddlEducador
+            // 
+            this.ddlEducador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlEducador.Enabled = false;
+            this.ddlEducador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.ddlEducador.FormattingEnabled = true;
+            this.ddlEducador.Location = new System.Drawing.Point(134, 277);
+            this.ddlEducador.Name = "ddlEducador";
+            this.ddlEducador.Size = new System.Drawing.Size(437, 28);
+            this.ddlEducador.TabIndex = 107;
             // 
             // cmbPeriodo
             // 
@@ -554,7 +565,7 @@
             this.Grid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Grid.ControlHeight = 547;
             this.Grid.ControlWidth = 979;
-            this.Grid.Location = new System.Drawing.Point(14, 85);
+            this.Grid.Location = new System.Drawing.Point(14, 90);
             this.Grid.Name = "Grid";
             this.Grid.Size = new System.Drawing.Size(982, 550);
             this.Grid.TabIndex = 39;
@@ -703,24 +714,13 @@
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
-            // ddlEducador
-            // 
-            this.ddlEducador.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlEducador.Enabled = false;
-            this.ddlEducador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.ddlEducador.FormattingEnabled = true;
-            this.ddlEducador.Location = new System.Drawing.Point(134, 277);
-            this.ddlEducador.Name = "ddlEducador";
-            this.ddlEducador.Size = new System.Drawing.Size(437, 28);
-            this.ddlEducador.TabIndex = 107;
-            // 
             // FormTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 641);
-            this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.IsMdiContainer = true;
             this.Name = "FormTurmas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

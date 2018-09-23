@@ -28,17 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelConsulta = new System.Windows.Forms.Panel();
-            this.panelMessage = new System.Windows.Forms.Panel();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmbSearchType = new System.Windows.Forms.ComboBox();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.cmbSearchType = new System.Windows.Forms.ComboBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -97,6 +93,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtIdPai = new System.Windows.Forms.TextBox();
             this.ddlMae = new System.Windows.Forms.ComboBox();
             this.ddlPai = new System.Windows.Forms.ComboBox();
@@ -129,9 +126,8 @@
             this.txtIdade = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.panelConsulta.SuspendLayout();
-            this.panelMessage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panelEdit.SuspendLayout();
@@ -151,75 +147,22 @@
             // 
             // panelConsulta
             // 
-            this.panelConsulta.Controls.Add(this.panelMessage);
-            this.panelConsulta.Controls.Add(this.dataGridView1);
+            this.panelConsulta.Controls.Add(this.Grid);
             this.panelConsulta.Controls.Add(this.groupBox1);
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
             this.panelConsulta.Name = "panelConsulta";
-            this.panelConsulta.Size = new System.Drawing.Size(1012, 641);
+            this.panelConsulta.Size = new System.Drawing.Size(1012, 647);
             this.panelConsulta.TabIndex = 43;
-            // 
-            // panelMessage
-            // 
-            this.panelMessage.Controls.Add(this.lblMessage);
-            this.panelMessage.Location = new System.Drawing.Point(14, 112);
-            this.panelMessage.Name = "panelMessage";
-            this.panelMessage.Size = new System.Drawing.Size(979, 63);
-            this.panelMessage.TabIndex = 45;
-            // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(9, 27);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(28, 13);
-            this.lblMessage.TabIndex = 1;
-            this.lblMessage.Text = "Text";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 97);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.RowTemplate.ReadOnly = true;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 524);
-            this.dataGridView1.TabIndex = 43;
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.groupBox1.Controls.Add(this.cmbSearchType);
+            this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.btnNovo);
             this.groupBox1.Controls.Add(this.btnAll);
             this.groupBox1.Controls.Add(this.btnSearch);
+            this.groupBox1.Controls.Add(this.cmbSearchType);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
@@ -230,6 +173,56 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_printer32x32;
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.Location = new System.Drawing.Point(803, 21);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint.TabIndex = 44;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNovo.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_add48x48;
+            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnNovo.FlatAppearance.BorderSize = 2;
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnNovo.Location = new System.Drawing.Point(903, 14);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(70, 60);
+            this.btnNovo.TabIndex = 41;
+            this.btnNovo.UseVisualStyleBackColor = false;
+            // 
+            // btnAll
+            // 
+            this.btnAll.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAll.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_reload232x32;
+            this.btnAll.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAll.Location = new System.Drawing.Point(705, 21);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(58, 46);
+            this.btnAll.TabIndex = 43;
+            this.btnAll.UseVisualStyleBackColor = false;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSearch.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearch.Location = new System.Drawing.Point(639, 20);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(61, 48);
+            this.btnSearch.TabIndex = 42;
+            this.btnSearch.UseVisualStyleBackColor = false;
+            // 
             // cmbSearchType
             // 
             this.cmbSearchType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -239,41 +232,6 @@
             this.cmbSearchType.Name = "cmbSearchType";
             this.cmbSearchType.Size = new System.Drawing.Size(157, 26);
             this.cmbSearchType.TabIndex = 35;
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.FlatAppearance.BorderColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnNovo.FlatAppearance.BorderSize = 2;
-            this.btnNovo.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnNovo.Location = new System.Drawing.Point(875, 18);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(97, 48);
-            this.btnNovo.TabIndex = 28;
-            this.btnNovo.Text = "Nova Pessoa";
-            this.btnNovo.UseVisualStyleBackColor = false;
-            // 
-            // btnAll
-            // 
-            this.btnAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAll.Location = new System.Drawing.Point(734, 18);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(97, 48);
-            this.btnAll.TabIndex = 34;
-            this.btnAll.Text = "Ver Todas";
-            this.btnAll.UseVisualStyleBackColor = true;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearch.Location = new System.Drawing.Point(632, 18);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(97, 48);
-            this.btnSearch.TabIndex = 33;
-            this.btnSearch.Text = "Pesquisar";
-            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // txtSearch
             // 
@@ -420,7 +378,7 @@
             this.panelEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdit.Location = new System.Drawing.Point(0, 0);
             this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(1012, 641);
+            this.panelEdit.Size = new System.Drawing.Size(1012, 647);
             this.panelEdit.TabIndex = 44;
             this.panelEdit.Visible = false;
             // 
@@ -924,6 +882,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.txtIdPai);
             this.tabPage1.Controls.Add(this.ddlMae);
             this.tabPage1.Controls.Add(this.ddlPai);
@@ -950,9 +909,19 @@
             this.tabPage1.Text = "Contatos";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(546, 17);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 130;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txtIdPai
             // 
-            this.txtIdPai.Location = new System.Drawing.Point(562, 15);
+            this.txtIdPai.Location = new System.Drawing.Point(650, 15);
             this.txtIdPai.Name = "txtIdPai";
             this.txtIdPai.Size = new System.Drawing.Size(100, 23);
             this.txtIdPai.TabIndex = 129;
@@ -1277,13 +1246,24 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Nome:";
             // 
+            // Grid
+            // 
+            this.Grid.AutoSize = true;
+            this.Grid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Grid.ControlHeight = 547;
+            this.Grid.ControlWidth = 979;
+            this.Grid.Location = new System.Drawing.Point(15, 93);
+            this.Grid.Name = "Grid";
+            this.Grid.Size = new System.Drawing.Size(982, 550);
+            this.Grid.TabIndex = 39;
+            // 
             // FormPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 641);
-            this.Controls.Add(this.panelEdit);
+            this.ClientSize = new System.Drawing.Size(1012, 647);
             this.Controls.Add(this.panelConsulta);
+            this.Controls.Add(this.panelEdit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -1291,9 +1271,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormPessoas";
             this.panelConsulta.ResumeLayout(false);
-            this.panelMessage.ResumeLayout(false);
-            this.panelMessage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelConsulta.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1325,14 +1303,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panelConsulta;
-        private System.Windows.Forms.Panel panelMessage;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbSearchType;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnAll;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblStatus;
@@ -1423,5 +1395,11 @@
         private System.Windows.Forms.ComboBox ddlPai;
         private System.Windows.Forms.ComboBox ddlMae;
         private System.Windows.Forms.TextBox txtIdPai;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button btnAll;
+        private System.Windows.Forms.Button btnSearch;
+        private Controls.GridViewControl Grid;
     }
 }
