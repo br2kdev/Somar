@@ -10,17 +10,15 @@ namespace ProjetoSomarUI.Administracao
 {
     public partial class FormUsuarios : FormBase
     {
+        private string gridMessage = "Nenhum usuário encontrado!";
+
+        delegate void UserControlMethod(int idUsuario);
+
         public FormUsuarios()
         {
             InitializeComponent();
 
             InitializeForm();
-        }
-
-        private void FormUsuarios_Load(object sender, EventArgs e)
-        {
-            CarregaGrid();
-            CarregaComboPerfil();
         }
 
         private void InitializeForm()
@@ -48,11 +46,20 @@ namespace ProjetoSomarUI.Administracao
 
             #endregion
 
+            btnPrint.Visible = false;
+
             Load += new EventHandler(FormUsuarios_Load);
 
-            InitializeGridView();
-
             ClearForm1();
+
+            Grid.InitializeGridView(new UsuarioDTO());
+            Grid.CallingMethod1 = new UserControlMethod(CarregaDetalhes);
+        }
+
+        private void FormUsuarios_Load(object sender, EventArgs e)
+        {
+            CarregaGrid();
+            CarregaComboPerfil();
         }
 
         #region Events
@@ -77,7 +84,7 @@ namespace ProjetoSomarUI.Administracao
 
             List<UsuarioDTO> lista = new UsuarioBLL().GetDataWithParam(param);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -86,13 +93,14 @@ namespace ProjetoSomarUI.Administracao
 
             List<UsuarioDTO> lista = new UsuarioBLL().GetAllData(false);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnNew_Click(object sender, EventArgs e)
         {
             btnEditar.Visible = false;
             panelEdit.Visible = true;
+            this.ControlBox = false;
             panelConsulta.Visible = false;
 
             ClearForm2();
@@ -110,13 +118,14 @@ namespace ProjetoSomarUI.Administracao
         {
             List<UsuarioDTO> lista = new UsuarioBLL().GetAllData(false);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         public void CarregaDetalhes(int idUsuario)
         {
-            panelEdit.Visible = true;
-            panelConsulta.Visible = false;
+            this.panelEdit.Visible = true;
+            this.panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             UsuarioDTO param = new UsuarioDTO();
             param.idUsuario = idUsuario;
@@ -141,7 +150,7 @@ namespace ProjetoSomarUI.Administracao
             }
 
             cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
-            //txtDescricao.Text = param.descricaoProjeto;
+            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
 
@@ -175,158 +184,6 @@ namespace ProjetoSomarUI.Administracao
         #endregion
 
         #region Controls
-
-        #region Gridview Controls
-
-        public void InitializeGridView()
-        {
-
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            /*
-            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            */
-
-            /*            
-
-
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            */
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new UsuarioDTO());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 50;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomeUsuario")
-                {
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
-                }
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-        }
-
-        public void GridViewDataBind(List<UsuarioDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhum usuário encontrado";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-            {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-
-                /*
-                if (this.dataGridView1["c2", e.RowIndex].Value != null)
-                {
-                    string s = this.dataGridView1["c2", e.RowIndex].Value.ToString();
-
-                    switch (s)
-                    {
-                        case "Laptop":
-                            e.Value = Image.FromFile(@"c:\test\Laptop.gif");
-                            break;
-                        case "Desktop":
-                            e.Value = Image.FromFile(@"c:\test\Desktop.gif");
-                            break;
-                    }
-
-                }
-                */
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idProjeto = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idProjeto);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
-        #endregion
 
         #region Combobox Controls
 
@@ -372,16 +229,16 @@ namespace ProjetoSomarUI.Administracao
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
+            btnGravar.Enabled = flagEnable;
+
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnGravar.Visible = false;
             }
         }
 
@@ -391,32 +248,6 @@ namespace ProjetoSomarUI.Administracao
                 ControlFormEdit(false);
             else
                 ControlFormEdit(true);
-
-            /*
-            lblDados.Visible = true;
-            tabDadosCadastro.Visible = true;
-
-            DataGridViewRow linhaAtual = dataGridView1.CurrentRow;
-            var linha = dataGridView1.Rows[linhaAtual.Index];       
-            var celula = linha.Cells[0].Value;
-
-            UsuarioBLL UsuarioBLL = new UsuarioBLL();
-
-            Projetos projetos = new Projetos();
-            projetos.ProjetoId = Convert.ToInt32(celula);
-
-
-            Projetos retorno = UsuarioBLL.Localizar(projetos.ProjetoId);
-            
-             txtNome.Text = retorno.Nome;
-            
-             txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
-             txtDuracao.Text = Convert.ToString(retorno.Duracao);
-             txtDescricao.Text = retorno.Descricao;
-             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
-             txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
-             */
         }
 
         /*
@@ -431,8 +262,9 @@ namespace ProjetoSomarUI.Administracao
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            panelConsulta.Visible = true;
-            panelEdit.Visible = false;
+            this.panelConsulta.Visible = true;
+            this.panelEdit.Visible = false;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -462,7 +294,6 @@ namespace ProjetoSomarUI.Administracao
             }
             else
                 throw new Exception("Erro de Gravação do Usuário");
-
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)

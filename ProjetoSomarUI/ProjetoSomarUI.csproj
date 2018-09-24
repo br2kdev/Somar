@@ -313,6 +313,7 @@
   <ItemGroup>
     <Content Include="conn.xml" />
     <Content Include="favicon.ico" />
+    <None Include="imgs\somar.png" />
     <None Include="imgs\icon_save32x32.png" />
     <None Include="imgs\icon_new32x32.png" />
     <None Include="imgs\icon_add32x32.png" />

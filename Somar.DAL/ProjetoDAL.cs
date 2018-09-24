@@ -24,7 +24,7 @@ namespace Somar.DAL
             query += " SELECT A.*, B.nomeUsuario as nomePessoaUltAlteracao, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Projetos      A ";
-            query += " LEFT JOIN TB_Usuarios B ON A.idPessoaUltAlteracao = B.idUsuario";
+            query += " LEFT JOIN TB_Usuarios B ON A.idPessoaUltAlteracao = C.idUsuario";
 
             if (objectDTO.idProjeto != 0)
                 whereClause += " AND A.idProjeto = " + objectDTO.idProjeto.ToString();

@@ -21,10 +21,11 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += "SELECT A.*, b.descPerfil, ";
-            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
-            query += "FROM TB_Usuarios A ";
-            query += "LEFT JOIN TB_Perfis  B ON A.idPerfil = B.idPerfil ";
+            query += " SELECT A.*, b.descPerfil, ";
+            query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END, C.nomeUsuario as nomePessoaUltAlteracao ";
+            query += " FROM TB_Usuarios A ";
+            query += " LEFT JOIN TB_Perfis   B ON A.idPerfil = B.idPerfil ";
+            query += " LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario";
 
             if (objectDTO.idUsuario != 0)
                 whereClause += " AND A.idUsuario = " + objectDTO.idUsuario.ToString();
@@ -108,7 +109,6 @@ namespace Somar.DAL
             param.Add("@login", objectDTO.login, DbType.String);
             //param.Add("@senha", objectDTO.senha, DbType.String);
             param.Add("@idPerfil", objectDTO.idPerfil, DbType.Int32);
-            param.Add("@dtCadastro", DateTime.Now, DbType.DateTime);
             param.Add("@flagAtivo", objectDTO.flagAtivo, DbType.Boolean);
             param.Add("@dtUltAlteracao", DateTime.Now, DbType.DateTime);
             param.Add("@idPessoaUltAlteracao", objectDTO.idPessoaUltAlteracao, DbType.Int32);
@@ -168,29 +168,6 @@ namespace Somar.DAL
                     ds.Tables.Add("Employees");
                 }
 
-
-                /*
-                ds.EnforceConstraints = false;
-
-                ds.Tables["Customers"].BeginLoadData();
-                da.Fill(ds.Tables["Customers"]);
-                ds.Tables["Customers"].EndLoadData();
-                ds.Tables["Employees"].BeginLoadData();
-                da.Fill(ds.Tables["Employees"]);
-                ds.Tables["Employees"].EndLoadData();
-
-                dataGrid1.DataSource = ds.Tables["Customers"];
-                dataGrid2.DataSource = ds.Tables["Employees"];
-                */
-                /*
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Console.WriteLine("{0} {1} {2}", reader.GetInt32(0), reader.GetString(1), reader.GetString(2));
-                    }
-                }
-                */
                 con.Close();
 
             }

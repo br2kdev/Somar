@@ -33,6 +33,8 @@ namespace Somar.DTO
         [DisplayName("Status")]
         public string descricaoAtivo { get; set; }
 
+        public string nomePessoaUltAlteracao { get; set; }
+
         public DateTime dtUltAlteracao { get; set; }
 
         public int idPessoaUltAlteracao { get; set; }
