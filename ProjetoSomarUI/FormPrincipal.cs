@@ -155,15 +155,15 @@ namespace ProjetoSomarUI
 
             ListViewAniversariantes.Clear();
 
-            ListViewAniversariantes.Columns.Add("Nome", 220);
-            ListViewAniversariantes.Columns.Add("Dt.Nascimento", 85, HorizontalAlignment.Center);
-            ListViewAniversariantes.Columns.Add("Idade", 56, HorizontalAlignment.Center);
+            ListViewAniversariantes.Columns.Add("Nome", 230);
+            ListViewAniversariantes.Columns.Add("Dt.Nascimento", 90, HorizontalAlignment.Center);
+            ListViewAniversariantes.Columns.Add("Idade", 60, HorizontalAlignment.Center);
 
             ListViewAniversariantes.HideSelection = true;
             ListViewAniversariantes.View = View.Details;
             ListViewAniversariantes.GridLines = true;
             ListViewAniversariantes.FullRowSelect = false;
-            ListViewAniversariantes.Width = 365;
+            ListViewAniversariantes.Width = 380;
 
             foreach (var item in lista)
             {
@@ -198,7 +198,6 @@ namespace ProjetoSomarUI
         }
 
         #endregion
-
 
     }
 }

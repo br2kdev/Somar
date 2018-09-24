@@ -61,8 +61,7 @@ namespace ProjetoSomarUI.Cadastros
             Grid.InitializeGridView(new TurmaDTO());
             ClearForm1();
 
-            UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
-            Grid.CallingPageMethod = CellClicked;
+            Grid.CallingMethod1 = new UserControlMethod(CarregaDetalhes);
         }
 
         private void FormTurmas_Load(object sender, EventArgs e)
@@ -98,6 +97,7 @@ namespace ProjetoSomarUI.Cadastros
             btnEditar.Visible = false;
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             ClearForm2();
             ControlFormEdit(true);
@@ -162,6 +162,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             TurmaDTO param = new TurmaDTO();
             param.idTurma = idTurma;
@@ -298,16 +299,16 @@ namespace ProjetoSomarUI.Cadastros
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
+            btnGravar.Enabled = flagEnable;
+
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnGravar.Visible = false;
             }
         }
 
@@ -317,32 +318,6 @@ namespace ProjetoSomarUI.Cadastros
                 ControlFormEdit(false);
             else
                 ControlFormEdit(true);
-
-            /*
-            lblDados.Visible = true;
-            tabDadosCadastro.Visible = true;
-
-            DataGridViewRow linhaAtual = dataGridView1.CurrentRow;
-            var linha = dataGridView1.Rows[linhaAtual.Index];       
-            var celula = linha.Cells[0].Value;
-
-            TurmaBLL TurmaBLL = new TurmaBLL();
-
-            Turmas Turmas = new Turmas();
-            Turmas.TurmaId = Convert.ToInt32(celula);
-
-
-            Turmas retorno = TurmaBLL.Localizar(Turmas.TurmaId);
-            
-             txtNome.Text = retorno.Nome;
-            
-             txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
-             txtDuracao.Text = Convert.ToString(retorno.Duracao);
-             txtDescricao.Text = retorno.Descricao;
-             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
-             txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
-             */
         }
 
         /*
@@ -359,6 +334,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

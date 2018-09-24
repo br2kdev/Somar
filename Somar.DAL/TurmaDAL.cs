@@ -19,11 +19,12 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, A.HoraInicio + ' às ' + A.HoraTermino as horario, B.nomeProjeto, C.nomeUsuario as nomePessoaUltAlteracao, ";
+            query += " SELECT A.*, A.HoraInicio + ' às ' + A.HoraTermino as horario, B.nomeProjeto, C.nomeUsuario as nomePessoaUltAlteracao, D.nomePessoa as nomeEducador,";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_Turmas A ";
             query += " LEFT JOIN TB_Projetos B ON A.idProjeto = B.idProjeto";
             query += " LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario";
+            query += " LEFT JOIN TB_Pessoas  D ON A.idPessoaEducador = D.idPessoa";
 
             if (_turmaDTO.idTurma != 0)
                 whereClause += " AND A.idTurma = " + _turmaDTO.idTurma.ToString();

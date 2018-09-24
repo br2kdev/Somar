@@ -29,9 +29,7 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
-            this.btnGravar = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.ddlEducador = new System.Windows.Forms.ComboBox();
@@ -47,6 +45,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnVoltar1 = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtdtCadastro = new System.Windows.Forms.TextBox();
             this.txtDataAlteracao = new System.Windows.Forms.TextBox();
@@ -93,20 +93,11 @@
             // 
             this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
             this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(17, 8);
+            this.pictureBox1.Location = new System.Drawing.Point(17, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 35);
             this.pictureBox1.TabIndex = 78;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnVoltar1
-            // 
-            this.btnVoltar1.Location = new System.Drawing.Point(365, 16);
-            this.btnVoltar1.Name = "btnVoltar1";
-            this.btnVoltar1.Size = new System.Drawing.Size(110, 34);
-            this.btnVoltar1.TabIndex = 69;
-            this.btnVoltar1.Text = "Voltar";
-            this.btnVoltar1.UseVisualStyleBackColor = true;
             // 
             // txtEditMode
             // 
@@ -116,16 +107,6 @@
             this.txtEditMode.Size = new System.Drawing.Size(100, 26);
             this.txtEditMode.TabIndex = 68;
             this.txtEditMode.Visible = false;
-            // 
-            // btnGravar
-            // 
-            this.btnGravar.Location = new System.Drawing.Point(569, 16);
-            this.btnGravar.Name = "btnGravar";
-            this.btnGravar.Size = new System.Drawing.Size(121, 34);
-            this.btnGravar.TabIndex = 6;
-            this.btnGravar.Text = "Gravar";
-            this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Visible = false;
             // 
             // lblStatus
             // 
@@ -166,9 +147,9 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel3.Location = new System.Drawing.Point(14, 70);
+            this.panel3.Location = new System.Drawing.Point(5, 66);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(973, 536);
+            this.panel3.Size = new System.Drawing.Size(982, 536);
             this.panel3.TabIndex = 66;
             // 
             // ddlEducador
@@ -355,12 +336,42 @@
             this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.panel2.Controls.Add(this.btnVoltar1);
-            this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
+            this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Location = new System.Drawing.Point(0, 327);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(972, 64);
             this.panel2.TabIndex = 65;
+            // 
+            // btnVoltar1
+            // 
+            this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnVoltar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
+            this.btnVoltar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoltar1.Location = new System.Drawing.Point(374, 12);
+            this.btnVoltar1.Name = "btnVoltar1";
+            this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
+            this.btnVoltar1.TabIndex = 74;
+            this.btnVoltar1.Text = "VOLTAR";
+            this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar1.UseVisualStyleBackColor = true;
+            // 
+            // btnGravar
+            // 
+            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGravar.Enabled = false;
+            this.btnGravar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGravar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnGravar.Image = global::ProjetoSomarUI.Properties.Resources.icon_saveColor32x32;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGravar.Location = new System.Drawing.Point(501, 12);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(98, 40);
+            this.btnGravar.TabIndex = 73;
+            this.btnGravar.Text = "SALVAR";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGravar.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -371,9 +382,10 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.txtNomeAlteracao);
-            this.groupBox3.Location = new System.Drawing.Point(0, 475);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 474);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(972, 60);
+            this.groupBox3.Size = new System.Drawing.Size(980, 60);
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             // 
@@ -533,7 +545,7 @@
             // 
             this.lblCodigo.Enabled = false;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.lblCodigo.Location = new System.Drawing.Point(836, 6);
+            this.lblCodigo.Location = new System.Drawing.Point(845, 11);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(124, 38);
             this.lblCodigo.TabIndex = 1;
@@ -543,7 +555,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
-            this.lblTitle.Location = new System.Drawing.Point(64, 13);
+            this.lblTitle.Location = new System.Drawing.Point(64, 17);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(248, 26);
             this.lblTitle.TabIndex = 0;
@@ -556,7 +568,7 @@
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
             this.panelConsulta.Name = "panelConsulta";
-            this.panelConsulta.Size = new System.Drawing.Size(1009, 641);
+            this.panelConsulta.Size = new System.Drawing.Size(993, 641);
             this.panelConsulta.TabIndex = 41;
             // 
             // Grid
@@ -565,14 +577,19 @@
             this.Grid.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Grid.ControlHeight = 547;
             this.Grid.ControlWidth = 979;
-            this.Grid.Location = new System.Drawing.Point(14, 90);
+            this.Grid.EnableClickButton1 = true;
+            this.Grid.EnableClickButton2 = false;
+            this.Grid.ImgButton1 = null;
+            this.Grid.ImgButton2 = null;
+            this.Grid.Location = new System.Drawing.Point(7, 89);
             this.Grid.Name = "Grid";
             this.Grid.Size = new System.Drawing.Size(982, 550);
             this.Grid.TabIndex = 39;
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundFilter;
             this.groupBox1.Controls.Add(this.btnPrint);
             this.groupBox1.Controls.Add(this.btnNovo);
             this.groupBox1.Controls.Add(this.btnAll);
@@ -580,13 +597,13 @@
             this.groupBox1.Controls.Add(this.cmbSearchType);
             this.groupBox1.Controls.Add(this.txtSearch);
             this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.groupBox1.Location = new System.Drawing.Point(14, 3);
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(979, 79);
+            this.groupBox1.Size = new System.Drawing.Size(993, 79);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Pesquisar";
             // 
             // btnPrint
             // 
@@ -671,7 +688,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(768, 16);
+            this.label8.Location = new System.Drawing.Point(777, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 17);
             this.label8.TabIndex = 77;
@@ -687,44 +704,53 @@
             this.panelEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdit.Location = new System.Drawing.Point(0, 0);
             this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(1009, 641);
+            this.panelEdit.Size = new System.Drawing.Size(993, 641);
             this.panelEdit.TabIndex = 42;
             this.panelEdit.Visible = false;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnEditar);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblCodigo);
             this.panel1.Controls.Add(this.lblTitle);
-            this.panel1.Location = new System.Drawing.Point(15, 10);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(972, 51);
+            this.panel1.Size = new System.Drawing.Size(989, 60);
             this.panel1.TabIndex = 64;
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(607, 3);
+            this.btnEditar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnEditar.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(627, 8);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(103, 43);
-            this.btnEditar.TabIndex = 68;
-            this.btnEditar.Text = "Editar";
+            this.btnEditar.Size = new System.Drawing.Size(90, 43);
+            this.btnEditar.TabIndex = 80;
+            this.btnEditar.Text = "EDITAR";
+            this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.UseVisualStyleBackColor = true;
             // 
             // FormTurmas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 641);
-            this.Controls.Add(this.panelConsulta);
+            this.ClientSize = new System.Drawing.Size(993, 641);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.IsMdiContainer = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormTurmas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormTurmas";
+            this.Text = "TURMAS";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -746,9 +772,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.TextBox txtEditMode;
-        private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox cmbStatus;
@@ -773,7 +797,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panelEdit;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.ComboBox cmbProjeto;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbMinutoFim;
@@ -796,5 +819,8 @@
         private System.Windows.Forms.Button btnSearch;
         private Controls.GridViewControl Grid;
         private System.Windows.Forms.ComboBox ddlEducador;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnVoltar1;
+        private System.Windows.Forms.Button btnGravar;
     }
 }

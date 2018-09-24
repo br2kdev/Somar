@@ -28,6 +28,7 @@ namespace Somar.Shared
         Projetos = 0,
         Turmas = 1,
         Dashboard = 2,
+        Escolas = 3,
     };
 
     public enum Dashboard
@@ -36,4 +37,5 @@ namespace Somar.Shared
         AlunosPorProjeto = 2,
         AlunosPorBairro = 3
     };
+
 }

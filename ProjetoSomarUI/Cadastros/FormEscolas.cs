@@ -13,88 +13,56 @@ using System.Windows.Forms;
 
 namespace ProjetoSomarUI.Cadastros
 {
-    public partial class FormEscolas : Form
+    public partial class FormEscolas : FormBase
     {
+        private string gridMessage = "Nenhuma escola encontrada!";
+
+        delegate void UserControlMethod(int idEscola);
+
         public FormEscolas()
         {
-            InitializeComponent();
-            InitializeForm();
+            Inicialize();
         }
 
-        private void InitializeForm()
+        private void Inicialize()
         {
+            InitializeComponent();
+
+            #region DropDownLists
+
             cmbStatus.Items.Add("Desativado");
             cmbStatus.Items.Add("Ativo");
 
             cmbSearchType.Items.Add("Nome da Escola");
             cmbSearchType.Items.Add("Código da Escola");
 
+            #endregion
+
+            #region Button Events
+
+            btnNovo.Click += new EventHandler(btnNew_Click);
+            btnSearch.Click += new EventHandler(btnSearch_Click);
+            btnAll.Click += new EventHandler(btnAll_Click);
+            //btnPrint.Click += new EventHandler(btnPrint_Click);
+            btnPrint.Visible = false;
+
+            btnEditar.Click += new EventHandler(btnEditar_Click);
+            btnVoltar1.Click += new EventHandler(btnVoltar_Click);
+            btnGravar.Click += new EventHandler(btnGravar_Click);
+
+            #endregion
+
             ClearForm1();
 
             Load += new EventHandler(FormEscolas_Load);
 
-            InitializeGridView();
+            Grid.InitializeGridView(new EscolaDTO());
+            Grid.CallingMethod1 = new UserControlMethod(CarregaDetalhes);
         }
 
         private void FormEscolas_Load(object sender, EventArgs e)
         {
             CarregaGrid();
-        }
-
-        public void InitializeGridView()
-        {
-
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new EscolaDTO());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 40;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomeEscola")
-                {
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-
-
         }
 
         public void ClearForm1()
@@ -120,7 +88,7 @@ namespace ProjetoSomarUI.Cadastros
             cmbStatus.SelectedIndex = 1;
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        private void btnNew_Click(object sender, EventArgs e)
         {
             btnEditar.Visible = false;
             panelEdit.Visible = true;
@@ -149,24 +117,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<EscolaDTO> lista = new EscolaBLL().GetDataWithParam(param);
 
-            GridViewDataBind(lista);
-        }
-
-        public void GridViewDataBind(List<EscolaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhuma escola encontrada";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnAll_Click(object sender, EventArgs e)
@@ -177,7 +128,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<EscolaDTO> lista = new EscolaBLL().GetDataWithParam(param);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -186,7 +137,6 @@ namespace ProjetoSomarUI.Cadastros
                 ControlFormEdit(false);
             else
                 ControlFormEdit(true);
-
         }
 
         public void ControlFormEdit(bool flagEnable)
@@ -221,20 +171,20 @@ namespace ProjetoSomarUI.Cadastros
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
+            btnGravar.Enabled = flagEnable;
+
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnGravar.Visible = false;
             }
         }
 
-        private void btnVoltar1_Click(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
@@ -281,14 +231,13 @@ namespace ProjetoSomarUI.Cadastros
             }
             else
                 throw new Exception("Erro no Cadastro da Escola");
-
         }
 
         public void CarregaGrid()
         {
             List<EscolaDTO> lista = new EscolaBLL().GetAllData();
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         private void btnSearchCEP_Click(object sender, EventArgs e)
@@ -355,37 +304,6 @@ namespace ProjetoSomarUI.Cadastros
             }
         }
 
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-            {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idEscola = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idEscola);
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
         public void CarregaDetalhes(int idEscola)
         {
             panelEdit.Visible = true;
@@ -417,5 +335,11 @@ namespace ProjetoSomarUI.Cadastros
             ControlFormEdit(false);
         }
 
+        /*
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Grid.btnExport(Relatorio.Escolas);
+        }
+        */
     }
 }

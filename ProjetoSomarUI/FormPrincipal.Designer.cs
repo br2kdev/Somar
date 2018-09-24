@@ -60,21 +60,23 @@
             this.lblDataAtual = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelAniversario = new System.Windows.Forms.Panel();
             this.ListViewAniversariantes = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.menuPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panelAniversario.SuspendLayout();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panelAniversario.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPrincipal
@@ -185,22 +187,24 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.lblPerfil);
             this.panel1.Controls.Add(this.lblNome);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 104);
+            this.panel1.Location = new System.Drawing.Point(0, 93);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(392, 69);
+            this.panel1.Size = new System.Drawing.Size(392, 60);
             this.panel1.TabIndex = 3;
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
             this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 17);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 35);
             this.pictureBox1.TabIndex = 79;
@@ -209,8 +213,9 @@
             // lblPerfil
             // 
             this.lblPerfil.AutoSize = true;
+            this.lblPerfil.BackColor = System.Drawing.Color.Transparent;
             this.lblPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerfil.Location = new System.Drawing.Point(109, 38);
+            this.lblPerfil.Location = new System.Drawing.Point(109, 34);
             this.lblPerfil.Name = "lblPerfil";
             this.lblPerfil.Size = new System.Drawing.Size(52, 16);
             this.lblPerfil.TabIndex = 3;
@@ -219,8 +224,9 @@
             // lblNome
             // 
             this.lblNome.AutoSize = true;
+            this.lblNome.BackColor = System.Drawing.Color.Transparent;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.Location = new System.Drawing.Point(109, 13);
+            this.lblNome.Location = new System.Drawing.Point(109, 9);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(59, 16);
             this.lblNome.TabIndex = 2;
@@ -229,8 +235,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(55, 38);
+            this.label2.Location = new System.Drawing.Point(55, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 16);
             this.label2.TabIndex = 1;
@@ -239,8 +246,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 12);
+            this.label1.Location = new System.Drawing.Point(55, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 16);
             this.label1.TabIndex = 0;
@@ -289,6 +297,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.lblHora);
             this.panel3.Controls.Add(this.label3);
@@ -297,14 +306,15 @@
             this.panel3.Controls.Add(this.label4);
             this.panel3.Location = new System.Drawing.Point(0, 31);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(392, 69);
+            this.panel3.Size = new System.Drawing.Size(392, 60);
             this.panel3.TabIndex = 8;
             // 
             // lblHora
             // 
             this.lblHora.AutoSize = true;
+            this.lblHora.BackColor = System.Drawing.Color.Transparent;
             this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.Location = new System.Drawing.Point(106, 37);
+            this.lblHora.Location = new System.Drawing.Point(106, 33);
             this.lblHora.Name = "lblHora";
             this.lblHora.Size = new System.Drawing.Size(11, 16);
             this.lblHora.TabIndex = 82;
@@ -313,8 +323,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 37);
+            this.label3.Location = new System.Drawing.Point(55, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 16);
             this.label3.TabIndex = 81;
@@ -322,9 +333,10 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.Image = global::ProjetoSomarUI.Properties.Resources.calendar_icon32x32;
             this.pictureBox2.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox2.Location = new System.Drawing.Point(15, 16);
+            this.pictureBox2.Location = new System.Drawing.Point(15, 12);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(31, 35);
             this.pictureBox2.TabIndex = 80;
@@ -333,8 +345,9 @@
             // lblDataAtual
             // 
             this.lblDataAtual.AutoSize = true;
+            this.lblDataAtual.BackColor = System.Drawing.Color.Transparent;
             this.lblDataAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDataAtual.Location = new System.Drawing.Point(106, 15);
+            this.lblDataAtual.Location = new System.Drawing.Point(106, 11);
             this.lblDataAtual.Name = "lblDataAtual";
             this.lblDataAtual.Size = new System.Drawing.Size(11, 16);
             this.lblDataAtual.TabIndex = 4;
@@ -343,8 +356,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(55, 14);
+            this.label4.Location = new System.Drawing.Point(55, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 16);
             this.label4.TabIndex = 3;
@@ -355,6 +369,38 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Location = new System.Drawing.Point(0, 155);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(392, 60);
+            this.panel4.TabIndex = 80;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::ProjetoSomarUI.Properties.Resources.birthday_icon;
+            this.pictureBox4.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
+            this.pictureBox4.Location = new System.Drawing.Point(14, 11);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(37, 35);
+            this.pictureBox4.TabIndex = 82;
+            this.pictureBox4.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(57, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 16);
+            this.label7.TabIndex = 81;
+            this.label7.Text = "Aniversariantes da Mês";
+            // 
             // panelAniversario
             // 
             this.panelAniversario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -362,30 +408,27 @@
             this.panelAniversario.BackColor = System.Drawing.SystemColors.Control;
             this.panelAniversario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panelAniversario.Controls.Add(this.ListViewAniversariantes);
-            this.panelAniversario.Controls.Add(this.pictureBox4);
-            this.panelAniversario.Controls.Add(this.label7);
-            this.panelAniversario.Location = new System.Drawing.Point(0, 177);
+            this.panelAniversario.Location = new System.Drawing.Point(2, 213);
             this.panelAniversario.Name = "panelAniversario";
-            this.panelAniversario.Size = new System.Drawing.Size(392, 394);
-            this.panelAniversario.TabIndex = 9;
+            this.panelAniversario.Size = new System.Drawing.Size(390, 365);
+            this.panelAniversario.TabIndex = 82;
             this.panelAniversario.Visible = false;
             // 
             // ListViewAniversariantes
             // 
-            this.ListViewAniversariantes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.ListViewAniversariantes.BackColor = System.Drawing.Color.White;
             this.ListViewAniversariantes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.ListViewAniversariantes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListViewAniversariantes.Enabled = false;
             this.ListViewAniversariantes.GridLines = true;
             this.ListViewAniversariantes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.ListViewAniversariantes.Location = new System.Drawing.Point(14, 53);
+            this.ListViewAniversariantes.Location = new System.Drawing.Point(0, 0);
             this.ListViewAniversariantes.MultiSelect = false;
             this.ListViewAniversariantes.Name = "ListViewAniversariantes";
-            this.ListViewAniversariantes.Size = new System.Drawing.Size(361, 334);
+            this.ListViewAniversariantes.Size = new System.Drawing.Size(386, 361);
             this.ListViewAniversariantes.TabIndex = 81;
             this.ListViewAniversariantes.UseCompatibleStateImageBehavior = false;
             // 
@@ -401,26 +444,6 @@
             // 
             this.columnHeader3.Text = "";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::ProjetoSomarUI.Properties.Resources.birthday_icon;
-            this.pictureBox4.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_user32x32;
-            this.pictureBox4.Location = new System.Drawing.Point(14, 9);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(37, 35);
-            this.pictureBox4.TabIndex = 80;
-            this.pictureBox4.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(57, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(171, 16);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Aniversariantes da Mês";
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,6 +453,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1072, 580);
             this.Controls.Add(this.panelAniversario);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -450,9 +474,10 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panelAniversario.ResumeLayout(false);
-            this.panelAniversario.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panelAniversario.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,12 +506,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblDataAtual;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Panel panelAniversario;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListView ListViewAniversariantes;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Label label3;
@@ -495,8 +514,15 @@
         private System.Windows.Forms.ToolStripMenuItem alterarSenhaToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panelAniversario;
+        private System.Windows.Forms.ListView ListViewAniversariantes;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
 

@@ -202,4 +202,25 @@
   <data name="icon_ball3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\imgs\icon_ball3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="backgroundTitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\backgroundTitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_back24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icon_back24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_next24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icon_next24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_next32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icon_next32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_saveColor24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icon_saveColor24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_saveColor32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\icon_saveColor32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="backgroundFilter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\imgs\backgroundFilter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

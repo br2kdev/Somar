@@ -263,7 +263,7 @@ select  nomePessoa
 		,idPessoaUltAlteracao
 into ##tempCad
 from TB_Pessoas
-
+ 
 insert into TB_Pessoas
 select * from ##tempCad
 

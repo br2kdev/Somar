@@ -23,7 +23,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -142,6 +142,12 @@
     <Compile Include="Cadastros\FormPessoas.Designer.cs">
       <DependentUpon>FormPessoas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\FormPessoasSmall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cadastros\FormPessoasSmall.Designer.cs">
+      <DependentUpon>FormPessoasSmall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\FormProjetos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +182,7 @@
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Modules\ExtendCheckboxList.cs" />
+    <Compile Include="Modules\ExtendComboBox.cs" />
     <Compile Include="Modules\ExtendDataGridPrinter.cs" />
     <Compile Include="Modules\ExtendDGVPrinter.cs" />
     <Compile Include="Modules\ExtendBitmap.cs" />
@@ -239,6 +246,9 @@
     <EmbeddedResource Include="Cadastros\FormPessoas.resx">
       <DependentUpon>FormPessoas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cadastros\FormPessoasSmall.resx">
+      <DependentUpon>FormPessoasSmall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cadastros\FormProjetos.resx">
       <DependentUpon>FormProjetos.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +311,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="conn.xml" />
     <Content Include="favicon.ico" />
     <None Include="imgs\icon_save32x32.png" />
     <None Include="imgs\icon_new32x32.png" />
@@ -319,6 +330,13 @@
     <None Include="imgs\icon_ball1.png" />
     <None Include="imgs\icon_ball2.png" />
     <None Include="imgs\icon_ball3.png" />
+    <None Include="imgs\icon_next32x32.png" />
+    <None Include="imgs\icon_next24x24.png" />
+    <None Include="imgs\icon_saveColor24x24.png" />
+    <None Include="imgs\icon_back24x24.png" />
+    <None Include="imgs\icon_saveColor32x32.png" />
+    <None Include="imgs\backgroundTitle.png" />
+    <None Include="imgs\backgroundFilter.png" />
     <Content Include="imgs\others\imgSomar.jpg" />
     <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />

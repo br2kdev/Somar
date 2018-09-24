@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<Config>  
+  <Conexao>  
+    <Server>Br2k-PC</Server>  
+    <Database>SomarDatabase</Database>  
+    <User>usrapp</User>  
+    <Password>usrapp@2017</Password>  
+  </Conexao>  
+</Config>

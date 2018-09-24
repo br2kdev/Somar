@@ -33,8 +33,7 @@ namespace ProjetoSomarUI.Cadastros
             ClearForm1();
             Grid.InitializeGridView(new ProjetoDTO());
 
-            UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
-            Grid.CallingPageMethod = CellClicked;
+            Grid.CallingMethod1 = new UserControlMethod(CarregaDetalhes);
         }
 
         private void FormProjetos_Load(object sender, EventArgs e)
@@ -76,6 +75,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             btnEditar.Visible = false;
             panelEdit.Visible = true;
+            this.ControlBox = false;
             panelConsulta.Visible = false;
 
             cmbTempoProjeto.SelectedItem = "Definido";
@@ -100,22 +100,11 @@ namespace ProjetoSomarUI.Cadastros
             Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
-        /*
-        public void CarregaComboResponsavel()
-        {
-            
-            List<PessoaDTO> lista = new PessoaBLL().GetPessoasPorTipo(TipoPessoa.);
-
-            cmbResponsavel.DisplayMember = "nomePessoa";
-            cmbResponsavel.ValueMember = "idPessoa";
-            cmbResponsavel.DataSource = lista;
-        }
-        */
-
         public void CarregaDetalhes(int idProjeto)
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             ProjetoDTO param = new ProjetoDTO();
             param.idProjeto = idProjeto;
@@ -232,16 +221,16 @@ namespace ProjetoSomarUI.Cadastros
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
+            btnGravar.Enabled = flagEnable;
+
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnGravar.Visible = false;
             }
         }
 
@@ -291,8 +280,9 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            panelConsulta.Visible = true;
             panelEdit.Visible = false;
+            panelConsulta.Visible = true;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

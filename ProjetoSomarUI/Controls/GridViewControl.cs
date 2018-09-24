@@ -21,16 +21,16 @@ namespace ProjetoSomarUI.Controls
     {
         #region Member Variables
 
-        ArrayList arrColumnLefts = new ArrayList();     // Used to save left coordinates of columns
-        ArrayList arrColumnWidths = new ArrayList();    // Used to save column widths
-
         private string msg { get; set; }
 
-        #region variables
-
-        private DataTable _DataSource;
         private int _Width;
         private int _Height;
+
+        private bool _EnableClickButton1 = true;
+        private bool _EnableClickButton2;
+
+        private Bitmap _ImgButton1;
+        private Bitmap _ImgButton2;
 
         public int ControlWidth
         {
@@ -64,17 +64,69 @@ namespace ProjetoSomarUI.Controls
             }
         }
 
-        #endregion
+        public Bitmap ImgButton1
+        {
+            get
+            {
+                return _ImgButton1;
+            }
+            set
+            {
+                _ImgButton1 = value;
+            }
+        }
+
+        public Bitmap ImgButton2
+        {
+            get
+            {
+                return _ImgButton2;
+            }
+            set
+            {
+                _ImgButton2 = value;
+            }
+        }
+
+        public bool EnableClickButton1
+        {
+            get
+            {
+                return _EnableClickButton1;
+            }
+            set
+            {
+                _EnableClickButton1 = value;
+            }
+        }
+
+        public bool EnableClickButton2
+        {
+            get
+            {
+                return _EnableClickButton2;
+            }
+            set
+            {
+                _EnableClickButton2 = value;
+            }
+        }
 
         #endregion
 
         #region Member Delegates
 
-        private Delegate _PageMethod;
+        private Delegate _PageMethod1;
+        private Delegate _PageMethod2;
 
-        public Delegate CallingPageMethod
+        public Delegate CallingMethod1
         {
-            set { _PageMethod = value; }
+            set { _PageMethod1 = value; }
+        }
+
+        public Delegate CallingMethod2
+        {
+            set { _PageMethod2 = value; }
         }
 
         #endregion
@@ -82,9 +134,6 @@ namespace ProjetoSomarUI.Controls
         public GridViewControl()
         {
             InitializeComponent();
-
-            //this.printDocument1.PrintPage += new PrintPageEventHandler(this.printDocument1_PrintPage);
-            //this.printDocument1.BeginPrint += new PrintEventHandler(this.printDocument1_BeginPrint);
         }
 
         #region Gridview Controls
@@ -102,41 +151,21 @@ namespace ProjetoSomarUI.Controls
             this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
 
             // ***************************************************************** //
-            /*
-            this.dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.False;
-            this.dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            //this.dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            */
-
-            /*            
-            // Configure the DataGridView so that users can manually change 
-            // only the column widths, which are set to fill mode. 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToResizeRows = false;
-            dataGridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            */
-
-            // ***************************************************************** //
             //  SET COLUMNS IN GRIDVIEW
             // ***************************************************************** //
 
             var fields = new GridViewControlUtils().GetFields(modelItem);
 
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.SortMode = DataGridViewColumnSortMode.NotSortable;
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 45;
-            this.dataGridView1.Columns.Add(img);
+            if (_EnableClickButton1)
+            {
+                DataGridViewImageColumn img = new DataGridViewImageColumn();
+                img.SortMode = DataGridViewColumnSortMode.NotSortable;
+                img.Name = "Image1";
+                img.HeaderText = "";
+                img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                img.Width = 45;
+                this.dataGridView1.Columns.Add(img);
+            }
 
             // -------------------------------------------------------------
 
@@ -153,8 +182,19 @@ namespace ProjetoSomarUI.Controls
                 this.dataGridView1.Columns.Add(dt);
             }
 
-            // -------------------------------------------------------------
+            if (_EnableClickButton2)
+            {
+                // Select Image
+                DataGridViewImageColumn img2 = new DataGridViewImageColumn();
+                img2.SortMode = DataGridViewColumnSortMode.NotSortable;
+                img2.Name = "Image2";
+                img2.HeaderText = "";
+                img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                img2.Width = 45;
+                this.dataGridView1.Columns.Add(img2);
+            }
 
+            // -------------------------------------------------------------
             this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
             this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
             this.dataGridView1.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
@@ -162,14 +202,6 @@ namespace ProjetoSomarUI.Controls
 
             // ***************************************************************** //
         }
-
-        /*
-        public void DataBind(DataTable dataTable)
-        {
-            DataSource = dataTable;
-            dataGridView1.DataSource = ShowData(1);
-        }
-        */
 
         public void GridViewDataBind(DataTable result, string msg)
         {
@@ -190,46 +222,81 @@ namespace ProjetoSomarUI.Controls
 
         private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
+            if (e.RowIndex > -1)
             {
-                e.Value = ProjetoSomarUI.Properties.Resources.icon_search24x24;
+                int columnIndex1 = (this.dataGridView1.Columns["Image1"] != null) ? this.dataGridView1.Columns["Image1"].Index : -1;
+                int columnIndex2 = (this.dataGridView1.Columns["Image2"] != null) ? this.dataGridView1.Columns["Image2"].Index : -1;
+
+                if (e.ColumnIndex == columnIndex1)
+                {
+                    e.Value = (ImgButton1) ?? ProjetoSomarUI.Properties.Resources.icon_search24x24;
+                }
+                else if (e.ColumnIndex == columnIndex2)
+                {
+                    e.Value = (ImgButton2); //?? ProjetoSomarUI.Properties.Resources.icon;
+                }
             }
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.RowIndex > -1)
             {
-                if(e.RowIndex > -1)
-                { 
-                    int idClicked = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
+                int btn1Index = (this.dataGridView1.Columns["Image1"] != null) ? this.dataGridView1.Columns["Image1"].Index : -1;
+                int btn2Index = (this.dataGridView1.Columns["Image2"] != null) ? this.dataGridView1.Columns["Image2"].Index : -1;
 
-                    if (_PageMethod != null)
+                if (e.ColumnIndex == btn1Index)
+                {
+                    int idClicked = Convert.ToInt32(this.dataGridView1[e.ColumnIndex+1, e.RowIndex].Value);
+
+                    if (_PageMethod1 != null)
                     {
-                        _PageMethod.DynamicInvoke(idClicked);
+                        _PageMethod1.DynamicInvoke(idClicked);
                     }
+                }
+                else if (e.ColumnIndex == btn2Index)
+                {
+                    int idClicked = Convert.ToInt32(this.dataGridView1[e.ColumnIndex+1, e.RowIndex].Value);
 
-                    //MessageBox.Show("OK");
-                    //userFunctionPointer.DynamicInvoke(idProjeto);
+                    if (_PageMethod2 != null)
+                    {
+                        _PageMethod2.DynamicInvoke(idClicked);
+                    }
+                }
 
-                    // CarregaDetalhes(idProjeto);
-
-                    // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                    // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
+                if (_EnableClickButton1  || _EnableClickButton2)
+                {
+                    
                 }
             }
         }
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            try
+            { 
+                Bitmap isImage = (Bitmap)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
                 dataGridView1.Cursor = Cursors.Hand;
+            }
+            catch(Exception exc)
+            {
+                dataGridView1.Cursor = Cursors.Default;
+            }
         }
 
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
+            try
+            {
+                Bitmap isImage = (Bitmap)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                dataGridView1.Cursor = Cursors.Hand;
+            }
+            catch (Exception exc)
+            {
                 dataGridView1.Cursor = Cursors.Default;
+            }
         }
 
         #endregion
@@ -240,32 +307,7 @@ namespace ProjetoSomarUI.Controls
 
             Relatorios.FormReport frm = new Relatorios.FormReport(_relatorio, _dataTable);
             frm.ShowInTaskbar = false;
-            frm.ShowDialog();           
-
-            //printDGVPrinter();
-            //printWithResize();
-            //Print.ShowPrintPreview(printDocument1);
-
-            /*
-            //Open the print dialog
-            PrintDialog printDialog = new PrintDialog();
-            printDialog.Document = printDocument1;
-            printDialog.UseEXDialog = true;
-
-            //Get the document
-            if (DialogResult.OK == printDialog.ShowDialog())
-            {
-                printDocument1.DocumentName = "Test Page Print";
-                printDocument1.Print();
-            }
-            */
-
-            /*
-            //Open the print preview dialog
-            PrintPreviewDialog objPPdialog = new PrintPreviewDialog();
-            objPPdialog.Document = printDocument1;
-            objPPdialog.ShowDialog();
-            */
+            frm.ShowDialog();
         }
 
         public void printDGVPrinter()

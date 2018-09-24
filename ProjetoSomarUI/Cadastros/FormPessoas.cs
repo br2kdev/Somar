@@ -16,17 +16,16 @@ namespace ProjetoSomarUI.Cadastros
     {
         private string gridMessage = "Nenhuma pessoa encontrada!";
 
-        delegate void UserControlMethod(int idTurma);
+        delegate void UserDetalhes(int idPessoa);
 
         public FormPessoas()
         {
+            InitializeComponent();
             InitializeForm();
         }
 
         private void InitializeForm()
         {
-            InitializeComponent();
-
             #region ComboLists
 
             cmbSearchType.Items.Add("Nome da Pessoa");
@@ -70,22 +69,13 @@ namespace ProjetoSomarUI.Cadastros
 
             Load += new EventHandler(FormPessoas_Load);
 
-            ddlPai.TextChanged += UpdateAutoCompleteComboBox;
-            ddlPai.KeyDown += AutoCompleteComboBoxKeyPress;
-            ddlPai.SelectedIndexChanged += ddlPai_SelectedIndexChanged;
-
-            //ddlPai.TextChanged += UpdateAutoCompleteComboBox;
-            //ddlPai.SelectedIndexChanged += ddlPai_SelectedIndexChanged;
-            //ddlPai.KeyDown += ddlPai_KeyDown;
-
             //txtDataInicio.CustomFormat = txtdtNascimento.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
 
             Grid.InitializeGridView(new PessoaDTO());
             ClearForm1();
 
-            UserControlMethod CellClicked = new UserControlMethod(CarregaDetalhes);
-            Grid.CallingPageMethod = CellClicked;
+            Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
         }
 
         private void FormPessoas_Load(object sender, EventArgs e)
@@ -95,7 +85,18 @@ namespace ProjetoSomarUI.Cadastros
             CarregaComboTipoPessoa();
             CarregaComboEscola();
             CarregaDadosVariaveis();
-            CarregaResponsaveis();
+            //CarregaResponsaveis();
+
+            // *********************************** //
+            // Inicialize ComboList
+            // *********************************** //
+            /*
+            ddlPai.AutoCompleteMode = AutoCompleteMode.Suggest;
+            ddlPai.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
+            getData(combData);
+            ddlPai.AutoCompleteCustomSource = combData;
+            */
         }
 
         private void cmbSituacao_SelectedIndexChanged(object sender, EventArgs e)
@@ -134,6 +135,8 @@ namespace ProjetoSomarUI.Cadastros
         {
             btnEditar.Visible = false;
             panelEdit.Visible = true;
+            this.ControlBox = false;
+
             panelConsulta.Visible = false;
 
             ClearForm2();
@@ -265,6 +268,7 @@ namespace ProjetoSomarUI.Cadastros
 
         public void CarregaResponsaveis()
         {
+
             this.ddlPai.DataSource = null;
             this.ddlPai.Items.Clear();
 
@@ -274,15 +278,18 @@ namespace ProjetoSomarUI.Cadastros
             this.ddlPai.AutoCompleteMode = AutoCompleteMode.Suggest;
             this.ddlPai.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            this.ddlPai.SelectedValue = -1;
-        }
+            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(new PessoaDTO() { nomePessoa = ddlPai.Text, flagResponsavel = true });
 
-        public void CarregaResponsaveis(string nameSearch)
-        {
-            List<PessoaDTO> lista = new PessoaBLL().GetDataWithParam(new PessoaDTO() { nomePessoa = nameSearch, flagResponsavel = true });
+            this.ddlPai.DataSource = lista.FindAll(where => where.siglaGenero.Equals("M"));
 
-            //this.ddlPai.Items.Clear();
-            //this.ddlPai.DataSource = lista.FindAll(where => where.siglaGenero.Equals("M"));
+            //this.ddlPai.SelectedValue = -1;
+            /*
+            ddlPai.AutoCompleteMode = AutoCompleteMode.Suggest;
+            ddlPai.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
+            GetResponsaveis(combData);
+            ddlPai.AutoCompleteCustomSource = combData;
+            */
         }
 
         public void CarregaDadosVariaveis()
@@ -306,6 +313,7 @@ namespace ProjetoSomarUI.Cadastros
         public void CarregaDetalhes(int idPessoa)
         {
             panelEdit.Visible = true;
+            this.ControlBox = false;
             panelConsulta.Visible = false;
 
             PessoaDTO param = new PessoaDTO();
@@ -408,8 +416,9 @@ namespace ProjetoSomarUI.Cadastros
         {
             if (item != null)
             {
-                ddlPai.Text = item.nomePai;
-                ddlMae.Text = item.nomeMae;
+                CarregarResponsavel(new PessoaDTO() { idPessoa = item.idPai, nomePessoa = item.nomePai }, item.idPai, "M");
+                CarregarResponsavel(new PessoaDTO() { idPessoa = item.idMae, nomePessoa = item.nomeMae }, item.idMae, "F");
+
                 txtTelefone1.Text = item.telefone1;
                 txtTelefone2.Text = item.telefone2;
                 txtTelefone3.Text = item.telefone3;
@@ -464,6 +473,8 @@ namespace ProjetoSomarUI.Cadastros
             txtCPF.Text = string.Empty;
             txtdtAtivacao.Text = string.Empty;
             txtdtNascimento.Text = string.Empty;
+            txtIdade.Text = string.Empty;
+
             cmbStatus.SelectedIndex = 1;
 
             cmbSituacao.SelectedIndex = 0;
@@ -534,6 +545,8 @@ namespace ProjetoSomarUI.Cadastros
             cmbEscola.Enabled = flagEnable;
             txtdtAtivacao.Enabled = flagEnable;
 
+            btnSearchPai.Enabled = flagEnable;
+            btnSearchMae.Enabled = flagEnable;
             picImage.Enabled = flagEnable;
 
             //Endereço
@@ -575,16 +588,16 @@ namespace ProjetoSomarUI.Cadastros
             txtNomeAlteracao.BackColor = Color.WhiteSmoke;
             txtDataAlteracao.BackColor = Color.WhiteSmoke;
 
+            btnGravar.Enabled = flagEnable;
+
             if (flagEnable)
             {
                 btnEditar.Visible = false;
-                btnGravar.Visible = true;
                 txtNome.Focus();
             }
             else
             {
                 btnEditar.Visible = true;
-                btnGravar.Visible = false;
             }
         }
 
@@ -594,32 +607,6 @@ namespace ProjetoSomarUI.Cadastros
                 ControlFormEdit(false);
             else
                 ControlFormEdit(true);
-
-            /*
-            lblDados.Visible = true;
-            tabDadosCadastro.Visible = true;
-
-            DataGridViewRow linhaAtual = dataGridView1.CurrentRow;
-            var linha = dataGridView1.Rows[linhaAtual.Index];       
-            var celula = linha.Cells[0].Value;
-
-            TurmaBLL TurmaBLL = new TurmaBLL();
-
-            Turmas Turmas = new Turmas();
-            Turmas.TurmaId = Convert.ToInt32(celula);
-
-
-            Turmas retorno = TurmaBLL.Localizar(Turmas.TurmaId);
-            
-             txtNome.Text = retorno.Nome;
-            
-             txtDataInicio.Text = retorno.DataInicio.ToString("dd/MM/yyyy");            
-             txtdtTermino.Text = retorno.dtTermino.ToString("dd/MM/yyyy");
-             txtDuracao.Text = Convert.ToString(retorno.Duracao);
-             txtDescricao.Text = retorno.Descricao;
-             txtdtCadastro.Text = retorno.dtCadastro.ToString("dd/MM/yyyy");
-             txtResponsavel.Text = Convert.ToString(retorno.ResponsavelPessoaId);
-             */
         }
 
         /*
@@ -636,6 +623,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -658,7 +646,7 @@ namespace ProjetoSomarUI.Cadastros
             param.dtNascimento = Convert.ToDateTime(txtdtNascimento.Text);
             param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
             param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
-            param.dtAtivacao = Convert.ToDateTime(txtdtAtivacao.Text);
+            param.dtAtivacao = string.IsNullOrEmpty(txtdtAtivacao.Text) ? DateTime.Now : Convert.ToDateTime(txtdtAtivacao.Text);
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
             param.idSituacao = Convert.ToInt32(cmbSituacao.SelectedValue);
             param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
@@ -733,7 +721,6 @@ namespace ProjetoSomarUI.Cadastros
             }
             else
                 throw new Exception("Erro de Gravação!");
-
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -800,86 +787,90 @@ namespace ProjetoSomarUI.Cadastros
 
         }
 
-        #region Autocomplete
-
-        private void ddlPai_SelectedIndexChanged(object sender, EventArgs eventArgs)
+        private void btnSearchResponsavel_Click(object sender, EventArgs e)
         {
-            if (ddlPai.SelectedValue != null)
-                txtIdPai.Text = ddlPai.SelectedValue.ToString();
-            else
-                txtIdPai.Text = "0";
-        }
+            string siglaGenero = string.Empty;
 
-        private void ddlPai_KeyDown(object sender, KeyEventArgs e)
-        {
-            ddlPai.DroppedDown = false;
-        }
+            PictureBox iButton = (PictureBox)sender;
 
-        private void UpdateAutoCompleteComboBox(object sender, EventArgs e)
-        {
-            var comboBox = sender as ComboBox;
-            if (comboBox == null)
-                return;
+            if (iButton.Name == "btnSearchPai")
+                siglaGenero = "M";
+            else if(iButton.Name == "btnSearchMae")
+                siglaGenero = "F";
 
-            string txt = comboBox.Text;
-            string foundItem = String.Empty;
-
-            if (txt.Length > 3)
-                CarregaResponsaveis(txt);
-
-            foreach (PessoaDTO item in comboBox.Items)
-            { 
-                if (!String.IsNullOrEmpty(txt) && item.nomePessoa.ToLower().StartsWith(txt.ToLower()))
-                {
-                    foundItem = item.nomePessoa;
-                    break;
-                }
-            }
-
-            if (!String.IsNullOrEmpty(foundItem))
+            using (var form2 = new FormPessoasSmall(this, siglaGenero))
             {
-                if (String.IsNullOrEmpty(txt) || !txt.Equals(foundItem))
-                {
-                    comboBox.TextChanged -= UpdateAutoCompleteComboBox;
-                    comboBox.Text = foundItem;
-                    comboBox.DroppedDown = true;
-                    Cursor.Current = Cursors.Default;
-                    comboBox.TextChanged += UpdateAutoCompleteComboBox;
-                }
-
-                comboBox.SelectionStart = txt.Length;
-                comboBox.SelectionLength = foundItem.Length - txt.Length;
+                form2.ShowDialog();
             }
-            else
-                comboBox.DroppedDown = false;
         }
 
-        private void AutoCompleteComboBoxKeyPress(object sender, KeyEventArgs e)
+        public void SelectedResponsavel(int _idPessoa, string _siglaGenero)
         {
-            var comboBox = sender as ComboBox;
-            if (comboBox != null && comboBox.DroppedDown)
+            var item = new PessoaBLL().GetByID(new PessoaDTO() { idPessoa = _idPessoa });
+
+            CarregarResponsavel(item, _idPessoa, _siglaGenero);
+        }
+
+        private void CarregarResponsavel(PessoaDTO item, int _idPessoa, string siglaGenero)
+        {
+            List<ExtendComboBox> lista = new List<ExtendComboBox>();
+
+            lista.Insert(0, new ExtendComboBox() { displayMember = "Selecione...", valueMember = 0 });
+
+            if(_idPessoa != 0)
+                lista.Insert(1, new ExtendComboBox() { displayMember = item.nomePessoa, valueMember = item.idPessoa });
+
+            if(siglaGenero.ToUpper() == "M")
             {
-                switch (e.KeyCode)
-                {
-                    case Keys.Back:
-                        int sStart = comboBox.SelectionStart;
-                        if (sStart > 0)
-                        {
-                            sStart--;
-                            comboBox.Text = sStart == 0 ? "" : comboBox.Text.Substring(0, sStart);
-                        }
-                        e.SuppressKeyPress = true;
-                        break;
-                }
+                this.ddlPai.DataSource = null;
+                this.ddlPai.Items.Clear();
 
+                this.ddlPai.DisplayMember = "displayMember";
+                this.ddlPai.ValueMember = "valueMember";
+                this.ddlPai.DataSource = lista;
+
+                this.ddlPai.SelectedValue = _idPessoa;
+            }
+            else if (siglaGenero.ToUpper() == "F")
+            {
+                this.ddlMae.DataSource = null;
+                this.ddlMae.Items.Clear();
+
+                this.ddlMae.DisplayMember = "displayMember";
+                this.ddlMae.ValueMember = "valueMember";
+                this.ddlMae.DataSource = lista;
+
+                this.ddlMae.SelectedValue = _idPessoa;
+            }
+
+        }
+
+        private void txtdtNascimento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send((e.Shift ? "+" : "") + "{TAB}");
             }
         }
 
-        #endregion
-
-        private void button1_Click(object sender, EventArgs e)
+        private void txtdtNascimento_Leave(object sender, EventArgs e)
         {
+            if (!string.IsNullOrEmpty(txtdtNascimento.Text))
+            {
+                DateTime dtNascimento = new DateTime();
 
+                try
+                {
+                    dtNascimento = Convert.ToDateTime(txtdtNascimento.Text);
+
+                    txtIdade.Text = Functions.CalcularIdade(dtNascimento).ToString();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Data inválida, favor verificar!");
+                    txtdtNascimento.Focus();
+                }
+            }
         }
     }
 }

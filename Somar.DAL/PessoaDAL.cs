@@ -34,6 +34,9 @@ namespace Somar.DAL
             if (objectDTO.idTipoPessoa != 0)
                 whereClause += " AND A.idTipoPessoa = " + objectDTO.idTipoPessoa;
 
+            if (!string.IsNullOrEmpty(objectDTO.siglaGenero))
+                whereClause += " AND B.siglaGenero = '" + objectDTO.siglaGenero + "'";
+
             if (objectDTO.flagResponsavel)
                 whereClause += " AND A.flagResponsavel = 1";
 

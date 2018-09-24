@@ -63,6 +63,26 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap backgroundFilter {
+            get {
+                object obj = ResourceManager.GetObject("backgroundFilter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap backgroundTitle {
+            get {
+                object obj = ResourceManager.GetObject("backgroundTitle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap birthday_icon {
             get {
                 object obj = ResourceManager.GetObject("birthday_icon", resourceCulture);
@@ -106,6 +126,16 @@ namespace ProjetoSomarUI.Properties {
         internal static System.Drawing.Bitmap icon_add48x48 {
             get {
                 object obj = ResourceManager.GetObject("icon_add48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_back24x24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_back24x24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +233,26 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_next24x24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_next24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_next32x32 {
+            get {
+                object obj = ResourceManager.GetObject("icon_next32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_printer32x32 {
             get {
                 object obj = ResourceManager.GetObject("icon_printer32x32", resourceCulture);
@@ -256,6 +306,26 @@ namespace ProjetoSomarUI.Properties {
         internal static System.Drawing.Bitmap icon_save32x32 {
             get {
                 object obj = ResourceManager.GetObject("icon_save32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_saveColor24x24 {
+            get {
+                object obj = ResourceManager.GetObject("icon_saveColor24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_saveColor32x32 {
+            get {
+                object obj = ResourceManager.GetObject("icon_saveColor32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
