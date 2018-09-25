@@ -96,7 +96,7 @@
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(979, 547);
+            this.dataGridView1.Size = new System.Drawing.Size(982, 547);
             this.dataGridView1.TabIndex = 47;
             // 
             // GridViewControl
@@ -107,7 +107,7 @@
             this.Controls.Add(this.panelMessage);
             this.Controls.Add(this.dataGridView1);
             this.Name = "GridViewControl";
-            this.Size = new System.Drawing.Size(982, 550);
+            this.Size = new System.Drawing.Size(985, 550);
             this.panelMessage.ResumeLayout(false);
             this.panelMessage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

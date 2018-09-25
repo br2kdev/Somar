@@ -169,6 +169,7 @@ namespace ProjetoSomarUI.Administracao
             txtLogin.Text = "";
             txtNome.Text = "";
             txtdtCadastro.Text = "";
+            txtNomeAlteracao.Text = "";
             cmbStatus.SelectedIndex = 1;
         }
 
@@ -280,6 +281,7 @@ namespace ProjetoSomarUI.Administracao
             param.login = txtLogin.Text;
             param.flagAtivo = (cmbStatus.SelectedIndex == 0) ? false : true;
             param.idPerfil = Convert.ToInt32(cmbPerfil.SelectedValue);
+            param.idPessoaUltAlteracao = Sessao.Usuario.idUsuario;
             //param.descricaoProjeto = txtDescricao.Text;
             //param.idPessoaResposavel = //txtResponsavel.Text;
 

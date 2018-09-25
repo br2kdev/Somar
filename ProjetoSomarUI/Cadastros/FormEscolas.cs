@@ -92,6 +92,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             btnEditar.Visible = false;
             panelEdit.Visible = true;
+            this.ControlBox = false;
             panelConsulta.Visible = false;
 
             ClearForm2();
@@ -188,6 +189,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)
@@ -308,6 +310,7 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             EscolaDTO param = new EscolaDTO();
             param.idEscola = idEscola;
@@ -328,7 +331,7 @@ namespace ProjetoSomarUI.Cadastros
             // ************************************************** //
             CarregaEndereco(param.endereco, false);
 
-            // txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
+            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
             txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
             txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
 

@@ -31,6 +31,8 @@ namespace Somar.DTO
 
         public int idPessoaUltAlteracao { get; set; }
 
+        public string nomePessoaUltAlteracao { get; set; }
+
         public EnderecoDTO endereco { get; set;  }
     }
 }

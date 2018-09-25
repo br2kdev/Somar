@@ -38,7 +38,7 @@ namespace Somar.BLL
         {
             UsuarioDAL cmd = new UsuarioDAL();
 
-            UsuarioDTO _item = new UsuarioDTO(){ login = user, senha = pass };
+            UsuarioDTO _item = new UsuarioDTO() { login = user, senha = pass, flagAtivo = true };
 
             var result = cmd.GetUserByLogin(_item);
 

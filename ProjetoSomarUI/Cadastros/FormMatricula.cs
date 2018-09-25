@@ -17,14 +17,22 @@ namespace ProjetoSomarUI.Cadastros
 {
     public partial class FormMatricula : FormBase
     {
+        private string gridMessage = "Nenhuma matrícula encontrada!";
+        private string gridMessage2 = "Aluno ainda não possuí matricula!";
+        
+        delegate void UserControlMethod(int idMatricula);
+
         public FormMatricula()
         {
-            InitializeComponent();
             InitializeForm();
         }
 
         private void InitializeForm()
         {
+            InitializeComponent();
+
+            ClearForm1();
+
             #region ComboLists
 
             cmbTipoPessoa.SelectedIndexChanged += new EventHandler(cmbTipoPessoa_SelectedIndexChanged);
@@ -38,78 +46,33 @@ namespace ProjetoSomarUI.Cadastros
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);
 
-            btnEditar.Click += new EventHandler(btnEditar_Click);
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
+            btnDetalhes.Click += new EventHandler(btnDetalhes_Click);
 
             #endregion
 
             Load += new EventHandler(FormMatricula_Load);
 
-            InitializeGridView();
-            InitializeGridView2();
+            //Grid 1
+            Grid2.ImgButton1 = ProjetoSomarUI.Properties.Resources.icon_cancel24x24;
+            Grid.CallingMethod1 = new UserControlMethod(CarregaDetalhes);
+            Grid.InitializeGridView(new ModelMatricula());
+            
+
+            //Grid 2
+            Grid2.EnableClickButton2 = true;
+            Grid2.ImgButton2 = ProjetoSomarUI.Properties.Resources.icon_delete24x24;
+            Grid2.CallingMethod1 = new UserControlMethod(btnCancelarMatricula);
+            Grid2.CallingMethod2 = new UserControlMethod(btnExcluirMatricula);
+            Grid2.InitializeGridView(new MatriculaDTO());
         }
 
         private void FormMatricula_Load(object sender, EventArgs e)
         {
-            CarregaGrid();
             CarregaComboProjeto();
             CarregaComboTipoPessoa();
-
-            ClearForm1();
         }
-
-        #region Events
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            var param = new MatriculaDTO();
-
-            param.nomePessoa = txtSearch.Text;
-            param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
-
-            /*
-            if (cmbTipoPessoa.SelectedItem.ToString() == "Nome do Aluno")
-            {
-                param.nomePessoa = txtSearch.Text;
-            }
-            else if (cmbSearchType.SelectedItem.ToString() == "Código do Aluno")
-            {
-                if (txtSearch.Text != string.Empty)
-                    param.idPessoa = Convert.ToInt32(txtSearch.Text);
-            }
-            */
-
-            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(param);
-
-            GridViewDataBind(lista);
-        }
-
-        private void btnAll_Click(object sender, EventArgs e)
-        {
-            ClearForm1();
-
-            cmbTipoPessoa.SelectedValue = 1;
-
-            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = Convert.ToInt32(TipoPessoa.Beneficiário) });
-
-            GridViewDataBind(lista);
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            btnEditar.Visible = false;
-            panelEdit.Visible = true;
-            panelConsulta.Visible = false;
-
-            ClearForm2();
-            ControlFormEdit(true);
-
-            btnVoltar1.Visible = true;
-            btnVoltar1.Text = "Voltar";
-        }
-
-        #endregion
 
         #region Methods
 
@@ -119,7 +82,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = _idTipoPessoa });
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         public void CarregaComboTipoPessoa()
@@ -168,11 +131,12 @@ namespace ProjetoSomarUI.Cadastros
         {
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
+            this.ControlBox = false;
 
             // ************************************************** //
             // Preenche Tela de Detalhes
             // ************************************************** //
-            
+
             var itemAluno = new PessoaBLL().GetByID(new PessoaDTO() { idPessoa = _idPessoa });
 
             lblCodigo.Text = _idPessoa.ToString();
@@ -187,38 +151,7 @@ namespace ProjetoSomarUI.Cadastros
 
             var listMatr = new MatriculaBLL().GetDataWithParam(param);
 
-            GridViewDataBind2(listMatr);
-
-            
-            /*
-            cmbProjeto.SelectedValue = param.idProjeto;
-
-            if (cmbProjeto.SelectedValue == null)
-            {
-                List<ProjetoDTO> lista = new ProjetoBLL().GetAllData(true);
-
-                lista.Add(new ProjetoDTO() { idProjeto = param.idProjeto, nomeProjeto = param.nomeProjeto });
-                cmbProjeto.DataSource = lista;
-            }
-
-            txtNome.Text = param.nomePessoa;
-            cmbStatus.SelectedIndex = (param.flagAtivo) ? 1 : 0;
-
-            cmbPeriodo.Text = param.descricaoPeriodo;
-
-            cmbHoraInicio.Text = param.horaInicio.Split(':')[0];
-            cmbMinutoInicio.Text = param.horaInicio.Split(':')[1];
-            cmbHoraFim.Text = param.horaTermino.Split(':')[0];
-            cmbMinutoFim.Text = param.horaTermino.Split(':')[1];
-            */
-            /*
-
-            txtdtCadastro.Text = param.dtCadastro.ToShortDateString();
-            txtDataAlteracao.Text = param.dtUltAlteracao.ToShortDateString();
-            txtNomeAlteracao.Text = param.nomePessoaUltAlteracao;
-            */
-
-            ControlFormEdit(false);
+            Grid2.GridViewDataBind(listMatr.ToDataTable(), gridMessage2);
         }
 
         public void ClearForm1()
@@ -259,330 +192,130 @@ namespace ProjetoSomarUI.Cadastros
 
         }
 
-        #region Controls
-
-        #region Gridview Controls
-
-        public void InitializeGridView()
-        {
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new ModelMatricula());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 40;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomePessoa")
-                {
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.;
-                }
-                else if (item.Key == "descTipoPessoa" || item.Key == "descGenero")
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-        }
-
-        public void GridViewDataBind(List<MatriculaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhuma pessoa encontrada";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-            {
-                e.Value = Resources.icon_search24x24;
-            }
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idPessoa = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idPessoa);
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
-        #endregion
-
-        #region Gridview2
-
-        public void InitializeGridView2()
-        {
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW 2
-            // ***************************************************************** //
-            this.dataGridView2.AutoSize = false;
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView2.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView2.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields2 = new GridViewControlUtils().GetFields(new MatriculaDTO());
-
-            // Cancel Image
-            DataGridViewImageColumn img2 = new DataGridViewImageColumn();
-            img2.Name = "ImageCancel";
-            img2.HeaderText = "Cancelar";
-            img2.ToolTipText = "Cancelar Matricula";
-            img2.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img2.Width = 60;
-            this.dataGridView2.Columns.Add(img2);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields2)
-            {
-                DataGridViewTextBoxColumn dt2 = new DataGridViewTextBoxColumn();
-                dt2.DataPropertyName = item.Key;
-                dt2.HeaderText = item.Value;
-
-                if (item.Key == "nomeTurma")
-                {
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                else if (item.Key == "nomeProjeto")
-                    dt2.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView2.Columns.Add(dt2);
-            }
-
-            // Delete Image
-            DataGridViewImageColumn img3 = new DataGridViewImageColumn();
-            img3.Name = "ImageDelete";
-            img3.HeaderText = "Excluir";
-            img2.ToolTipText = "Excluir Matricula";
-            img3.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img3.Width = 50;
-            this.dataGridView2.Columns.Add(img3);
-
-            this.dataGridView2.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView2_CellFormatting);
-            this.dataGridView2.CellClick += new DataGridViewCellEventHandler(dataGridView2_CellClick);
-            this.dataGridView2.CellMouseLeave += new DataGridViewCellEventHandler(dataGridView2_CellMouseLeave);
-            this.dataGridView2.CellMouseEnter += new DataGridViewCellEventHandler(dataGridView2_CellMouseEnter);
-        }
-
-        public void GridViewDataBind2(List<MatriculaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView2.Visible = false;
-                panelMessage2.Visible = true;
-                lblMessage2.Text = "Aluno ainda não possuí matricula!";
-            }
-            else
-            {
-                dataGridView2.Visible = true;
-                panelMessage2.Visible = false;
-                lblMessage2.Text = "";
-                dataGridView2.DataSource = result;
-            }
-        }
-
-        private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageDelete"].Index)
-                e.Value = Resources.icon_delete24x24;
-            else if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView2.Columns["ImageCancel"].Index)
-                e.Value = Resources.icon_cancel24x24;
-        }
-
-        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int idMatricula = Convert.ToInt32(this.dataGridView2[1, e.RowIndex].Value);
-
-            if (e.ColumnIndex == 0)
-            {
-                if (MessageBox.Show("Deseja realmente cancelar a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    btnCancelaMatricula("cancelar", idMatricula);
-                }
-            }
-            else if (e.ColumnIndex == 8)
-            {
-                if (MessageBox.Show("Deseja realmente excluir a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    btnCancelaMatricula("excluir", idMatricula);
-                }
-            }
-        }
-
-        private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 || e.ColumnIndex == 8)
-                dataGridView2.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0 || e.ColumnIndex == 8)
-                dataGridView2.Cursor = Cursors.Default;
-        }
-
-        #endregion
-
-        #endregion
-
         #region EditMode
 
-        private void btnCancelaMatricula(string acao, int _idMatricula)
+        private void btnCancelarMatricula(int _idMatricula)
         {
-            int result = 0;
-
-            var item = new MatriculaDTO()
+            if (MessageBox.Show("Deseja realmente cancelar a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                idMatricula = _idMatricula,
-                idPessoaUltAlteracao = Sessao.Usuario.idUsuario
-            };
+                int result = 0;
 
-            if (acao == "cancelar")
-            { 
+                var item = new MatriculaDTO()
+                {
+                    idMatricula = _idMatricula,
+                    idPessoaUltAlteracao = Sessao.Usuario.idUsuario
+                };
+
                 result = new MatriculaBLL().CancelarMatricula(item);
                 MessageBox.Show("Matricula cancelada com sucesso", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                int _idPessoa = Convert.ToInt32(lblCodigo.Text);
+
+                CarregaDetalhes(_idPessoa);
             }
-            else if(acao == "excluir")
-            { 
+        }
+
+        private void btnExcluirMatricula(int _idMatricula)
+        {
+
+            if (MessageBox.Show("Deseja realmente excluir a matricula?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int result = 0;
+
+                var item = new MatriculaDTO()
+                {
+                    idMatricula = _idMatricula,
+                    idPessoaUltAlteracao = Sessao.Usuario.idUsuario
+                };
+
                 result = new MatriculaBLL().ExcluirMatricula(item);
                 MessageBox.Show("Matricula excluída com sucesso", "ATENÇÃO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                int _idPessoa = Convert.ToInt32(lblCodigo.Text);
+
+                CarregaDetalhes(_idPessoa);
             }
-
-            int _idPessoa = Convert.ToInt32(lblCodigo.Text);
-
-            CarregaDetalhes(_idPessoa);
         }
 
-        private void btnExcluirMatricula_Click(int _idMatricula)
+        private void btnDetalhes_Click(object sender, EventArgs e)
         {
-            var item = new MatriculaDTO()
+            int idPessoa = 0;
+
+            try
             {
-                idMatricula = _idMatricula,
-                idPessoaUltAlteracao = Sessao.Usuario.idUsuario
-            };
+                idPessoa = Convert.ToInt32(lblCodigo.Text);
 
-            
+                Cadastros.FormPessoas from = new FormPessoas(idPessoa);
+                from.ShowDialog();
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-            if (Convert.ToBoolean(txtEditMode.Text))
-                ControlFormEdit(false);
-            else
-                ControlFormEdit(true);
-        }
+        #endregion
 
-        public void ControlFormEdit(bool flagEnable)
+        #region Buttons 
+
+        private void btnSearch_Click(object sender, EventArgs e)
         {
+            var param = new MatriculaDTO();
+
+            param.nomePessoa = txtSearch.Text;
+            param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
+
             /*
-            txtEditMode.Text = flagEnable.ToString();
-
-            btnVoltar1.Text = "Voltar";
-
-            txtNome.Enabled = flagEnable;
-            txtNomeAlteracao.Enabled = false;
-            txtDataAlteracao.Enabled = false;
-            txtdtCadastro.Enabled = false;
-
-            txtNome.BackColor = Color.WhiteSmoke;
-            txtdtCadastro.BackColor = Color.WhiteSmoke;
-            txtNomeAlteracao.BackColor = Color.WhiteSmoke;
-            txtDataAlteracao.BackColor = Color.WhiteSmoke;
-
-            if (flagEnable)
+            if (cmbTipoPessoa.SelectedItem.ToString() == "Nome do Aluno")
             {
-                btnEditar.Visible = false;
-                btnGravar.Visible = true;
-                txtNome.Focus();
+                param.nomePessoa = txtSearch.Text;
             }
-            else
+            else if (cmbSearchType.SelectedItem.ToString() == "Código do Aluno")
             {
-                btnEditar.Visible = true;
-                btnGravar.Visible = false;
+                if (txtSearch.Text != string.Empty)
+                    param.idPessoa = Convert.ToInt32(txtSearch.Text);
             }
             */
+
+            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(param);
+
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            ClearForm1();
+
+            cmbTipoPessoa.SelectedValue = 1;
+
+            List<MatriculaDTO> lista = new MatriculaBLL().GetSituacaoAluno(new MatriculaDTO() { idTipoPessoa = Convert.ToInt32(TipoPessoa.Beneficiário) });
+
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            panelEdit.Visible = true;
+            panelConsulta.Visible = false;
+            this.ControlBox = false;
+
+            ClearForm2();
+
+            btnVoltar1.Visible = true;
+            btnVoltar1.Text = "Voltar";
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             panelEdit.Visible = false;
             panelConsulta.Visible = true;
-
-            ControlFormEdit(false);
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
+            this.ControlBox = true;
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

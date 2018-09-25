@@ -247,7 +247,7 @@ namespace ProjetoSomarUI.Controls
 
                 if (e.ColumnIndex == btn1Index)
                 {
-                    int idClicked = Convert.ToInt32(this.dataGridView1[e.ColumnIndex+1, e.RowIndex].Value);
+                    int idClicked = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
                     if (_PageMethod1 != null)
                     {
@@ -256,17 +256,12 @@ namespace ProjetoSomarUI.Controls
                 }
                 else if (e.ColumnIndex == btn2Index)
                 {
-                    int idClicked = Convert.ToInt32(this.dataGridView1[e.ColumnIndex+1, e.RowIndex].Value);
+                    int idClicked = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
 
                     if (_PageMethod2 != null)
                     {
                         _PageMethod2.DynamicInvoke(idClicked);
                     }
-                }
-
-                if (_EnableClickButton1  || _EnableClickButton2)
-                {
-                    
                 }
             }
         }

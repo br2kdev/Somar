@@ -32,6 +32,7 @@
             this.panelConsulta = new System.Windows.Forms.Panel();
             this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
@@ -126,7 +127,6 @@
             this.txtIdade = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelConsulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -154,7 +154,7 @@
             this.panelConsulta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelConsulta.Location = new System.Drawing.Point(0, 0);
             this.panelConsulta.Name = "panelConsulta";
-            this.panelConsulta.Size = new System.Drawing.Size(1012, 647);
+            this.panelConsulta.Size = new System.Drawing.Size(1005, 667);
             this.panelConsulta.TabIndex = 43;
             // 
             // Grid
@@ -167,7 +167,7 @@
             this.Grid.EnableClickButton2 = false;
             this.Grid.ImgButton1 = null;
             this.Grid.ImgButton2 = null;
-            this.Grid.Location = new System.Drawing.Point(15, 93);
+            this.Grid.Location = new System.Drawing.Point(11, 93);
             this.Grid.Name = "Grid";
             this.Grid.Size = new System.Drawing.Size(982, 550);
             this.Grid.TabIndex = 39;
@@ -187,9 +187,20 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1012, 79);
+            this.groupBox1.Size = new System.Drawing.Size(1005, 79);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(6, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 16);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Consultar por:";
             // 
             // btnPrint
             // 
@@ -290,9 +301,10 @@
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtNomeAlteracao);
-            this.groupBox3.Location = new System.Drawing.Point(0, 475);
+            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox3.Location = new System.Drawing.Point(0, 530);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(980, 60);
+            this.groupBox3.Size = new System.Drawing.Size(992, 60);
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             // 
@@ -377,7 +389,7 @@
             this.panelEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelEdit.Location = new System.Drawing.Point(0, 0);
             this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(1012, 647);
+            this.panelEdit.Size = new System.Drawing.Size(1005, 667);
             this.panelEdit.TabIndex = 44;
             this.panelEdit.Visible = false;
             // 
@@ -470,9 +482,9 @@
             this.panel3.Controls.Add(this.txtNome);
             this.panel3.Controls.Add(this.label10);
             this.panel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.panel3.Location = new System.Drawing.Point(4, 61);
+            this.panel3.Location = new System.Drawing.Point(5, 61);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1000, 542);
+            this.panel3.Size = new System.Drawing.Size(994, 592);
             this.panel3.TabIndex = 66;
             // 
             // panel2
@@ -481,9 +493,10 @@
             this.panel2.Controls.Add(this.btnVoltar1);
             this.panel2.Controls.Add(this.txtEditMode);
             this.panel2.Controls.Add(this.btnGravar);
-            this.panel2.Location = new System.Drawing.Point(4, 418);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 479);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(972, 51);
+            this.panel2.Size = new System.Drawing.Size(992, 51);
             this.panel2.TabIndex = 118;
             // 
             // btnVoltar1
@@ -594,7 +607,7 @@
             this.chkResponsavel.AutoSize = true;
             this.chkResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Bold);
             this.chkResponsavel.ForeColor = System.Drawing.Color.Maroon;
-            this.chkResponsavel.Location = new System.Drawing.Point(42, 133);
+            this.chkResponsavel.Location = new System.Drawing.Point(423, 151);
             this.chkResponsavel.Name = "chkResponsavel";
             this.chkResponsavel.Size = new System.Drawing.Size(333, 21);
             this.chkResponsavel.TabIndex = 115;
@@ -639,10 +652,10 @@
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.tabControl1.Location = new System.Drawing.Point(3, 179);
+            this.tabControl1.Location = new System.Drawing.Point(0, 204);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(977, 237);
+            this.tabControl1.Size = new System.Drawing.Size(999, 275);
             this.tabControl1.TabIndex = 104;
             // 
             // tabPage1
@@ -670,7 +683,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(969, 204);
+            this.tabPage1.Size = new System.Drawing.Size(991, 242);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Contatos";
             // 
@@ -893,7 +906,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(969, 204);
+            this.tabPage2.Size = new System.Drawing.Size(991, 242);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Endereço";
             // 
@@ -1093,7 +1106,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(969, 204);
+            this.tabPage4.Size = new System.Drawing.Size(991, 242);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Informações Adicionais";
             // 
@@ -1162,19 +1175,20 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(969, 204);
+            this.tabPage3.Size = new System.Drawing.Size(991, 242);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Observações";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // txtDescricao
             // 
+            this.txtDescricao.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.txtDescricao.Location = new System.Drawing.Point(2, 0);
+            this.txtDescricao.Location = new System.Drawing.Point(3, 3);
             this.txtDescricao.MaxLength = 300;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(964, 206);
+            this.txtDescricao.Size = new System.Drawing.Size(985, 236);
             this.txtDescricao.TabIndex = 118;
             // 
             // label14
@@ -1272,22 +1286,11 @@
             this.label10.TabIndex = 77;
             this.label10.Text = "Nome:";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label1.Location = new System.Drawing.Point(6, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 16);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Consultar por:";
-            // 
             // FormPessoas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 647);
+            this.ClientSize = new System.Drawing.Size(1005, 667);
             this.Controls.Add(this.panelEdit);
             this.Controls.Add(this.panelConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -1295,7 +1298,7 @@
             this.MinimizeBox = false;
             this.Name = "FormPessoas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormPessoas";
+            this.Text = "PESSOA";
             this.panelConsulta.ResumeLayout(false);
             this.panelConsulta.PerformLayout();
             this.groupBox1.ResumeLayout(false);

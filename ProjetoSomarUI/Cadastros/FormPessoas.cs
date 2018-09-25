@@ -18,13 +18,13 @@ namespace ProjetoSomarUI.Cadastros
 
         delegate void UserDetalhes(int idPessoa);
 
-        public FormPessoas()
+        public FormPessoas(int idPessoa = 0)
         {
             InitializeComponent();
-            InitializeForm();
+            InitializeForm(idPessoa);
         }
 
-        private void InitializeForm()
+        private void InitializeForm(int idPessoa)
         {
             #region ComboLists
 
@@ -45,6 +45,8 @@ namespace ProjetoSomarUI.Cadastros
             cmbSituacao.DisplayMember = "Value";
             cmbSituacao.ValueMember = "Key";
 
+            cmbSituacao.SelectedIndexChanged += new EventHandler(cmbSituacao_SelectedIndexChanged);
+
             #endregion
 
             #region Button Events
@@ -54,10 +56,7 @@ namespace ProjetoSomarUI.Cadastros
             btnAll.Click += new EventHandler(btnAll_Click);
 
             btnEditar.Click += new EventHandler(btnEditar_Click);
-            btnVoltar1.Click += new EventHandler(btnVoltar_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
-
-            cmbSituacao.SelectedIndexChanged += new EventHandler(cmbSituacao_SelectedIndexChanged);
 
             btnSearchCEP.Click += new EventHandler(btnSearchCEP_Click);
 
@@ -67,7 +66,23 @@ namespace ProjetoSomarUI.Cadastros
 
             #endregion
 
-            Load += new EventHandler(FormPessoas_Load);
+            CarregaGrid();
+            CarregaComboGenero();
+            CarregaComboTipoPessoa();
+            CarregaComboEscola();
+            CarregaDadosVariaveis();
+
+            if (idPessoa != 0)
+            {
+                CarregaDetalhes(idPessoa);
+
+                btnVoltar1.Click += new EventHandler(btnSair_Click);
+            }
+            else
+            {
+                btnVoltar1.Click += new EventHandler(btnVoltar_Click);
+            }
+
 
             //txtDataInicio.CustomFormat = txtdtNascimento.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
@@ -76,27 +91,6 @@ namespace ProjetoSomarUI.Cadastros
             ClearForm1();
 
             Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
-        }
-
-        private void FormPessoas_Load(object sender, EventArgs e)
-        {
-            CarregaGrid();
-            CarregaComboGenero();
-            CarregaComboTipoPessoa();
-            CarregaComboEscola();
-            CarregaDadosVariaveis();
-            //CarregaResponsaveis();
-
-            // *********************************** //
-            // Inicialize ComboList
-            // *********************************** //
-            /*
-            ddlPai.AutoCompleteMode = AutoCompleteMode.Suggest;
-            ddlPai.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            AutoCompleteStringCollection combData = new AutoCompleteStringCollection();
-            getData(combData);
-            ddlPai.AutoCompleteCustomSource = combData;
-            */
         }
 
         private void cmbSituacao_SelectedIndexChanged(object sender, EventArgs e)
@@ -624,6 +618,11 @@ namespace ProjetoSomarUI.Cadastros
             panelConsulta.Visible = true;
             panelEdit.Visible = false;
             this.ControlBox = true;
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void btnGravar_Click(object sender, EventArgs e)

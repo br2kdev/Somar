@@ -124,7 +124,7 @@
             this.panel2.Controls.Add(this.btnGravar);
             this.panel2.Controls.Add(this.hdnIdEndereco);
             this.panel2.Controls.Add(this.txtEditMode);
-            this.panel2.Location = new System.Drawing.Point(0, 327);
+            this.panel2.Location = new System.Drawing.Point(0, 338);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(979, 64);
             this.panel2.TabIndex = 65;

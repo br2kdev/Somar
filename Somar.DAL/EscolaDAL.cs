@@ -21,19 +21,17 @@ namespace Somar.DAL
             string query = string.Empty;
             string whereClause = " WHERE 1 = 1 ";
 
-            query += " SELECT A.*, B.*,";
+            query += " SELECT A.*, B.*, C.nomeUsuario as nomePessoaUltAlteracao, ";
             query += " descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END ";
             query += " FROM TB_ESCOLAS          A ";
-            query += " LEFT JOIN TB_ENDERECOS     B ON A.idEndereco = B.idEndereco";
-          
+            query += " LEFT JOIN TB_ENDERECOS   B ON A.idEndereco = B.idEndereco";
+            query += " LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario";
 
             if (objectDTO.idEscola != 0)
                 whereClause += " AND A.idEscola = " + objectDTO.idEscola.ToString();
 
             if (!string.IsNullOrEmpty(objectDTO.nomeEscola))
                 whereClause += " AND A.nomeEscola like '%" + objectDTO.nomeEscola + "%'";
-
-         
 
             query += whereClause;
 
