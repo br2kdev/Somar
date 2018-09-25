@@ -88,9 +88,9 @@ namespace ProjetoSomarUI.Cadastros
             //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
 
             Grid.InitializeGridView(new PessoaDTO());
-            ClearForm1();
-
             Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
+
+            ClearForm1();
         }
 
         private void cmbSituacao_SelectedIndexChanged(object sender, EventArgs e)

@@ -12,8 +12,12 @@ namespace ProjetoSomarUI.Cadastros
 {
     public partial class FormFrequencia : Form
     {
+        private string gridMessage = "Nenhuma frequência encontrada!";
+
+        delegate void UserDetalhes(int idPessoa);
+
         public FormFrequencia()
-        {
+        { 
             InitializeComponent();
             InitializeForm();
         }
@@ -35,7 +39,7 @@ namespace ProjetoSomarUI.Cadastros
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
-            btnEditar.Click += new EventHandler(btnEditar_Click);
+            //btnEditar.Click += new EventHandler(btnEditar_Click);
 
             /*
             btnSearch.Click += new EventHandler(btnSearch_Click);
@@ -46,8 +50,11 @@ namespace ProjetoSomarUI.Cadastros
 
             Load += new EventHandler(FormMatricula_Load);
 
-            InitializeGridView();
+            Grid.InitializeGridView(new ModelFrequencia());
+            Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
+
             InitializeGridView2();
+            ClearForm1();
         }
 
         private void FormMatricula_Load(object sender, EventArgs e)
@@ -72,7 +79,7 @@ namespace ProjetoSomarUI.Cadastros
 
             List<FrequenciaDTO> lista = new FrequenciaBLL().GetAllData(itemFrequencia);
 
-            GridViewDataBind(lista);
+            Grid.GridViewDataBind(lista.ToDataTable(), gridMessage);
         }
 
         public void CarregaDetalhes(int _idFrequencia)
@@ -249,7 +256,7 @@ namespace ProjetoSomarUI.Cadastros
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            btnEditar.Visible = false;
+            //btnEditar.Visible = false;
             panelEdit.Visible = true;
             panelConsulta.Visible = false;
             
@@ -266,111 +273,6 @@ namespace ProjetoSomarUI.Cadastros
         #endregion
 
         #region Gridview Controls
-
-        #region GridView 1
-
-        public void InitializeGridView()
-        {
-            // ***************************************************************** //
-            //  SET CUSTOM STYLE IN GRIDVIEW
-            // ***************************************************************** //
-            this.dataGridView1.AutoSize = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            this.dataGridView1.RowsDefaultCellStyle.BackColor = Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-
-            // ***************************************************************** //
-            //  SET COLUMNS IN GRIDVIEW
-            // ***************************************************************** //
-
-            var fields = new GridViewControlUtils().GetFields(new ModelFrequencia());
-
-            // Edit Image
-            DataGridViewImageColumn img = new DataGridViewImageColumn();
-            img.Name = "Image";
-            img.HeaderText = "";
-            img.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            img.Width = 40;
-            this.dataGridView1.Columns.Add(img);
-
-            // -------------------------------------------------------------
-            // All Fields
-            foreach (var item in fields)
-            {
-                DataGridViewTextBoxColumn dt = new DataGridViewTextBoxColumn();
-                dt.DataPropertyName = item.Key;
-                dt.HeaderText = item.Value;
-
-                if (item.Key == "nomeProjeto" || item.Key == "nomeTurma")
-                    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //else if (item.Key == "nomeTurma")
-                //    dt.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-
-                this.dataGridView1.Columns.Add(dt);
-            }
-
-            // -------------------------------------------------------------
-
-            this.dataGridView1.CellFormatting += new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);
-            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseLeave);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellMouseEnter);
-
-            // ***************************************************************** //
-        }
-
-        public void GridViewDataBind(List<FrequenciaDTO> result)
-        {
-            if (result.Count == 0)
-            {
-                dataGridView1.Visible = false;
-                panelMessage.Visible = true;
-                lblMessage.Text = "Nenhuma pessoa encontrada";
-            }
-            else
-            {
-                dataGridView1.Visible = true;
-                panelMessage.Visible = false;
-                lblMessage.Text = "";
-                dataGridView1.DataSource = result;
-            }
-        }
-
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex > -1 && e.ColumnIndex == this.dataGridView1.Columns["Image"].Index)
-                e.Value = Resources.icon_search24x24;
-
-        }
-
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex == 0)
-            {
-                int idFrequencia = Convert.ToInt32(this.dataGridView1[1, e.RowIndex].Value);
-
-                CarregaDetalhes(idFrequencia);
-
-                // MessageBox.Show("You have selected in image in " + e.RowIndex + " row.");
-                // MessageBox.Show("You have selected in image in " + this.dataGridView1[1, e.RowIndex].Value.ToString() + " row.");
-            }
-        }
-
-        private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Hand;
-        }
-
-        private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            if (GridViewControlUtils.IsValidCellAddress(e.RowIndex, e.ColumnIndex))
-                dataGridView1.Cursor = Cursors.Default;
-        }
-
-        #endregion
 
         #region Gridview2
 
@@ -584,13 +486,13 @@ namespace ProjetoSomarUI.Cadastros
 
             if (flagEnable)
             {
-                btnEditar.Visible = false;
+                //btnEditar.Visible = false;
                 btnGravar.Visible = true;
                 txtdtFrequencia.Focus();
             }
             else
             {
-                btnEditar.Visible = true;
+                //btnEditar.Visible = true;
                 btnGravar.Visible = false;
             }
         }
