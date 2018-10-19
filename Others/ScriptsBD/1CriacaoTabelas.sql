@@ -1,6 +1,17 @@
 USE SomarDatabase
 GO
 
+
+SELECT * 
+FROM TB_Frequencia
+
+SELECT * 
+FROM TB_FrequenciaFaltas
+
+
+EXEC SPR_GetListaChamada 2006
+
+sp_helptext SPR_GetListaChamada
 -- ******************************************************************* --
 -- BASE CEP - FONTE http://www.cepaberto.com/
 -- ******************************************************************* --
@@ -9,9 +20,21 @@ SELECT * FROM TB_Estados
 SELECT * FROM TB_Cidades
 SELECT * FROM TB_CEPs
 */
-select * from TB_Usuarios
 
-select * from TB_PessoaDV
+-- ******************************************************************* --
+
+CREATE TABLE TB_Usuarios
+(
+	idUsuario				INT IDENTITY(1,1) PRIMARY KEY,
+	nomeUsuario				NVARCHAR(100),
+	login					NVARCHAR(30),
+	senha					NVARCHAR(15),
+	idPerfil				INT,
+	dtCadastro				SMALLDATETIME,
+	flagAtivo				BIT,
+	dtUltAlteracao			SMALLDATETIME,
+	idPessoaUltAlteracao	INT
+)
 
 -- ******************************************************************* --
 -- (Projetos Contínuos de cada Centro Solidário) 
@@ -28,6 +51,7 @@ SELECT  idProjeto
 		dtUltAlteracao
 		idPessoaUltAlteracao
 FROM dbo.TB_Projetos
+
 
 CREATE TABLE TB_Projetos
 (
@@ -132,7 +156,7 @@ BEGIN
  
 END
 
-CREATE PROCEDURE SPR_GetListaChamada
+ALTER PROCEDURE SPR_GetListaChamada
 (
 	@idFrequencia			INT
 )
@@ -160,7 +184,23 @@ BEGIN
 	AND  dtMatricula < @dtFrequencia
 	*/
 
-	SELECT A.idMatricula, A.idPessoa, dtFrequencia = @dtFrequencia, B.nomePessoa, flagPresenca = (CASE WHEN C.idFrequenciaFalta IS NOT NULL THEN 0 ELSE 1 END)
+	CREATE TABLE #TempResult
+	(
+		idMatricula		INT, 
+		idPessoa		INT,
+		dtFrequencia	SMALLDATETIME,
+		nomePessoa		VARCHAR(100),
+		flagPresenca	BIT,
+		descPresenca	VARCHAR(100)
+	)
+
+	INSERT INTO #TempResult
+	SELECT  A.idMatricula, 
+			A.idPessoa, 
+			dtFrequencia = @dtFrequencia, 
+			B.nomePessoa, 
+			flagPresenca = (CASE WHEN C.idFrequenciaFalta IS NOT NULL THEN 0 ELSE 1 END),
+			descPresenca = null
 	FROM TB_Matricula			   A
 	INNER JOIN TB_Pessoas		   B ON A.idPessoa     = B.idPessoa
 	LEFT  JOIN TB_FrequenciaFaltas C ON C.idFrequencia = @idFrequencia AND A.idPessoa = C.idPessoa
@@ -168,6 +208,18 @@ BEGIN
 	  AND  A.idTurma = @idTurma
 	  AND  (A.dtCancelamento is NULL OR A.dtCancelamento > @dtFrequencia) 
 	  AND  A.dtMatricula < @dtFrequencia
+
+	  UPDATE #TempResult SET descPresenca = 'P' WHERE flagPresenca = 1
+	  UPDATE #TempResult SET descPresenca = 'F' WHERE flagPresenca = 0
+
+	  SELECT A.idMatricula, 
+			 A.idPessoa, 
+			 dtFrequencia,
+			 A.nomePessoa, 
+			 flagPresenca,
+			 descPresenca
+	  FROM #TempResult A
+
 	  
 END
 
@@ -199,18 +251,7 @@ BEGIN
 	AND  dtMatricula < @dtFrequencia
 END
 
-CREATE TABLE TB_Usuarios
-(
-	idUsuario				INT IDENTITY(1,1) PRIMARY KEY,
-	nomeUsuario				NVARCHAR(100),
-	login					NVARCHAR(30),
-	senha					NVARCHAR(15),
-	idPerfil				INT,
-	dtCadastro				SMALLDATETIME,
-	flagAtivo				BIT,
-	dtUltAlteracao			SMALLDATETIME,
-	idPessoaUltAlteracao	INT
-)
+
 
 -- ******************************************************* 
 -- INÍCIO - TABELAS DE DOMÍNIO
@@ -292,6 +333,19 @@ CREATE TABLE TB_Pessoas
 	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
+
+CREATE TABLE TB_SituacaoPessoas
+(
+	idSituacao  INT,
+	descricao	VARCHAR(50)
+)
+
+INSERT INTO TB_SituacaoPessoas values (0, 'Não informado')
+INSERT INTO TB_SituacaoPessoas values (1, 'Verde')
+INSERT INTO TB_SituacaoPessoas values (2, 'Amarelo')
+INSERT INTO TB_SituacaoPessoas values (3, 'Vermelho')
+
+
 
 CREATE TABLE TB_Enderecos
 (
@@ -396,11 +450,11 @@ INSERT INTO TB_Usuarios VALUES ('Vinicius Vist','Vist', '', 1, getdate(), 1, get
 INSERT INTO TB_Usuarios VALUES ('Hurbem Pinto','Hurbem', '', 1, getdate(), 1, getdate(), 1)
 INSERT INTO TB_Usuarios VALUES ('Leonardo Sotto','Sotto', '', 1, getdate(), 1, getdate(), 1)
 
-INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, 0, GETDATE(), 1, GETDATE(), 0)
-
 INSERT INTO TB_DadosVariaveis VALUES ('Batizado', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Eucaristia', 1)
 INSERT INTO TB_DadosVariaveis VALUES ('Crisma', 1)
+
+INSERT INTO TB_Pessoas  VALUES ('FELIPE FURTADO BRICHUCKA', '09/19/1986', 5, 2, getdate(), '41.387.404-7', '229.260.568-69', 'OBS.TESTE', NULL, NULL, 0, GETDATE(), 1, GETDATE(), 0)
 
 -- ****************************** -- 
 -- ALUNOS POR ESCOLA
@@ -533,6 +587,8 @@ CREATE CLUSTERED INDEX IX#01_TB_Pessoas   ON TB_Pessoas(idPessoa)
 CREATE CLUSTERED INDEX IX#01_TB_Enderecos ON TB_Enderecos(idEndereco)
 CREATE CLUSTERED INDEX IX#01_TB_Contatos  ON TB_Contatos(idContato)
 
+CREATE CLUSTERED INDEX IX#01_TB_SituacaoPessoas ON TB_SituacaoPessoas(idSituacao)
+
 -- ************************************************************************* --
 -- CEP INDEXES
 -- ************************************************************************* --
@@ -633,3 +689,6 @@ insert into TB_Projetos values ('PROJETO 6', 'DESCRICAO DO PROJETO', GETDATE(), 
 insert into TB_Projetos values ('PROJETO 7', 'DESCRICAO DO PROJETO', GETDATE(), GETDATE(), 1, GETDATE(), 1, GETDATE(), 1)
 insert into TB_Projetos values ('PROJETO 8', 'DESCRICAO DO PROJETO', GETDATE(), GETDATE(), 1, GETDATE(), 1, GETDATE(), 1)
 */
+
+
+select * from TB_Usuarios

@@ -182,10 +182,18 @@ namespace ProjetoSomarUI
                 ListViewAniversariantes.Items.Add(itemBirth);
             }
 
+            panelAniversario.Visible = true;
+
             if (iCount > 0)
-                panelAniversario.Visible = true;
+            {
+                //panelAniversario.Visible = true;
+                pnlAniversariantes.Visible = false;
+            }
             else
-                panelAniversario.Visible = false;
+            {
+                //panelAniversario.Visible = false;
+                pnlAniversariantes.Visible = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

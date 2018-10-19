@@ -66,6 +66,10 @@ namespace ProjetoSomarUI.Cadastros
 
             #endregion
 
+            Grid.EnableClickButton1 = true;
+            Grid.InitializeGridView(new PessoaDTO());
+            Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
+
             CarregaGrid();
             CarregaComboGenero();
             CarregaComboTipoPessoa();
@@ -87,8 +91,7 @@ namespace ProjetoSomarUI.Cadastros
             //txtDataInicio.CustomFormat = txtdtNascimento.CustomFormat = "HH:mm";
             //txtDataInicio.ShowUpDown = txtdtNascimento.ShowUpDown = true;
 
-            Grid.InitializeGridView(new PessoaDTO());
-            Grid.CallingMethod1 = new UserDetalhes(CarregaDetalhes);
+
 
             ClearForm1();
         }

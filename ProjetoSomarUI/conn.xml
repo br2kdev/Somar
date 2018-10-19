@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>  
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<!--
 <Config>  
   <Conexao>  
     <Server>Br2k-PC</Server>  
@@ -6,4 +7,13 @@
     <User>usrapp</User>  
     <Password>usrapp@2017</Password>  
   </Conexao>  
+</Config>
+-->
+<Config>
+  <Conexao>
+    <Server>br2k.database.windows.net,1433</Server>
+    <Database>SomarDatabase</Database>
+    <User>br2k</User>
+    <Password>Brichucka@2018</Password>
+  </Conexao>
 </Config>

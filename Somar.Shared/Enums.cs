@@ -29,6 +29,7 @@ namespace Somar.Shared
         Turmas = 1,
         Dashboard = 2,
         Escolas = 3,
+        ListaPresenca = 4
     };
 
     public enum Dashboard

@@ -1291,8 +1291,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 667);
-            this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

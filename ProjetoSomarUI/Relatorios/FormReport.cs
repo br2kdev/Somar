@@ -15,9 +15,23 @@ namespace ProjetoSomarUI.Relatorios
     {
         #region Load Configurations
 
+        public Dictionary<string, string> param
+        {
+            get
+            {
+                return _param;
+            }
+            set
+            {
+                _param = value;
+            }
+        }
+
         private DataTable _dataTable;
 
         private Relatorio _relatorio;
+
+        private Dictionary<string, string> _param;
 
         public FormReport(Relatorio relatorio, DataTable dataTable)
         {
@@ -29,8 +43,10 @@ namespace ProjetoSomarUI.Relatorios
             this.reportViewer1.LocalReport.DataSources.Clear();
         }
 
-        public void ShowReport()
+        public void ShowReport(Dictionary<string, string> param = null)
         {
+            var result = new Dictionary<string, object>();
+
             if (_relatorio == Relatorio.Dashboard)
             {
                 LoadDashboard();
@@ -40,10 +56,13 @@ namespace ProjetoSomarUI.Relatorios
                 switch (_relatorio)
                 {
                     case Relatorio.Projetos:
-                        _dataTable = LoadReportProjetos(_dataTable);
+                        result = LoadReportProjetos(_dataTable);
                         break;
                     case Relatorio.Turmas:
-                        _dataTable = LoadReportTurmas(_dataTable);
+                        result = LoadReportTurmas(_dataTable);
+                        break;
+                    case Relatorio.ListaPresenca:
+                        result = LoadReportListaPresenca(_dataTable);
                         break;
                     /*
                     case Relatorio.Dashboard:
@@ -54,8 +73,20 @@ namespace ProjetoSomarUI.Relatorios
                         break;
                 }
 
-                ReportDataSource rds = new ReportDataSource("DataSet", _dataTable);
-                this.reportViewer1.LocalReport.DataSources.Add(rds);
+                if(result != null)
+                {
+                    foreach (var item in result)
+                    {
+                        ReportDataSource rds = new ReportDataSource(item.Key, item.Value);
+                        this.reportViewer1.LocalReport.DataSources.Add(rds);
+                    }
+                }
+                else
+                {
+                    ReportDataSource rds = new ReportDataSource("DataSet", _dataTable);
+                    this.reportViewer1.LocalReport.DataSources.Add(rds);
+                }
+
             }
 
             ConfigurePrint();
@@ -72,21 +103,25 @@ namespace ProjetoSomarUI.Relatorios
             dtAlunosPorProjetoTableAdapter dt2 = new dtAlunosPorProjetoTableAdapter();
             dtPessoasPorBairroTableAdapter dt3 = new dtPessoasPorBairroTableAdapter();
             dtAlunosPorEducadorTableAdapter dt4 = new dtAlunosPorEducadorTableAdapter();
+            dtSituacaoPessoasTableAdapter dt5 = new dtSituacaoPessoasTableAdapter();
 
             var result1 = dt1.GetData().CopyToDataTable();
             var result2 = dt2.GetData().CopyToDataTable();
             var result3 = dt3.GetData().CopyToDataTable();
             var result4 = dt4.GetData().CopyToDataTable();
+            var result5 = dt5.GetData().CopyToDataTable();
 
             ReportDataSource rds1 = new ReportDataSource("dsAlunosPorEscola", result1);    // Alunos por Escola
             ReportDataSource rds2 = new ReportDataSource("dsAlunosPorProjeto", result2);   // Alunos por Projeto
             ReportDataSource rds3 = new ReportDataSource("dsPessoasPorBairro", result3);   // Pessoas por Bairro
             ReportDataSource rds4 = new ReportDataSource("dsAlunosPorEducador", result4);  // Alunos por Educador
+            ReportDataSource rds5 = new ReportDataSource("dsSituacaoPessoas", result5);    // Pessoas por Situacao
 
             this.reportViewer1.LocalReport.DataSources.Add(rds1);
             this.reportViewer1.LocalReport.DataSources.Add(rds2);
             this.reportViewer1.LocalReport.DataSources.Add(rds3);
             this.reportViewer1.LocalReport.DataSources.Add(rds4);
+            this.reportViewer1.LocalReport.DataSources.Add(rds5);
         }
 
         private void ConfigurePrint()
@@ -111,8 +146,10 @@ namespace ProjetoSomarUI.Relatorios
 
         #region Reports
 
-        private DataTable LoadReportProjetos(DataTable _dataTable)
+        private Dictionary<string, object> LoadReportProjetos(DataTable _dataTable)
         {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelProjetos.rdlc";
 
             if (_dataTable == null)
@@ -121,7 +158,9 @@ namespace ProjetoSomarUI.Relatorios
                 _dataTable = dt.GetData().CopyToDataTable();
             }
 
-            return _dataTable;
+            result.Add("DataSet", _dataTable);
+
+            return result;
 
             /*
             ReportParameter CustID = new ReportParameter("CustomerID", CustomerList.CustomerID);
@@ -129,8 +168,10 @@ namespace ProjetoSomarUI.Relatorios
             */
         }
 
-        private DataTable LoadReportTurmas(DataTable _dataTable)
+        private Dictionary<string, object> LoadReportTurmas(DataTable _dataTable)
         {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelTurmas.rdlc";
 
             if (_dataTable == null)
@@ -139,7 +180,32 @@ namespace ProjetoSomarUI.Relatorios
                 _dataTable = dt.GetData().CopyToDataTable();
             }
 
-            return _dataTable;
+            result.Add("DataSet", _dataTable);
+
+            return result;
+        }
+
+        private Dictionary<string, object> LoadReportListaPresenca(DataTable _dataTable)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelFrequencia.rdlc";
+
+            int idFrequencia = Convert.ToInt32(_param["idFrequencia"]);
+
+            if (_dataTable == null)
+            {
+                SPR_GetListaChamadaTableAdapter dt = new SPR_GetListaChamadaTableAdapter();
+                _dataTable = dt.GetData(idFrequencia).CopyToDataTable();
+            }
+
+            result.Add("DataSet", _dataTable);
+
+            GetListaChamadaDetalhesTableAdapter dt2 = new GetListaChamadaDetalhesTableAdapter();
+            var _dataTable2 = dt2.GetData(idFrequencia).CopyToDataTable();
+            result.Add("DataSet2", _dataTable2);
+
+            return result;
         }
 
         #endregion

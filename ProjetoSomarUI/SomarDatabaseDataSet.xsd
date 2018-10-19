@@ -142,7 +142,7 @@ GROUP BY A.idEscola, A.nomeEscola</CommandText>
 FROM TB_Matricula      A
 INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
 INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto
-WHERE A.dtCancelamento IS NOT NULL
+WHERE A.dtCancelamento IS NULL
 GROUP BY C.idProjeto, C.nomeProjeto</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -217,14 +217,14 @@ LEFT JOIN TB_Usuarios C ON A.idPessoaUltAlteracao = C.idUsuario</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtAlunosPorEducadorTableAdapter" GeneratorDataComponentClassName="dtAlunosPorEducadorTableAdapter" Name="dtAlunosPorEducador" UserDataComponentName="dtAlunosPorEducadorTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="GetData">
+              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT B.idPessoaEducador, C.nomePessoa, QtdeAlunos = COUNT(1)
 FROM TB_Matricula      A
 INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
 INNER JOIN TB_Pessoas  C ON B.idPessoaEducador   = C.idPessoa
-WHERE A.dtCancelamento IS NOT NULL
+WHERE A.dtCancelamento IS NULL
 GROUP BY B.idPessoaEducador, C.nomePessoa</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -235,6 +235,85 @@ GROUP BY B.idPessoaEducador, C.nomePessoa</CommandText>
               <Mapping SourceColumn="idPessoaEducador" DataSetColumn="idPessoaEducador" />
               <Mapping SourceColumn="nomePessoa" DataSetColumn="nomePessoa" />
               <Mapping SourceColumn="QtdeAlunos" DataSetColumn="QtdeAlunos" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="dtSituacaoPessoasTableAdapter" GeneratorDataComponentClassName="dtSituacaoPessoasTableAdapter" Name="dtSituacaoPessoas" UserDataComponentName="dtSituacaoPessoasTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectName="SomarDatabase.dbo.TB_SituacaoPessoas" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT B.idSituacao, B.descricao, ISNULL(CASE WHEN A.idSituacao = 0 THEN SUM(1)
+								       WHEN A.idSituacao = 1 THEN SUM(1)
+									   WHEN A.idSituacao = 2 THEN SUM(1)
+									   WHEN A.idSituacao = 3 THEN SUM(1)
+								  END, 0) AS Qtde
+FROM TB_Pessoas                A
+RIGHT JOIN TB_SituacaoPessoas  B ON A.idSituacao = B.idSituacao
+GROUP BY A.idSituacao, B.idSituacao, B.descricao
+ORDER BY B.idSituacao</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idSituacao" DataSetColumn="idSituacao" />
+              <Mapping SourceColumn="descricao" DataSetColumn="descricao" />
+              <Mapping SourceColumn="Qtde" DataSetColumn="Qtde" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SPR_GetListaChamadaTableAdapter" GeneratorDataComponentClassName="SPR_GetListaChamadaTableAdapter" Name="SPR_GetListaChamada" UserDataComponentName="SPR_GetListaChamadaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectName="SomarDatabase.dbo.SPR_GetListaChamada" DbObjectType="StoredProcedure" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>dbo.SPR_GetListaChamada</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idFrequencia" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idMatricula" DataSetColumn="idMatricula" />
+              <Mapping SourceColumn="idPessoa" DataSetColumn="idPessoa" />
+              <Mapping SourceColumn="dtFrequencia" DataSetColumn="dtFrequencia" />
+              <Mapping SourceColumn="nomePessoa" DataSetColumn="nomePessoa" />
+              <Mapping SourceColumn="descPresenca" DataSetColumn="descPresenca" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GetListaChamadaDetalhesTableAdapter" GeneratorDataComponentClassName="GetListaChamadaDetalhesTableAdapter" Name="GetListaChamadaDetalhes" UserDataComponentName="GetListaChamadaDetalhesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SomarDatabase (Settings)" DbObjectType="Unknown" GenerateMethods="Get" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="GetData">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        A.idFrequencia, A.dtFrequencia, B.idTurma, B.nomeTurma, B.descricaoPeriodo, B.HoraInicio, B.HoraTermino, C.idPessoa, C.nomePessoa
+FROM            TB_Frequencia AS A INNER JOIN
+                         TB_Turmas AS B ON A.idTurma = B.idTurma INNER JOIN
+                         TB_Pessoas AS C ON B.idPessoaEducador = C.idPessoa
+WHERE        (A.idFrequencia = @idFrequencia)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idFrequencia" ColumnName="idFrequencia" DataSourceName="SomarDatabase.dbo.TB_Frequencia" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idFrequencia" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="idFrequencia" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="idFrequencia" DataSetColumn="idFrequencia" />
+              <Mapping SourceColumn="dtFrequencia" DataSetColumn="dtFrequencia" />
+              <Mapping SourceColumn="idTurma" DataSetColumn="idTurma" />
+              <Mapping SourceColumn="nomeTurma" DataSetColumn="nomeTurma" />
+              <Mapping SourceColumn="descricaoPeriodo" DataSetColumn="descricaoPeriodo" />
+              <Mapping SourceColumn="HoraInicio" DataSetColumn="HoraInicio" />
+              <Mapping SourceColumn="HoraTermino" DataSetColumn="HoraTermino" />
+              <Mapping SourceColumn="idPessoa" DataSetColumn="idPessoa" />
+              <Mapping SourceColumn="nomePessoa" DataSetColumn="nomePessoa" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -422,6 +501,90 @@ GROUP BY B.idPessoaEducador, C.nomePessoa</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="dtSituacaoPessoas" msprop:Generator_TableClassName="dtSituacaoPessoasDataTable" msprop:Generator_TableVarName="tabledtSituacaoPessoas" msprop:Generator_RowChangedName="dtSituacaoPessoasRowChanged" msprop:Generator_TablePropName="dtSituacaoPessoas" msprop:Generator_RowDeletingName="dtSituacaoPessoasRowDeleting" msprop:Generator_RowChangingName="dtSituacaoPessoasRowChanging" msprop:Generator_RowEvHandlerName="dtSituacaoPessoasRowChangeEventHandler" msprop:Generator_RowDeletedName="dtSituacaoPessoasRowDeleted" msprop:Generator_RowClassName="dtSituacaoPessoasRow" msprop:Generator_UserTableName="dtSituacaoPessoas" msprop:Generator_RowEvArgName="dtSituacaoPessoasRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idSituacao" msprop:Generator_ColumnVarNameInTable="columnidSituacao" msprop:Generator_ColumnPropNameInRow="idSituacao" msprop:Generator_ColumnPropNameInTable="idSituacaoColumn" msprop:Generator_UserColumnName="idSituacao" type="xs:int" minOccurs="0" />
+              <xs:element name="descricao" msprop:Generator_ColumnVarNameInTable="columndescricao" msprop:Generator_ColumnPropNameInRow="descricao" msprop:Generator_ColumnPropNameInTable="descricaoColumn" msprop:Generator_UserColumnName="descricao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Qtde" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQtde" msprop:Generator_ColumnPropNameInRow="Qtde" msprop:Generator_ColumnPropNameInTable="QtdeColumn" msprop:Generator_UserColumnName="Qtde" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SPR_GetListaChamada" msprop:Generator_TableClassName="SPR_GetListaChamadaDataTable" msprop:Generator_TableVarName="tableSPR_GetListaChamada" msprop:Generator_TablePropName="SPR_GetListaChamada" msprop:Generator_RowDeletingName="SPR_GetListaChamadaRowDeleting" msprop:Generator_RowChangingName="SPR_GetListaChamadaRowChanging" msprop:Generator_RowEvHandlerName="SPR_GetListaChamadaRowChangeEventHandler" msprop:Generator_RowDeletedName="SPR_GetListaChamadaRowDeleted" msprop:Generator_UserTableName="SPR_GetListaChamada" msprop:Generator_RowChangedName="SPR_GetListaChamadaRowChanged" msprop:Generator_RowEvArgName="SPR_GetListaChamadaRowChangeEvent" msprop:Generator_RowClassName="SPR_GetListaChamadaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idMatricula" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidMatricula" msprop:Generator_ColumnPropNameInRow="idMatricula" msprop:Generator_ColumnPropNameInTable="idMatriculaColumn" msprop:Generator_UserColumnName="idMatricula" type="xs:int" minOccurs="0" />
+              <xs:element name="idPessoa" msprop:Generator_ColumnVarNameInTable="columnidPessoa" msprop:Generator_ColumnPropNameInRow="idPessoa" msprop:Generator_ColumnPropNameInTable="idPessoaColumn" msprop:Generator_UserColumnName="idPessoa" type="xs:int" minOccurs="0" />
+              <xs:element name="dtFrequencia" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndtFrequencia" msprop:Generator_ColumnPropNameInRow="dtFrequencia" msprop:Generator_ColumnPropNameInTable="dtFrequenciaColumn" msprop:Generator_UserColumnName="dtFrequencia" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nomePessoa" msprop:Generator_ColumnVarNameInTable="columnnomePessoa" msprop:Generator_ColumnPropNameInRow="nomePessoa" msprop:Generator_ColumnPropNameInTable="nomePessoaColumn" msprop:Generator_UserColumnName="nomePessoa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="flagPresenca" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnflagPresenca" msprop:Generator_ColumnPropNameInRow="flagPresenca" msprop:Generator_ColumnPropNameInTable="flagPresencaColumn" msprop:Generator_UserColumnName="flagPresenca" type="xs:int" minOccurs="0" />
+              <xs:element name="descPresenca" msprop:Generator_ColumnVarNameInTable="columndescPresenca" msprop:Generator_ColumnPropNameInRow="descPresenca" msprop:Generator_ColumnPropNameInTable="descPresencaColumn" msprop:Generator_UserColumnName="descPresenca" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GetListaChamadaDetalhes" msprop:Generator_TableClassName="GetListaChamadaDetalhesDataTable" msprop:Generator_TableVarName="tableGetListaChamadaDetalhes" msprop:Generator_TablePropName="GetListaChamadaDetalhes" msprop:Generator_RowDeletingName="GetListaChamadaDetalhesRowDeleting" msprop:Generator_RowChangingName="GetListaChamadaDetalhesRowChanging" msprop:Generator_RowEvHandlerName="GetListaChamadaDetalhesRowChangeEventHandler" msprop:Generator_RowDeletedName="GetListaChamadaDetalhesRowDeleted" msprop:Generator_UserTableName="GetListaChamadaDetalhes" msprop:Generator_RowChangedName="GetListaChamadaDetalhesRowChanged" msprop:Generator_RowEvArgName="GetListaChamadaDetalhesRowChangeEvent" msprop:Generator_RowClassName="GetListaChamadaDetalhesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="idFrequencia" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidFrequencia" msprop:Generator_ColumnPropNameInRow="idFrequencia" msprop:Generator_ColumnPropNameInTable="idFrequenciaColumn" msprop:Generator_UserColumnName="idFrequencia" type="xs:int" />
+              <xs:element name="dtFrequencia" msprop:Generator_ColumnVarNameInTable="columndtFrequencia" msprop:Generator_ColumnPropNameInRow="dtFrequencia" msprop:Generator_ColumnPropNameInTable="dtFrequenciaColumn" msprop:Generator_UserColumnName="dtFrequencia" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="idTurma" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidTurma" msprop:Generator_ColumnPropNameInRow="idTurma" msprop:Generator_ColumnPropNameInTable="idTurmaColumn" msprop:Generator_UserColumnName="idTurma" type="xs:int" />
+              <xs:element name="nomeTurma" msprop:Generator_ColumnVarNameInTable="columnnomeTurma" msprop:Generator_ColumnPropNameInRow="nomeTurma" msprop:Generator_ColumnPropNameInTable="nomeTurmaColumn" msprop:Generator_UserColumnName="nomeTurma" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="descricaoPeriodo" msprop:Generator_ColumnVarNameInTable="columndescricaoPeriodo" msprop:Generator_ColumnPropNameInRow="descricaoPeriodo" msprop:Generator_ColumnPropNameInTable="descricaoPeriodoColumn" msprop:Generator_UserColumnName="descricaoPeriodo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HoraInicio" msprop:Generator_ColumnVarNameInTable="columnHoraInicio" msprop:Generator_ColumnPropNameInRow="HoraInicio" msprop:Generator_ColumnPropNameInTable="HoraInicioColumn" msprop:Generator_UserColumnName="HoraInicio" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HoraTermino" msprop:Generator_ColumnVarNameInTable="columnHoraTermino" msprop:Generator_ColumnPropNameInRow="HoraTermino" msprop:Generator_ColumnPropNameInTable="HoraTerminoColumn" msprop:Generator_UserColumnName="HoraTermino" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="idPessoa" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnidPessoa" msprop:Generator_ColumnPropNameInRow="idPessoa" msprop:Generator_ColumnPropNameInTable="idPessoaColumn" msprop:Generator_UserColumnName="idPessoa" type="xs:int" />
+              <xs:element name="nomePessoa" msprop:Generator_ColumnVarNameInTable="columnnomePessoa" msprop:Generator_ColumnPropNameInRow="nomePessoa" msprop:Generator_ColumnPropNameInTable="nomePessoaColumn" msprop:Generator_UserColumnName="nomePessoa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -439,6 +602,16 @@ GROUP BY B.idPessoaEducador, C.nomePessoa</CommandText>
     <xs:unique name="dtTurmas_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:dtTurmas" />
       <xs:field xpath="mstns:idTurma" />
+    </xs:unique>
+    <xs:unique name="SPR_GetListaChamada_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:SPR_GetListaChamada" />
+      <xs:field xpath="mstns:idMatricula" />
+    </xs:unique>
+    <xs:unique name="GetListaChamadaDetalhes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GetListaChamadaDetalhes" />
+      <xs:field xpath="mstns:idFrequencia" />
+      <xs:field xpath="mstns:idTurma" />
+      <xs:field xpath="mstns:idPessoa" />
     </xs:unique>
   </xs:element>
 </xs:schema>

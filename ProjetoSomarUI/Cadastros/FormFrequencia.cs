@@ -39,6 +39,7 @@ namespace ProjetoSomarUI.Cadastros
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnGravar.Click += new EventHandler(btnGravar_Click);
             btnVoltar1.Click += new EventHandler(btnVoltar_Click);
+            btnGerarLista.Click += new EventHandler(btnGerarLista_Click);
             //btnEditar.Click += new EventHandler(btnEditar_Click);
 
             /*
@@ -268,6 +269,17 @@ namespace ProjetoSomarUI.Cadastros
 
             btnVoltar1.Visible = true;
             btnVoltar1.Text = "Voltar";
+        }
+
+        private void btnGerarLista_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> _param = new Dictionary<string, string>();
+            _param.Add("idFrequencia", lblCodigo.Text);
+
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.ListaPresenca, null);
+            frm.param = _param;
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
         }
 
         #endregion

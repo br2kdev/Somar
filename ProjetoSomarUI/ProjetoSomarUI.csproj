@@ -279,6 +279,7 @@
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\RelDashboard.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelFrequencia.rdlc" />
     <EmbeddedResource Include="Relatorios\RelProjetos.rdlc" />
     <EmbeddedResource Include="Relatorios\RelTurmas.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">

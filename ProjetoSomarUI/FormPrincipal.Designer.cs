@@ -68,6 +68,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.pnlAniversariantes = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuPrincipal.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,6 +79,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelAniversario.SuspendLayout();
+            this.pnlAniversariantes.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuPrincipal
@@ -394,12 +397,13 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(57, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(171, 16);
             this.label7.TabIndex = 81;
-            this.label7.Text = "Aniversariantes da Mês";
+            this.label7.Text = "Aniversariantes do Mês";
             // 
             // panelAniversario
             // 
@@ -407,6 +411,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panelAniversario.BackColor = System.Drawing.SystemColors.Control;
             this.panelAniversario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelAniversario.Controls.Add(this.pnlAniversariantes);
             this.panelAniversario.Controls.Add(this.ListViewAniversariantes);
             this.panelAniversario.Location = new System.Drawing.Point(2, 213);
             this.panelAniversario.Name = "panelAniversario";
@@ -444,6 +449,28 @@
             // 
             this.columnHeader3.Text = "";
             // 
+            // pnlAniversariantes
+            // 
+            this.pnlAniversariantes.Controls.Add(this.label5);
+            this.pnlAniversariantes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlAniversariantes.Location = new System.Drawing.Point(0, 0);
+            this.pnlAniversariantes.Name = "pnlAniversariantes";
+            this.pnlAniversariantes.Size = new System.Drawing.Size(386, 361);
+            this.pnlAniversariantes.TabIndex = 84;
+            this.pnlAniversariantes.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label5.Location = new System.Drawing.Point(68, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(235, 16);
+            this.label5.TabIndex = 80;
+            this.label5.Text = "nenhum aniversariante este mês!";
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,6 +505,8 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panelAniversario.ResumeLayout(false);
+            this.pnlAniversariantes.ResumeLayout(false);
+            this.pnlAniversariantes.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -523,6 +552,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Panel pnlAniversariantes;
+        private System.Windows.Forms.Label label5;
     }
 }
 
