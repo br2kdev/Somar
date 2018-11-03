@@ -8,13 +8,15 @@ using System.Windows.Forms;
 using Somar.Shared;
 using System.Drawing.Printing;
 using ProjetoSomarUI.SomarDatabaseDataSetTableAdapters;
+using System.Data.SqlClient;
+using Somar.DAL.Utilities;
 
 namespace ProjetoSomarUI.Relatorios
 {
     public partial class FormReport : Form
     {
         #region Load Configurations
-
+        
         public Dictionary<string, string> param
         {
             get
@@ -33,14 +35,19 @@ namespace ProjetoSomarUI.Relatorios
 
         private Dictionary<string, string> _param;
 
+        private void FormReport_Load(object sender, EventArgs e)
+        {
+
+        }
+
         public FormReport(Relatorio relatorio, DataTable dataTable)
         {
             InitializeComponent();
 
             _dataTable = dataTable;
             _relatorio = relatorio;
-
-            this.reportViewer1.LocalReport.DataSources.Clear();
+            
+            this.reportViewer1.RefreshReport();
         }
 
         public void ShowReport(Dictionary<string, string> param = null)
@@ -155,6 +162,11 @@ namespace ProjetoSomarUI.Relatorios
             if (_dataTable == null)
             {
                 dtProjetosTableAdapter dt = new dtProjetosTableAdapter();
+                /*
+                dt.Connection.Close();
+                dt.Connection.ConnectionString = Globals.stringConn;
+                dt.Connection.Open();
+                */
                 _dataTable = dt.GetData().CopyToDataTable();
             }
 
@@ -215,9 +227,5 @@ namespace ProjetoSomarUI.Relatorios
             ShowReport();
         }
 
-        private void FormReport_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

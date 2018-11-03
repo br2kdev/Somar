@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Somar.DAL.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace ProjetoSomarUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new FormPrincipal());
+
+            Properties.Settings.Default["SomarDatabase"] = Globals.stringConn;
 
             FormLogin f = new FormLogin();
 

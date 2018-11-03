@@ -30,9 +30,9 @@ namespace Somar.DAL
             if (objectDTO.idUsuario != 0)
                 whereClause += " AND A.idUsuario = " + objectDTO.idUsuario.ToString();
             else if (!string.IsNullOrEmpty(objectDTO.nomeUsuario))
-                whereClause += " AND nomeUsuario like '%" + objectDTO.nomeUsuario + "%'";
+                whereClause += " AND A.nomeUsuario like '%" + objectDTO.nomeUsuario + "%'";
             else if (!string.IsNullOrEmpty(objectDTO.login))
-                whereClause += " AND login like '%" + objectDTO.login + "%'";
+                whereClause += " AND A.login like '%" + objectDTO.login + "%'";
 
             if (objectDTO.flagAtivo == true)
                 whereClause += " AND A.flagAtivo = 1";

@@ -290,7 +290,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(553, 49);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(128, 28);
-            this.cmbStatus.TabIndex = 92;
+            this.cmbStatus.TabIndex = 5;
             // 
             // groupBox3
             // 
@@ -409,6 +409,8 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.btnEditar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEditar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditar.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
@@ -501,6 +503,8 @@
             // 
             // btnVoltar1
             // 
+            this.btnVoltar1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnVoltar1.BackgroundImage")));
+            this.btnVoltar1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.btnVoltar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
@@ -524,7 +528,8 @@
             // 
             // btnGravar
             // 
-            this.btnGravar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnGravar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGravar.BackgroundImage")));
+            this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGravar.Enabled = false;
             this.btnGravar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
             this.btnGravar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -545,7 +550,7 @@
             this.txtRG.Mask = "00,000,000-0";
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(118, 27);
-            this.txtRG.TabIndex = 117;
+            this.txtRG.TabIndex = 4;
             // 
             // txtdtNascimento
             // 
@@ -554,7 +559,7 @@
             this.txtdtNascimento.Mask = "00/00/0000";
             this.txtdtNascimento.Name = "txtdtNascimento";
             this.txtdtNascimento.Size = new System.Drawing.Size(100, 27);
-            this.txtdtNascimento.TabIndex = 116;
+            this.txtdtNascimento.TabIndex = 2;
             this.txtdtNascimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtdtNascimento.ValidatingType = typeof(System.DateTime);
             this.txtdtNascimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtdtNascimento_KeyDown);
@@ -577,7 +582,7 @@
             this.cmbSituacao.Location = new System.Drawing.Point(553, 87);
             this.cmbSituacao.Name = "cmbSituacao";
             this.cmbSituacao.Size = new System.Drawing.Size(128, 28);
-            this.cmbSituacao.TabIndex = 114;
+            this.cmbSituacao.TabIndex = 8;
             // 
             // label30
             // 
@@ -610,7 +615,7 @@
             this.chkResponsavel.Location = new System.Drawing.Point(423, 151);
             this.chkResponsavel.Name = "chkResponsavel";
             this.chkResponsavel.Size = new System.Drawing.Size(333, 21);
-            this.chkResponsavel.TabIndex = 115;
+            this.chkResponsavel.TabIndex = 9;
             this.chkResponsavel.Text = "Responsável por beneficiário? (Mãe / Pai)";
             this.chkResponsavel.UseVisualStyleBackColor = true;
             // 
@@ -623,7 +628,7 @@
             this.cmbTipoPessoa.Location = new System.Drawing.Point(62, 86);
             this.cmbTipoPessoa.Name = "cmbTipoPessoa";
             this.cmbTipoPessoa.Size = new System.Drawing.Size(147, 28);
-            this.cmbTipoPessoa.TabIndex = 109;
+            this.cmbTipoPessoa.TabIndex = 6;
             // 
             // label29
             // 
@@ -642,7 +647,7 @@
             this.txtCPF.Mask = "999,999,999-99";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(133, 27);
-            this.txtCPF.TabIndex = 107;
+            this.txtCPF.TabIndex = 3;
             // 
             // tabControl1
             // 
@@ -724,7 +729,7 @@
             this.ddlMae.Location = new System.Drawing.Point(145, 50);
             this.ddlMae.Name = "ddlMae";
             this.ddlMae.Size = new System.Drawing.Size(388, 28);
-            this.ddlMae.TabIndex = 128;
+            this.ddlMae.TabIndex = 11;
             // 
             // ddlPai
             // 
@@ -735,7 +740,7 @@
             this.ddlPai.Location = new System.Drawing.Point(145, 15);
             this.ddlPai.Name = "ddlPai";
             this.ddlPai.Size = new System.Drawing.Size(388, 28);
-            this.ddlPai.TabIndex = 116;
+            this.ddlPai.TabIndex = 10;
             // 
             // txtIdContato
             // 
@@ -753,7 +758,7 @@
             this.txtNomeContato3.MaxLength = 100;
             this.txtNomeContato3.Name = "txtNomeContato3";
             this.txtNomeContato3.Size = new System.Drawing.Size(407, 27);
-            this.txtNomeContato3.TabIndex = 123;
+            this.txtNomeContato3.TabIndex = 17;
             // 
             // label28
             // 
@@ -772,7 +777,7 @@
             this.txtTelefone3.Mask = "(99) 90000-0000";
             this.txtTelefone3.Name = "txtTelefone3";
             this.txtTelefone3.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone3.TabIndex = 122;
+            this.txtTelefone3.TabIndex = 16;
             // 
             // txtTelefone2
             // 
@@ -781,7 +786,7 @@
             this.txtTelefone2.Mask = "(99) 90000-0000";
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone2.TabIndex = 121;
+            this.txtTelefone2.TabIndex = 14;
             // 
             // txtTelefone1
             // 
@@ -790,7 +795,7 @@
             this.txtTelefone1.Mask = "(99) 90000-0000";
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(147, 27);
-            this.txtTelefone1.TabIndex = 120;
+            this.txtTelefone1.TabIndex = 12;
             // 
             // label15
             // 
@@ -820,7 +825,7 @@
             this.txtNomeContato2.MaxLength = 100;
             this.txtNomeContato2.Name = "txtNomeContato2";
             this.txtNomeContato2.Size = new System.Drawing.Size(407, 27);
-            this.txtNomeContato2.TabIndex = 114;
+            this.txtNomeContato2.TabIndex = 15;
             // 
             // txtNomeContato1
             // 
@@ -830,7 +835,7 @@
             this.txtNomeContato1.MaxLength = 100;
             this.txtNomeContato1.Name = "txtNomeContato1";
             this.txtNomeContato1.Size = new System.Drawing.Size(407, 27);
-            this.txtNomeContato1.TabIndex = 112;
+            this.txtNomeContato1.TabIndex = 13;
             // 
             // label25
             // 
@@ -951,7 +956,7 @@
             this.txtCEP.Mask = "00000-999";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(100, 27);
-            this.txtCEP.TabIndex = 122;
+            this.txtCEP.TabIndex = 18;
             // 
             // txtUF
             // 
@@ -985,7 +990,7 @@
             this.txtCidade.MaxLength = 100;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(238, 27);
-            this.txtCidade.TabIndex = 117;
+            this.txtCidade.TabIndex = 23;
             // 
             // txtBairro
             // 
@@ -997,7 +1002,7 @@
             this.txtBairro.MaxLength = 100;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(366, 27);
-            this.txtBairro.TabIndex = 115;
+            this.txtBairro.TabIndex = 22;
             // 
             // txtComplemento
             // 
@@ -1009,7 +1014,7 @@
             this.txtComplemento.MaxLength = 100;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(366, 27);
-            this.txtComplemento.TabIndex = 113;
+            this.txtComplemento.TabIndex = 21;
             // 
             // txtNumero
             // 
@@ -1021,7 +1026,7 @@
             this.txtNumero.MaxLength = 100;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(83, 27);
-            this.txtNumero.TabIndex = 111;
+            this.txtNumero.TabIndex = 20;
             // 
             // txtLogradouro
             // 
@@ -1033,7 +1038,7 @@
             this.txtLogradouro.MaxLength = 100;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(366, 27);
-            this.txtLogradouro.TabIndex = 109;
+            this.txtLogradouro.TabIndex = 19;
             // 
             // label21
             // 
@@ -1119,7 +1124,7 @@
             this.cmbEscola.Location = new System.Drawing.Point(546, 11);
             this.cmbEscola.Name = "cmbEscola";
             this.cmbEscola.Size = new System.Drawing.Size(388, 28);
-            this.cmbEscola.TabIndex = 120;
+            this.cmbEscola.TabIndex = 24;
             // 
             // label4
             // 
@@ -1220,7 +1225,7 @@
             this.cmbGenero.Location = new System.Drawing.Point(317, 87);
             this.cmbGenero.Name = "cmbGenero";
             this.cmbGenero.Size = new System.Drawing.Size(133, 28);
-            this.cmbGenero.TabIndex = 101;
+            this.cmbGenero.TabIndex = 7;
             // 
             // label12
             // 
@@ -1262,6 +1267,7 @@
             this.txtIdade.ReadOnly = true;
             this.txtIdade.Size = new System.Drawing.Size(44, 28);
             this.txtIdade.TabIndex = 84;
+            this.txtIdade.TabStop = false;
             this.txtIdade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtNome

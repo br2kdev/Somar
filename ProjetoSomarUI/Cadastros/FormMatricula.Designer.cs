@@ -43,17 +43,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDetalhes = new System.Windows.Forms.Button();
+            this.btnVoltar1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnVoltar1 = new System.Windows.Forms.Button();
             this.Grid2 = new ProjetoSomarUI.Controls.GridViewControl();
             this.btnGravar = new System.Windows.Forms.Button();
             this.cmbTurma = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cmbProjeto = new System.Windows.Forms.ComboBox();
-            this.btnDetalhes = new System.Windows.Forms.Button();
             this.panelConsulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelEdit.SuspendLayout();
@@ -247,6 +247,32 @@
             this.panel1.Size = new System.Drawing.Size(1005, 59);
             this.panel1.TabIndex = 64;
             // 
+            // btnDetalhes
+            // 
+            this.btnDetalhes.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnDetalhes.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
+            this.btnDetalhes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnDetalhes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDetalhes.Location = new System.Drawing.Point(527, 6);
+            this.btnDetalhes.Name = "btnDetalhes";
+            this.btnDetalhes.Size = new System.Drawing.Size(61, 48);
+            this.btnDetalhes.TabIndex = 2;
+            this.btnDetalhes.UseVisualStyleBackColor = false;
+            // 
+            // btnVoltar1
+            // 
+            this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnVoltar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
+            this.btnVoltar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVoltar1.Location = new System.Drawing.Point(901, 10);
+            this.btnVoltar1.Name = "btnVoltar1";
+            this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
+            this.btnVoltar1.TabIndex = 118;
+            this.btnVoltar1.Text = "VOLTAR";
+            this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar1.UseVisualStyleBackColor = true;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
@@ -294,20 +320,6 @@
             this.panel3.Size = new System.Drawing.Size(998, 601);
             this.panel3.TabIndex = 66;
             // 
-            // btnVoltar1
-            // 
-            this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.btnVoltar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnVoltar1.Image = global::ProjetoSomarUI.Properties.Resources.icon_back32x32;
-            this.btnVoltar1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVoltar1.Location = new System.Drawing.Point(901, 10);
-            this.btnVoltar1.Name = "btnVoltar1";
-            this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
-            this.btnVoltar1.TabIndex = 118;
-            this.btnVoltar1.Text = "VOLTAR";
-            this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar1.UseVisualStyleBackColor = true;
-            // 
             // Grid2
             // 
             this.Grid2.AutoSize = true;
@@ -330,7 +342,7 @@
             this.btnGravar.Location = new System.Drawing.Point(732, 8);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(33, 33);
-            this.btnGravar.TabIndex = 116;
+            this.btnGravar.TabIndex = 5;
             this.btnGravar.UseVisualStyleBackColor = true;
             // 
             // cmbTurma
@@ -341,7 +353,7 @@
             this.cmbTurma.Location = new System.Drawing.Point(438, 11);
             this.cmbTurma.Name = "cmbTurma";
             this.cmbTurma.Size = new System.Drawing.Size(286, 28);
-            this.cmbTurma.TabIndex = 114;
+            this.cmbTurma.TabIndex = 4;
             // 
             // label13
             // 
@@ -361,19 +373,7 @@
             this.cmbProjeto.Location = new System.Drawing.Point(74, 10);
             this.cmbProjeto.Name = "cmbProjeto";
             this.cmbProjeto.Size = new System.Drawing.Size(286, 28);
-            this.cmbProjeto.TabIndex = 112;
-            // 
-            // btnDetalhes
-            // 
-            this.btnDetalhes.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnDetalhes.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_search32x32;
-            this.btnDetalhes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnDetalhes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDetalhes.Location = new System.Drawing.Point(527, 6);
-            this.btnDetalhes.Name = "btnDetalhes";
-            this.btnDetalhes.Size = new System.Drawing.Size(61, 48);
-            this.btnDetalhes.TabIndex = 43;
-            this.btnDetalhes.UseVisualStyleBackColor = false;
+            this.cmbProjeto.TabIndex = 3;
             // 
             // FormMatricula
             // 

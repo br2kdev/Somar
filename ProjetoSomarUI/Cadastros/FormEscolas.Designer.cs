@@ -112,7 +112,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(831, 18);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(124, 28);
-            this.cmbStatus.TabIndex = 92;
+            this.cmbStatus.TabIndex = 2;
             // 
             // panel2
             // 
@@ -138,7 +138,7 @@
             this.btnVoltar1.Location = new System.Drawing.Point(374, 12);
             this.btnVoltar1.Name = "btnVoltar1";
             this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
-            this.btnVoltar1.TabIndex = 72;
+            this.btnVoltar1.TabIndex = 11;
             this.btnVoltar1.Text = "VOLTAR";
             this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar1.UseVisualStyleBackColor = true;
@@ -154,7 +154,7 @@
             this.btnGravar.Location = new System.Drawing.Point(501, 12);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(98, 40);
-            this.btnGravar.TabIndex = 71;
+            this.btnGravar.TabIndex = 10;
             this.btnGravar.Text = "SALVAR";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -271,7 +271,7 @@
             this.txtObservacoes.Multiline = true;
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.Size = new System.Drawing.Size(821, 81);
-            this.txtObservacoes.TabIndex = 4;
+            this.txtObservacoes.TabIndex = 3;
             // 
             // label5
             // 
@@ -444,6 +444,7 @@
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(90, 43);
             this.btnEditar.TabIndex = 79;
+            this.btnEditar.TabStop = false;
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -566,7 +567,7 @@
             this.txtCEP.Mask = "00000-999";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(100, 27);
-            this.txtCEP.TabIndex = 140;
+            this.txtCEP.TabIndex = 4;
             // 
             // txtUF
             // 
@@ -600,7 +601,7 @@
             this.txtCidade.MaxLength = 100;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(238, 27);
-            this.txtCidade.TabIndex = 136;
+            this.txtCidade.TabIndex = 9;
             // 
             // txtBairro
             // 
@@ -612,7 +613,7 @@
             this.txtBairro.MaxLength = 100;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(366, 27);
-            this.txtBairro.TabIndex = 134;
+            this.txtBairro.TabIndex = 8;
             // 
             // txtComplemento
             // 
@@ -624,7 +625,7 @@
             this.txtComplemento.MaxLength = 100;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(366, 27);
-            this.txtComplemento.TabIndex = 132;
+            this.txtComplemento.TabIndex = 7;
             // 
             // txtNumero
             // 
@@ -636,7 +637,7 @@
             this.txtNumero.MaxLength = 100;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(83, 27);
-            this.txtNumero.TabIndex = 130;
+            this.txtNumero.TabIndex = 6;
             // 
             // txtLogradouro
             // 
@@ -648,7 +649,7 @@
             this.txtLogradouro.MaxLength = 100;
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(366, 27);
-            this.txtLogradouro.TabIndex = 128;
+            this.txtLogradouro.TabIndex = 5;
             // 
             // label21
             // 

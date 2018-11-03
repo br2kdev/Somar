@@ -220,10 +220,11 @@ namespace ProjetoSomarUI.Administracao
             txtNome.Enabled = flagEnable;
             txtLogin.Enabled = flagEnable;
             cmbStatus.Enabled = flagEnable;
+            cmbPerfil.Enabled = flagEnable;
             txtNomeAlteracao.Enabled = false;
             txtDataAlteracao.Enabled = false;
             txtdtCadastro.Enabled = false;
-
+            
             txtLogin.BackColor = Color.WhiteSmoke;
             txtNome.BackColor = Color.WhiteSmoke;
             txtdtCadastro.BackColor = Color.WhiteSmoke;

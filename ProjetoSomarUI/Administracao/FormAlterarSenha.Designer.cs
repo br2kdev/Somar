@@ -49,8 +49,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
-            this.pictureBox1.InitialImage = global::ProjetoSomarUI.Properties.Resources.icon_projeto32x32;
+            this.pictureBox1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.icon_key48x48;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Location = new System.Drawing.Point(17, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 35);
@@ -103,7 +103,7 @@
             this.txtUsuario.MaxLength = 100;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(159, 27);
-            this.txtUsuario.TabIndex = 87;
+            this.txtUsuario.TabIndex = 1;
             // 
             // label2
             // 
@@ -123,7 +123,7 @@
             this.txtConfirmarSenha.MaxLength = 100;
             this.txtConfirmarSenha.Name = "txtConfirmarSenha";
             this.txtConfirmarSenha.Size = new System.Drawing.Size(159, 27);
-            this.txtConfirmarSenha.TabIndex = 86;
+            this.txtConfirmarSenha.TabIndex = 3;
             // 
             // panel2
             // 
@@ -141,7 +141,7 @@
             this.btnVoltar1.Location = new System.Drawing.Point(46, 17);
             this.btnVoltar1.Name = "btnVoltar1";
             this.btnVoltar1.Size = new System.Drawing.Size(110, 34);
-            this.btnVoltar1.TabIndex = 69;
+            this.btnVoltar1.TabIndex = 5;
             this.btnVoltar1.Text = "Voltar";
             this.btnVoltar1.UseVisualStyleBackColor = true;
             this.btnVoltar1.Click += new System.EventHandler(this.btnVoltar_Click);
@@ -151,7 +151,7 @@
             this.btnGravar.Location = new System.Drawing.Point(206, 17);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(110, 34);
-            this.btnGravar.TabIndex = 6;
+            this.btnGravar.TabIndex = 4;
             this.btnGravar.Text = "Alterar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
@@ -174,7 +174,7 @@
             this.txtSenha.MaxLength = 100;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(159, 27);
-            this.txtSenha.TabIndex = 1;
+            this.txtSenha.TabIndex = 2;
             // 
             // label10
             // 

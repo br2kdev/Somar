@@ -48,6 +48,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnGravar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnGerarLista = new System.Windows.Forms.Button();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -65,7 +66,6 @@
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panelConsulta = new System.Windows.Forms.Panel();
             this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
-            this.btnGerarLista = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -212,7 +212,7 @@
             this.txtdtFrequencia.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.txtdtFrequencia.Name = "txtdtFrequencia";
             this.txtdtFrequencia.Size = new System.Drawing.Size(128, 26);
-            this.txtdtFrequencia.TabIndex = 123;
+            this.txtdtFrequencia.TabIndex = 1;
             // 
             // label1
             // 
@@ -232,7 +232,7 @@
             this.cmbTurmaEdit.Location = new System.Drawing.Point(622, 12);
             this.cmbTurmaEdit.Name = "cmbTurmaEdit";
             this.cmbTurmaEdit.Size = new System.Drawing.Size(286, 28);
-            this.cmbTurmaEdit.TabIndex = 121;
+            this.cmbTurmaEdit.TabIndex = 3;
             // 
             // label13
             // 
@@ -252,7 +252,7 @@
             this.cmbProjetoEdit.Location = new System.Drawing.Point(264, 12);
             this.cmbProjetoEdit.Name = "cmbProjetoEdit";
             this.cmbProjetoEdit.Size = new System.Drawing.Size(286, 28);
-            this.cmbProjetoEdit.TabIndex = 119;
+            this.cmbProjetoEdit.TabIndex = 2;
             // 
             // label5
             // 
@@ -308,6 +308,20 @@
             this.panel2.Size = new System.Drawing.Size(995, 64);
             this.panel2.TabIndex = 65;
             // 
+            // btnGerarLista
+            // 
+            this.btnGerarLista.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGerarLista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnGerarLista.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
+            this.btnGerarLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGerarLista.Location = new System.Drawing.Point(679, 9);
+            this.btnGerarLista.Name = "btnGerarLista";
+            this.btnGerarLista.Size = new System.Drawing.Size(118, 43);
+            this.btnGerarLista.TabIndex = 4;
+            this.btnGerarLista.Text = "GERAR LISTA";
+            this.btnGerarLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGerarLista.UseVisualStyleBackColor = true;
+            // 
             // btnVoltar1
             // 
             this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
@@ -317,7 +331,7 @@
             this.btnVoltar1.Location = new System.Drawing.Point(451, 12);
             this.btnVoltar1.Name = "btnVoltar1";
             this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
-            this.btnVoltar1.TabIndex = 70;
+            this.btnVoltar1.TabIndex = 5;
             this.btnVoltar1.Text = "VOLTAR";
             this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar1.UseVisualStyleBackColor = true;
@@ -510,20 +524,6 @@
             this.Grid.Name = "Grid";
             this.Grid.Size = new System.Drawing.Size(985, 550);
             this.Grid.TabIndex = 39;
-            // 
-            // btnGerarLista
-            // 
-            this.btnGerarLista.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGerarLista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGerarLista.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
-            this.btnGerarLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGerarLista.Location = new System.Drawing.Point(679, 9);
-            this.btnGerarLista.Name = "btnGerarLista";
-            this.btnGerarLista.Size = new System.Drawing.Size(118, 43);
-            this.btnGerarLista.TabIndex = 81;
-            this.btnGerarLista.Text = "GERAR LISTA";
-            this.btnGerarLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGerarLista.UseVisualStyleBackColor = true;
             // 
             // FormFrequencia
             // 

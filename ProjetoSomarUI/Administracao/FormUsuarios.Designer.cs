@@ -96,7 +96,7 @@
             this.btnVoltar1.Location = new System.Drawing.Point(374, 12);
             this.btnVoltar1.Name = "btnVoltar1";
             this.btnVoltar1.Size = new System.Drawing.Size(92, 40);
-            this.btnVoltar1.TabIndex = 71;
+            this.btnVoltar1.TabIndex = 6;
             this.btnVoltar1.Text = "VOLTAR";
             this.btnVoltar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVoltar1.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             this.btnGravar.Location = new System.Drawing.Point(501, 12);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(98, 40);
-            this.btnGravar.TabIndex = 70;
+            this.btnGravar.TabIndex = 5;
             this.btnGravar.Text = "SALVAR";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -220,7 +220,7 @@
             this.cmbStatus.Location = new System.Drawing.Point(500, 18);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(190, 28);
-            this.cmbStatus.TabIndex = 92;
+            this.cmbStatus.TabIndex = 2;
             // 
             // txtNome
             // 
@@ -406,7 +406,7 @@
             this.cmbPerfil.Location = new System.Drawing.Point(500, 55);
             this.cmbPerfil.Name = "cmbPerfil";
             this.cmbPerfil.Size = new System.Drawing.Size(190, 28);
-            this.cmbPerfil.TabIndex = 96;
+            this.cmbPerfil.TabIndex = 4;
             // 
             // txtLogin
             // 
@@ -416,7 +416,7 @@
             this.txtLogin.MaxLength = 100;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(284, 27);
-            this.txtLogin.TabIndex = 94;
+            this.txtLogin.TabIndex = 3;
             // 
             // label2
             // 
@@ -467,7 +467,8 @@
             this.btnEditar.Location = new System.Drawing.Point(649, 8);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(90, 43);
-            this.btnEditar.TabIndex = 79;
+            this.btnEditar.TabIndex = 0;
+            this.btnEditar.TabStop = false;
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -500,7 +501,8 @@
             this.lblCodigo.Location = new System.Drawing.Point(844, 12);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(124, 38);
-            this.lblCodigo.TabIndex = 1;
+            this.lblCodigo.TabIndex = 0;
+            this.lblCodigo.TabStop = false;
             this.lblCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblTitle

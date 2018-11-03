@@ -207,5 +207,11 @@ namespace ProjetoSomarUI
 
         #endregion
 
+        private void btnKey_Click(object sender, EventArgs e)
+        {
+            Administracao.FormAlterarSenha frm = new Administracao.FormAlterarSenha();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }
