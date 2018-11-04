@@ -8,8 +8,6 @@ using System.Windows.Forms;
 using Somar.Shared;
 using System.Drawing.Printing;
 using ProjetoSomarUI.SomarDatabaseDataSetTableAdapters;
-using System.Data.SqlClient;
-using Somar.DAL.Utilities;
 
 namespace ProjetoSomarUI.Relatorios
 {
@@ -70,6 +68,15 @@ namespace ProjetoSomarUI.Relatorios
                         break;
                     case Relatorio.ListaPresenca:
                         result = LoadReportListaPresenca(_dataTable);
+                        break;
+                    case Relatorio.Pessoas:
+                        result = LoadReportPessoas(_dataTable);
+                        break;
+                    case Relatorio.AlunosPorProjeto:
+                        result = LoadReportAlunosProjetos(_dataTable);
+                        break;
+                    case Relatorio.AlunosPorTurma:
+                        result = LoadReportAlunosTurma(_dataTable);
                         break;
                     /*
                     case Relatorio.Dashboard:
@@ -180,6 +187,38 @@ namespace ProjetoSomarUI.Relatorios
             */
         }
 
+        private Dictionary<string, object> LoadReportAlunosProjetos(DataTable _dataTable)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelAlunosPorProjeto.rdlc";
+
+            int idProjeto = Convert.ToInt32(_param["idProjeto"]);
+
+            dtAlunosProjetosDetalhesTableAdapter dt2 = new dtAlunosProjetosDetalhesTableAdapter();
+            var _dataTable2 = dt2.GetData(idProjeto).CopyToDataTable();
+
+            result.Add("DataSet", _dataTable2);
+
+            return result;
+        }
+
+        private Dictionary<string, object> LoadReportAlunosTurma(DataTable _dataTable)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelAlunosPorTurma.rdlc";
+
+            int idTurma = Convert.ToInt32(_param["idTurma"]);
+
+            dtAlunosTurmaDetalhesTableAdapter dt2 = new dtAlunosTurmaDetalhesTableAdapter();
+            var _dataTable2 = dt2.GetData(idTurma).CopyToDataTable();
+
+            result.Add("DataSet", _dataTable2);
+
+            return result;
+        }
+
         private Dictionary<string, object> LoadReportTurmas(DataTable _dataTable)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
@@ -188,8 +227,16 @@ namespace ProjetoSomarUI.Relatorios
 
             if (_dataTable == null)
             {
-                dtTurmasTableAdapter dt = new dtTurmasTableAdapter();
-                _dataTable = dt.GetData().CopyToDataTable();
+                try
+                {
+                    dtTurmasTableAdapter dt = new dtTurmasTableAdapter();
+                    _dataTable = dt.GetData().CopyToDataTable();
+                }
+                catch(Exception)
+                {
+
+                }
+
             }
 
             result.Add("DataSet", _dataTable);
@@ -203,23 +250,72 @@ namespace ProjetoSomarUI.Relatorios
 
             this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelFrequencia.rdlc";
 
-            int idFrequencia = Convert.ToInt32(_param["idFrequencia"]);
-
-            if (_dataTable == null)
+            try
             {
-                SPR_GetListaChamadaTableAdapter dt = new SPR_GetListaChamadaTableAdapter();
-                _dataTable = dt.GetData(idFrequencia).CopyToDataTable();
+                int idFrequencia = Convert.ToInt32(_param["idFrequencia"]);
+                string flagPresenca = string.Empty;
+
+                try
+                {
+                    flagPresenca = _param["flagPresenca"];
+                }
+                catch(Exception)
+                {
+
+                }
+
+                if (_dataTable == null)
+                {
+                    SPR_GetListaChamadaTableAdapter dt = new SPR_GetListaChamadaTableAdapter();
+                    _dataTable = dt.GetData(idFrequencia).CopyToDataTable();
+
+                    if(string.IsNullOrEmpty(flagPresenca))
+                    {
+                        foreach (DataRow dr in _dataTable.Rows)
+                        {
+                            dr["descPresenca"] = "";
+                        }
+                    }
+                }
+
+                result.Add("DataSet", _dataTable);
+
+                GetListaChamadaDetalhesTableAdapter dt2 = new GetListaChamadaDetalhesTableAdapter();
+                var _dataTable2 = dt2.GetData(idFrequencia).CopyToDataTable();
+                result.Add("DataSet2", _dataTable2);
             }
+            catch(Exception)
+            {
 
-            result.Add("DataSet", _dataTable);
-
-            GetListaChamadaDetalhesTableAdapter dt2 = new GetListaChamadaDetalhesTableAdapter();
-            var _dataTable2 = dt2.GetData(idFrequencia).CopyToDataTable();
-            result.Add("DataSet2", _dataTable2);
+            }
 
             return result;
         }
 
+        private Dictionary<string, object> LoadReportPessoas(DataTable _dataTable)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = @"ProjetoSomarUI.Relatorios.RelPessoas.rdlc";
+
+            if (_dataTable == null)
+            {
+                try
+                {
+                    dtPessoasTableAdapter dt = new dtPessoasTableAdapter();
+                    _dataTable = dt.GetData().CopyToDataTable();
+                }
+                catch (Exception)
+                {
+
+                }
+
+            }
+
+            result.Add("DataSet", _dataTable);
+
+            return result;
+        }
         #endregion
 
         private void reportViewer1_Load(object sender, EventArgs e)

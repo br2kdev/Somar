@@ -42,6 +42,8 @@ namespace ProjetoSomarUI.Cadastros
 
             #region Button Events
 
+            btnNovo.Visible = false;
+
             btnNovo.Click += new EventHandler(btnNew_Click);
             btnSearch.Click += new EventHandler(btnSearch_Click);
             btnAll.Click += new EventHandler(btnAll_Click);

@@ -2,78 +2,20 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Image Name="imgLogo">
-        <Source>Embedded</Source>
-        <Value>LogoSimples</Value>
-        <Sizing>FitProportional</Sizing>
-        <Top>0.58237cm</Top>
-        <Left>0.635cm</Left>
-        <Height>2.18792cm</Height>
-        <Width>2.63771cm</Width>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-        </Style>
-      </Image>
-      <Line Name="Line1">
-        <Top>3.12124cm</Top>
-        <Left>0.05609cm</Left>
-        <Height>0cm</Height>
-        <Width>20.37166cm</Width>
-        <ZIndex>1</ZIndex>
-        <Style>
-          <Border>
-            <Color>LightGrey</Color>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
-      <Textbox Name="Textbox15">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Lista de Chamada</Value>
-                <Style>
-                  <FontSize>16pt</FontSize>
-                  <FontWeight>Bold</FontWeight>
-                  <TextDecoration>None</TextDecoration>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>0.58237cm</Top>
-        <Left>3.59833cm</Left>
-        <Height>0.75875cm</Height>
-        <Width>7.81813cm</Width>
-        <ZIndex>2</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Tablix Name="Tablix6">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.63228cm</Width>
+              <Width>1.28291cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>9.485cm</Width>
+              <Width>7.71229cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.86229cm</Width>
+              <Width>5.55753cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>3.29375cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -125,7 +67,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Aluno</Value>
+                              <Value>Nome do Beneficiário</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>SemiBold</FontWeight>
@@ -152,14 +94,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox17">
+                    <Textbox Name="Textbox3">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Presença</Value>
+                              <Value>Turma</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                                 <FontWeight>SemiBold</FontWeight>
@@ -171,7 +113,43 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox17</rd:DefaultName>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>WhiteSmoke</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox36">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Cancelamento</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>SemiBold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox36</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -228,14 +206,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="nomePessoa">
+                    <Textbox Name="NomePessoa">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!nomePessoa.Value</Value>
+                              <Value>=Fields!NomePessoa.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -244,7 +222,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>nomePessoa</rd:DefaultName>
+                      <rd:DefaultName>NomePessoa</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -261,14 +239,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="descPresenca">
+                    <Textbox Name="NomeTurma">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!descPresenca.Value</Value>
+                              <Value>=Fields!NomeTurma.Value</Value>
                               <Style>
                                 <FontSize>9pt</FontSize>
                               </Style>
@@ -279,7 +257,44 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>descPresenca</rd:DefaultName>
+                      <rd:DefaultName>NomeTurma</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>= iif(RowNumber("DataSet") Mod 2 = 0, "Cornsilk", "Transparent")</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="dtCancelamento">
+                      <CanGrow>true</CanGrow>
+                      <CanShrink>true</CanShrink>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!dtCancelamento.Value</Value>
+                              <Style>
+                                <FontSize>9pt</FontSize>
+                                <Format>=String.Format("{0:dd/MM/yyyy}", Fields!dtCancelamento.Value)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>dtCancelamento</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -303,6 +318,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -322,39 +338,115 @@
         <DataSetName>DataSet</DataSetName>
         <SortExpressions>
           <SortExpression>
-            <Value>=Fields!nomePessoa.Value</Value>
+            <Value>=Fields!idPessoa.Value</Value>
+          </SortExpression>
+          <SortExpression>
+            <Value>=Fields!NomePessoa.Value</Value>
           </SortExpression>
         </SortExpressions>
-        <Top>3.29763cm</Top>
-        <Left>0.635cm</Left>
+        <Top>3.3407cm</Top>
+        <Left>0.08996cm</Left>
         <Height>1.2cm</Height>
-        <Width>15.97957cm</Width>
-        <ZIndex>3</ZIndex>
+        <Width>17.84648cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="nomeTurma">
+      <Image Name="imgLogo">
+        <Source>Embedded</Source>
+        <Value>LogoSimples</Value>
+        <Sizing>FitProportional</Sizing>
+        <Top>0.53929cm</Top>
+        <Left>0.635cm</Left>
+        <Height>2.18792cm</Height>
+        <Width>2.63771cm</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Image>
+      <Line Name="Line1">
+        <Top>3.07816cm</Top>
+        <Left>0.05609cm</Left>
+        <Height>0cm</Height>
+        <Width>20.37166cm</Width>
+        <ZIndex>2</ZIndex>
+        <Style>
+          <Border>
+            <Color>LightGrey</Color>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox15">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!nomeTurma.Value, "DataSet2")</Value>
-                <Style />
+                <Value>RELATÓRIO: </Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>nomeTurma</rd:DefaultName>
-        <Top>2.1899cm</Top>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>0.58375cm</Top>
         <Left>3.59833cm</Left>
-        <Height>0.6cm</Height>
-        <Width>7.81813cm</Width>
+        <Height>0.75875cm</Height>
+        <Width>3.79646cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox16">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Alunos do Projeto</Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Thin</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value xml:space="preserve"> </Value>
+                <Style>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>Bold</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox15</rd:DefaultName>
+        <Top>0.58375cm</Top>
+        <Left>7.55481cm</Left>
+        <Height>0.75875cm</Height>
+        <Width>6.99792cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -366,25 +458,25 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="NomeProjeto">
+      <Textbox Name="nomeProjeto">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!NomeProjeto.Value, "DataSet2")</Value>
+                <Value>=First(Fields!nomeProjeto.Value, "DataSet")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>NomeProjeto</rd:DefaultName>
-        <Top>1.44879cm</Top>
+        <rd:DefaultName>nomeProjeto</rd:DefaultName>
+        <Top>1.51888cm</Top>
         <Left>3.59833cm</Left>
         <Height>0.6cm</Height>
-        <Width>7.81813cm</Width>
+        <Width>10.9544cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <Border>
@@ -418,7 +510,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>4247f4dd-2f63-4167-ab97-adb1ea1daf3b</rd:DataSourceID>
+      <rd:DataSourceID>a3d660b6-ca4b-48d2-83f5-5a882b92aa76</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -436,86 +528,46 @@
           <DataField>idPessoa</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="dtFrequencia">
-          <DataField>dtFrequencia</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
-        <Field Name="nomePessoa">
-          <DataField>nomePessoa</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="flagPresenca">
-          <DataField>flagPresenca</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="descPresenca">
-          <DataField>descPresenca</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-      </Fields>
-      <rd:DataSetInfo>
-        <rd:DataSetName>SomarDatabaseDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\Brichucka\source\repos\Somar\ProjetoSomarUI\SomarDatabaseDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>SPR_GetListaChamada</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>SPR_GetListaChamadaTableAdapter</rd:TableAdapterName>
-      </rd:DataSetInfo>
-    </DataSet>
-    <DataSet Name="DataSet2">
-      <Query>
-        <DataSourceName>SomarDatabaseDataSet</DataSourceName>
-        <CommandText>/* Local Query */</CommandText>
-      </Query>
-      <Fields>
-        <Field Name="idFrequencia">
-          <DataField>idFrequencia</DataField>
-          <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="dtFrequencia">
-          <DataField>dtFrequencia</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
-        </Field>
         <Field Name="idTurma">
           <DataField>idTurma</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="nomeTurma">
-          <DataField>nomeTurma</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="dtMatricula">
+          <DataField>dtMatricula</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="descricaoPeriodo">
-          <DataField>descricaoPeriodo</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="dtCancelamento">
+          <DataField>dtCancelamento</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="HoraInicio">
-          <DataField>HoraInicio</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="dtUltAlteracao">
+          <DataField>dtUltAlteracao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="HoraTermino">
-          <DataField>HoraTermino</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="idPessoa">
-          <DataField>idPessoa</DataField>
+        <Field Name="idPessoaUltAlteracao">
+          <DataField>idPessoaUltAlteracao</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="nomePessoa">
-          <DataField>nomePessoa</DataField>
+        <Field Name="NomeTurma">
+          <DataField>NomeTurma</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="NomeProjeto">
-          <DataField>NomeProjeto</DataField>
+        <Field Name="nomeProjeto">
+          <DataField>nomeProjeto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomePessoa">
+          <DataField>NomePessoa</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>SomarDatabaseDataSet</rd:DataSetName>
         <rd:SchemaPath>C:\Users\Brichucka\source\repos\Somar\ProjetoSomarUI\SomarDatabaseDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>GetListaChamadaDetalhes</rd:TableName>
+        <rd:TableName>dtAlunosDoProjetoDetalhes</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>GetListaChamadaDetalhesTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>dtAlunosProjetosTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -611,5 +663,5 @@ W4cCtEZZKvQOF1s94iVWoAKakj52XR7btcJhpAxoASyhWQsp24RLIS+hqLFshaZxPlPKvqN3zXkNas15
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>864fc626-bcf8-46bf-aab2-e902a04d799c</rd:ReportID>
+  <rd:ReportID>42b73d70-89e6-412d-abd1-b6dcd78c9503</rd:ReportID>
 </Report>

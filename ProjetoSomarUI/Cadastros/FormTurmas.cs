@@ -413,5 +413,15 @@ namespace ProjetoSomarUI.Cadastros
 
         #endregion
 
+        private void btnPrint2_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> _param = new Dictionary<string, string>();
+            _param.Add("idTurma", lblCodigo.Text);
+
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.AlunosPorTurma, null);
+            frm.param = _param;
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }

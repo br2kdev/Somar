@@ -380,6 +380,16 @@ namespace ProjetoSomarUI.Cadastros
         {
             Grid.btnExport(Relatorio.Projetos);
         }
-        
+
+        private void btnPrint2_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> _param = new Dictionary<string, string>();
+            _param.Add("idProjeto", lblCodigo.Text);
+
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.AlunosPorProjeto, null);
+            frm.param = _param;
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }

@@ -31,22 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
+            this.administrativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.escolasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projetosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.turmasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pessoasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alunoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.frequenciaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administrativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnAlunos = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelAniversario = new System.Windows.Forms.Panel();
             this.pnlAniversariantes = new System.Windows.Forms.Panel();
@@ -59,6 +53,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnReport = new System.Windows.Forms.Button();
+            this.btnAddStudent = new System.Windows.Forms.Button();
             this.btnKey = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -74,7 +70,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuPrincipal.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panelAniversario.SuspendLayout();
             this.pnlAniversariantes.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -90,9 +85,9 @@
             // 
             this.menuPrincipal.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrativoToolStripMenuItem,
             this.cadastrosToolStripMenuItem,
             this.diarioToolStripMenuItem,
-            this.administrativoToolStripMenuItem,
             this.sairToolStripMenuItem});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
@@ -100,52 +95,51 @@
             this.menuPrincipal.TabIndex = 0;
             this.menuPrincipal.Text = "menuPrincipal";
             // 
+            // administrativoToolStripMenuItem
+            // 
+            this.administrativoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsuarioToolStripMenuItem});
+            this.administrativoToolStripMenuItem.Name = "administrativoToolStripMenuItem";
+            this.administrativoToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
+            this.administrativoToolStripMenuItem.Text = "Administrativo";
+            // 
+            // UsuarioToolStripMenuItem
+            // 
+            this.UsuarioToolStripMenuItem.Name = "UsuarioToolStripMenuItem";
+            this.UsuarioToolStripMenuItem.Size = new System.Drawing.Size(212, 24);
+            this.UsuarioToolStripMenuItem.Text = "Usuários do Sistema";
+            this.UsuarioToolStripMenuItem.Click += new System.EventHandler(this.UsuarioToolStripMenuItem_Click);
+            // 
             // cadastrosToolStripMenuItem
             // 
             this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usuariosToolStripMenuItem,
             this.escolasToolStripMenuItem,
             this.projetosToolStripMenuItem,
-            this.turmasToolStripMenuItem,
-            this.pessoasToolStripMenuItem});
+            this.turmasToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
-            // usuariosToolStripMenuItem
-            // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
-            // 
             // escolasToolStripMenuItem
             // 
             this.escolasToolStripMenuItem.Name = "escolasToolStripMenuItem";
-            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.escolasToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.escolasToolStripMenuItem.Text = "Escolas";
             this.escolasToolStripMenuItem.Click += new System.EventHandler(this.escolasToolStripMenuItem_Click);
             // 
             // projetosToolStripMenuItem
             // 
             this.projetosToolStripMenuItem.Name = "projetosToolStripMenuItem";
-            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.projetosToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.projetosToolStripMenuItem.Text = "Projetos";
             this.projetosToolStripMenuItem.Click += new System.EventHandler(this.projetosToolStripMenuItem_Click);
             // 
             // turmasToolStripMenuItem
             // 
             this.turmasToolStripMenuItem.Name = "turmasToolStripMenuItem";
-            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
+            this.turmasToolStripMenuItem.Size = new System.Drawing.Size(132, 24);
             this.turmasToolStripMenuItem.Text = "Turmas";
             this.turmasToolStripMenuItem.Click += new System.EventHandler(this.turmasToolStripMenuItem_Click);
-            // 
-            // pessoasToolStripMenuItem
-            // 
-            this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(134, 24);
-            this.pessoasToolStripMenuItem.Text = "Pessoas";
-            this.pessoasToolStripMenuItem.Click += new System.EventHandler(this.pessoasToolStripMenuItem_Click);
             // 
             // diarioToolStripMenuItem
             // 
@@ -170,67 +164,12 @@
             this.frequenciaToolStripMenuItem.Text = "Frequencia";
             this.frequenciaToolStripMenuItem.Click += new System.EventHandler(this.frequenciaToolStripMenuItem_Click);
             // 
-            // administrativoToolStripMenuItem
-            // 
-            this.administrativoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alterarSenhaToolStripMenuItem});
-            this.administrativoToolStripMenuItem.Name = "administrativoToolStripMenuItem";
-            this.administrativoToolStripMenuItem.Size = new System.Drawing.Size(118, 24);
-            this.administrativoToolStripMenuItem.Text = "Administrativo";
-            // 
-            // alterarSenhaToolStripMenuItem
-            // 
-            this.alterarSenhaToolStripMenuItem.Name = "alterarSenhaToolStripMenuItem";
-            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
-            this.alterarSenhaToolStripMenuItem.Text = "Alterar Senha";
-            this.alterarSenhaToolStripMenuItem.Click += new System.EventHandler(this.alterarSenhaToolStripMenuItem_Click);
-            // 
             // sairToolStripMenuItem
             // 
             this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
             this.sairToolStripMenuItem.Text = "Sair";
             this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairMenuItem_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.btnAlunos);
-            this.panel2.Location = new System.Drawing.Point(12, 159);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(133, 543);
-            this.panel2.TabIndex = 5;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(17, 144);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(101, 50);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Relatórios";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(17, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(101, 50);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Frequencia";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnAlunos
-            // 
-            this.btnAlunos.Location = new System.Drawing.Point(17, 15);
-            this.btnAlunos.Name = "btnAlunos";
-            this.btnAlunos.Size = new System.Drawing.Size(101, 50);
-            this.btnAlunos.TabIndex = 0;
-            this.btnAlunos.Text = "Alunos";
-            this.btnAlunos.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -340,6 +279,8 @@
             // panel4
             // 
             this.panel4.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.panel4.Controls.Add(this.btnReport);
+            this.panel4.Controls.Add(this.btnAddStudent);
             this.panel4.Controls.Add(this.btnKey);
             this.panel4.Controls.Add(this.label7);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
@@ -348,14 +289,38 @@
             this.panel4.Size = new System.Drawing.Size(386, 60);
             this.panel4.TabIndex = 80;
             // 
+            // btnReport
+            // 
+            this.btnReport.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.btnReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReport.Image = global::ProjetoSomarUI.Properties.Resources.icon_report48x48;
+            this.btnReport.Location = new System.Drawing.Point(135, 3);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(61, 53);
+            this.btnReport.TabIndex = 85;
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
+            // 
+            // btnAddStudent
+            // 
+            this.btnAddStudent.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.btnAddStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddStudent.Image = global::ProjetoSomarUI.Properties.Resources.icon_addUser48x48;
+            this.btnAddStudent.Location = new System.Drawing.Point(69, 3);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(60, 53);
+            this.btnAddStudent.TabIndex = 84;
+            this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
+            // 
             // btnKey
             // 
             this.btnKey.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.btnKey.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnKey.Image = global::ProjetoSomarUI.Properties.Resources.icon_key48x48;
-            this.btnKey.Location = new System.Drawing.Point(77, 3);
+            this.btnKey.Location = new System.Drawing.Point(314, 3);
             this.btnKey.Name = "btnKey";
-            this.btnKey.Size = new System.Drawing.Size(74, 53);
+            this.btnKey.Size = new System.Drawing.Size(62, 53);
             this.btnKey.TabIndex = 4;
             this.btnKey.UseVisualStyleBackColor = true;
             this.btnKey.Click += new System.EventHandler(this.btnKey_Click);
@@ -517,7 +482,6 @@
             this.ClientSize = new System.Drawing.Size(1072, 580);
             this.Controls.Add(this.panelAniversario);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuPrincipal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -529,7 +493,6 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.panelAniversario.ResumeLayout(false);
             this.pnlAniversariantes.ResumeLayout(false);
             this.pnlAniversariantes.PerformLayout();
@@ -556,19 +519,14 @@
         private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem projetosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem turmasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pessoasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alunoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem frequenciaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblPerfil;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnAlunos;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lblDataAtual;
         private System.Windows.Forms.Timer timer1;
@@ -577,10 +535,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolStripMenuItem escolasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administrativoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alterarSenhaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem UsuarioToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panelAniversario;
         private System.Windows.Forms.ListView ListViewAniversariantes;
         private System.Windows.Forms.ColumnHeader columnHeader1;
@@ -594,6 +551,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnKey;
+        private System.Windows.Forms.Button btnAddStudent;
+        private System.Windows.Forms.Button btnReport;
     }
 }
 

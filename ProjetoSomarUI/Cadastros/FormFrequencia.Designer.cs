@@ -48,7 +48,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.btnGravar = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnGerarLista = new System.Windows.Forms.Button();
             this.btnVoltar1 = new System.Windows.Forms.Button();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -65,7 +64,9 @@
             this.cmbProjeto = new System.Windows.Forms.ComboBox();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panelConsulta = new System.Windows.Forms.Panel();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.Grid = new ProjetoSomarUI.Controls.GridViewControl();
+            this.btnGerarLista = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -107,6 +108,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.lblTitle);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label8);
@@ -308,20 +310,6 @@
             this.panel2.Size = new System.Drawing.Size(995, 64);
             this.panel2.TabIndex = 65;
             // 
-            // btnGerarLista
-            // 
-            this.btnGerarLista.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.btnGerarLista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnGerarLista.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
-            this.btnGerarLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGerarLista.Location = new System.Drawing.Point(679, 9);
-            this.btnGerarLista.Name = "btnGerarLista";
-            this.btnGerarLista.Size = new System.Drawing.Size(118, 43);
-            this.btnGerarLista.TabIndex = 4;
-            this.btnGerarLista.Text = "GERAR LISTA";
-            this.btnGerarLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGerarLista.UseVisualStyleBackColor = true;
-            // 
             // btnVoltar1
             // 
             this.btnVoltar1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
@@ -339,7 +327,7 @@
             // txtEditMode
             // 
             this.txtEditMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.txtEditMode.Location = new System.Drawing.Point(848, 19);
+            this.txtEditMode.Location = new System.Drawing.Point(17, 18);
             this.txtEditMode.Name = "txtEditMode";
             this.txtEditMode.Size = new System.Drawing.Size(100, 26);
             this.txtEditMode.TabIndex = 68;
@@ -510,6 +498,18 @@
             this.panelConsulta.Size = new System.Drawing.Size(998, 641);
             this.panelConsulta.TabIndex = 43;
             // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint.BackgroundImage")));
+            this.btnPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint.Location = new System.Drawing.Point(683, 1);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint.TabIndex = 80;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // Grid
             // 
             this.Grid.AutoSize = true;
@@ -524,6 +524,20 @@
             this.Grid.Name = "Grid";
             this.Grid.Size = new System.Drawing.Size(985, 550);
             this.Grid.TabIndex = 39;
+            // 
+            // btnGerarLista
+            // 
+            this.btnGerarLista.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
+            this.btnGerarLista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnGerarLista.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
+            this.btnGerarLista.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGerarLista.Location = new System.Drawing.Point(861, 11);
+            this.btnGerarLista.Name = "btnGerarLista";
+            this.btnGerarLista.Size = new System.Drawing.Size(118, 43);
+            this.btnGerarLista.TabIndex = 4;
+            this.btnGerarLista.Text = "GERAR LISTA";
+            this.btnGerarLista.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGerarLista.UseVisualStyleBackColor = true;
             // 
             // FormFrequencia
             // 
@@ -594,6 +608,7 @@
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.Button btnVoltar1;
         private Controls.GridViewControl Grid;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnGerarLista;
     }
 }

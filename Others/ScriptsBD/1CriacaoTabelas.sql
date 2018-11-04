@@ -1,13 +1,43 @@
 USE SomarDatabase
 GO
 
+--select top 10 * from TB_CEP_Bairro
+--select top 10 * from TB_CEP_Localidade
+--select top 10 * from TB_CEP_Logradouro
 
-SELECT * 
-FROM TB_Frequencia
 
-SELECT * 
-FROM TB_FrequenciaFaltas
+select top 10 * from TB_DadosVariaveis
+select top 10 * from TB_Generos
+select top 10 * from TB_Perfis
+select top 10 * from TB_SituacaoPessoas
+select top 10 * from TB_TipoPessoas
 
+SELECT A.*, B.siglaGenero, B.descGenero, C.nomeUsuario as nomePessoaUltAlteracao, D.descTipoPessoa
+			,descricaoAtivo = CASE WHEN A.flagAtivo = 1 then 'Ativo' else 'Desativado' END
+			,descSituacao = CASE WHEN A.idSituacao = 1 then 'Ativo' else 'Desativado' END
+FROM TB_Pessoas          A
+LEFT JOIN TB_Generos     B ON A.idGenero = B.idGenero
+LEFT JOIN TB_Usuarios    C ON A.idPessoaUltAlteracao = C.idUsuario
+LEFT JOIN TB_TipoPessoas D ON A.idTipoPessoa = D.idTipoPessoa
+
+/*
+truncate table TB_Contatos
+
+truncate table TB_Enderecos
+truncate table TB_Escolas
+delete TB_Projetos
+delete TB_Turmas
+truncate table TB_FrequenciaFaltas
+delete TB_Frequencia
+
+truncate table TB_Matricula
+truncate table TB_PessoaDV
+delete  TB_Pessoas
+
+select top 10 * from TB_Pessoas
+
+delete TB_Usuarios where idUsuario in (2,4)
+*/
 
 EXEC SPR_GetListaChamada 2006
 
@@ -35,6 +65,8 @@ CREATE TABLE TB_Usuarios
 	dtUltAlteracao			SMALLDATETIME,
 	idPessoaUltAlteracao	INT
 )
+
+
 
 -- ******************************************************************* --
 -- (Projetos Contínuos de cada Centro Solidário) 
@@ -69,8 +101,6 @@ CREATE TABLE TB_Projetos
 )
 
 -- ALTER TABLE TB_Projetos ALTER COLUMN idPessoaResposavel VARCHAR(100)
-
-drop table TB_Turmas
 
 CREATE TABLE TB_Turmas
 (
@@ -156,9 +186,12 @@ BEGIN
  
 END
 
+exec SPR_GetListaChamada 3
+
 ALTER PROCEDURE SPR_GetListaChamada
 (
-	@idFrequencia			INT
+	@idFrequencia			INT,
+	@flagPresenca			INT
 )
 AS
 BEGIN
@@ -209,8 +242,11 @@ BEGIN
 	  AND  (A.dtCancelamento is NULL OR A.dtCancelamento > @dtFrequencia) 
 	  AND  A.dtMatricula < @dtFrequencia
 
-	  UPDATE #TempResult SET descPresenca = 'P' WHERE flagPresenca = 1
-	  UPDATE #TempResult SET descPresenca = 'F' WHERE flagPresenca = 0
+	  if(@flagPresenca = 1)
+	  BEGIN
+		UPDATE #TempResult SET descPresenca = 'P' WHERE flagPresenca = 1
+		UPDATE #TempResult SET descPresenca = 'F' WHERE flagPresenca = 0
+	  END
 
 	  SELECT A.idMatricula, 
 			 A.idPessoa, 
@@ -219,9 +255,14 @@ BEGIN
 			 flagPresenca,
 			 descPresenca
 	  FROM #TempResult A
-
-	  
 END
+
+SELECT A.*, b.NomeTurma, c.nomeProjeto, D.nomePessoa
+FROM TB_Matricula      A
+INNER JOIN TB_Turmas   B ON A.idTurma   = B.idTurma
+INNER JOIN TB_Projetos C ON B.idProjeto = C.idProjeto
+INNER JOIN TB_Pessoas  D ON A.idPessoa  = D.idPessoa
+WHERE A.idTurma = @idTurma
 
 ALTER PROCEDURE SPR_GerarFrequencia
 (
@@ -431,6 +472,22 @@ drop table TB_Enderecos
 drop table TB_Contatos
 */
 
+ALTER TABLE TB_Usuarios ADD FOREIGN KEY (idPessoaUltAlteracao) REFERENCES TB_Usuarios(idUsuario);
+ALTER TABLE TB_Turmas ADD FOREIGN KEY (idProjeto) REFERENCES TB_Projetos(idProjeto);
+
+ALTER TABLE TB_Matricula ADD FOREIGN KEY (idTurma) REFERENCES TB_Turmas(idTurma);
+ALTER TABLE TB_Matricula ADD FOREIGN KEY (idPessoa) REFERENCES TB_Pessoas(idPessoa);
+
+ALTER TABLE TB_Frequencia ADD FOREIGN KEY (idTurma) REFERENCES TB_Turmas(idTurma);
+ALTER TABLE TB_Frequencia ADD FOREIGN KEY (idPessoaUltAlteracao) REFERENCES TB_Usuarios(idUsuario);
+
+ALTER TABLE TB_FrequenciaFaltas ADD FOREIGN KEY (idFrequencia) REFERENCES TB_Frequencia(idFrequencia);
+ALTER TABLE TB_FrequenciaFaltas ADD FOREIGN KEY (idPessoa) REFERENCES TB_Pessoas(idPessoa);
+
+ALTER TABLE TB_FrequenciaFaltas ADD FOREIGN KEY (idFrequencia) REFERENCES TB_Frequencia(idFrequencia);
+ALTER TABLE TB_FrequenciaFaltas ADD FOREIGN KEY (idPessoa) REFERENCES TB_Pessoas(idPessoa);
+
+
 -- ******************************************************* 
 -- INÍCIO - INSERTS
 -- ******************************************************* 
@@ -596,28 +653,6 @@ CREATE CLUSTERED INDEX IX#01_TB_SituacaoPessoas ON TB_SituacaoPessoas(idSituacao
 CREATE CLUSTERED INDEX IX#01_Logradouro ON TB_CEP_Logradouro (CEP ASC)
 CREATE CLUSTERED INDEX IX#01_Localidade ON TB_CEP_Localidade(loc_nu_sequencial)
 CREATE CLUSTERED INDEX IX#01_Bairro		ON TB_CEP_Bairro(bai_nu_sequencial)
-
-TB_Enderecos
-
-@CEP,
-@logradouro,
-@complemento,
-@numero,
-@idBairro,
-@nomeBairro,
-@idCidade,
-@nomeCidade,
-@siglaUF
-
-CEP
-logradouro
-complemento
-numero
-idBairro
-nomeBairro
-idCidade
-nomeCidade
-siglaUF
 
 /*
 USE CorreiroDatabase2014

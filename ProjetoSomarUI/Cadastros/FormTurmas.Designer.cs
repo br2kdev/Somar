@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTurmas));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtEditMode = new System.Windows.Forms.TextBox();
             this.lblStatus = new System.Windows.Forms.Label();
@@ -79,6 +80,7 @@
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnEditar = new System.Windows.Forms.Button();
+            this.btnPrint2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -714,6 +716,7 @@
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnPrint2);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label8);
@@ -738,6 +741,18 @@
             this.btnEditar.Text = "EDITAR";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnPrint2
+            // 
+            this.btnPrint2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint2.BackgroundImage")));
+            this.btnPrint2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint2.Location = new System.Drawing.Point(549, 6);
+            this.btnPrint2.Name = "btnPrint2";
+            this.btnPrint2.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint2.TabIndex = 81;
+            this.btnPrint2.UseVisualStyleBackColor = false;
+            this.btnPrint2.Click += new System.EventHandler(this.btnPrint2_Click);
             // 
             // FormTurmas
             // 
@@ -823,5 +838,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnVoltar1;
         private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.Button btnPrint2;
     }
 }

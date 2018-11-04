@@ -133,6 +133,26 @@ namespace ProjetoSomarUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon_addUser32x32 {
+            get {
+                object obj = ResourceManager.GetObject("icon_addUser32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_addUser48x48 {
+            get {
+                object obj = ResourceManager.GetObject("icon_addUser48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icon_back24x24 {
             get {
                 object obj = ResourceManager.GetObject("icon_back24x24", resourceCulture);
@@ -306,6 +326,16 @@ namespace ProjetoSomarUI.Properties {
         internal static System.Drawing.Bitmap icon_reload32x32 {
             get {
                 object obj = ResourceManager.GetObject("icon_reload32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_report48x48 {
+            get {
+                object obj = ResourceManager.GetObject("icon_report48x48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

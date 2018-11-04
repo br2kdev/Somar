@@ -122,13 +122,6 @@ namespace ProjetoSomarUI
             frm.ShowDialog();
         }
 
-        private void alterarSenhaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Administracao.FormAlterarSenha frm = new Administracao.FormAlterarSenha();
-            frm.ShowInTaskbar = false;
-            frm.ShowDialog();
-        }
-
         private void frequenciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormFrequencia frm = new FormFrequencia();
@@ -210,6 +203,27 @@ namespace ProjetoSomarUI
         private void btnKey_Click(object sender, EventArgs e)
         {
             Administracao.FormAlterarSenha frm = new Administracao.FormAlterarSenha();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
+        private void UsuarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Administracao.FormUsuarios frm = new Administracao.FormUsuarios();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
+        private void btnAddStudent_Click(object sender, EventArgs e)
+        {
+            FormPessoas frm = new FormPessoas();
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            Relatorios.FormPainel frm = new Relatorios.FormPainel();
             frm.ShowInTaskbar = false;
             frm.ShowDialog();
         }

@@ -645,7 +645,16 @@ namespace ProjetoSomarUI.Cadastros
             param.nomePessoa = txtNome.Text;
             param.numeroRG = txtRG.Text;
             param.numeroCPF = txtCPF.Text;
-            param.dtNascimento = Convert.ToDateTime(txtdtNascimento.Text);
+
+            try
+            { 
+                param.dtNascimento = Convert.ToDateTime(txtdtNascimento.Text);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Informe a data de nascimento!");
+            }
+
             param.idTipoPessoa = Convert.ToInt32(cmbTipoPessoa.SelectedValue);
             param.idGenero = Convert.ToInt32(cmbGenero.SelectedValue);
             param.dtAtivacao = string.IsNullOrEmpty(txtdtAtivacao.Text) ? DateTime.Now : Convert.ToDateTime(txtdtAtivacao.Text);
@@ -873,6 +882,11 @@ namespace ProjetoSomarUI.Cadastros
                     txtdtNascimento.Focus();
                 }
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Grid.btnExport(Relatorio.Pessoas);
         }
     }
 }

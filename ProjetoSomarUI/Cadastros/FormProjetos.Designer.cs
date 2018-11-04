@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProjetos));
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -73,6 +74,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPrint2 = new System.Windows.Forms.Button();
             this.panelEdit.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,6 +104,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel1.BackgroundImage = global::ProjetoSomarUI.Properties.Resources.backgroundTitle;
+            this.panel1.Controls.Add(this.btnPrint2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.btnEditar);
             this.panel1.Controls.Add(this.label8);
@@ -130,7 +133,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEditar.Image = global::ProjetoSomarUI.Properties.Resources.icon_edit2_32x32;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(643, 11);
+            this.btnEditar.Location = new System.Drawing.Point(643, 9);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(90, 43);
             this.btnEditar.TabIndex = 68;
@@ -634,14 +637,26 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Consultar por:";
             // 
+            // btnPrint2
+            // 
+            this.btnPrint2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPrint2.BackgroundImage")));
+            this.btnPrint2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPrint2.Location = new System.Drawing.Point(566, 8);
+            this.btnPrint2.Name = "btnPrint2";
+            this.btnPrint2.Size = new System.Drawing.Size(58, 46);
+            this.btnPrint2.TabIndex = 81;
+            this.btnPrint2.UseVisualStyleBackColor = false;
+            this.btnPrint2.Click += new System.EventHandler(this.btnPrint2_Click);
+            // 
             // FormProjetos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1005, 641);
-            this.Controls.Add(this.panelConsulta);
             this.Controls.Add(this.panelEdit);
+            this.Controls.Add(this.panelConsulta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -718,5 +733,6 @@
         private System.Windows.Forms.TextBox txtResponsavel;
         private System.Windows.Forms.Button btnPrint;
         private Controls.GridViewControl Grid;
+        private System.Windows.Forms.Button btnPrint2;
     }
 }

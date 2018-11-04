@@ -595,5 +595,17 @@ namespace ProjetoSomarUI.Cadastros
         }
 
         #endregion
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> _param = new Dictionary<string, string>();
+            _param.Add("idFrequencia", lblCodigo.Text);
+            _param.Add("flagPresenca", "true");
+
+            Relatorios.FormReport frm = new Relatorios.FormReport(Relatorio.ListaPresenca, null);
+            frm.param = _param;
+            frm.ShowInTaskbar = false;
+            frm.ShowDialog();
+        }
     }
 }

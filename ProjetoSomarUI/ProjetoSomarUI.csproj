@@ -278,8 +278,11 @@
     <EmbeddedResource Include="Relatorios\FormReport.resx">
       <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\RelAlunosPorProjeto.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelAlunosPorTurma.rdlc" />
     <EmbeddedResource Include="Relatorios\RelDashboard.rdlc" />
     <EmbeddedResource Include="Relatorios\RelFrequencia.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelPessoas.rdlc" />
     <EmbeddedResource Include="Relatorios\RelProjetos.rdlc" />
     <EmbeddedResource Include="Relatorios\RelTurmas.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
@@ -341,7 +344,10 @@
     <None Include="imgs\icon_saveColor32x32.png" />
     <None Include="imgs\backgroundTitle.png" />
     <None Include="imgs\backgroundFilter.png" />
+    <None Include="imgs\icon_addUser32x32.png" />
+    <None Include="imgs\icon_addUser48x48.png" />
     <Content Include="imgs\icon_key48x48.png" />
+    <None Include="imgs\icon_report48x48.png" />
     <Content Include="imgs\others\imgSomar.jpg" />
     <None Include="imgs\calendar_icon32x32.png" />
     <Content Include="imgs\icon_key_128x128.png" />
